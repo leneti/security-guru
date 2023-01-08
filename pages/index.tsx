@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import { Container, Box, Text } from "@mantine/core";
 import Hero from "@site/components/Hero";
 import Head from "next/head";
 
@@ -12,15 +12,12 @@ export default function Home() {
         <link rel="icon" href="/Ikona_Oranzine.png" />
       </Head>
 
-      <Box
-        sx={(theme) => ({
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors["brand-light-green"][3],
-        })}
-      >
-        <Hero />
+      <Hero />
+
+      <Box sx={{ display: "flex", flexGrow: 1 }}>
+        <Container fluid>
+          
+        </Container>
       </Box>
     </>
   );
