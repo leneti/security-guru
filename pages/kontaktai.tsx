@@ -1,12 +1,12 @@
-import { Container, Box, BackgroundImage } from "@mantine/core";
-import Hero from "@site/components/Hero";
 import Head from "next/head";
+import { Container, Box, BackgroundImage, Center } from "@mantine/core";
+import GetInTouch from "@site/components/GetInTouch";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Security Guru</title>
+        <title>Kontaktai | Security Guru</title>
         <meta name="description" content="Apsaugos sprendimai" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Ikona_Oranzine.png" />
@@ -20,12 +20,13 @@ export default function Home() {
               : theme.colors["brand-light-green"][3],
         })}
       >
-        <Hero />
-        {/* <Container fluid p={0}>
+        <Container fluid p={0}>
           <BackgroundImage src="/unsplash-houses.jpg">
-            <Box sx={{ height: "75vh" }}></Box>
+            <Center py="xl" sx={{ minHeight: "75vh" }}>
+              <GetInTouch />
+            </Center>
           </BackgroundImage>
-        </Container> */}
+        </Container>
       </Box>
     </>
   );
