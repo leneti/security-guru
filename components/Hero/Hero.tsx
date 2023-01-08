@@ -5,7 +5,7 @@ import {
   Title,
   Button,
   Text,
-  useMantineTheme
+  useMantineTheme,
 } from "@mantine/core";
 import { clamp, useViewportSize } from "@mantine/hooks";
 import Link from "next/link";
@@ -87,15 +87,31 @@ export default function HeroContentLeft() {
         className={classes.container}
         size={theme.breakpoints.xl}
         sx={{
-          paddingRight: clamp(width - theme.breakpoints.md, 16, theme.breakpoints.xl - theme.breakpoints.md),
+          paddingRight: clamp(
+            width - theme.breakpoints.md,
+            theme.spacing.md,
+            theme.breakpoints.xl - theme.breakpoints.md
+          ),
           [theme.fn.largerThan("md")]: {
-            paddingRight: clamp(width - theme.breakpoints.md, 16, theme.breakpoints.xl - theme.breakpoints.md - leftPadding),
-            paddingLeft: clamp(width - theme.breakpoints.md, 16, leftPadding)
+            paddingRight: clamp(
+              width - theme.breakpoints.md,
+              theme.spacing.md,
+              theme.breakpoints.xl - theme.breakpoints.md - leftPadding
+            ),
+            paddingLeft: clamp(
+              width - theme.breakpoints.md,
+              theme.spacing.md,
+              leftPadding
+            ),
           },
           [theme.fn.largerThan("xl")]: {
-            paddingRight: clamp(width - theme.breakpoints.md, 16, theme.breakpoints.xl - theme.breakpoints.md),
-            paddingLeft: 16
-          }
+            paddingRight: clamp(
+              width - theme.breakpoints.md,
+              theme.spacing.md,
+              theme.breakpoints.xl - theme.breakpoints.md
+            ),
+            paddingLeft: theme.spacing.md,
+          },
         }}
       >
         <Title className={classes.title}>
