@@ -24,6 +24,11 @@ const useStyles = createStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     height: headerHeight,
+    maxWidth: theme.breakpoints.xl,
+    paddingLeft: theme.spacing.md,
+    paddingRight: theme.spacing.md,
+    marginLeft: "auto",
+    marginRight: "auto"
   },
 
   links: {
@@ -117,7 +122,7 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
 
   return (
     <Header height={headerHeight}>
-      <Container className={classes.inner} size={theme.breakpoints.xl}>
+      <nav className={classes.inner}>
         <Burger
           opened={opened}
           onClick={toggle}
@@ -130,7 +135,7 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
           {width >= theme.breakpoints.md && <ThemeSwitch />}
         </Group>
           {width < theme.breakpoints.md && <ThemeSwitch />}
-      </Container>
+      </nav>
     </Header>
   );
 }
