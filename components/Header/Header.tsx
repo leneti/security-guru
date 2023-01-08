@@ -117,7 +117,7 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
 
   return (
     <Header height={headerHeight}>
-      <Container className={classes.inner} size={1440}>
+      <Container className={classes.inner} size={theme.breakpoints.xl}>
         <Burger
           opened={opened}
           onClick={toggle}

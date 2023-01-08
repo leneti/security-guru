@@ -7,6 +7,7 @@ import {
 
 export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
   colorScheme,
+
   colors: {
     brand:
       colorScheme === "dark"
@@ -71,8 +72,10 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
       "#6C7556",
     ],
   },
+
   primaryShade: { light: 5, dark: 4 },
   primaryColor: "brand",
+
   components: {
     Button: {
       defaultProps: {
@@ -84,4 +87,5 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
       },
     },
   },
+  
 });

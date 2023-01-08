@@ -1,4 +1,4 @@
-import { Container, Box, BackgroundImage } from "@mantine/core";
+import { Box } from "@mantine/core";
 import Hero from "@site/components/Hero";
 import Head from "next/head";
 
@@ -21,11 +21,6 @@ export default function Home() {
         })}
       >
         <Hero />
-        {/* <Container fluid p={0}>
-          <BackgroundImage src="/unsplash-houses.jpg">
-            <Box sx={{ height: "75vh" }}></Box>
-          </BackgroundImage>
-        </Container> */}
       </Box>
     </>
   );

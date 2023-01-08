@@ -5,7 +5,9 @@ import {
   Title,
   Button,
   Text,
+  useMantineTheme
 } from "@mantine/core";
+import { clamp, useViewportSize } from "@mantine/hooks";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -22,12 +24,13 @@ const useStyles = createStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "flex-start",
-    paddingBottom: theme.spacing.xl * 6,
+    paddingBottom: theme.spacing.xl * 8,
     zIndex: 1,
     position: "relative",
 
     [theme.fn.smallerThan("sm")]: {
       height: 500,
+      paddingBottom: theme.spacing.xl * 6,
     },
   },
 
@@ -65,8 +68,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+const leftPadding = 60;
+
 export default function HeroContentLeft() {
   const { classes } = useStyles();
+  const { width } = useViewportSize();
+  const theme = useMantineTheme();
 
   return (
     <div className={classes.hero}>
@@ -76,7 +83,21 @@ export default function HeroContentLeft() {
         zIndex={0}
         blur={1}
       />
-      <Container className={classes.container}>
+      <Container
+        className={classes.container}
+        size={theme.breakpoints.xl}
+        sx={{
+          paddingRight: clamp(width - theme.breakpoints.md, 16, theme.breakpoints.xl - theme.breakpoints.md),
+          [theme.fn.largerThan("md")]: {
+            paddingRight: clamp(width - theme.breakpoints.md, 16, theme.breakpoints.xl - theme.breakpoints.md - leftPadding),
+            paddingLeft: clamp(width - theme.breakpoints.md, 16, leftPadding)
+          },
+          [theme.fn.largerThan("xl")]: {
+            paddingRight: clamp(width - theme.breakpoints.md, 16, theme.breakpoints.xl - theme.breakpoints.md),
+            paddingLeft: 16
+          }
+        }}
+      >
         <Title className={classes.title}>
           Namų ir verslo apsaugos sprendimai
         </Title>
