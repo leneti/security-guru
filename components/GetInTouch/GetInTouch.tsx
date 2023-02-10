@@ -7,13 +7,10 @@ import {
   Group,
   SimpleGrid,
   createStyles,
-  useMantineTheme,
   Radio,
 } from "@mantine/core";
-import { useViewportSize } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
-import { ContactIconsList } from "@components/ContactIcons";
-import { IconSun, IconPhone, IconMapPin, IconAt } from "@tabler/icons";
+import ContactInfo from "@site/components/ContactInfo";
 
 const useStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan("sm");
@@ -35,7 +32,7 @@ const useStyles = createStyles((theme) => {
       boxSizing: "border-box",
       flex: 1,
       padding: theme.spacing.xl,
-      paddingLeft: theme.spacing.xl * 2,
+      paddingLeft: `calc(${theme.spacing.xl} * 2)`,
       borderLeft: 0,
 
       [BREAKPOINT]: {
@@ -48,46 +45,34 @@ const useStyles = createStyles((theme) => {
       marginTop: -12,
     },
 
-    fieldInput: {
-      flex: 1,
-
-      "& + &": {
-        marginLeft: theme.spacing.md,
-
-        [BREAKPOINT]: {
-          marginLeft: 0,
-          marginTop: theme.spacing.md,
-        },
-      },
-    },
-
-    fieldsGroup: {
-      display: "flex",
-
-      [BREAKPOINT]: {
-        flexDirection: "column",
-      },
-    },
-
     contacts: {
-      boxSizing: "border-box",
       position: "relative",
-      borderRadius: theme.radius.lg - 2,
-      backgroundColor: theme.fn.primaryColor(),
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      border: "1px solid transparent",
+      marginLeft: 8,
+      marginRight: 8,
       padding: theme.spacing.xl,
-      flex: "0 0 280px",
+      flex: "0 0 15rem",
+
+      "&:before": {
+        content: '""',
+        position: "absolute",
+        right: -1,
+        top: "5%",
+        height: "90%",
+        borderRight: `1px solid ${theme.fn.primaryColor()}`,
+      },
 
       [BREAKPOINT]: {
         marginBottom: theme.spacing.sm,
         paddingLeft: theme.spacing.md,
+
+        "&:before": {
+          borderRight: "none",
+        },
       },
     },
 
     title: {
-      marginBottom: theme.spacing.xl * 1.5,
+      marginBottom: `calc(${theme.spacing.xl} * 1.5)`,
       fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 
       [BREAKPOINT]: {
@@ -108,8 +93,6 @@ const emailRegex =
 
 export default function GetInTouch() {
   const { classes } = useStyles();
-  const theme = useMantineTheme();
-  const { width } = useViewportSize();
 
   const form = useForm({
     initialValues: {
@@ -127,23 +110,6 @@ export default function GetInTouch() {
     },
   });
 
-  const contactData = [
-    { title: "El. paštas", description: "info@securityguru.lt", icon: IconAt },
-    {
-      title: "Tel. Nr.",
-      description: `+37060334255${
-        width < theme.breakpoints.md ? " | " : " "
-      }+37060283726`,
-      icon: IconPhone,
-    },
-    {
-      title: "Dirbame",
-      description: "Vilniuje ir Vilniaus apskrityje",
-      icon: IconMapPin,
-    },
-    { title: "Darbo laikas", description: "9:00 – 21:00", icon: IconSun },
-  ];
-
   const onSubmit = (values: {
     solution: string;
     name: string;
@@ -159,18 +125,11 @@ export default function GetInTouch() {
     <Paper shadow="lg" radius="lg">
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
-          <Text
-            size="lg"
-            weight={700}
-            className={classes.title}
-            sx={(theme) => ({
-              color: theme.colorScheme === "dark" ? "#000" : "#fff",
-            })}
-          >
+          <Text size="lg" weight={700} className={classes.title}>
             Kontaktai
           </Text>
 
-          <ContactIconsList variant="white" data={contactData} />
+          <ContactInfo />
         </div>
 
         <form className={classes.form} onSubmit={form.onSubmit(onSubmit)}>
@@ -180,17 +139,20 @@ export default function GetInTouch() {
 
           <div className={classes.fields}>
             <Radio.Group
-              name="favoriteFramework"
+              name="sprendimas"
               label="Pasirinkite sprendimą"
               {...form.getInputProps("solution")}
             >
-              <Radio value="namams" label="Namams" required />
-              <Radio value="verslui" label="Verslui" required />
+              <Group>
+                <Radio value="namams" label="Namams" required />
+                <Radio value="verslui" label="Verslui" required />
+              </Group>
             </Radio.Group>
 
             <SimpleGrid
               mt="sm"
               cols={2}
+              spacing="md"
               breakpoints={[{ maxWidth: "sm", cols: 1 }]}
             >
               <TextInput

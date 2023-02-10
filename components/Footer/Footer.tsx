@@ -2,9 +2,9 @@ import {
   createStyles,
   Text,
   Container,
-  ActionIcon,
   Group,
   useMantineTheme,
+  ActionIcon,
 } from "@mantine/core";
 import { IconBrandInstagram, IconBrandFacebook, IconMail } from "@tabler/icons";
 import Link from "next/link";
@@ -12,8 +12,8 @@ import Logo from "@components/Logo";
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    paddingTop: theme.spacing.xl * 2,
-    paddingBottom: theme.spacing.xl * 2,
+    paddingTop: `calc(${theme.spacing.xl} * 2)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.colors.dark[6]
@@ -43,29 +43,6 @@ const useStyles = createStyles((theme) => ({
 
   wrapper: {
     width: 160,
-  },
-
-  link: {
-    display: "block",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[1]
-        : theme.colors.gray[6],
-    fontSize: theme.fontSizes.sm,
-    paddingTop: 3,
-    paddingBottom: 3,
-
-    "&:hover": {
-      textDecoration: "underline",
-    },
-  },
-
-  title: {
-    fontSize: theme.fontSizes.lg,
-    fontWeight: 700,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    marginBottom: theme.spacing.xs / 2,
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
   },
 
   afterFooter: {
@@ -110,37 +87,33 @@ export default function Footer() {
           © {new Date().getFullYear()} MB Security Guru
         </Text>
 
-        <Group spacing={0} className={classes.social} position="right" noWrap>
-          <ActionIcon size="lg">
-            <Link
-              href="https://www.facebook.com/people/Security-guru/100088856047734/"
-              target="_blank"
-            >
-              <IconBrandFacebook
-                size={18}
-                stroke={1.5}
-                color={
-                  theme.fn.primaryColor()
-                }
-              />
-            </Link>
+        <Group spacing="xs" className={classes.social} position="right" noWrap>
+          <ActionIcon
+            component={Link}
+            href="https://www.facebook.com/people/Security-guru/100088856047734/"
+            target="_blank"
+            title="Facebook puslapis"
+          >
+            <IconBrandFacebook
+              size={18}
+              stroke={1.5}
+              color={theme.fn.primaryColor()}
+            />
           </ActionIcon>
-          <ActionIcon size="lg">
-            <Link
-              href="https://www.instagram.com/mbsecurityguru/"
-              target="_blank"
-            >
-              <IconBrandInstagram size={18} stroke={1.5} color={
-                  theme.fn.primaryColor()
-                } />
-            </Link>
+          <ActionIcon
+            component={Link}
+            href="https://www.instagram.com/mbsecurityguru/"
+            target="_blank"
+            title="Instagram paskyra"
+          >
+            <IconBrandInstagram
+              size={18}
+              stroke={1.5}
+              color={theme.fn.primaryColor()}
+            />
           </ActionIcon>
-          <ActionIcon size="lg">
-            <Link href="/">
-              <IconMail size={18} stroke={1.5} color={
-                  theme.fn.primaryColor()
-                } />
-            </Link>
+          <ActionIcon component={Link} href="/kontaktai" title="Susisiekite">
+            <IconMail size={18} stroke={1.5} color={theme.fn.primaryColor()} />
           </ActionIcon>
         </Group>
       </Container>

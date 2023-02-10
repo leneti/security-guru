@@ -1,5 +1,4 @@
-import { useMantineTheme, useMantineColorScheme } from "@mantine/core";
-import { useViewportSize } from "@mantine/hooks";
+import { useMantineColorScheme, createStyles } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +8,20 @@ interface LogoProps {
 }
 
 const defaultSize = 50;
+
+const useStyles = createStyles((theme) => ({
+  bigDisplay: {
+    [theme.fn.smallerThan("md")]: {
+      display: "none",
+    },
+  },
+
+  smallDisplay: {
+    [theme.fn.largerThan("md")]: {
+      display: "none",
+    },
+  },
+}));
 
 function LogoIcon(logoSize: number) {
   const { colorScheme } = useMantineColorScheme();
@@ -27,9 +40,8 @@ function LogoIcon(logoSize: number) {
 }
 
 export default function Logo({ iconOnly, size }: LogoProps) {
-  const theme = useMantineTheme();
-  const { width } = useViewportSize();
   const { colorScheme } = useMantineColorScheme();
+  const { classes } = useStyles();
   const dark = colorScheme === "dark";
 
   const logoSize = size ?? defaultSize;
@@ -38,9 +50,9 @@ export default function Logo({ iconOnly, size }: LogoProps) {
     return LogoIcon(logoSize);
   }
 
-  if (width < theme.breakpoints.md) {
-    return (
-      <Link href="/">
+  return (
+    <>
+      <Link href="/" className={classes.smallDisplay}>
         <Image
           alt="SG logo"
           src={
@@ -51,10 +63,7 @@ export default function Logo({ iconOnly, size }: LogoProps) {
           unoptimized
         />
       </Link>
-    );
-  } else {
-    return (
-      <Link href="/">
+      <Link href="/" className={classes.bigDisplay}>
         <Image
           alt="SG logo"
           src={
@@ -65,6 +74,6 @@ export default function Logo({ iconOnly, size }: LogoProps) {
           unoptimized
         />
       </Link>
-    );
-  }
+    </>
+  );
 }

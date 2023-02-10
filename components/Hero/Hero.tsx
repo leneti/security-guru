@@ -7,8 +7,9 @@ import {
   Text,
   useMantineTheme,
 } from "@mantine/core";
-import { clamp, useViewportSize } from "@mantine/hooks";
 import Link from "next/link";
+
+const leftPadding = "60px";
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -19,18 +20,45 @@ const useStyles = createStyles((theme) => ({
   },
 
   container: {
+    position: "relative",
     height: 700,
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "flex-start",
-    paddingBottom: theme.spacing.xl * 8,
     zIndex: 1,
-    position: "relative",
+    paddingBottom: `calc(${theme.spacing.xl} * 8)`,
+    paddingRight: `clamp(
+      ${theme.spacing.md},
+      calc(100vw - ${theme.breakpoints.md}),
+      calc(${theme.breakpoints.xl} - ${theme.breakpoints.md})
+    )`,
 
     [theme.fn.smallerThan("sm")]: {
       height: 500,
-      paddingBottom: theme.spacing.xl * 6,
+      paddingBottom: `calc(${theme.spacing.xl} * 6)`,
+    },
+
+    [theme.fn.largerThan("md")]: {
+      paddingRight: `clamp(
+        ${theme.spacing.md},
+        calc(100vw - ${theme.breakpoints.md}),
+        calc(${theme.breakpoints.xl} - ${theme.breakpoints.md} - ${leftPadding})
+      )`,
+      paddingLeft: `clamp(
+        ${theme.spacing.md},
+        calc(100vw - ${theme.breakpoints.md}),
+        ${leftPadding}
+      )`,
+    },
+
+    [theme.fn.largerThan("xl")]: {
+      paddingRight: `clamp(
+        ${theme.spacing.md},
+        calc(100vw - ${theme.breakpoints.md}),
+        calc(${theme.breakpoints.xl} - ${theme.breakpoints.md})
+      )`,
+      paddingLeft: theme.spacing.md,
     },
   },
 
@@ -60,7 +88,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   control: {
-    marginTop: theme.spacing.xl * 1.5,
+    marginTop: `calc(${theme.spacing.xl} * 1.5)`,
 
     [theme.fn.smallerThan("sm")]: {
       width: "100%",
@@ -68,11 +96,8 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const leftPadding = 60;
-
 export default function HeroContentLeft() {
   const { classes } = useStyles();
-  const { width } = useViewportSize();
   const theme = useMantineTheme();
 
   return (
@@ -83,37 +108,7 @@ export default function HeroContentLeft() {
         zIndex={0}
         blur={1}
       />
-      <Container
-        className={classes.container}
-        size={theme.breakpoints.xl}
-        sx={{
-          paddingRight: clamp(
-            width - theme.breakpoints.md,
-            theme.spacing.md,
-            theme.breakpoints.xl - theme.breakpoints.md
-          ),
-          [theme.fn.largerThan("md")]: {
-            paddingRight: clamp(
-              width - theme.breakpoints.md,
-              theme.spacing.md,
-              theme.breakpoints.xl - theme.breakpoints.md - leftPadding
-            ),
-            paddingLeft: clamp(
-              width - theme.breakpoints.md,
-              theme.spacing.md,
-              leftPadding
-            ),
-          },
-          [theme.fn.largerThan("xl")]: {
-            paddingRight: clamp(
-              width - theme.breakpoints.md,
-              theme.spacing.md,
-              theme.breakpoints.xl - theme.breakpoints.md
-            ),
-            paddingLeft: theme.spacing.md,
-          },
-        }}
-      >
+      <Container className={classes.container} size={theme.breakpoints.xl}>
         <Title className={classes.title}>
           Namų ir verslo apsaugos sprendimai
         </Title>

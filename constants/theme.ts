@@ -1,9 +1,4 @@
-import {
-  MantineTheme,
-  MantineThemeOverride,
-  ColorScheme,
-  ButtonStylesParams,
-} from "@mantine/core";
+import { MantineThemeOverride, ColorScheme } from "@mantine/core";
 
 export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
   colorScheme,
@@ -78,46 +73,50 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
 
   components: {
     Button: {
-      defaultProps: {
-        styles: (theme: MantineTheme, params: ButtonStylesParams) => ({
+      variants: {
+        gradient: () => ({
           root: {
-            color: params.variant === "gradient" ? "#fff" : theme.colorScheme === "dark" ? "#000" : "#fff",
+            color: "#000 !important",
           },
         }),
       },
+      styles: (theme) => ({
+        root: {
+          color: theme.colorScheme === "dark" ? "#000" : "#fff",
+        },
+      }),
     },
   },
-  
+
   fontSizes: {
-    xs: 12,
-    sm: 14,
-    md: 16,
-    lg: 18,
-    xl: 20,
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
   },
 
   radius: {
-    xs: 2,
-    sm: 4,
-    md: 8,
-    lg: 16,
-    xl: 32,
+    xs: "0.125rem",
+    sm: "0.25rem",
+    md: "0.5rem",
+    lg: "1rem",
+    xl: "2rem",
   },
 
   spacing: {
-    xs: 10,
-    sm: 12,
-    md: 16,
-    lg: 20,
-    xl: 24,
+    xs: "0.625rem",
+    sm: "0.75rem",
+    md: "1rem",
+    lg: "1.25rem",
+    xl: "1.5rem",
   },
 
   breakpoints: {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1200,
-    xl: 1400,
+    xs: "36em",
+    sm: "48em",
+    md: "62em",
+    lg: "75em",
+    xl: "88em",
   },
-
 });

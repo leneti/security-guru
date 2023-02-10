@@ -5,12 +5,11 @@ import {
   Group,
   Center,
   Burger,
-  Container,
   ActionIcon,
   useMantineTheme,
   useMantineColorScheme,
 } from "@mantine/core";
-import { useDisclosure, useViewportSize } from "@mantine/hooks";
+import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
 import { HeaderSearchProps } from "@models/header";
@@ -28,7 +27,7 @@ const useStyles = createStyles((theme) => ({
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
   },
 
   links: {
@@ -69,12 +68,23 @@ const useStyles = createStyles((theme) => ({
   linkLabel: {
     marginRight: 5,
   },
+
+  groupedThemeSwitch: {
+    [theme.fn.smallerThan("md")]: {
+      display: "none",
+    },
+  },
+
+  nonGroupedThemeSwitch: {
+    [theme.fn.largerThan("md")]: {
+      display: "none",
+    },
+  },
 }));
 
 export default function HeaderMenu({ links }: HeaderSearchProps) {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
-  const { width } = useViewportSize();
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
@@ -101,24 +111,23 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
     }
 
     return (
-      <Link
-        key={link.label}
-        href={link.link || "#"}
-        className={classes.link}
-      >
+      <Link key={link.label} href={link.link || "#"} className={classes.link}>
         {link.label}
       </Link>
     );
   });
-  
-  const ThemeSwitch = () => <ActionIcon
-  variant="outline"
-  color="brand"
-  onClick={() => toggleColorScheme()}
-  title="Toggle color scheme"
->
-  {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
-</ActionIcon>
+
+  const ThemeSwitch = ({ className }: { className: string }) => (
+    <ActionIcon
+      variant="outline"
+      color="brand"
+      onClick={() => toggleColorScheme()}
+      title="Toggle color scheme"
+      className={className}
+    >
+      {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
+    </ActionIcon>
+  );
 
   return (
     <Header height={headerHeight}>
@@ -132,9 +141,9 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
         <Logo />
         <Group spacing={5} className={classes.links} noWrap>
           {items}
-          {width >= theme.breakpoints.md && <ThemeSwitch />}
+          <ThemeSwitch className={classes.groupedThemeSwitch} />
         </Group>
-          {width < theme.breakpoints.md && <ThemeSwitch />}
+        <ThemeSwitch className={classes.nonGroupedThemeSwitch} />
       </nav>
     </Header>
   );
