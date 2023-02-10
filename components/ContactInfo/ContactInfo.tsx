@@ -1,4 +1,10 @@
-import { createStyles, Text, Box, Stack, useMantineTheme } from "@mantine/core";
+import {
+  createStyles,
+  Text,
+  Box,
+  useMantineTheme,
+  SimpleGrid,
+} from "@mantine/core";
 import contactData from "@site/constants/contact-data";
 
 const useStyles = createStyles((theme) => ({
@@ -47,5 +53,16 @@ export default function ContactInfo() {
       </div>
     </div>
   ));
-  return <Stack>{items}</Stack>;
+  return (
+    <SimpleGrid
+      cols={1}
+      spacing="md"
+      breakpoints={[
+        { maxWidth: "sm", cols: 2 },
+        { maxWidth: "xs", cols: 1 },
+      ]}
+    >
+      {items}
+    </SimpleGrid>
+  );
 }

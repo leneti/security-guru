@@ -19,11 +19,12 @@ const useStyles = createStyles((theme) => {
     wrapper: {
       display: "flex",
       backgroundColor:
-        theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+        theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
       borderRadius: theme.radius.lg,
       padding: 4,
 
       [BREAKPOINT]: {
+        width: "90vw",
         flexDirection: "column",
       },
     },
@@ -33,7 +34,6 @@ const useStyles = createStyles((theme) => {
       flex: 1,
       padding: theme.spacing.xl,
       paddingLeft: `calc(${theme.spacing.xl} * 2)`,
-      borderLeft: 0,
 
       [BREAKPOINT]: {
         padding: theme.spacing.md,
@@ -64,9 +64,16 @@ const useStyles = createStyles((theme) => {
       [BREAKPOINT]: {
         marginBottom: theme.spacing.sm,
         paddingLeft: theme.spacing.md,
+        paddingBottom: `calc(${theme.spacing.xl} * 2)`,
 
         "&:before": {
+          content: '""',
+          position: "absolute",
+          bottom: -1,
+          left: "5%",
+          width: "90%",
           borderRight: "none",
+          borderBottom: `1px solid ${theme.fn.primaryColor()}`,
         },
       },
     },
