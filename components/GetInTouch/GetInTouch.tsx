@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   Paper,
   Text,
@@ -11,6 +12,15 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import ContactInfo from "@site/components/ContactInfo";
+
+export interface ContactForm {
+  solution: string;
+  name: string;
+  email: string;
+  city: string;
+  number: string;
+  message: string;
+}
 
 const useStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan("sm");
@@ -117,15 +127,14 @@ export default function GetInTouch() {
     },
   });
 
-  const onSubmit = (values: {
-    solution: string;
-    name: string;
-    email: string;
-    city: string;
-    number: string;
-    message: string;
-  }) => {
+  const onSubmit = (values: ContactForm) => {
     console.log(values);
+    axios
+      .post("/api/contact", values)
+      .then((res) => {
+        console.log("axios.res", res);
+      })
+      .catch(console.error);
   };
 
   return (
