@@ -23,22 +23,6 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function LogoIcon(logoSize: number) {
-  const { colorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
-  return (
-    <Link href="/">
-      <Image
-        alt="SG logo"
-        src={dark ? "/Ikona_Oranzine.png" : "/Ikona_Tamsiai_Zalia.png"}
-        height={logoSize + 10}
-        width={((logoSize + 10) / 2001) * 2000}
-        unoptimized
-      />
-    </Link>
-  );
-}
-
 export default function Logo({ iconOnly, size }: LogoProps) {
   const { colorScheme } = useMantineColorScheme();
   const { classes } = useStyles();
@@ -47,7 +31,17 @@ export default function Logo({ iconOnly, size }: LogoProps) {
   const logoSize = size ?? defaultSize;
 
   if (iconOnly) {
-    return LogoIcon(logoSize);
+    return (
+      <Link href="/">
+        <Image
+          alt="SG logo"
+          src={dark ? "/Ikona_Oranzine.png" : "/Ikona_Tamsiai_Zalia.png"}
+          height={logoSize + 10}
+          width={((logoSize + 10) / 2001) * 2000}
+          unoptimized
+        />
+      </Link>
+    );
   }
 
   return (

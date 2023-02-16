@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   Paper,
   Text,
@@ -8,9 +9,23 @@ import {
   SimpleGrid,
   createStyles,
   Radio,
+  useMantineTheme,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useMediaQuery } from "@mantine/hooks";
 import ContactInfo from "@site/components/ContactInfo";
+
+export interface ContactForm {
+  solution: string;
+  name: string;
+  email: string;
+  city: string;
+  number: string;
+  message: string;
+}
+
+const emailRegex =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const useStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan("sm");
@@ -87,7 +102,7 @@ const useStyles = createStyles((theme) => {
       },
     },
 
-    control: {
+    button: {
       [BREAKPOINT]: {
         flex: 1,
       },
@@ -95,11 +110,10 @@ const useStyles = createStyles((theme) => {
   };
 });
 
-const emailRegex =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 export default function GetInTouch() {
   const { classes } = useStyles();
+  const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   const form = useForm({
     initialValues: {
@@ -113,19 +127,17 @@ export default function GetInTouch() {
 
     validate: {
       email: (value) =>
-        emailRegex.test(value) ? null : "Neteisingas el. paštas",
+        emailRegex.test(value) ? null : "Netinkamas el. paštas",
     },
   });
 
-  const onSubmit = (values: {
-    solution: string;
-    name: string;
-    email: string;
-    city: string;
-    number: string;
-    message: string;
-  }) => {
-    console.log(values);
+  const onSubmit = (values: ContactForm) => {
+    axios
+      .post("/api/contact", values)
+      .then((res) => {
+        console.log("axios.res", res);
+      })
+      .catch(console.error);
   };
 
   return (
@@ -146,13 +158,15 @@ export default function GetInTouch() {
 
           <div className={classes.fields}>
             <Radio.Group
+              required
               name="sprendimas"
               label="Pasirinkite sprendimą"
+              size={smallScreen ? "md" : "sm"}
               {...form.getInputProps("solution")}
             >
-              <Group>
-                <Radio value="namams" label="Namams" required />
-                <Radio value="verslui" label="Verslui" required />
+              <Group mt="xs">
+                <Radio value="Namams" label="Namams" />
+                <Radio value="Verslui" label="Verslui" />
               </Group>
             </Radio.Group>
 
@@ -163,27 +177,31 @@ export default function GetInTouch() {
               breakpoints={[{ maxWidth: "sm", cols: 1 }]}
             >
               <TextInput
+                required
                 label="Vardas / Įmonės pavadinimas"
                 placeholder="Security Guru"
-                required
+                size={smallScreen ? "md" : "sm"}
                 {...form.getInputProps("name")}
               />
               <TextInput
-                label="El. paštas"
-                placeholder="security.guru@gmail.com"
                 required
-                {...form.getInputProps("email")}
-              />
-              <TextInput
                 label="Miestas"
                 placeholder="Miestas"
-                required
+                size={smallScreen ? "md" : "sm"}
                 {...form.getInputProps("city")}
               />
               <TextInput
-                label="Tel. Nr"
-                placeholder="Tel. Nr"
                 required
+                label="El. paštas"
+                placeholder="security.guru@gmail.com"
+                size={smallScreen ? "md" : "sm"}
+                {...form.getInputProps("email")}
+              />
+              <TextInput
+                required
+                label="Tel. Nr"
+                placeholder="+37061234567"
+                size={smallScreen ? "md" : "sm"}
                 {...form.getInputProps("number")}
               />
             </SimpleGrid>
@@ -194,11 +212,16 @@ export default function GetInTouch() {
               placeholder="Pateikite visą svarbią informaciją"
               minRows={3}
               required
+              size={smallScreen ? "md" : "sm"}
               {...form.getInputProps("message")}
             />
 
-            <Group position="right" mt="md">
-              <Button type="submit" className={classes.control}>
+            <Group position="right" mt="xl">
+              <Button
+                type="submit"
+                className={classes.button}
+                size={smallScreen ? "md" : "sm"}
+              >
                 Siųsti laišką
               </Button>
             </Group>

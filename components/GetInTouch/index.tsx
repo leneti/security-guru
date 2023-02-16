@@ -1,1 +1,1 @@
-export { default } from "./GetInTouch";
+export { default, type ContactForm } from "./GetInTouch";
