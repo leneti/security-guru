@@ -38,6 +38,12 @@ const isContactForm = (obj: any) => {
     return false;
   }
 
+  const numberRegex = /^+?[\d -\(\)~]+/;
+
+  if (!numberRegex.test(obj.number)) {
+    return false;
+  }
+
   return true;
 };
 
