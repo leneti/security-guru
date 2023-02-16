@@ -9,7 +9,7 @@ import {
   useMantineTheme,
   useMantineColorScheme,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
 import { HeaderSearchProps } from "@models/header";
@@ -84,6 +84,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function HeaderMenu({ links }: HeaderSearchProps) {
   const theme = useMantineTheme();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -124,8 +125,13 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
       className={className}
+      size={smallScreen ? "lg" : "md"}
     >
-      {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
+      {dark ? (
+        <IconSun size={smallScreen ? 28 : 18} />
+      ) : (
+        <IconMoon size={smallScreen ? 28 : 18} />
+      )}
     </ActionIcon>
   );
 

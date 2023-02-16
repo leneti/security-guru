@@ -6,6 +6,7 @@ import {
   useMantineTheme,
   ActionIcon,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconBrandInstagram, IconBrandFacebook, IconMail } from "@tabler/icons";
 import Link from "next/link";
 import Logo from "@components/Logo";
@@ -71,6 +72,7 @@ const useStyles = createStyles((theme) => ({
 export default function Footer() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
     <footer className={classes.footer}>
@@ -95,7 +97,7 @@ export default function Footer() {
             title="Facebook puslapis"
           >
             <IconBrandFacebook
-              size={18}
+              size={smallScreen ? 28 : 18}
               stroke={1.5}
               color={theme.fn.primaryColor()}
             />
@@ -107,13 +109,17 @@ export default function Footer() {
             title="Instagram paskyra"
           >
             <IconBrandInstagram
-              size={18}
+              size={smallScreen ? 28 : 18}
               stroke={1.5}
               color={theme.fn.primaryColor()}
             />
           </ActionIcon>
           <ActionIcon component={Link} href="/kontaktai" title="Susisiekite">
-            <IconMail size={18} stroke={1.5} color={theme.fn.primaryColor()} />
+            <IconMail
+              size={smallScreen ? 28 : 18}
+              stroke={1.5}
+              color={theme.fn.primaryColor()}
+            />
           </ActionIcon>
         </Group>
       </Container>
