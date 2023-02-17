@@ -12,6 +12,7 @@ setInterval(() => {
 
 type ResponseData = {
   message: string;
+  err?: any;
 };
 
 const isContactForm = (obj: any) => {
@@ -120,9 +121,9 @@ export default function handler(
       });
     })
     .catch((err) => {
-      console.error(err);
       res.status(502).send({
         message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
+        err,
       });
     });
 }
