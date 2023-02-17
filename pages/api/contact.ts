@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
+import { SESClient, CloneReceiptRuleSetCommand } from "@aws-sdk/client-ses";
 import { ContactForm } from "@components/GetInTouch";
 import { emailRegex, numberRegex } from "@site/constants/regexes";
 
@@ -77,7 +78,19 @@ const sendMail = (sender: string, receivers: string[], data: ContactForm) => {
     Source: sender,
   };
 
-  return new SES({ region: "eu-west-2" }).sendEmail(params);
+  let credentials;
+
+  if (
+    process.env.REACT_APP_ACCESS_KEY &&
+    process.env.REACT_APP_SECRET_ACCESS_KEY
+  ) {
+    credentials = {
+      accessKeyId: process.env.REACT_APP_ACCESS_KEY,
+      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+    };
+  }
+
+  return new SES({ region: "eu-west-2", credentials }).sendEmail(params);
 };
 
 export default function handler(
