@@ -1,10 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
+import { PhoneNumberUtil } from "google-libphonenumber";
 import { ContactForm } from "@components/GetInTouch";
 import { emailRegex, numberRegex } from "@site/constants/regexes";
 
 let sentEmailCounter = 0;
 const maxSentEmails = 200;
+const phoneUtil = PhoneNumberUtil.getInstance();
 
 setInterval(() => {
   sentEmailCounter = 0;
@@ -27,15 +29,17 @@ const isContactForm = (obj: any) => {
     return false;
   }
 
-  if (!/^(Namams|Verslui)$/.test(obj.solution)) {
+  const { solution, email, number } = obj as ContactForm;
+
+  if (!/^(Namams|Verslui)$/.test(solution)) {
     return false;
   }
 
-  if (!emailRegex.test(obj.email)) {
+  if (!emailRegex.test(email)) {
     return false;
   }
 
-  if (!numberRegex.test(obj.number)) {
+  if (!phoneUtil.isValidNumber(phoneUtil.parse(number, "LT"))) {
     return false;
   }
 

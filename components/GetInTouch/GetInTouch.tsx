@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useMediaQuery } from "@mantine/hooks";
+import { PhoneNumberUtil } from "google-libphonenumber";
 import ContactInfo from "@site/components/ContactInfo";
 import { emailRegex, numberRegex } from "@site/constants/regexes";
 
@@ -112,6 +113,7 @@ export default function GetInTouch() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const phoneUtil = PhoneNumberUtil.getInstance();
 
   const form = useForm({
     initialValues: {
@@ -126,8 +128,16 @@ export default function GetInTouch() {
     validate: {
       email: (value) =>
         emailRegex.test(value) ? null : "Netinkamas el. paštas",
-      number: (value) =>
-        numberRegex.test(value) ? null : "Netinkamas tel. nr.",
+      number: (value) => {
+        try {
+          return numberRegex.test(value) &&
+            phoneUtil.isValidNumber(phoneUtil.parse(value, "LT"))
+            ? null
+            : "Netinkamas tel. nr.";
+        } catch (error) {
+          return "Netinkamas tel. nr.";
+        }
+      },
     },
   });
 
