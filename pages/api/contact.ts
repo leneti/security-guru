@@ -38,7 +38,7 @@ const isContactForm = (obj: any) => {
     return false;
   }
 
-  const numberRegex = /^+?[\d -\(\)~]+/;
+  const numberRegex = /^+?[\d -\(\)~]+$/;
 
   if (!numberRegex.test(obj.number)) {
     return false;
@@ -95,7 +95,7 @@ export default function handler(
       .send({ message: "Serveris tik priima susisiekimo formą." });
   }
 
-  if (!process.env.SES_EMAIL_DEV) {
+  if (!process.env.REACT_APP_SES_EMAIL_DEV) {
     return res
       .status(500)
       .send({ message: "Serveris neturi prieigos prie el. pašto paslaugų." });
@@ -115,8 +115,8 @@ export default function handler(
   }
 
   return sendMail(
-    process.env.SES_EMAIL_DEV,
-    [process.env.SES_EMAIL_DEV],
+    process.env.REACT_APP_SES_EMAIL_DEV,
+    [process.env.REACT_APP_SES_EMAIL_DEV],
     req.body
   )
     .then(() => {

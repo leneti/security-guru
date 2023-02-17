@@ -64,7 +64,8 @@ const useStyles = createStyles((theme) => ({
 
   social: {
     [theme.fn.smallerThan("sm")]: {
-      marginTop: theme.spacing.xs,
+      marginTop: theme.spacing.xl,
+      gap: theme.spacing.xl,
     },
   },
 }));
