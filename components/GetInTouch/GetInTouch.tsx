@@ -26,6 +26,7 @@ export interface ContactForm {
 
 const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const numberRegex = /^+?[\d -\(\)~]+/;
 
 const useStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan("sm");
@@ -128,6 +129,8 @@ export default function GetInTouch() {
     validate: {
       email: (value) =>
         emailRegex.test(value) ? null : "Netinkamas el. paštas",
+      number: (value) =>
+        numberRegex.test(value) ? null : "Netinkamas tel. nr.",
     },
   });
 

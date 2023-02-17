@@ -17,6 +17,8 @@ const useStyles = createStyles((theme) => ({
   },
 
   smallDisplay: {
+    paddingBottom: "1rem",
+
     [theme.fn.largerThan("md")]: {
       display: "none",
     },
