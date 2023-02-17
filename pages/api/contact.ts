@@ -1,10 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
+import { PhoneNumberUtil } from "google-libphonenumber";
 import { ContactForm } from "@components/GetInTouch";
 import { emailRegex, numberRegex } from "@site/constants/regexes";
+import { ERROR_MESSAGES } from "@site/constants/error-messages";
 
 let sentEmailCounter = 0;
 const maxSentEmails = 200;
+const phoneUtil = PhoneNumberUtil.getInstance();
 
 setInterval(() => {
   sentEmailCounter = 0;
@@ -15,31 +18,46 @@ type ResponseData = {
   err?: any;
 };
 
-const isContactForm = (obj: any) => {
-  if (
-    !("solution" in obj) ||
-    !("name" in obj) ||
-    !("email" in obj) ||
-    !("city" in obj) ||
-    !("number" in obj) ||
-    !("message" in obj)
-  ) {
-    return false;
+const badContactForm = (obj: any): string => {
+  if (!("solution" in obj)) {
+    return ERROR_MESSAGES.WRONG_SOLUTION;
   }
 
-  if (!/^(Namams|Verslui)$/.test(obj.solution)) {
-    return false;
+  if (!("name" in obj)) {
+    return ERROR_MESSAGES.NO_NAME;
   }
 
-  if (!emailRegex.test(obj.email)) {
-    return false;
+  if (!("email" in obj)) {
+    return ERROR_MESSAGES.NO_EMAIL;
   }
 
-  if (!numberRegex.test(obj.number)) {
-    return false;
+  if (!("city" in obj)) {
+    return ERROR_MESSAGES.NO_CITY;
   }
 
-  return true;
+  if (!("number" in obj)) {
+    return ERROR_MESSAGES.NO_NUMBER;
+  }
+
+  if (!("message" in obj)) {
+    return ERROR_MESSAGES.NO_MESSAGE;
+  }
+
+  const { solution, email, number } = obj as ContactForm;
+
+  if (!/^(Namams|Verslui)$/.test(solution)) {
+    return ERROR_MESSAGES.WRONG_SOLUTION;
+  }
+
+  if (!emailRegex.test(email)) {
+    return ERROR_MESSAGES.INCORRECT_EMAIL;
+  }
+
+  if (!phoneUtil.isValidNumber(phoneUtil.parse(number, "LT"))) {
+    return ERROR_MESSAGES.INCORRECT_NUMBER;
+  }
+
+  return "";
 };
 
 const htmlTemplate = (data: ContactForm) => {
@@ -111,13 +129,15 @@ export default function handler(
   if (sentEmailCounter >= maxSentEmails) {
     return res.status(500).send({
       message:
-        "Serveris šiuo metu negali atlikti veiksmų. Bandykite dar kartą rytoj.",
+        "Serveris šiuo metu negali atlikti veiksmų. Parašykite mums tiesiogiai į info@securityguru.lt",
     });
   }
 
-  if (!isContactForm(req.body)) {
+  const reason = badContactForm(req.body);
+
+  if (reason) {
     return res.status(400).send({
-      message: `Netinkamai užpildyta forma: ${JSON.stringify(req.body)}`,
+      message: `Netinkamai užpildyta forma. ${reason}`,
     });
   }
 
@@ -129,7 +149,7 @@ export default function handler(
     .then(() => {
       sentEmailCounter++;
       res.status(200).json({
-        message: "Sėkmingai išsiųstas laiškas Security Guru komandai!",
+        message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
       });
     })
     .catch((err) => {

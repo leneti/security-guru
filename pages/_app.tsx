@@ -7,9 +7,10 @@ import {
   ColorScheme,
   ColorSchemeProvider,
 } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+
 import HeaderMenu from "@components/Header";
 import FooterMenu from "@site/components/Footer";
-
 import { Link } from "@site/models/header";
 import { getTheme } from "@site/constants/theme";
 
@@ -78,6 +79,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         withGlobalStyles
         withNormalizeCSS
       >
+        <Notifications position="top-right" />
         <HeaderMenu links={links} />
         <Component {...pageProps} />
         <FooterMenu />

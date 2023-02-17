@@ -13,8 +13,13 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useMediaQuery } from "@mantine/hooks";
-import ContactInfo from "@site/components/ContactInfo";
-import { emailRegex, numberRegex } from "@site/constants/regexes";
+import { notifications } from "@mantine/notifications";
+import { PhoneNumberUtil } from "google-libphonenumber";
+import { IconX, IconCheck } from "@tabler/icons";
+
+import ContactInfo from "@components/ContactInfo";
+import { emailRegex, numberRegex } from "@constants/regexes";
+import { ERROR_MESSAGES } from "@constants/error-messages";
 
 export interface ContactForm {
   solution: string;
@@ -112,6 +117,8 @@ export default function GetInTouch() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const phoneUtil = PhoneNumberUtil.getInstance();
+  const notificationId = "form-submit";
 
   const form = useForm({
     initialValues: {
@@ -125,19 +132,56 @@ export default function GetInTouch() {
 
     validate: {
       email: (value) =>
-        emailRegex.test(value) ? null : "Netinkamas el. paštas",
-      number: (value) =>
-        numberRegex.test(value) ? null : "Netinkamas tel. nr.",
+        emailRegex.test(value) ? null : ERROR_MESSAGES.INCORRECT_EMAIL,
+      number: (value) => {
+        try {
+          return numberRegex.test(value) &&
+            phoneUtil.isValidNumber(phoneUtil.parse(value, "LT"))
+            ? null
+            : ERROR_MESSAGES.INCORRECT_NUMBER;
+        } catch (error) {
+          return ERROR_MESSAGES.INCORRECT_NUMBER;
+        }
+      },
     },
   });
 
   const onSubmit = (values: ContactForm) => {
+    notifications.show({
+      id: notificationId,
+      title: "Siunčiama...",
+      message: "Siunčiame laišką Security Guru komandai, prašome palaukti.",
+      loading: true,
+    });
+
     axios
       .post("/api/contact", values)
       .then((res) => {
-        console.log("axios.res", res);
+        notifications.update({
+          id: notificationId,
+          withCloseButton: true,
+          autoClose: 5000,
+          title: "Valio!",
+          message:
+            res.data?.message ??
+            "Sėkmingai išsiuntėme laišką Security Guru komandai!",
+          color: "teal",
+          icon: <IconCheck />,
+        });
+
+        form.reset();
       })
-      .catch(console.error);
+      .catch((err) => {
+        notifications.update({
+          id: notificationId,
+          withCloseButton: true,
+          autoClose: 5000,
+          title: "Kažkas nutiko...",
+          message: err.response?.data?.message ?? "Bandykite dar kartą vėliau.",
+          color: "red",
+          icon: <IconX />,
+        });
+      });
   };
 
   return (

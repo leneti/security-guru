@@ -6,10 +6,9 @@ import {
   Center,
   Burger,
   ActionIcon,
-  useMantineTheme,
   useMantineColorScheme,
 } from "@mantine/core";
-import { useDisclosure, useMediaQuery } from "@mantine/hooks";
+import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
 import { HeaderSearchProps } from "@models/header";
@@ -83,8 +82,6 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function HeaderMenu({ links }: HeaderSearchProps) {
-  const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const [opened, { toggle }] = useDisclosure(false);
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -121,17 +118,24 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
   const ThemeSwitch = ({ className }: { className: string }) => (
     <ActionIcon
       variant="outline"
-      color="brand"
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
       className={className}
-      size={smallScreen ? "lg" : "md"}
+      size="lg"
+      sx={(theme) => ({
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[6]
+            : theme.colors.gray[0],
+        color: theme.fn.primaryColor(),
+        border:
+          theme.colorScheme === "dark"
+            ? "none"
+            : `1px solid ${theme.colors.gray[3]}`,
+        borderRadius: 8,
+      })}
     >
-      {dark ? (
-        <IconSun size={smallScreen ? 28 : 18} />
-      ) : (
-        <IconMoon size={smallScreen ? 28 : 18} />
-      )}
+      {dark ? <IconSun size={22} /> : <IconMoon size={22} />}
     </ActionIcon>
   );
 
