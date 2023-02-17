@@ -14,6 +14,7 @@ import {
 import { useForm } from "@mantine/form";
 import { useMediaQuery } from "@mantine/hooks";
 import ContactInfo from "@site/components/ContactInfo";
+import { emailRegex, numberRegex } from "@site/constants/regexes";
 
 export interface ContactForm {
   solution: string;
@@ -23,10 +24,6 @@ export interface ContactForm {
   number: string;
   message: string;
 }
-
-const emailRegex =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const numberRegex = /^+?[\d -\(\)~]+/;
 
 const useStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan("sm");

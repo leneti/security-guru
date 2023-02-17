@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import AWS from "aws-sdk";
 import { ContactForm } from "@components/GetInTouch";
+import { emailRegex, numberRegex } from "@site/constants/regexes";
 
 AWS.config.update({ region: "eu-west-2" });
 
@@ -31,14 +32,9 @@ const isContactForm = (obj: any) => {
     return false;
   }
 
-  const emailRegex =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
   if (!emailRegex.test(obj.email)) {
     return false;
   }
-
-  const numberRegex = /^+?[\d -\(\)~]+$/;
 
   if (!numberRegex.test(obj.number)) {
     return false;
