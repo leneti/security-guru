@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
-import { SESClient, CloneReceiptRuleSetCommand } from "@aws-sdk/client-ses";
 import { ContactForm } from "@components/GetInTouch";
 import { emailRegex, numberRegex } from "@site/constants/regexes";
 
