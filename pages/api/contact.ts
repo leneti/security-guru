@@ -1,9 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import AWS from "aws-sdk";
+import { SES } from "@aws-sdk/client-ses";
 import { ContactForm } from "@components/GetInTouch";
 import { emailRegex, numberRegex } from "@site/constants/regexes";
-
-AWS.config.update({ region: "eu-west-2" });
 
 let sentEmailCounter = 0;
 const maxSentEmails = 200;
@@ -78,7 +76,7 @@ const sendMail = (sender: string, receivers: string[], data: ContactForm) => {
     Source: sender,
   };
 
-  return new AWS.SES().sendEmail(params).promise();
+  return new SES({ region: "eu-west-2" }).sendEmail(params);
 };
 
 export default function handler(
