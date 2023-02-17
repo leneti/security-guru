@@ -9,15 +9,13 @@ export default function Home() {
         <title>Security Guru</title>
         <meta name="description" content="Apsaugos sprendimai" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/Ikona_Oranzine.png" />
+        <link rel="icon" href="/Ikona_Oranzine.webp" />
       </Head>
 
       <Hero />
 
       <Box sx={{ display: "flex", flexGrow: 1 }}>
-        <Container fluid>
-          
-        </Container>
+        <Container fluid></Container>
       </Box>
     </>
   );

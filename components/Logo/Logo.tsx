@@ -37,7 +37,7 @@ export default function Logo({ iconOnly, size }: LogoProps) {
       <Link href="/">
         <Image
           alt="SG logo"
-          src={dark ? "/Ikona_Oranzine.png" : "/Ikona_Tamsiai_Zalia.png"}
+          src={dark ? "/Ikona_Oranzine.webp" : "/Ikona_Tamsiai_Zalia.webp"}
           height={logoSize + 10}
           width={((logoSize + 10) / 2001) * 2000}
           unoptimized
@@ -52,7 +52,7 @@ export default function Logo({ iconOnly, size }: LogoProps) {
         <Image
           alt="SG logo"
           src={
-            dark ? "/Logotipas_Oranzine.png" : "/Logotipas_Tamsiai_Zalia.png"
+            dark ? "/Logotipas_Oranzine.webp" : "/Logotipas_Tamsiai_Zalia.webp"
           }
           height={logoSize + 10}
           width={((logoSize + 10) / 785) * 2000}
@@ -63,7 +63,9 @@ export default function Logo({ iconOnly, size }: LogoProps) {
         <Image
           alt="SG logo"
           src={
-            dark ? "/HLogotipas_Oranzine.png" : "/HLogotipas_Tamsiai_Zalia.png"
+            dark
+              ? "/HLogotipas_Oranzine.webp"
+              : "/HLogotipas_Tamsiai_Zalia.webp"
           }
           height={logoSize}
           width={(logoSize / 341) * 2000}

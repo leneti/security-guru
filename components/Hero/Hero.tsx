@@ -14,7 +14,7 @@ const leftPadding = "60px";
 const useStyles = createStyles((theme) => ({
   hero: {
     position: "relative",
-    backgroundImage: "url(/unsplash-houses.jpg)",
+    backgroundImage: "url(/unsplash-houses.webp)",
     backgroundSize: "cover",
     backgroundPosition: "center",
   },

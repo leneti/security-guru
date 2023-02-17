@@ -9,7 +9,7 @@ export default function Home() {
         <title>Kontaktai | Security Guru</title>
         <meta name="description" content="Apsaugos sprendimai" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/Ikona_Oranzine.png" />
+        <link rel="icon" href="/Ikona_Oranzine.webp" />
       </Head>
 
       <Box
@@ -21,7 +21,7 @@ export default function Home() {
         })}
       >
         <Container fluid p={0}>
-          <BackgroundImage src="/unsplash-houses.jpg">
+          <BackgroundImage src="/unsplash-houses.webp">
             <Center py="xl" sx={{ minHeight: "75vh" }}>
               <GetInTouch />
             </Center>
