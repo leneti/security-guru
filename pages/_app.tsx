@@ -11,48 +11,7 @@ import { Notifications } from "@mantine/notifications";
 
 import HeaderMenu from "@components/Header";
 import FooterMenu from "@site/components/Footer";
-import { Link } from "@site/models/header";
 import { getTheme } from "@site/constants/theme";
-
-const links: Link[] = [
-  {
-    label: "Apie mus",
-    link: "/apie-mus",
-  },
-  {
-    label: "Apsaugos sprendimai",
-    link: "#",
-  },
-  {
-    label: "Kontaktai",
-    link: "/kontaktai",
-  },
-  {
-    label: "Paslaugos",
-    links: [
-      {
-        label: "Apsaugos signalizacijos sistemos",
-        link: "#",
-      },
-      {
-        label: "Įeigos kontrolės sistemos",
-        link: "#",
-      },
-      {
-        label: "Integruoti apsaugos sprendimai",
-        link: "#",
-      },
-      {
-        label: "Priešgaisrinės signalizacijos sistemos",
-        link: "#",
-      },
-      {
-        label: "Vaizdo stebėjimo sistemos",
-        link: "#",
-      },
-    ],
-  },
-];
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -80,7 +39,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         withNormalizeCSS
       >
         <Notifications position="top-right" />
-        <HeaderMenu links={links} />
+        <HeaderMenu />
         <Component {...pageProps} />
         <FooterMenu />
       </MantineProvider>
