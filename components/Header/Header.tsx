@@ -4,15 +4,15 @@ import {
   Menu,
   Group,
   Center,
-  Burger,
   ActionIcon,
   useMantineColorScheme,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
-import { HeaderSearchProps } from "@models/header";
 import Logo from "@components/Logo";
+import { menuLinks } from "@constants/menu-links";
+import useGlobalStyles from "@site/constants/global-styles";
+import BurgerMenu from "./BurgerMenu";
 
 const headerHeight = 110;
 
@@ -29,21 +29,8 @@ const useStyles = createStyles((theme) => ({
     marginRight: "auto",
   },
 
-  links: {
-    cursor: "pointer",
-
-    [theme.fn.smallerThan("md")]: {
-      display: "none",
-    },
-  },
-
-  burger: {
-    [theme.fn.largerThan("md")]: {
-      display: "none",
-    },
-  },
-
   link: {
+    cursor: "pointer",
     display: "block",
     lineHeight: 1,
     padding: "8px 12px",
@@ -60,48 +47,48 @@ const useStyles = createStyles((theme) => ({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+          : theme.colors.gray[1],
     },
+  },
+
+  subLink: {
+    textDecoration: "none",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
   },
 
   linkLabel: {
     marginRight: 5,
   },
-
-  groupedThemeSwitch: {
-    [theme.fn.smallerThan("md")]: {
-      display: "none",
-    },
-  },
-
-  nonGroupedThemeSwitch: {
-    [theme.fn.largerThan("md")]: {
-      display: "none",
-    },
-  },
 }));
 
-export default function HeaderMenu({ links }: HeaderSearchProps) {
-  const [opened, { toggle }] = useDisclosure(false);
+export default function HeaderMenu() {
   const { classes } = useStyles();
+  const { classes: gClasses } = useGlobalStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
 
-  const items = links.map((link) => {
-    const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
-    ));
+  const items = menuLinks.map((link) => {
+    if ("links" in link) {
+      const menuItems = link.links.map((item) => (
+        <Menu.Item key={item.link}>
+          <Link key={item.link} href={item.link} className={classes.subLink}>
+            {item.label}
+          </Link>
+        </Menu.Item>
+      ));
 
-    if (menuItems) {
       return (
         <Menu key={link.label} trigger="hover" exitTransitionDuration={0}>
           <Menu.Target>
-            <Link href={link.link || "#"} className={classes.link}>
-              <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown size={12} stroke={1.5} />
-              </Center>
-            </Link>
+            <Center className={classes.link}>
+              <span className={classes.linkLabel}>{link.label}</span>
+              <IconChevronDown size={12} stroke={1.5} />
+            </Center>
           </Menu.Target>
           <Menu.Dropdown>{menuItems}</Menu.Dropdown>
         </Menu>
@@ -109,7 +96,7 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
     }
 
     return (
-      <Link key={link.label} href={link.link || "#"} className={classes.link}>
+      <Link key={link.label} href={link.link} className={classes.link}>
         {link.label}
       </Link>
     );
@@ -142,18 +129,13 @@ export default function HeaderMenu({ links }: HeaderSearchProps) {
   return (
     <Header height={headerHeight}>
       <nav className={classes.inner}>
-        <Burger
-          opened={opened}
-          onClick={toggle}
-          className={classes.burger}
-          size="md"
-        />
+        <BurgerMenu />
         <Logo />
-        <Group spacing={5} className={classes.links} noWrap>
+        <Group spacing={5} className={gClasses.bigDisplay} noWrap>
           {items}
-          <ThemeSwitch className={classes.groupedThemeSwitch} />
+          <ThemeSwitch className={gClasses.bigDisplay} />
         </Group>
-        <ThemeSwitch className={classes.nonGroupedThemeSwitch} />
+        <ThemeSwitch className={gClasses.smallDisplay} />
       </nav>
     </Header>
   );

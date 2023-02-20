@@ -33,13 +33,9 @@ const useStyles = createStyles((theme) => ({
       calc(100vw - ${theme.breakpoints.md}),
       calc(${theme.breakpoints.xl} - ${theme.breakpoints.md})
     )`,
+    paddingLeft: theme.spacing.md,
 
-    [theme.fn.smallerThan("sm")]: {
-      height: 500,
-      paddingBottom: `calc(${theme.spacing.xl} * 6)`,
-    },
-
-    [theme.fn.largerThan("md")]: {
+    [theme.fn.smallerThan("xl")]: {
       paddingRight: `clamp(
         ${theme.spacing.md},
         calc(100vw - ${theme.breakpoints.md}),
@@ -52,13 +48,18 @@ const useStyles = createStyles((theme) => ({
       )`,
     },
 
-    [theme.fn.largerThan("xl")]: {
+    [theme.fn.smallerThan("md")]: {
       paddingRight: `clamp(
         ${theme.spacing.md},
         calc(100vw - ${theme.breakpoints.md}),
         calc(${theme.breakpoints.xl} - ${theme.breakpoints.md})
       )`,
       paddingLeft: theme.spacing.md,
+    },
+
+    [theme.fn.smallerThan("sm")]: {
+      height: 500,
+      paddingBottom: `calc(${theme.spacing.xl} * 6)`,
     },
   },
 
