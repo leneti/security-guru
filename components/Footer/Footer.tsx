@@ -63,7 +63,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   social: {
-    [theme.fn.smallerThan("sm")]: {
+    [theme.fn.smallerThan("md")]: {
       marginTop: theme.spacing.xl,
       gap: theme.spacing.xl,
     },
@@ -73,7 +73,7 @@ const useStyles = createStyles((theme) => ({
 export default function Footer() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
   return (
     <footer className={classes.footer}>

@@ -1,4 +1,5 @@
-import { useMantineColorScheme, createStyles } from "@mantine/core";
+import { useMantineColorScheme } from "@mantine/core";
+import useGlobalStyles from "@site/constants/global-styles";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,25 +10,9 @@ interface LogoProps {
 
 const defaultSize = 50;
 
-const useStyles = createStyles((theme) => ({
-  bigDisplay: {
-    [theme.fn.smallerThan("md")]: {
-      display: "none",
-    },
-  },
-
-  smallDisplay: {
-    paddingBottom: "1rem",
-
-    [theme.fn.largerThan("md")]: {
-      display: "none",
-    },
-  },
-}));
-
 export default function Logo({ iconOnly, size }: LogoProps) {
   const { colorScheme } = useMantineColorScheme();
-  const { classes } = useStyles();
+  const { classes: gClasses } = useGlobalStyles();
   const dark = colorScheme === "dark";
 
   const logoSize = size ?? defaultSize;
@@ -48,7 +33,13 @@ export default function Logo({ iconOnly, size }: LogoProps) {
 
   return (
     <>
-      <Link href="/" className={classes.smallDisplay}>
+      <Link
+        href="/"
+        className={gClasses.smallDisplay}
+        style={{
+          paddingBottom: "1rem",
+        }}
+      >
         <Image
           alt="SG logo"
           src={
@@ -59,7 +50,7 @@ export default function Logo({ iconOnly, size }: LogoProps) {
           unoptimized
         />
       </Link>
-      <Link href="/" className={classes.bigDisplay}>
+      <Link href="/" className={gClasses.bigDisplay}>
         <Image
           alt="SG logo"
           src={
