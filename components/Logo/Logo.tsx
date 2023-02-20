@@ -6,11 +6,12 @@ import Link from "next/link";
 interface LogoProps {
   iconOnly?: boolean;
   size?: number;
+  drawer?: boolean;
 }
 
 const defaultSize = 50;
 
-export default function Logo({ iconOnly, size }: LogoProps) {
+export default function Logo({ iconOnly, size, drawer }: LogoProps) {
   const { colorScheme } = useMantineColorScheme();
   const { classes: gClasses } = useGlobalStyles();
   const dark = colorScheme === "dark";
@@ -25,6 +26,24 @@ export default function Logo({ iconOnly, size }: LogoProps) {
           src={dark ? "/Ikona_Oranzine.webp" : "/Ikona_Tamsiai_Zalia.webp"}
           height={logoSize + 10}
           width={((logoSize + 10) / 2001) * 2000}
+          unoptimized
+        />
+      </Link>
+    );
+  }
+
+  if (drawer) {
+    return (
+      <Link href="/">
+        <Image
+          alt="SG logo"
+          src={
+            dark
+              ? "/HLogotipas_Oranzine.webp"
+              : "/HLogotipas_Tamsiai_Zalia.webp"
+          }
+          height={logoSize}
+          width={(logoSize / 341) * 2000}
           unoptimized
         />
       </Link>

@@ -18,7 +18,7 @@ export default function NavbarSimple() {
       <Drawer
         opened={opened}
         onClose={close}
-        title={<Logo />}
+        title={<Logo drawer />}
         className={gClasses.smallDisplay}
       >
         {linksGroup}
