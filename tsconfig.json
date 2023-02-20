@@ -19,9 +19,8 @@
       "@site/*": ["./*"],
       "@components/*": ["./components/*"],
       "@pages/*": ["./pages/*"],
-      "@models/*": ["./models/*"],
       "@assets/*": ["./assets/*"],
-      "@constants/*": ["./constants/*"],
+      "@constants/*": ["./constants/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
