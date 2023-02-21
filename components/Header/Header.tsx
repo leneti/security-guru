@@ -127,7 +127,7 @@ export default function HeaderMenu() {
   );
 
   return (
-    <Header height={headerHeight}>
+    <Header height={{ base: headerHeight + 10, md: headerHeight }}>
       <nav className={classes.inner}>
         <BurgerMenu />
         <Logo />
