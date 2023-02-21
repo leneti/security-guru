@@ -42,8 +42,8 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
               ? "/HLogotipas_Oranzine.webp"
               : "/HLogotipas_Tamsiai_Zalia.webp"
           }
-          height={logoSize}
-          width={(logoSize / 341) * 2000}
+          height={logoSize * 0.75}
+          width={(logoSize / 341) * 2000 * 0.75}
           unoptimized
         />
       </Link>
