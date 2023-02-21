@@ -37,6 +37,7 @@ jobs:
         uses: devmasx/merge-branch@master
         with:
           type: now
+          message: "Merge develop -> main"
           from_branch: develop
           target_branch: main
           github_token: ${{ secrets.CI_TOKEN }}
