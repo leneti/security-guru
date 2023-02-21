@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,20 +28,15 @@ jobs:
         with:
           cmd: build
 
-  #      - name: Test the app
-  #        uses: borales/actions-yarn@v4
-  #        with:
-  #          cmd: test # will run `yarn test` command
+      #      - name: Test the app
+      #        uses: borales/actions-yarn@v4
+      #        with:
+      #          cmd: test # will run `yarn test` command
 
-  merge-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      - name: Merge development -> main
+      - name: Merge develop -> main
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: development
+          from_branch: develop
           target_branch: main
           github_token: ${{ secrets.CI_TOKEN }}
