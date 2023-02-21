@@ -7,7 +7,7 @@ import { LinksGroup } from "./NavbarLinksGroup";
 
 export default function NavbarSimple() {
   const { classes: gClasses } = useGlobalStyles();
-  const [opened, { close, toggle }] = useDisclosure(true);
+  const [opened, { close, toggle }] = useDisclosure(false);
 
   const linksGroup = menuLinks.map((item) => (
     <LinksGroup {...item} key={item.label} closeDrawer={close} />
@@ -15,14 +15,21 @@ export default function NavbarSimple() {
 
   return (
     <>
-      <Drawer
+      <Drawer.Root
         opened={opened}
         onClose={close}
-        title={<Logo drawer />}
+        aria-label="Navigation drawer"
         className={gClasses.smallDisplay}
       >
-        {linksGroup}
-      </Drawer>
+        <Drawer.Overlay />
+        <Drawer.Content>
+          <Drawer.Header>
+            <Logo drawer />
+            <Drawer.CloseButton size="lg" />
+          </Drawer.Header>
+          <Drawer.Body mt="xs">{linksGroup}</Drawer.Body>
+        </Drawer.Content>
+      </Drawer.Root>
 
       <Group position="center" className={gClasses.smallDisplay}>
         <Burger opened={opened} onClick={toggle} size="md" />
