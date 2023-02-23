@@ -7,7 +7,12 @@ import {
   createStyles,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { TablerIcon, IconChevronLeft, IconChevronRight } from "@tabler/icons";
+import {
+  TablerIcon,
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronDown,
+} from "@tabler/icons";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -63,12 +68,11 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[9]
           : theme.colors.gray[0],
-      // color: theme.colorScheme === "dark" ? theme.white : theme.black,
     },
   },
 
   chevron: {
-    transition: "transform 200ms ease",
+    transition: "transform 300ms ease",
   },
 }));
 
@@ -92,7 +96,6 @@ export function LinksGroup({
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
   const [opened, { toggle }] = useDisclosure(initiallyOpened || false);
-  const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map((link) => (
     <Link
       key={link.label}
@@ -115,14 +118,12 @@ export function LinksGroup({
               </ThemeIcon>
               <Box className={classes.link}>{label}</Box>
             </Box>
-            <ChevronIcon
+            <IconChevronDown
               className={classes.chevron}
               size={22}
               stroke={1.5}
               style={{
-                transform: opened
-                  ? `rotate(${theme.dir === "rtl" ? -90 : 90}deg)`
-                  : "none",
+                transform: opened ? `rotate(-180deg)` : "none",
               }}
             />
           </Group>
