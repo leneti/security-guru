@@ -7,12 +7,7 @@ import {
   createStyles,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import {
-  TablerIcon,
-  IconChevronLeft,
-  IconChevronRight,
-  IconChevronDown,
-} from "@tabler/icons";
+import { TablerIcon, IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -101,7 +96,7 @@ export function LinksGroup({
       key={link.label}
       className={classes.subLink}
       href={link.link}
-      onClick={() => closeDrawer()}
+      onClick={closeDrawer}
     >
       {link.label}
     </Link>
@@ -110,7 +105,7 @@ export function LinksGroup({
   if (!link) {
     return (
       <>
-        <UnstyledButton onClick={() => toggle()} className={classes.control}>
+        <UnstyledButton onClick={toggle} className={classes.control}>
           <Group position="apart">
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <ThemeIcon variant="light" size={40}>
@@ -138,7 +133,7 @@ export function LinksGroup({
       component={Link}
       href={link}
       className={classes.control}
-      onClick={() => closeDrawer()}
+      onClick={closeDrawer}
     >
       <Group position="apart">
         <Box sx={{ display: "flex", alignItems: "center" }}>
