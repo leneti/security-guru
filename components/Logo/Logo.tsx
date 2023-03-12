@@ -1,7 +1,7 @@
-import { useMantineColorScheme } from "@mantine/core";
-import useGlobalStyles from "@site/constants/global-styles";
 import Image from "next/image";
 import Link from "next/link";
+import { useMantineColorScheme } from "@mantine/core";
+import { useGlobalStyles } from "@constants";
 
 interface LogoProps {
   iconOnly?: boolean;

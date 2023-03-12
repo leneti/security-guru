@@ -1,15 +1,10 @@
 import { Container, Box, BackgroundImage } from "@mantine/core";
-import Head from "next/head";
+import { PageTitle } from "@components";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Apie mus | Security Guru</title>
-        <meta name="description" content="Apsaugos sprendimai" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/Ikona_Oranzine.webp" />
-      </Head>
+      <PageTitle>Priešgaisrinės signalizacijos sistemos</PageTitle>
 
       <Box
         sx={(theme) => ({

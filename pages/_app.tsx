@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GetServerSidePropsContext } from "next";
 import { AppProps } from "next/app";
+import Head from "next/head";
 import { getCookie, setCookie } from "cookies-next";
 import {
   MantineProvider,
@@ -9,9 +10,8 @@ import {
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
-import HeaderMenu from "@components/Header";
-import FooterMenu from "@site/components/Footer";
-import { getTheme } from "@site/constants/theme";
+import { getTheme } from "@constants";
+import { Header, Footer } from "@components";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -39,9 +39,15 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         withNormalizeCSS
       >
         <Notifications position="top-right" />
-        <HeaderMenu />
+        <Header />
+        <Head>
+          <meta name="description" content="Apsaugos sprendimai" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/Ikona_Oranzine.webp" />
+          <title>Security Guru</title>
+        </Head>
         <Component {...pageProps} />
-        <FooterMenu />
+        <Footer />
       </MantineProvider>
     </ColorSchemeProvider>
   );

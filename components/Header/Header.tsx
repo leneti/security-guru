@@ -9,9 +9,8 @@ import {
 } from "@mantine/core";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
-import Logo from "@components/Logo";
-import { menuLinks } from "@constants/menu-links";
-import useGlobalStyles from "@site/constants/global-styles";
+import { Logo } from "@components";
+import { menuLinks, useGlobalStyles } from "@constants";
 import BurgerMenu from "./BurgerMenu";
 
 const headerHeight = 110;
@@ -74,16 +73,14 @@ export default function HeaderMenu() {
 
   const items = menuLinks.map((link) => {
     if ("links" in link) {
-      const menuItems = link.links.map((item) => (
-        <Menu.Item key={item.link}>
-          <Link key={item.link} href={item.link} className={classes.subLink}>
-            {item.label}
-          </Link>
-        </Menu.Item>
+      const menuItems = link.links.map(({ link, label }) => (
+        <Link key={link} href={link} className={classes.subLink}>
+          <Menu.Item>{label}</Menu.Item>
+        </Link>
       ));
 
       return (
-        <Menu key={link.label} trigger="hover" exitTransitionDuration={0}>
+        <Menu key={link.label} trigger="hover">
           <Menu.Target>
             <Center className={classes.link}>
               <span className={classes.linkLabel}>{link.label}</span>
