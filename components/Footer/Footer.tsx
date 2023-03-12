@@ -18,6 +18,7 @@ const useStyles = createStyles((theme) => ({
     borderTop: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
+    color: theme.colors.gray[theme.colorScheme === "dark" ? 6 : 7],
   },
 
   logo: {
@@ -76,15 +77,13 @@ export default function Footer() {
       <Container className={classes.inner}>
         <div className={classes.logo}>
           <Logo iconOnly size={40} />
-          <Text size="xs" color="dimmed" className={classes.description}>
+          <Text size="xs" className={classes.description}>
             Kokybė, profesionalumas ir inovatyvumas
           </Text>
         </div>
       </Container>
       <Container className={classes.afterFooter}>
-        <Text color="dimmed" size="sm">
-          © {new Date().getFullYear()} MB Security Guru
-        </Text>
+        <Text size="sm">© {new Date().getFullYear()} MB Security Guru</Text>
 
         <Group spacing="xs" className={classes.social} position="right" noWrap>
           <ActionIcon
