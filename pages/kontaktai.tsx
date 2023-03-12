@@ -1,16 +1,10 @@
-import Head from "next/head";
 import { Container, Box, BackgroundImage, Center } from "@mantine/core";
-import GetInTouch from "@site/components/GetInTouch";
+import { GetInTouch, PageTitle } from "@site/components";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Kontaktai | Security Guru</title>
-        <meta name="description" content="Apsaugos sprendimai" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/Ikona_Oranzine.webp" />
-      </Head>
+      <PageTitle>Kontaktai</PageTitle>
 
       <Box
         sx={(theme) => ({

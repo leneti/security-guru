@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GetServerSidePropsContext } from "next";
 import { AppProps } from "next/app";
+import Head from "next/head";
 import { getCookie, setCookie } from "cookies-next";
 import {
   MantineProvider,
@@ -40,6 +41,12 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       >
         <Notifications position="top-right" />
         <HeaderMenu />
+        <Head>
+          <meta name="description" content="Apsaugos sprendimai" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/Ikona_Oranzine.webp" />
+          <title>Security Guru</title>
+        </Head>
         <Component {...pageProps} />
         <FooterMenu />
       </MantineProvider>
