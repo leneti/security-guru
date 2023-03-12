@@ -12,6 +12,7 @@
     "@aws-sdk/client-ses": "^3.272.0",
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
+    "@lottiefiles/react-lottie-player": "^3.5.2",
     "@mantine/core": "^6.0.1",
     "@mantine/form": "^6.0.1",
     "@mantine/hooks": "^6.0.1",
