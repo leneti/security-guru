@@ -17,9 +17,8 @@ import { notifications } from "@mantine/notifications";
 import { PhoneNumberUtil } from "google-libphonenumber";
 import { IconX, IconCheck } from "@tabler/icons";
 
-import ContactInfo from "@components/ContactInfo";
-import { emailRegex, numberRegex } from "@constants/regexes";
-import { ERROR_MESSAGES } from "@constants/error-messages";
+import { ContactInfo } from "@components";
+import { emailRegex, numberRegex, ERROR_MESSAGES } from "@constants";
 
 export interface ContactForm {
   solution: string;

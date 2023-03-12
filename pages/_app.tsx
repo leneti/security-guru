@@ -10,9 +10,8 @@ import {
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
-import HeaderMenu from "@components/Header";
-import FooterMenu from "@site/components/Footer";
-import { getTheme } from "@site/constants/theme";
+import { getTheme } from "@constants";
+import { Header, Footer } from "@components";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -40,7 +39,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         withNormalizeCSS
       >
         <Notifications position="top-right" />
-        <HeaderMenu />
+        <Header />
         <Head>
           <meta name="description" content="Apsaugos sprendimai" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,7 +47,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <title>Security Guru</title>
         </Head>
         <Component {...pageProps} />
-        <FooterMenu />
+        <Footer />
       </MantineProvider>
     </ColorSchemeProvider>
   );

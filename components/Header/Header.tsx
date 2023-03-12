@@ -9,9 +9,8 @@ import {
 } from "@mantine/core";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
-import Logo from "@components/Logo";
-import { menuLinks } from "@constants/menu-links";
-import useGlobalStyles from "@site/constants/global-styles";
+import { Logo } from "@components";
+import { menuLinks, useGlobalStyles } from "@constants";
 import BurgerMenu from "./BurgerMenu";
 
 const headerHeight = 110;

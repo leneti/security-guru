@@ -5,7 +5,7 @@ import {
   useMantineTheme,
   SimpleGrid,
 } from "@mantine/core";
-import contactData from "@site/constants/contact-data";
+import { contactData } from "@constants";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {

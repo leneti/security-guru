@@ -1,8 +1,7 @@
 import { Drawer, Group, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import Logo from "@components/Logo";
-import useGlobalStyles from "@constants/global-styles";
-import { menuLinks } from "@site/constants/menu-links";
+import { Logo } from "@components";
+import { useGlobalStyles, menuLinks } from "@constants";
 import { LinksGroup } from "./NavbarLinksGroup";
 
 export default function NavbarSimple() {

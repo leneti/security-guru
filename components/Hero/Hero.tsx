@@ -97,7 +97,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function HeroContentLeft() {
+export default function Hero() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
 

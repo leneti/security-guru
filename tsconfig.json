@@ -3,11 +3,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@site/*": ["./*"],
+      "@components": ["./components"],
       "@components/*": ["./components/*"],
+      "@constants": ["./constants"],
+      "@constants/*": ["./constants/*"],
       "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
-      "@constants/*": ["./constants/*"]
+      "@site/*": ["./*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

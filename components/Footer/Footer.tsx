@@ -9,7 +9,7 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { IconBrandInstagram, IconBrandFacebook, IconMail } from "@tabler/icons";
 import Link from "next/link";
-import Logo from "@components/Logo";
+import { Logo } from "@components";
 
 const useStyles = createStyles((theme) => ({
   footer: {
