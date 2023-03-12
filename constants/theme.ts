@@ -73,13 +73,6 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
 
   components: {
     Button: {
-      variants: {
-        gradient: () => ({
-          root: {
-            color: "#000 !important",
-          },
-        }),
-      },
       styles: (theme) => ({
         root: {
           color: theme.colorScheme === "dark" ? "#000" : "#fff",
@@ -119,4 +112,17 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
     lg: "75em",
     xl: "88em",
   },
+
+  globalStyles: (theme) => ({
+    "*, *::before, *::after": {
+      boxSizing: "border-box",
+    },
+
+    body: {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
+    },
+  }),
 });
