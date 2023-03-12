@@ -1,14 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
 import { PhoneNumberUtil } from "google-libphonenumber";
-import { ContactForm } from "@components/GetInTouch";
-import { emailRegex, numberRegex } from "@site/constants/regexes";
-import { ERROR_MESSAGES } from "@site/constants/error-messages";
+import { ContactForm } from "@components";
+import { emailRegex, ERROR_MESSAGES } from "@constants";
 
-let sentEmailCounter = 0;
-const maxSentEmails = 200;
 const phoneUtil = PhoneNumberUtil.getInstance();
 
+let sentEmailCounter = 0;
+const maxSentEmails = 200; // Comes from AWS free-account limit
 setInterval(() => {
   sentEmailCounter = 0;
 }, 1000 * 60 * 60 * 24);
@@ -117,7 +116,7 @@ export default function handler(
   if (req.method !== "POST") {
     return res
       .status(403)
-      .send({ message: "Serveris tik priima susisiekimo formą." });
+      .send({ message: "Serveris priima tik susisiekimo formą." });
   }
 
   if (!process.env.REACT_APP_SES_EMAIL_DEV) {

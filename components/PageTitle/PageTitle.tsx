@@ -1,11 +1,13 @@
 import Head from "next/head";
 
 export default function PageTitle({ children }: { children?: string }) {
+  const ext =
+    process.env.NODE_ENV === "development" ? "SG-Dev" : "Security Guru";
+  const fullTitle = children ? `${children} | ${ext}` : ext;
+
   return (
     <Head>
-      <title>
-        {children ? `${children} | Security Guru` : "Security Guru"}
-      </title>
+      <title>{fullTitle}</title>
     </Head>
   );
 }

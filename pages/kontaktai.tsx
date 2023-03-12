@@ -1,7 +1,7 @@
 import { Container, Box, BackgroundImage, Center } from "@mantine/core";
 import { GetInTouch, PageTitle } from "@components";
 
-export default function Home() {
+export default function Contacts() {
   return (
     <>
       <PageTitle>Kontaktai</PageTitle>
