@@ -1,9 +1,12 @@
-name: CI
+name: isBuilding
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
     branches:
       - develop
+      - main
 
 jobs:
   build-and-deploy:
@@ -26,17 +29,3 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: build
-
-      #      - name: Test the app
-      #        uses: borales/actions-yarn@v4
-      #        with:
-      #          cmd: test # will run `yarn test` command
-
-      - name: Merge develop -> main
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          message: "Merge develop -> main"
-          from_branch: develop
-          target_branch: main
-          github_token: ${{ secrets.CI_TOKEN }}
