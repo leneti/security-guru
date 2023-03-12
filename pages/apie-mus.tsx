@@ -1,5 +1,5 @@
 import { Container, Box, BackgroundImage } from "@mantine/core";
-import { PageTitle } from "@site/components";
+import { PageTitle } from "@components";
 
 export default function Home() {
   return (

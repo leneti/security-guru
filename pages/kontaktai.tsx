@@ -1,5 +1,5 @@
 import { Container, Box, BackgroundImage, Center } from "@mantine/core";
-import { GetInTouch, PageTitle } from "@site/components";
+import { GetInTouch, PageTitle } from "@components";
 
 export default function Home() {
   return (
