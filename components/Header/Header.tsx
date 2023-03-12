@@ -80,7 +80,7 @@ export default function HeaderMenu() {
       ));
 
       return (
-        <Menu key={link.label} trigger="hover" exitTransitionDuration={0}>
+        <Menu key={link.label} trigger="hover">
           <Menu.Target>
             <Center className={classes.link}>
               <span className={classes.linkLabel}>{link.label}</span>
