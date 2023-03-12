@@ -1,7 +1,7 @@
 import { Container, Box, BackgroundImage } from "@mantine/core";
 import { PageTitle } from "@components";
 
-export default function Home() {
+export default function FireAlarms() {
   return (
     <>
       <PageTitle>Priešgaisrinės signalizacijos sistemos</PageTitle>

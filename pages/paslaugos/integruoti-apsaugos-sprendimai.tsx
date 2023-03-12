@@ -1,7 +1,7 @@
 import { Container, Box, BackgroundImage } from "@mantine/core";
 import { PageTitle } from "@components";
 
-export default function Home() {
+export default function IntegratedSecurity() {
   return (
     <>
       <PageTitle>Integruoti apsaugos sprendimai</PageTitle>
