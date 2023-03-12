@@ -64,7 +64,10 @@ const useStyles = createStyles((theme) => ({
   },
 
   title: {
-    color: theme.white,
+    color:
+      theme.colorScheme === "dark"
+        ? theme.white
+        : theme.colors.dark[theme.fn.primaryShade()],
     fontSize: "clamp(34px, 6vw, 60px)",
     fontWeight: 900,
     lineHeight: 1.1,
@@ -79,7 +82,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   description: {
-    color: theme.white,
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
     maxWidth: 600,
     fontSize: "clamp(14px, 2vw, 20px)",
 
@@ -104,10 +107,14 @@ export default function Hero() {
   return (
     <div className={classes.hero}>
       <Overlay
-        gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)"
+        gradient={
+          theme.colorScheme === "dark"
+            ? "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)"
+            : "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 80%)"
+        }
         opacity={1}
         zIndex={0}
-        blur={1}
+        blur={theme.colorScheme === "dark" ? 1 : 2}
       />
       <Container className={classes.container} size={theme.breakpoints.xl}>
         <Title className={classes.title}>
@@ -121,7 +128,12 @@ export default function Hero() {
           component={Link}
           href="/kontaktai"
           variant="gradient"
-          gradient={{ from: "orange", to: "yellow" }}
+          gradient={{
+            from: theme.fn.primaryColor(),
+            to: theme.colors["brand"][
+              theme.fn.primaryShade() - (theme.colorScheme === "dark" ? 1 : 2)
+            ],
+          }}
           size="xl"
           radius="xl"
           className={classes.control}

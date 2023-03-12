@@ -6,6 +6,7 @@ import {
   Center,
   ActionIcon,
   useMantineColorScheme,
+  clsx,
 } from "@mantine/core";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
@@ -26,6 +27,10 @@ const useStyles = createStyles((theme) => ({
     paddingRight: theme.spacing.xl,
     marginLeft: "auto",
     marginRight: "auto",
+
+    [theme.fn.smallerThan("md")]: {
+      height: headerHeight + 10,
+    },
   },
 
   link: {
@@ -62,6 +67,23 @@ const useStyles = createStyles((theme) => ({
 
   linkLabel: {
     marginRight: 5,
+  },
+
+  switch: {
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[2],
+    color: theme.fn.primaryColor(),
+    border: "none",
+    borderRadius: 8,
+
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[4]
+          : theme.colors.gray[3],
+    },
   },
 }));
 
@@ -104,36 +126,22 @@ export default function HeaderMenu() {
       variant="outline"
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
-      className={className}
+      className={clsx(className, classes.switch)}
       size="lg"
-      sx={(theme) => ({
-        backgroundColor:
-          theme.colorScheme === "dark"
-            ? theme.colors.dark[6]
-            : theme.colors.gray[0],
-        color: theme.fn.primaryColor(),
-        border:
-          theme.colorScheme === "dark"
-            ? "none"
-            : `1px solid ${theme.colors.gray[3]}`,
-        borderRadius: 8,
-      })}
     >
       {dark ? <IconSun size={22} /> : <IconMoon size={22} />}
     </ActionIcon>
   );
 
   return (
-    <Header height={{ base: headerHeight + 10, md: headerHeight }}>
-      <nav className={classes.inner}>
-        <BurgerMenu />
-        <Logo />
-        <Group spacing={5} className={gClasses.bigDisplay} noWrap>
-          {items}
-          <ThemeSwitch className={gClasses.bigDisplay} />
-        </Group>
-        <ThemeSwitch className={gClasses.smallDisplay} />
-      </nav>
-    </Header>
+    <nav className={classes.inner}>
+      <BurgerMenu />
+      <Logo />
+      <Group spacing={5} className={gClasses.bigDisplay} noWrap>
+        {items}
+        <ThemeSwitch className={gClasses.bigDisplay} />
+      </Group>
+      <ThemeSwitch className={gClasses.smallDisplay} />
+    </nav>
   );
 }
