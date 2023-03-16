@@ -5,12 +5,24 @@ import {
   Group,
   createStyles,
   Stack,
+  Title,
 } from "@mantine/core";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle } from "@components";
 import { useGlobalStyles } from "@constants";
 
 const useStyles = createStyles((theme) => ({
+  title: {
+    color: theme.colorScheme === "dark" ? "black" : "white",
+    paddingBottom: theme.spacing.xl,
+    marginTop: `calc(-3 * ${theme.spacing.xl})`,
+
+    [theme.fn.smallerThan("md")]: {
+      marginTop: theme.spacing.xl,
+      paddingBottom: 0,
+    },
+  },
+
   text: {
     color: theme.colorScheme === "dark" ? "black" : "white",
     width: "30vw",
@@ -66,26 +78,31 @@ export default function About() {
             backgroundColor: theme.fn.primaryColor(),
           })}
         >
-          <Layout>
-            <Text className={classes.text} align="left" size="lg">
-              <b>SECURITY GURU</b> - tai įmonė, kuri užsiima priešgaisrinės
-              signalizacijos, įeigos kontrolės, apsaugos signalizacijos,
-              integruotų apsaugos sprendimų, vaizdo stebėjimo sistemų įdiegimu
-              bei remontu. Parenkame saugos sprendimus atsižvelgiant į kliento
-              poreikius, biudžetą ir pageidaujamą saugumo lygmenį.
-              <br /> <br /> Turime kvalifikaciją bei patirtį fizinės apsaugos
-              bei elektroninės apsaugos srityse, todėl galime garantuoti
-              aukščiausio lygio aptarnavimą ir paslaugas. Mūsų įmonei
-              svarbiausia <b>kokybė</b>, <b>profesionalumas</b> ir{" "}
-              <b>inovatyvumas</b>.
-            </Text>
-            <Player
-              autoplay
-              loop
-              src="lottie_animations/cctv.json"
-              className={classes.animation}
-            />
-          </Layout>
+          <Stack>
+            <Title align="center" className={classes.title}>
+              Apie mus
+            </Title>
+            <Layout>
+              <Text className={classes.text} align="left" size="lg">
+                <b>SECURITY GURU</b> - tai įmonė, kuri užsiima priešgaisrinės
+                signalizacijos, įeigos kontrolės, apsaugos signalizacijos,
+                integruotų apsaugos sprendimų, vaizdo stebėjimo sistemų įdiegimu
+                bei remontu. Parenkame saugos sprendimus atsižvelgiant į kliento
+                poreikius, biudžetą ir pageidaujamą saugumo lygmenį.
+                <br /> <br /> Turime kvalifikaciją bei patirtį fizinės apsaugos
+                bei elektroninės apsaugos srityse, todėl galime garantuoti
+                aukščiausio lygio aptarnavimą ir paslaugas. Mūsų įmonei
+                svarbiausia <b>kokybė</b>, <b>profesionalumas</b> ir{" "}
+                <b>inovatyvumas</b>.
+              </Text>
+              <Player
+                autoplay
+                loop
+                src="lottie_animations/cctv.json"
+                className={classes.animation}
+              />
+            </Layout>
+          </Stack>
         </Center>
       </Container>
     </>

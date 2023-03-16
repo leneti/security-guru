@@ -30,11 +30,11 @@ export const menuLinks: Link[] = [
     link: "/apie-mus",
     icon: IconInfoCircle, // IconUser | IconBriefcase
   },
-  {
-    label: "Apsaugos sprendimai",
-    link: "/apsaugos-sprendimai",
-    icon: IconShieldCheck, // IconLock | IconShieldLock
-  },
+  // {
+  //   label: "Apsaugos sprendimai",
+  //   link: "/apsaugos-sprendimai",
+  //   icon: IconShieldCheck, // IconLock | IconShieldLock
+  // },
   {
     label: "Paslaugos",
     icon: IconBriefcase, // IconCog | IconGrid
