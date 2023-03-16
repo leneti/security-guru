@@ -43,7 +43,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <Head>
           <meta name="description" content="Apsaugos sprendimai" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/Ikona_Oranzine.webp" />
+          <link rel="icon" href="logo/Ikona_Oranzine.webp" />
           <title>Security Guru</title>
         </Head>
         <Component {...pageProps} />

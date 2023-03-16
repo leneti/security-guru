@@ -23,7 +23,11 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
       <Link href="/">
         <Image
           alt="SG logo"
-          src={dark ? "/Ikona_Oranzine.webp" : "/Ikona_Tamsiai_Zalia.webp"}
+          src={
+            dark
+              ? "/logo/Ikona_Oranzine.webp"
+              : "/logo/Ikona_Tamsiai_Zalia.webp"
+          }
           height={logoSize + 10}
           width={((logoSize + 10) / 2001) * 2000}
           unoptimized
@@ -39,8 +43,8 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
           alt="SG logo"
           src={
             dark
-              ? "/HLogotipas_Oranzine.webp"
-              : "/HLogotipas_Tamsiai_Zalia.webp"
+              ? "/logo/HLogotipas_Oranzine.webp"
+              : "/logo/HLogotipas_Tamsiai_Zalia.webp"
           }
           height={logoSize * 0.75}
           width={(logoSize / 341) * 2000 * 0.75}
@@ -62,7 +66,9 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
         <Image
           alt="SG logo"
           src={
-            dark ? "/Logotipas_Oranzine.webp" : "/Logotipas_Tamsiai_Zalia.webp"
+            dark
+              ? "/logo/Logotipas_Oranzine.webp"
+              : "/logo/Logotipas_Tamsiai_Zalia.webp"
           }
           height={logoSize + 10}
           width={((logoSize + 10) / 785) * 2000}
@@ -74,8 +80,8 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
           alt="SG logo"
           src={
             dark
-              ? "/HLogotipas_Oranzine.webp"
-              : "/HLogotipas_Tamsiai_Zalia.webp"
+              ? "/logo/HLogotipas_Oranzine.webp"
+              : "/logo/HLogotipas_Tamsiai_Zalia.webp"
           }
           height={logoSize}
           width={(logoSize / 341) * 2000}
