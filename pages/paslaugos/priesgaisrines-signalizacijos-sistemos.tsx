@@ -1,25 +1,5 @@
-import { Container, Box, BackgroundImage } from "@mantine/core";
-import { PageTitle } from "@components";
+import { PageBackground } from "@components";
 
 export default function FireAlarms() {
-  return (
-    <>
-      <PageTitle>Priešgaisrinės signalizacijos sistemos</PageTitle>
-
-      <Box
-        sx={(theme) => ({
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors["brand-light-green"][3],
-        })}
-      >
-        <Container fluid p={0}>
-          <BackgroundImage src="/unsplash-houses.webp">
-            <Box sx={{ height: "75vh" }}></Box>
-          </BackgroundImage>
-        </Container>
-      </Box>
-    </>
-  );
+  return <PageBackground pageTitle="Apsaugos sprendimai"></PageBackground>;
 }

@@ -5,7 +5,6 @@ import {
   Group,
   createStyles,
   Stack,
-  MediaQuery,
 } from "@mantine/core";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle } from "@components";
@@ -63,12 +62,12 @@ export default function About() {
       <Container fluid p={0}>
         <Center
           sx={(theme) => ({
-            minHeight: "75vh",
+            minHeight: 700,
             backgroundColor: theme.fn.primaryColor(),
           })}
         >
           <Layout>
-            <Text className={classes.text} align="left">
+            <Text className={classes.text} align="left" size="lg">
               <b>SECURITY GURU</b> - tai įmonė, kuri užsiima priešgaisrinės
               signalizacijos, įeigos kontrolės, apsaugos signalizacijos,
               integruotų apsaugos sprendimų, vaizdo stebėjimo sistemų įdiegimu
@@ -83,7 +82,7 @@ export default function About() {
             <Player
               autoplay
               loop
-              src="https://assets6.lottiefiles.com/packages/lf20_GVLlF8.json"
+              src="lottie_animations/cctv.json"
               className={classes.animation}
             />
           </Layout>

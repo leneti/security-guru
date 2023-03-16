@@ -110,7 +110,7 @@ export default function Hero() {
         gradient={
           theme.colorScheme === "dark"
             ? "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)"
-            : "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 80%)"
+            : "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 100%)"
         }
         opacity={1}
         zIndex={0}
@@ -120,7 +120,7 @@ export default function Hero() {
         <Title className={classes.title}>
           Namų ir verslo apsaugos sprendimai
         </Title>
-        <Text className={classes.description} mt="xl">
+        <Text className={classes.description} mt="xl" weight={600}>
           Aukščiausio lygio paslaugos fizinės bei elektroninės apsaugos srityse
         </Text>
 
