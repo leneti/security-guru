@@ -21,7 +21,7 @@ import {
 } from "@tabler/icons";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle } from "@components";
-import { getBGColor } from "@constants/getBGColor";
+import { getBGColor } from "@constants";
 
 export const MOCKDATA = [
   {

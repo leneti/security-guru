@@ -4,3 +4,4 @@ export { default as useGlobalStyles } from "./global-styles";
 export { menuLinks } from "./menu-links";
 export { emailRegex, numberRegex } from "./regexes";
 export { getTheme } from "./theme";
+export { getBGColor } from "./getBGColor";
