@@ -1,12 +1,11 @@
 import {
   createStyles,
-  Header,
   Menu,
   Group,
-  Center,
   ActionIcon,
   useMantineColorScheme,
   clsx,
+  UnstyledButton,
 } from "@mantine/core";
 import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
 import Link from "next/link";
@@ -23,10 +22,19 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     height: headerHeight,
     maxWidth: theme.breakpoints.xl,
-    paddingLeft: theme.spacing.xl,
-    paddingRight: theme.spacing.xl,
     marginLeft: "auto",
     marginRight: "auto",
+
+    [`@media (max-width: calc(${theme.spacing.xl} * 2 + ${theme.breakpoints.xl}))`]:
+      {
+        paddingLeft: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+        paddingRight: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+      },
+
+    [theme.fn.smallerThan("xl")]: {
+      paddingLeft: theme.spacing.xl,
+      paddingRight: theme.spacing.xl,
+    },
 
     [theme.fn.smallerThan("md")]: {
       height: headerHeight + 10,
@@ -34,7 +42,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   link: {
-    cursor: "pointer",
     display: "block",
     lineHeight: 1,
     padding: "8px 12px",
@@ -50,8 +57,8 @@ const useStyles = createStyles((theme) => ({
     "&:hover": {
       backgroundColor:
         theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[1],
+          ? theme.colors.dark[4]
+          : theme.colors.gray[2],
     },
   },
 
@@ -102,12 +109,16 @@ export default function HeaderMenu() {
       ));
 
       return (
-        <Menu key={link.label} trigger="hover">
+        <Menu key={link.label}>
           <Menu.Target>
-            <Center className={classes.link}>
+            <UnstyledButton className={classes.link}>
               <span className={classes.linkLabel}>{link.label}</span>
-              <IconChevronDown size={12} stroke={1.5} />
-            </Center>
+              <IconChevronDown
+                size={12}
+                stroke={1.5}
+                aria-label="Toggle menu dropdown"
+              />
+            </UnstyledButton>
           </Menu.Target>
           <Menu.Dropdown>{menuItems}</Menu.Dropdown>
         </Menu>
@@ -129,7 +140,11 @@ export default function HeaderMenu() {
       className={clsx(className, classes.switch)}
       size="lg"
     >
-      {dark ? <IconSun size={22} /> : <IconMoon size={22} />}
+      {dark ? (
+        <IconSun size={22} aria-label="Toggle color scheme (current: dark)" />
+      ) : (
+        <IconMoon size={22} aria-label="Toggle color scheme (current: light)" />
+      )}
     </ActionIcon>
   );
 

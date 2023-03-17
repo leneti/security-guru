@@ -1,109 +1,189 @@
+import { useEffect, useState } from "react";
 import {
   Container,
   Text,
-  Center,
-  Group,
   createStyles,
   Stack,
   Title,
+  useMantineTheme,
+  ThemeIcon,
+  SimpleGrid,
+  Transition,
+  type MantineTransition,
 } from "@mantine/core";
+import { useReducedMotion } from "@mantine/hooks";
+import {
+  IconTrophy,
+  IconShieldCheck,
+  IconUser,
+  IconMessage2,
+  IconLock,
+} from "@tabler/icons";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle } from "@components";
-import { useGlobalStyles } from "@constants";
+import { getBGColor } from "@constants/getBGColor";
+
+export const MOCKDATA = [
+  {
+    icon: IconLock,
+    title: "Visapusiški saugumo sprendimai",
+    description:
+      "Siūlome platų paslaugų spektrą, pritaikytą konkretiems jūsų saugumo poreikiams. Nesvarbu, ar jums reikia priešgaisrinės signalizacijos, įeigos kontrolės sistemų, ar vaizdo stebėjimo, mes jums padėsime.",
+  },
+  {
+    icon: IconUser,
+    title: "Į klientus orientuotas požiūris",
+    description:
+      "SECURITY GURU teikia pirmenybę jūsų saugumo reikalavimams ir glaudžiai su jumis bendradarbiauja, kad užtikrintų jūsų poreikių patenkinimą. Mūsų ekspertai skiria laiko suprasti jūsų rūpesčius ir pateikia asmeninius sprendimus.",
+  },
+  {
+    icon: IconShieldCheck,
+    title: "Profesionalumas ir kompetencija",
+    description:
+      "Mūsų komanda, turinti ilgametę patirtį saugumo srityje, užtikrina kokybišką darbą ir patikimus saugumo sprendimus, kuriais galite pasikliauti. Naudojamės savo patirtimi, kad savo klientams suteiktume geriausias įmanomas paslaugas.",
+  },
+  {
+    icon: IconTrophy,
+    title: "Inovatyvūs sprendimai",
+    description:
+      "Mes nuolat sekame naujausius saugumo pramonės pokyčius ir taikome novatoriškus sprendimus, kad patenkintume savo klientų poreikius. Visada ieškome naujų būdų, kaip pagerinti savo paslaugas ir pateikti geriausius įmanomus sprendimus.",
+  },
+  {
+    icon: IconMessage2,
+    title: "Lankstumas",
+    description:
+      "Suprantame, kad mūsų klientai turi užimtą darbo grafiką, todėl siūlome paslaugas 7 dienas per savaitę nuo 9 iki 21 val. Esame pasiryžę suteikti lanksčias planavimo galimybes, kad galėtume prisitaikyti prie jūsų poreikių.",
+  },
+];
+
+interface FeatureProps {
+  icon: React.FC<any>;
+  title: React.ReactNode;
+  description: React.ReactNode;
+}
 
 const useStyles = createStyles((theme) => ({
-  title: {
-    color: theme.colorScheme === "dark" ? "black" : "white",
-    paddingBottom: theme.spacing.xl,
-    marginTop: `calc(-3 * ${theme.spacing.xl})`,
+  container: {
+    minHeight: 700,
+    backgroundColor: theme.fn.primaryColor(),
+    padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
 
     [theme.fn.smallerThan("md")]: {
-      marginTop: theme.spacing.xl,
-      paddingBottom: 0,
-    },
-  },
-
-  text: {
-    color: theme.colorScheme === "dark" ? "black" : "white",
-    width: "30vw",
-    marginRight: 32,
-
-    [theme.fn.smallerThan("md")]: {
-      width: "50vw",
-      marginRight: 0,
-      marginBottom: 32,
+      padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 3)`,
     },
 
     [theme.fn.smallerThan("sm")]: {
-      width: "75vw",
+      padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
     },
   },
+
+  grid: {
+    maxWidth: theme.breakpoints.xl,
+    alignSelf: "center",
+  },
+
+  description: {
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[6]
+        : theme.colors.gray[5],
+    textAlign: "center",
+  },
+
   animation: {
-    height: "37.5vh",
-    width: "30vw",
-    marginTop: "-2rem",
+    position: "absolute",
+    pointerEvents: "none",
+    transform: "scaleX(-1)",
+    right: 0,
+    top: 80,
+    height: "10vh",
 
-    [theme.fn.smallerThan("sm")]: {
-      width: "clamp(200px, 50vw, 250px)",
+    [theme.fn.smallerThan("md")]: {
+      top: 90,
     },
   },
 }));
 
-const Layout = ({ ...others }) => {
-  const { classes: gClasses } = useGlobalStyles();
+function Feature({ icon: Icon, title, description }: FeatureProps) {
+  const theme = useMantineTheme();
 
   return (
-    <>
-      <Group className={gClasses.bigDisplay} {...others} />
-      <Stack
-        className={gClasses.smallDisplay}
-        sx={{ flexDirection: "column-reverse" }}
-        {...others}
-      />
-    </>
+    <div>
+      <ThemeIcon
+        variant="filled"
+        color={getBGColor(theme)}
+        size={40}
+        radius={40}
+      >
+        <Icon size="1.25rem" stroke={1.5} color={theme.fn.primaryColor()} />
+      </ThemeIcon>
+      <Title order={2} my="sm" variant="lightBg">
+        {title}
+      </Title>
+      <Text size="sm" color="dimmed" sx={{ lineHeight: 1.6 }} variant="lightBg">
+        {description}
+      </Text>
+    </div>
   );
+}
+
+const scaleY: MantineTransition = {
+  in: {
+    opacity: 1,
+    transform: "scaleY(1)",
+    lineHeight: 1.3,
+    marginBottom: "1.5rem",
+  },
+  out: { opacity: 0, transform: "scaleY(0)", lineHeight: 0, marginBottom: 0 },
+  common: { transformOrigin: "top", fontWeight: 900 },
+  transitionProperty: "transform, opacity, line-height, margin-bottom",
 };
 
 export default function About() {
   const { classes } = useStyles();
+  const theme = useMantineTheme();
+  const noMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  const features = MOCKDATA.map((feature, index) => (
+    <Feature {...feature} key={index} />
+  ));
+
+  useEffect(() => setMounted(true), []);
 
   return (
     <>
       <PageTitle>Apie mus</PageTitle>
 
-      <Container fluid p={0}>
-        <Center
-          sx={(theme) => ({
-            minHeight: 700,
-            backgroundColor: theme.fn.primaryColor(),
-          })}
-        >
-          <Stack>
-            <Title align="center" className={classes.title}>
-              Apie mus
-            </Title>
-            <Layout>
-              <Text className={classes.text} align="left" size="lg">
-                <b>SECURITY GURU</b> - tai įmonė, kuri užsiima priešgaisrinės
-                signalizacijos, įeigos kontrolės, apsaugos signalizacijos,
-                integruotų apsaugos sprendimų, vaizdo stebėjimo sistemų įdiegimu
-                bei remontu. Parenkame saugos sprendimus atsižvelgiant į kliento
-                poreikius, biudžetą ir pageidaujamą saugumo lygmenį.
-                <br /> <br /> Turime kvalifikaciją bei patirtį fizinės apsaugos
-                bei elektroninės apsaugos srityse, todėl galime garantuoti
-                aukščiausio lygio aptarnavimą ir paslaugas. Mūsų įmonei
-                svarbiausia <b>kokybė</b>, <b>profesionalumas</b> ir{" "}
-                <b>inovatyvumas</b>.
-              </Text>
-              <Player
-                autoplay
-                loop
-                src="lottie_animations/cctv.json"
-                className={classes.animation}
-              />
-            </Layout>
-          </Stack>
-        </Center>
+      <Transition mounted={mounted} transition={scaleY} duration={200}>
+        {(styles) => (
+          <Title align="center" style={styles}>
+            Apie mus
+          </Title>
+        )}
+      </Transition>
+      <Container fluid className={classes.container}>
+        <Stack>
+          <SimpleGrid
+            mt={40}
+            cols={3}
+            spacing={50}
+            className={classes.grid}
+            breakpoints={[
+              { maxWidth: theme.breakpoints.md, cols: 2, spacing: "xl" },
+              { maxWidth: theme.breakpoints.sm, cols: 1, spacing: "xl" },
+            ]}
+          >
+            {features}
+          </SimpleGrid>
+          {noMotion !== undefined && (
+            <Player
+              autoplay={!noMotion}
+              src="lottie_animations/cctv.json"
+              className={classes.animation}
+            />
+          )}
+        </Stack>
       </Container>
     </>
   );

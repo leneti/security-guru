@@ -1,4 +1,5 @@
 import { MantineThemeOverride, ColorScheme } from "@mantine/core";
+import { getBGColor } from "./getBGColor";
 
 export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
   colorScheme,
@@ -79,6 +80,33 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
         },
       }),
     },
+
+    Text: {
+      variants: {
+        lightBg: (theme, params) => ({
+          root: {
+            color:
+              params.color === "dimmed"
+                ? theme.colorScheme === "dark"
+                  ? theme.colors.dark[5]
+                  : theme.colors.gray[5]
+                : theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.gray[1],
+          },
+        }),
+      },
+    },
+
+    Title: {
+      variants: {
+        lightBg: (theme) => ({
+          root: {
+            color: theme.colorScheme === "dark" ? theme.black : theme.white,
+          },
+        }),
+      },
+    },
   },
 
   fontSizes: {
@@ -119,10 +147,7 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
     },
 
     body: {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+      backgroundColor: getBGColor(theme),
     },
   }),
 });
