@@ -1,6 +1,40 @@
 import { MantineThemeOverride, ColorScheme } from "@mantine/core";
 import { getBGColor } from "./getBGColor";
 
+export const baseTheme = {
+  fontSizes: {
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+  },
+
+  radius: {
+    xs: "0.125rem",
+    sm: "0.25rem",
+    md: "0.5rem",
+    lg: "1rem",
+    xl: "2rem",
+  },
+
+  spacing: {
+    xs: "0.625rem",
+    sm: "0.75rem",
+    md: "1rem",
+    lg: "1.25rem",
+    xl: "1.5rem",
+  },
+
+  breakpoints: {
+    xs: "36em",
+    sm: "48em",
+    md: "62em",
+    lg: "75em",
+    xl: "88em",
+  },
+};
+
 export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
   colorScheme,
 
@@ -107,38 +141,6 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
         }),
       },
     },
-  },
-
-  fontSizes: {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    md: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-  },
-
-  radius: {
-    xs: "0.125rem",
-    sm: "0.25rem",
-    md: "0.5rem",
-    lg: "1rem",
-    xl: "2rem",
-  },
-
-  spacing: {
-    xs: "0.625rem",
-    sm: "0.75rem",
-    md: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem",
-  },
-
-  breakpoints: {
-    xs: "36em",
-    sm: "48em",
-    md: "62em",
-    lg: "75em",
-    xl: "88em",
   },
 
   globalStyles: (theme) => ({

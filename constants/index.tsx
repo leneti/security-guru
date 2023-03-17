@@ -3,4 +3,5 @@ export { ERROR_MESSAGES } from "./error-messages";
 export { default as useGlobalStyles } from "./global-styles";
 export { menuLinks } from "./menu-links";
 export { emailRegex, numberRegex } from "./regexes";
-export { getTheme } from "./theme";
+export { getTheme, baseTheme } from "./theme";
+export { getBGColor } from "./getBGColor";

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   Container,
   Text,
@@ -8,8 +7,6 @@ import {
   useMantineTheme,
   ThemeIcon,
   SimpleGrid,
-  Transition,
-  type MantineTransition,
 } from "@mantine/core";
 import { useReducedMotion } from "@mantine/hooks";
 import {
@@ -21,7 +18,8 @@ import {
 } from "@tabler/icons";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle } from "@components";
-import { getBGColor } from "@constants/getBGColor";
+import { getBGColor } from "@constants";
+import SlideDownTitle from "@components/SlideDownTitle";
 
 export const MOCKDATA = [
   {
@@ -127,45 +125,26 @@ function Feature({ icon: Icon, title, description }: FeatureProps) {
   );
 }
 
-const scaleY: MantineTransition = {
-  in: {
-    opacity: 1,
-    transform: "scaleY(1)",
-    lineHeight: 1.3,
-    marginBottom: "1.5rem",
-  },
-  out: { opacity: 0, transform: "scaleY(0)", lineHeight: 0, marginBottom: 0 },
-  common: { transformOrigin: "top", fontWeight: 900 },
-  transitionProperty: "transform, opacity, line-height, margin-bottom",
-};
+const pageTitle = "Apie mus";
 
 export default function About() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const noMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
 
   const features = MOCKDATA.map((feature, index) => (
     <Feature {...feature} key={index} />
   ));
 
-  useEffect(() => setMounted(true), []);
-
   return (
     <>
-      <PageTitle>Apie mus</PageTitle>
+      <PageTitle>{pageTitle}</PageTitle>
 
-      <Transition mounted={mounted} transition={scaleY} duration={200}>
-        {(styles) => (
-          <Title align="center" style={styles}>
-            Apie mus
-          </Title>
-        )}
-      </Transition>
+      <SlideDownTitle title={pageTitle} />
+
       <Container fluid className={classes.container}>
         <Stack>
           <SimpleGrid
-            mt={40}
             cols={3}
             spacing={50}
             className={classes.grid}
