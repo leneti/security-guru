@@ -23,10 +23,19 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     height: headerHeight,
     maxWidth: theme.breakpoints.xl,
-    paddingLeft: theme.spacing.xl,
-    paddingRight: theme.spacing.xl,
     marginLeft: "auto",
     marginRight: "auto",
+
+    [`@media (max-width: calc(${theme.spacing.xl} * 2 + ${theme.breakpoints.xl}))`]:
+      {
+        paddingLeft: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+        paddingRight: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+      },
+
+    [theme.fn.smallerThan("xl")]: {
+      paddingLeft: theme.spacing.xl,
+      paddingRight: theme.spacing.xl,
+    },
 
     [theme.fn.smallerThan("md")]: {
       height: headerHeight + 10,
