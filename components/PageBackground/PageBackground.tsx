@@ -9,7 +9,7 @@ import { PageTitle } from "@components";
 
 export interface PageBGProps {
   pageTitle: string;
-  children?: JSX.Element;
+  children?: React.ReactNode;
 }
 
 export default function PageBackground({ pageTitle, children }: PageBGProps) {
