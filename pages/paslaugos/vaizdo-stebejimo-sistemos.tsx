@@ -1,5 +1,7 @@
 import { PageBackground } from "@components";
 
+const pageTitle = "Vaizdo stebėjimo sistemos";
+
 export default function CCTV() {
-  return <PageBackground pageTitle="Apsaugos sprendimai"></PageBackground>;
+  return <PageBackground pageTitle={pageTitle}></PageBackground>;
 }

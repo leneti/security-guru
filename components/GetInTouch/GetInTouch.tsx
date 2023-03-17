@@ -188,7 +188,7 @@ export default function GetInTouch() {
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
           <Text size="lg" weight={700} className={classes.title}>
-            Kontaktai
+            Informacija
           </Text>
 
           <ContactInfo />

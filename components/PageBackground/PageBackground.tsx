@@ -5,7 +5,7 @@ import {
   useMantineColorScheme,
   Box,
 } from "@mantine/core";
-import { PageTitle } from "@components";
+import { PageTitle, SlideDownTitle } from "@components";
 
 export interface PageBGProps {
   pageTitle: string;
@@ -18,6 +18,7 @@ export default function PageBackground({ pageTitle, children }: PageBGProps) {
   return (
     <>
       <PageTitle>{pageTitle}</PageTitle>
+      <SlideDownTitle title={pageTitle} />
 
       <Box
         sx={{

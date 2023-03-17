@@ -1,5 +1,7 @@
 import { PageBackground } from "@components";
 
+const pageTitle = "Integruoti apsaugos sprendimai";
+
 export default function IntegratedSecurity() {
-  return <PageBackground pageTitle="Apsaugos sprendimai"></PageBackground>;
+  return <PageBackground pageTitle={pageTitle}></PageBackground>;
 }

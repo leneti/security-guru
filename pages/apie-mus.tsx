@@ -17,9 +17,8 @@ import {
   IconLock,
 } from "@tabler/icons";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { PageTitle } from "@components";
+import { PageTitle, SlideDownTitle } from "@components";
 import { getBGColor } from "@constants";
-import SlideDownTitle from "@components/SlideDownTitle";
 
 export const MOCKDATA = [
   {

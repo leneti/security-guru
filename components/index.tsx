@@ -6,3 +6,4 @@ export { default as Hero } from "./Hero";
 export { default as Logo } from "./Logo";
 export { default as PageTitle } from "./PageTitle";
 export { default as PageBackground, type PageBGProps } from "./PageBackground";
+export { default as SlideDownTitle } from "./SlideDownTitle";
