@@ -49,6 +49,7 @@ const useStyles = createStyles((theme) => ({
     },
 
     [theme.fn.smallerThan("md")]: {
+      height: 600,
       paddingRight: `clamp(
         ${theme.spacing.md},
         calc(100vw - ${theme.breakpoints.md}),
