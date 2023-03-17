@@ -8,6 +8,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const leftPadding = "60px";
 
@@ -104,16 +105,21 @@ const useStyles = createStyles((theme) => ({
 export default function Hero() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   return (
     <div className={classes.hero}>
       <Overlay
         gradient={
-          theme.colorScheme === "dark"
-            ? "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)"
-            : "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 100%)"
+          mounted
+            ? theme.colorScheme === "dark"
+              ? "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)"
+              : "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 100%)"
+            : undefined
         }
-        opacity={1}
+        opacity={mounted ? 1 : 0}
         zIndex={0}
         blur={theme.colorScheme === "dark" ? 1 : 2}
       />
