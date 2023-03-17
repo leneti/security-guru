@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Title, Transition, type MantineTransition } from "@mantine/core";
+import { baseTheme } from "@constants";
 
 const scaleY: MantineTransition = {
   in: {
@@ -9,7 +10,12 @@ const scaleY: MantineTransition = {
     marginBottom: "1.5rem",
   },
   out: { opacity: 0, transform: "scaleY(0)", lineHeight: 0, marginBottom: 0 },
-  common: { transformOrigin: "top", fontWeight: 900 },
+  common: {
+    transformOrigin: "top",
+    fontWeight: 900,
+    marginTop: baseTheme.spacing.xs,
+    paddingBottom: baseTheme.spacing.sm,
+  },
   transitionProperty: "transform, opacity, line-height, margin-bottom",
 };
 
