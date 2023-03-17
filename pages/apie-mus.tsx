@@ -145,7 +145,6 @@ export default function About() {
       <Container fluid className={classes.container}>
         <Stack>
           <SimpleGrid
-            mt={40}
             cols={3}
             spacing={50}
             className={classes.grid}
