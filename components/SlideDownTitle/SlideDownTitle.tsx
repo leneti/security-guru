@@ -1,14 +1,16 @@
 import { useState, useEffect, useContext } from "react";
 import { Title, Transition, type MantineTransition } from "@mantine/core";
-import { baseTheme } from "@constants";
-import { PrevUrlContext } from "@pages/_app";
 import { useReducedMotion } from "@mantine/hooks";
+import { PrevUrlContext } from "@pages/_app";
+import { baseTheme } from "@constants";
+
+const marginBottom = "1.5rem";
 
 const scaleY: MantineTransition = {
   in: {
     opacity: 1,
     transform: "scaleY(1)",
-    marginBottom: "1.5rem",
+    marginBottom,
     height: "100%",
   },
   out: {
@@ -45,7 +47,7 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
             ...styles,
             fontWeight: 900,
             marginTop: baseTheme.spacing.xs,
-            marginBottom: "1.5rem",
+            marginBottom,
             paddingBottom: baseTheme.spacing.sm,
           }}
         >
@@ -59,13 +61,17 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
       sx={{
         fontWeight: 900,
         marginTop: baseTheme.spacing.xs,
-        marginBottom: "1.5rem",
+        marginBottom,
         paddingBottom: baseTheme.spacing.sm,
         opacity: mounted || noMotion ? 1 : 0,
-        transform: noMotion ? undefined : `scaleX(${mounted ? 1 : 0.9})`,
-        transitionProperty: noMotion ? undefined : "opacity transform",
-        transitionDuration: noMotion ? undefined : ".2s",
-        transformOrigin: noMotion ? undefined : "left center 0px",
+        ...(noMotion
+          ? {
+              transform: `scaleX(${mounted ? 1 : 0.9})`,
+              transitionProperty: "opacity transform",
+              transitionDuration: ".2s",
+              transformOrigin: "left center 0px",
+            }
+          : {}),
       }}
     >
       {title}
