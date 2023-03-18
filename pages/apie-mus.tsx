@@ -64,6 +64,9 @@ const useStyles = createStyles((theme) => ({
     minHeight: 700,
     backgroundColor: theme.fn.primaryColor(),
     padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 
     [theme.fn.smallerThan("md")]: {
       padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 3)`,
@@ -142,26 +145,24 @@ export default function About() {
       <SlideDownTitle title={pageTitle} />
 
       <Container fluid className={classes.container}>
-        <Stack>
-          <SimpleGrid
-            cols={3}
-            spacing={50}
-            className={classes.grid}
-            breakpoints={[
-              { maxWidth: theme.breakpoints.md, cols: 2, spacing: "xl" },
-              { maxWidth: theme.breakpoints.sm, cols: 1, spacing: "xl" },
-            ]}
-          >
-            {features}
-          </SimpleGrid>
-          {noMotion !== undefined && (
-            <Player
-              autoplay={!noMotion}
-              src="lottie_animations/cctv.json"
-              className={classes.animation}
-            />
-          )}
-        </Stack>
+        <SimpleGrid
+          cols={3}
+          spacing={50}
+          className={classes.grid}
+          breakpoints={[
+            { maxWidth: theme.breakpoints.md, cols: 2, spacing: "xl" },
+            { maxWidth: theme.breakpoints.sm, cols: 1, spacing: "xl" },
+          ]}
+        >
+          {features}
+        </SimpleGrid>
+        {noMotion !== undefined && (
+          <Player
+            autoplay={!noMotion}
+            src="lottie_animations/cctv.json"
+            className={classes.animation}
+          />
+        )}
       </Container>
     </>
   );
