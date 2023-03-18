@@ -5,3 +5,4 @@ export { menuLinks } from "./menu-links";
 export { emailRegex, numberRegex } from "./regexes";
 export { getTheme, baseTheme } from "./theme";
 export { getBGColor } from "./getBGColor";
+export { usePreviousRoute } from "./usePreviousRoute";

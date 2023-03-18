@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 // import { GetServerSidePropsContext } from "next";
 import { AppProps } from "next/app";
 import Head from "next/head";
@@ -10,14 +10,17 @@ import {
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
-import { getTheme } from "@constants";
+import { getTheme, usePreviousRoute } from "@constants";
 import { Header, Footer } from "@components";
+
+export const PrevUrlContext = createContext("");
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     props.colorScheme || "dark"
   );
+  const prevUrl = usePreviousRoute();
 
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme =
@@ -44,7 +47,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <link rel="icon" href="logo/Ikona_Oranzine.webp" />
           <title>Security Guru</title>
         </Head>
-        <Component {...pageProps} />
+        <PrevUrlContext.Provider value={prevUrl}>
+          <Component {...pageProps} />
+        </PrevUrlContext.Provider>
         <Footer />
       </MantineProvider>
     </ColorSchemeProvider>
