@@ -64,7 +64,7 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
         marginBottom,
         paddingBottom: baseTheme.spacing.sm,
         opacity: mounted || noMotion ? 1 : 0,
-        ...(noMotion
+        ...(!noMotion
           ? {
               transform: `scaleX(${mounted ? 1 : 0.9})`,
               transitionProperty: "opacity transform",
