@@ -2,7 +2,6 @@ import {
   Container,
   Text,
   createStyles,
-  Stack,
   Title,
   useMantineTheme,
   ThemeIcon,
@@ -20,7 +19,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle, SlideDownTitle } from "@components";
 import { getBGColor } from "@constants";
 
-export const MOCKDATA = [
+const DATA = [
   {
     icon: IconLock,
     title: "Visapusiški saugumo sprendimai",
@@ -64,6 +63,9 @@ const useStyles = createStyles((theme) => ({
     minHeight: 700,
     backgroundColor: theme.fn.primaryColor(),
     padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 
     [theme.fn.smallerThan("md")]: {
       padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 3)`,
@@ -131,7 +133,7 @@ export default function About() {
   const theme = useMantineTheme();
   const noMotion = useReducedMotion();
 
-  const features = MOCKDATA.map((feature, index) => (
+  const features = DATA.map((feature, index) => (
     <Feature {...feature} key={index} />
   ));
 
@@ -142,26 +144,24 @@ export default function About() {
       <SlideDownTitle title={pageTitle} />
 
       <Container fluid className={classes.container}>
-        <Stack>
-          <SimpleGrid
-            cols={3}
-            spacing={50}
-            className={classes.grid}
-            breakpoints={[
-              { maxWidth: theme.breakpoints.md, cols: 2, spacing: "xl" },
-              { maxWidth: theme.breakpoints.sm, cols: 1, spacing: "xl" },
-            ]}
-          >
-            {features}
-          </SimpleGrid>
-          {noMotion !== undefined && (
-            <Player
-              autoplay={!noMotion}
-              src="lottie_animations/cctv.json"
-              className={classes.animation}
-            />
-          )}
-        </Stack>
+        <SimpleGrid
+          cols={3}
+          spacing={50}
+          className={classes.grid}
+          breakpoints={[
+            { maxWidth: theme.breakpoints.md, cols: 2, spacing: "xl" },
+            { maxWidth: theme.breakpoints.sm, cols: 1, spacing: "xl" },
+          ]}
+        >
+          {features}
+        </SimpleGrid>
+        {noMotion !== undefined && (
+          <Player
+            autoplay={!noMotion}
+            src="lottie_animations/cctv.json"
+            className={classes.animation}
+          />
+        )}
       </Container>
     </>
   );

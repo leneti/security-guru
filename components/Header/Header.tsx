@@ -92,6 +92,12 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.gray[3],
     },
   },
+
+  centerHeader: {
+    [theme.fn.smallerThan("md")]: {
+      justifyContent: "center",
+    },
+  },
 }));
 
 export default function HeaderMenu() {
@@ -149,14 +155,23 @@ export default function HeaderMenu() {
   );
 
   return (
-    <nav className={classes.inner}>
+    <nav
+      className={clsx(
+        classes.inner,
+        !process.env.REACT_APP_SHOW_THEME_SWITCH && classes.centerHeader
+      )}
+    >
       <BurgerMenu />
       <Logo />
       <Group spacing={5} className={gClasses.bigDisplay} noWrap>
         {items}
-        <ThemeSwitch className={gClasses.bigDisplay} />
+        {process.env.REACT_APP_SHOW_THEME_SWITCH && (
+          <ThemeSwitch className={gClasses.bigDisplay} />
+        )}
       </Group>
-      <ThemeSwitch className={gClasses.smallDisplay} />
+      {process.env.REACT_APP_SHOW_THEME_SWITCH && (
+        <ThemeSwitch className={gClasses.smallDisplay} />
+      )}
     </nav>
   );
 }

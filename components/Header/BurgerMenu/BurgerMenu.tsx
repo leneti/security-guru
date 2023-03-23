@@ -1,12 +1,20 @@
-import { Drawer, Group, Burger } from "@mantine/core";
+import { Drawer, Burger, clsx, createStyles } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Logo } from "@components";
 import { useGlobalStyles, menuLinks } from "@constants";
 import { LinksGroup } from "./NavbarLinksGroup";
 
+const useStyles = createStyles((theme) => ({
+  burger: {
+    position: "absolute",
+    left: theme.spacing.md,
+  },
+}));
+
 export default function NavbarSimple() {
   const { classes: gClasses } = useGlobalStyles();
   const [opened, { close, toggle }] = useDisclosure(false);
+  const { classes } = useStyles();
 
   const linksGroup = menuLinks.map((item) => (
     <LinksGroup {...item} key={item.label} closeDrawer={close} />
@@ -30,9 +38,15 @@ export default function NavbarSimple() {
         </Drawer.Content>
       </Drawer.Root>
 
-      <Group position="center" className={gClasses.smallDisplay}>
-        <Burger opened={opened} onClick={toggle} size="md" />
-      </Group>
+      <Burger
+        opened={opened}
+        onClick={toggle}
+        size="md"
+        className={clsx(
+          gClasses.smallDisplay,
+          !process.env.REACT_APP_SHOW_THEME_SWITCH && classes.burger
+        )}
+      />
     </>
   );
 }
