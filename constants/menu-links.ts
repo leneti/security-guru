@@ -68,3 +68,12 @@ export const menuLinks: Link[] = [
     icon: IconMail, // IconPhone | IconHeadset | IconMessageCircle
   },
 ];
+
+export const flatLinks = menuLinks.flatMap((link, index) =>
+  "link" in link
+    ? { url: link.link, index }
+    : link.links.map((llink, iindex) => ({
+        url: llink.link,
+        index: iindex,
+      }))
+);

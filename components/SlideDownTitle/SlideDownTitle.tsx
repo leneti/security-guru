@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { Title, Transition, type MantineTransition } from "@mantine/core";
 import { useReducedMotion } from "@mantine/hooks";
+import { useRouter } from "next/router";
 import { PrevUrlContext } from "@pages/_app";
-import { baseTheme } from "@constants";
+import { baseTheme, flatLinks } from "@constants";
 
 const marginBottom = "1.5rem";
 
@@ -35,6 +36,12 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
   const [mounted, setMounted] = useState(false);
   const prevUrl = useContext(PrevUrlContext);
   const noMotion = useReducedMotion();
+  const currentUrl = useRouter().asPath;
+  const direction =
+    flatLinks.findIndex(({ url }) => url === currentUrl) >
+    flatLinks.findIndex(({ url }) => url === prevUrl)
+      ? "right"
+      : "left";
 
   useEffect(() => setMounted(true), []);
 
@@ -69,7 +76,7 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
               transform: `scaleX(${mounted ? 1 : 0.9})`,
               transitionProperty: "opacity transform",
               transitionDuration: ".2s",
-              transformOrigin: "left center 0px",
+              transformOrigin: `${direction} center 0px`,
             }
           : {}),
       }}
