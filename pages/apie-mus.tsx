@@ -2,7 +2,6 @@ import {
   Container,
   Text,
   createStyles,
-  Stack,
   Title,
   useMantineTheme,
   ThemeIcon,
@@ -20,7 +19,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle, SlideDownTitle } from "@components";
 import { getBGColor } from "@constants";
 
-export const MOCKDATA = [
+const DATA = [
   {
     icon: IconLock,
     title: "Visapusiški saugumo sprendimai",
@@ -134,7 +133,7 @@ export default function About() {
   const theme = useMantineTheme();
   const noMotion = useReducedMotion();
 
-  const features = MOCKDATA.map((feature, index) => (
+  const features = DATA.map((feature, index) => (
     <Feature {...feature} key={index} />
   ));
 
