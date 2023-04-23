@@ -100,6 +100,8 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+const SHOW_THEME_SWITCH = process.env.REACT_APP_SHOW_THEME_SWITCH === "true";
+
 export default function HeaderMenu() {
   const { classes } = useStyles();
   const { classes: gClasses } = useGlobalStyles();
@@ -158,20 +160,16 @@ export default function HeaderMenu() {
     <nav
       className={clsx(
         classes.inner,
-        !process.env.REACT_APP_SHOW_THEME_SWITCH && classes.centerHeader
+        !SHOW_THEME_SWITCH && classes.centerHeader
       )}
     >
       <BurgerMenu />
       <Logo />
       <Group spacing={5} className={gClasses.bigDisplay} noWrap>
         {items}
-        {process.env.REACT_APP_SHOW_THEME_SWITCH && (
-          <ThemeSwitch className={gClasses.bigDisplay} />
-        )}
+        {SHOW_THEME_SWITCH && <ThemeSwitch className={gClasses.bigDisplay} />}
       </Group>
-      {process.env.REACT_APP_SHOW_THEME_SWITCH && (
-        <ThemeSwitch className={gClasses.smallDisplay} />
-      )}
+      {SHOW_THEME_SWITCH && <ThemeSwitch className={gClasses.smallDisplay} />}
     </nav>
   );
 }

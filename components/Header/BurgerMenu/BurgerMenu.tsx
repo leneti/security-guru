@@ -44,7 +44,7 @@ export default function NavbarSimple() {
         size="md"
         className={clsx(
           gClasses.smallDisplay,
-          !process.env.REACT_APP_SHOW_THEME_SWITCH && classes.burger
+          process.env.REACT_APP_SHOW_THEME_SWITCH === "false" && classes.burger
         )}
       />
     </>
