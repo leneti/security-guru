@@ -7,3 +7,5 @@ export { default as Logo } from "./Logo";
 export { default as PageTitle } from "./PageTitle";
 export { default as PageBackground, type PageBGProps } from "./PageBackground";
 export { default as SlideDownTitle } from "./SlideDownTitle";
+export { default as ServiceCard } from "./ServiceCard";
+export { default as Services } from "./Services";

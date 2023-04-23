@@ -1,6 +1,6 @@
 import { GetInTouch, PageBackground } from "@components";
 
-const pageTitle = "Kontaktai";
+const pageTitle = "Susisiekite";
 
 export default function Contacts() {
   return (

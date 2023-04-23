@@ -1,4 +1,4 @@
-import { Drawer, Burger, clsx, createStyles } from "@mantine/core";
+import { Drawer, Burger, clsx, createStyles, px } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Logo } from "@components";
 import { useGlobalStyles, menuLinks } from "@constants";
@@ -32,7 +32,7 @@ export default function NavbarSimple() {
         <Drawer.Content>
           <Drawer.Header>
             <Logo drawer />
-            <Drawer.CloseButton size="lg" />
+            <Drawer.CloseButton size={px("1.75rem")} />
           </Drawer.Header>
           <Drawer.Body mt="xs">{linksGroup}</Drawer.Body>
         </Drawer.Content>
@@ -44,7 +44,7 @@ export default function NavbarSimple() {
         size="md"
         className={clsx(
           gClasses.smallDisplay,
-          !process.env.REACT_APP_SHOW_THEME_SWITCH && classes.burger
+          process.env.REACT_APP_SHOW_THEME_SWITCH === "false" && classes.burger
         )}
       />
     </>

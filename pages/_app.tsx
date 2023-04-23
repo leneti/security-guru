@@ -39,17 +39,21 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         withGlobalStyles
         withNormalizeCSS
       >
-        <Notifications position="top-right" />
-        <Header />
         <Head>
           <meta name="description" content="Apsaugos sprendimai" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="logo/Ikona_Oranzine.webp" />
           <title>Security Guru</title>
         </Head>
+
+        <Notifications position="top-right" />
+
+        <Header />
+
         <PrevUrlContext.Provider value={prevUrl}>
           <Component {...pageProps} />
         </PrevUrlContext.Provider>
+
         <Footer />
       </MantineProvider>
     </ColorSchemeProvider>
