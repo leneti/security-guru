@@ -108,11 +108,24 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
 
   components: {
     Button: {
-      styles: (theme) => ({
-        root: {
-          color: theme.colorScheme === "dark" ? "#000" : "#fff",
-        },
-      }),
+      variants: {
+        filled: (theme) => ({
+          root: {
+            color:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.gray[1],
+          },
+        }),
+        gradient: (theme) => ({
+          root: {
+            color:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.gray[1],
+          },
+        }),
+      },
     },
 
     Text: {

@@ -1,7 +1,7 @@
 import {
   TablerIcon,
   IconInfoCircle,
-  IconShieldCheck,
+  // IconShieldCheck,
   IconMail,
   IconBriefcase,
 } from "@tabler/icons";
@@ -29,6 +29,11 @@ export const menuLinks: Link[] = [
     label: "Apie mus",
     link: "/apie-mus",
     icon: IconInfoCircle, // IconUser | IconBriefcase
+  },
+  {
+    label: "Test",
+    link: "/test",
+    icon: IconInfoCircle,
   },
   // {
   //   label: "Apsaugos sprendimai",
