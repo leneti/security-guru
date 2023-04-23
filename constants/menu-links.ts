@@ -63,8 +63,8 @@ export const menuLinks: Link[] = [
     ],
   },
   {
-    label: "Kontaktai",
-    link: "/kontaktai",
+    label: "Susisiekite",
+    link: "/susisiekite",
     icon: IconMail, // IconPhone | IconHeadset | IconMessageCircle
   },
 ];
