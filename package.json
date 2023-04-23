@@ -6,7 +6,8 @@
     "start": "next dev",
     "build": "next build",
     "serve": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "copy-dont-run": "npm pkg set 'type'='module' && ts-node --esm md-to-html.ts && npm pkg delete 'type'"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.272.0",
