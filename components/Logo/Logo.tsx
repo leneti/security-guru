@@ -28,8 +28,12 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
               ? "/logo/Ikona_Oranzine.webp"
               : "/logo/Ikona_Tamsiai_Zalia.webp"
           }
-          height={logoSize + 10}
-          width={((logoSize + 10) / 2001) * 2000}
+          height={0}
+          width={0}
+          style={{
+            height: logoSize + 10,
+            width: "auto",
+          }}
           unoptimized
         />
       </Link>
@@ -46,8 +50,12 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
               ? "/logo/HLogotipas_Oranzine.webp"
               : "/logo/HLogotipas_Tamsiai_Zalia.webp"
           }
-          height={logoSize * 0.75}
-          width={(logoSize / 341) * 2000 * 0.75}
+          height={0}
+          width={0}
+          style={{
+            height: logoSize * 0.75,
+            width: "auto",
+          }}
           unoptimized
         />
       </Link>
@@ -70,8 +78,12 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
               ? "/logo/Logotipas_Oranzine.webp"
               : "/logo/Logotipas_Tamsiai_Zalia.webp"
           }
-          height={logoSize + 10}
-          width={((logoSize + 10) / 785) * 2000}
+          height={0}
+          width={0}
+          style={{
+            height: logoSize + 10,
+            width: "auto",
+          }}
           unoptimized
         />
       </Link>
@@ -83,8 +95,12 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
               ? "/logo/HLogotipas_Oranzine.webp"
               : "/logo/HLogotipas_Tamsiai_Zalia.webp"
           }
-          height={logoSize}
-          width={(logoSize / 341) * 2000}
+          height={0}
+          width={0}
+          style={{
+            height: logoSize,
+            width: "auto",
+          }}
           unoptimized
         />
       </Link>
