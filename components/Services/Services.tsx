@@ -44,23 +44,23 @@ const data = [
   },
 ];
 
-export default function Services({ withBorder }: { withBorder?: boolean }) {
+export default function Services() {
   return (
     <Grid columns={12}>
       <Grid.Col sm={12} lg={7}>
-        <ServiceCard {...data[0]} withBorder={withBorder} />
+        <ServiceCard {...data[0]} />
       </Grid.Col>
       <Grid.Col sm={6} lg={5}>
-        <ServiceCard {...data[1]} withBorder={withBorder} />
+        <ServiceCard {...data[1]} />
       </Grid.Col>
       <Grid.Col sm={6} lg={4}>
-        <ServiceCard {...data[2]} withBorder={withBorder} />
+        <ServiceCard {...data[2]} />
       </Grid.Col>
       <Grid.Col sm={6} lg={4}>
-        <ServiceCard {...data[3]} withBorder={withBorder} />
+        <ServiceCard {...data[3]} />
       </Grid.Col>
       <Grid.Col sm={6} lg={4}>
-        <ServiceCard {...data[4]} withBorder={withBorder} />
+        <ServiceCard {...data[4]} />
       </Grid.Col>
     </Grid>
   );

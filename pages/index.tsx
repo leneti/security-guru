@@ -95,7 +95,7 @@ export default function Home() {
           Paslaugos
         </Title>
         <Divider w="100%" my="xl" />
-        <Services withBorder />
+        <Services />
       </Container>
 
       <Center

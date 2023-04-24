@@ -31,16 +31,6 @@ export const menuLinks: Link[] = [
     icon: IconInfoCircle, // IconUser | IconBriefcase
   },
   {
-    label: "Test",
-    link: "/test",
-    icon: IconInfoCircle,
-  },
-  // {
-  //   label: "Apsaugos sprendimai",
-  //   link: "/apsaugos-sprendimai",
-  //   icon: IconShieldCheck, // IconLock | IconShieldLock
-  // },
-  {
     label: "Paslaugos",
     icon: IconBriefcase, // IconCog | IconGrid
     initiallyOpened: true,
