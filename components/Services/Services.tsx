@@ -44,23 +44,23 @@ const data = [
   },
 ];
 
-export default function LeadGrid() {
+export default function Services({ withBorder }: { withBorder?: boolean }) {
   return (
     <Grid columns={12}>
       <Grid.Col sm={12} lg={7}>
-        <ServiceCard {...data[0]} />
+        <ServiceCard {...data[0]} withBorder={withBorder} />
       </Grid.Col>
       <Grid.Col sm={6} lg={5}>
-        <ServiceCard {...data[1]} />
+        <ServiceCard {...data[1]} withBorder={withBorder} />
       </Grid.Col>
       <Grid.Col sm={6} lg={4}>
-        <ServiceCard {...data[2]} />
+        <ServiceCard {...data[2]} withBorder={withBorder} />
       </Grid.Col>
       <Grid.Col sm={6} lg={4}>
-        <ServiceCard {...data[3]} />
+        <ServiceCard {...data[3]} withBorder={withBorder} />
       </Grid.Col>
       <Grid.Col sm={6} lg={4}>
-        <ServiceCard {...data[4]} />
+        <ServiceCard {...data[4]} withBorder={withBorder} />
       </Grid.Col>
     </Grid>
   );
