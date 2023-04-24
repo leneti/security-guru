@@ -8,17 +8,19 @@ export default function ServiceCard({
   title,
   description,
   price,
+  withBorder = false,
 }: {
   image: string;
   title: string;
   description: string;
   price: string;
+  withBorder?: boolean;
 }) {
   return (
     <Card
       shadow="xl"
       radius="md"
-      withBorder
+      withBorder={withBorder}
       h="100%"
       mih={CARD_HEIGHT}
       sx={{
