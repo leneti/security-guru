@@ -75,8 +75,8 @@ interface LinksGroupProps {
   icon: TablerIcon;
   label: string;
   initiallyOpened?: boolean;
-  links?: { label: string; link: string }[];
-  link?: string;
+  links?: { label: string; url: string }[];
+  url?: string;
   closeDrawer: () => void;
 }
 
@@ -85,7 +85,7 @@ export function LinksGroup({
   label,
   initiallyOpened,
   links,
-  link,
+  url,
   closeDrawer,
 }: LinksGroupProps) {
   const { classes, theme } = useStyles();
@@ -95,14 +95,14 @@ export function LinksGroup({
     <Link
       key={link.label}
       className={classes.subLink}
-      href={link.link}
+      href={link.url}
       onClick={closeDrawer}
     >
       {link.label}
     </Link>
   ));
 
-  if (!link) {
+  if (!url) {
     return (
       <>
         <UnstyledButton onClick={toggle} className={classes.control}>
@@ -131,7 +131,7 @@ export function LinksGroup({
   return (
     <UnstyledButton
       component={Link}
-      href={link}
+      href={url}
       className={classes.control}
       onClick={closeDrawer}
     >
