@@ -133,14 +133,7 @@ export default function Hero() {
 
         <Button
           component={Link}
-          href="/kontaktai"
-          variant="gradient"
-          gradient={{
-            from: theme.fn.primaryColor(),
-            to: theme.colors["brand"][
-              theme.fn.primaryShade() - (theme.colorScheme === "dark" ? 1 : 2)
-            ],
-          }}
+          href="/susisiekite"
           size="xl"
           radius="xl"
           className={classes.control}
