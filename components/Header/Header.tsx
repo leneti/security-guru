@@ -110,8 +110,8 @@ export default function HeaderMenu() {
 
   const items = menuLinks.map((link) => {
     if ("links" in link) {
-      const menuItems = link.links.map(({ link, label }) => (
-        <Link key={link} href={link} className={classes.subLink}>
+      const menuItems = link.links.map(({ url, label }) => (
+        <Link key={url} href={url} className={classes.subLink}>
           <Menu.Item>{label}</Menu.Item>
         </Link>
       ));
@@ -134,7 +134,7 @@ export default function HeaderMenu() {
     }
 
     return (
-      <Link key={link.label} href={link.link} className={classes.link}>
+      <Link key={link.label} href={link.url} className={classes.link}>
         {link.label}
       </Link>
     );

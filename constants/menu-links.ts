@@ -13,7 +13,7 @@ interface LinkBasic {
 }
 
 interface LinkUrl {
-  link: string;
+  url: string;
 }
 
 type SubLink = LinkUrl & Pick<LinkBasic, "label">;
@@ -27,7 +27,7 @@ type Link = LinkBasic & (LinkParent | LinkUrl);
 export const menuLinks: Link[] = [
   {
     label: "Apie mus",
-    link: "/apie-mus",
+    url: "/apie-mus",
     icon: IconInfoCircle, // IconUser | IconBriefcase
   },
   {
@@ -37,38 +37,33 @@ export const menuLinks: Link[] = [
     links: [
       {
         label: "Apsaugos signalizacijos sistemos",
-        link: "/paslaugos/apsaugos-signalizacijos-sistemos",
+        url: "/paslaugos/apsaugos-signalizacijos-sistemos",
       },
       {
         label: "Įeigos kontrolės sistemos",
-        link: "/paslaugos/ieigos-kontroles-sistemos",
+        url: "/paslaugos/ieigos-kontroles-sistemos",
       },
       {
         label: "Integruoti apsaugos sprendimai",
-        link: "/paslaugos/integruoti-apsaugos-sprendimai",
+        url: "/paslaugos/integruoti-apsaugos-sprendimai",
       },
       {
         label: "Priešgaisrinės signalizacijos sistemos",
-        link: "/paslaugos/priesgaisrines-signalizacijos-sistemos",
+        url: "/paslaugos/priesgaisrines-signalizacijos-sistemos",
       },
       {
         label: "Vaizdo stebėjimo sistemos",
-        link: "/paslaugos/vaizdo-stebejimo-sistemos",
+        url: "/paslaugos/vaizdo-stebejimo-sistemos",
       },
     ],
   },
   {
     label: "Susisiekite",
-    link: "/susisiekite",
+    url: "/susisiekite",
     icon: IconMail, // IconPhone | IconHeadset | IconMessageCircle
   },
 ];
 
-export const flatLinks = menuLinks.flatMap((link, index) =>
-  "link" in link
-    ? { url: link.link, index }
-    : link.links.map((llink, iindex) => ({
-        url: llink.link,
-        index: iindex,
-      }))
+export const flatLinks = menuLinks.flatMap((link) =>
+  "url" in link ? { url: link.url } : link.links.map(({ url }) => ({ url }))
 );

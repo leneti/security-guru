@@ -28,7 +28,7 @@ export default function PageBackground({ pageTitle, children }: PageBGProps) {
           backgroundPosition: "center",
         }}
       >
-        <Overlay opacity={0} zIndex={0} blur={dark ? 1 : 2} />
+        <Overlay opacity={0.1} zIndex={0} blur={dark ? 1 : 2} />
         <Container
           fluid
           p={0}

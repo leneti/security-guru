@@ -1,7 +1,7 @@
 import { Card, Image, Text, Badge, Button, Group, Title } from "@mantine/core";
 
-const CARD_HEIGHT = 400;
-const IMAGE_HEIGHT = 180;
+const CARD_HEIGHT = 420;
+const IMAGE_HEIGHT = 200;
 
 export default function ServiceCard({
   image,
