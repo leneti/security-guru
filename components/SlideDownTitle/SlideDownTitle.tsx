@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Title, Transition, type MantineTransition } from "@mantine/core";
+import { Title, Transition, type MantineTransition, Text } from "@mantine/core";
 import { useReducedMotion } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import { PrevUrlContext } from "@pages/_app";
@@ -29,10 +29,18 @@ const scaleY: MantineTransition = {
 
 export interface SlideDownTitleProps {
   title: string;
+  wip?: boolean;
 }
 
+const WIPText = ({ wip }: Pick<SlideDownTitleProps, "wip">) =>
+  wip ? (
+    <Text align="center" mb="lg" c="dimmed">
+      Puslapis ruošiamas
+    </Text>
+  ) : null;
+
 export default function SlideDownTitle(props: SlideDownTitleProps) {
-  const { title } = props;
+  const { title, wip = false } = props;
   const [mounted, setMounted] = useState(false);
   const prevUrl = useContext(PrevUrlContext);
   const noMotion = useReducedMotion();
@@ -48,40 +56,46 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
   return prevUrl === "/" ? (
     <Transition mounted={mounted} transition={scaleY} duration={200}>
       {(styles) => (
-        <Title
-          align="center"
-          style={{
-            ...styles,
-            fontWeight: 900,
-            marginTop: baseTheme.spacing.xs,
-            marginBottom,
-            paddingBottom: baseTheme.spacing.sm,
-          }}
-        >
-          {title}
-        </Title>
+        <>
+          <Title
+            align="center"
+            style={{
+              ...styles,
+              fontWeight: 900,
+              marginTop: baseTheme.spacing.xs,
+              marginBottom,
+              paddingBottom: baseTheme.spacing.sm,
+            }}
+          >
+            {title}
+          </Title>
+          <WIPText wip={wip} />
+        </>
       )}
     </Transition>
   ) : (
-    <Title
-      align="center"
-      sx={{
-        fontWeight: 900,
-        marginTop: baseTheme.spacing.xs,
-        marginBottom,
-        paddingBottom: baseTheme.spacing.sm,
-        opacity: mounted || noMotion ? 1 : 0,
-        ...(!noMotion
-          ? {
-              transform: `scaleX(${mounted ? 1 : 0.9})`,
-              transitionProperty: "opacity transform",
-              transitionDuration: ".2s",
-              transformOrigin: `${direction} center 0px`,
-            }
-          : {}),
-      }}
-    >
-      {title}
-    </Title>
+    <>
+      <Title
+        align="center"
+        sx={{
+          fontWeight: 900,
+          marginTop: baseTheme.spacing.xs,
+          marginBottom,
+          paddingBottom: baseTheme.spacing.sm,
+          opacity: mounted || noMotion ? 1 : 0,
+          ...(!noMotion
+            ? {
+                transform: `scaleX(${mounted ? 1 : 0.9})`,
+                transitionProperty: "opacity transform",
+                transitionDuration: ".2s",
+                transformOrigin: `${direction} center 0px`,
+              }
+            : {}),
+        }}
+      >
+        {title}
+      </Title>
+      <WIPText wip={wip} />
+    </>
   );
 }

@@ -43,7 +43,7 @@ export default function FireAlarms() {
     <>
       <PageTitle>{pageTitle}</PageTitle>
 
-      <SlideDownTitle title={pageTitle} />
+      <SlideDownTitle title={pageTitle} wip />
 
       <Container fluid className={classes.container}>
         <Text

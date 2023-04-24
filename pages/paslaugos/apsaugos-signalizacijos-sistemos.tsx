@@ -43,7 +43,7 @@ export default function AlarmSystems() {
     <>
       <PageTitle>{pageTitle}</PageTitle>
 
-      <SlideDownTitle title={pageTitle} />
+      <SlideDownTitle title={pageTitle} wip />
 
       <Container fluid className={classes.container}>
         <Text
