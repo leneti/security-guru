@@ -1,9 +1,10 @@
-export { default as contactData } from "./contact-data";
-export { ERROR_MESSAGES } from "./error-messages";
-export { default as useGlobalStyles } from "./global-styles";
-export { menuLinks, flatLinks } from "./menu-links";
-export { emailRegex, numberRegex } from "./regexes";
-export { getTheme, baseTheme } from "./theme";
-export { getBGColor } from "./getBGColor";
-export { usePreviousRoute } from "./usePreviousRoute";
+export * from "./contact-data";
+export * from "./error-messages";
+export * from "./global-styles";
+export * from "./menu-links";
+export * from "./regexes";
+export * from "./theme";
+export * from "./getBGColor";
+export * from "./usePreviousRoute";
 export * from "./measurements";
+export * from "./about-us";
