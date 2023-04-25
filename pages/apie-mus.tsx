@@ -17,7 +17,7 @@ import {
 } from "@tabler/icons";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { PageTitle, SlideDownTitle } from "@components";
-import { getBGColor } from "@constants";
+import { bgImgHeight, getBGColor } from "@constants";
 
 const DATA = [
   {
@@ -60,7 +60,7 @@ interface FeatureProps {
 
 const useStyles = createStyles((theme) => ({
   container: {
-    minHeight: 700,
+    minHeight: bgImgHeight,
     backgroundColor: theme.fn.primaryColor(),
     padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
     display: "flex",

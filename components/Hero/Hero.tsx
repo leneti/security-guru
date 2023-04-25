@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   createStyles,
   Overlay,
@@ -8,21 +9,25 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { bgImgHeight } from "@constants";
+import houses from "@assets/unsplash-houses.webp";
 
 const leftPadding = "60px";
+const overlayGradient = {
+  dark: "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)",
+  light:
+    "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 100%)",
+};
 
 const useStyles = createStyles((theme) => ({
   hero: {
     position: "relative",
-    backgroundImage: "url(/unsplash-houses.webp)",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    height: bgImgHeight,
   },
 
-  container: {
-    position: "relative",
-    height: 700,
+  content: {
+    height: bgImgHeight,
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
@@ -111,36 +116,39 @@ export default function Hero() {
 
   return (
     <div className={classes.hero}>
+      <Image
+        src={houses}
+        alt="houses"
+        fill
+        style={{ objectFit: "cover" }}
+        priority
+      />
       <Overlay
-        gradient={
-          mounted
-            ? theme.colorScheme === "dark"
-              ? "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)"
-              : "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 100%)"
-            : undefined
-        }
+        gradient={mounted ? overlayGradient[theme.colorScheme] : undefined}
         opacity={mounted ? 1 : 0}
         zIndex={0}
         blur={theme.colorScheme === "dark" ? 1 : 2}
-      />
-      <Container className={classes.container} size={theme.breakpoints.xl}>
-        <Title className={classes.title}>
-          Namų ir verslo apsaugos sprendimai
-        </Title>
-        <Text className={classes.description} mt="xl" weight={600}>
-          Aukščiausio lygio paslaugos fizinės bei elektroninės apsaugos srityse
-        </Text>
+      >
+        <Container className={classes.content} size={theme.breakpoints.xl}>
+          <Title className={classes.title}>
+            Namų ir verslo apsaugos sprendimai
+          </Title>
+          <Text className={classes.description} mt="xl" weight={600}>
+            Aukščiausio lygio paslaugos fizinės bei elektroninės apsaugos
+            srityse
+          </Text>
 
-        <Button
-          component={Link}
-          href="/susisiekite"
-          size="xl"
-          radius="xl"
-          className={classes.control}
-        >
-          Susisiekite su mumis
-        </Button>
-      </Container>
+          <Button
+            component={Link}
+            href="/susisiekite"
+            size="xl"
+            radius="xl"
+            className={classes.control}
+          >
+            Susisiekite su mumis
+          </Button>
+        </Container>
+      </Overlay>
     </div>
   );
 }
