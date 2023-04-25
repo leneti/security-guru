@@ -23,8 +23,8 @@ function Illustration(props: React.ComponentPropsWithoutRef<"svg">) {
 
 const useStyles = createStyles((theme) => ({
   root: {
-    paddingTop: 20,
-    paddingBottom: 80,
+    paddingTop: 30,
+    paddingBottom: 130,
   },
 
   inner: {
