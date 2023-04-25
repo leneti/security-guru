@@ -35,8 +35,7 @@ const useStyles = createStyles((theme) => {
   return {
     wrapper: {
       display: "flex",
-      backgroundColor:
-        theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+      backgroundColor: theme.colors.dark[7],
       borderRadius: theme.radius.lg,
       padding: 4,
 

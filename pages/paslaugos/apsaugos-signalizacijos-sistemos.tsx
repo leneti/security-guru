@@ -1,10 +1,11 @@
 import { Container, createStyles, Text } from "@mantine/core";
 import { PageTitle, SlideDownTitle } from "@components";
+import { bgImgHeight } from "@constants";
 import html from "./_page_content/ass.json";
 
 const useStyles = createStyles((theme) => ({
   container: {
-    minHeight: 700,
+    minHeight: bgImgHeight,
     backgroundColor: theme.fn.primaryColor(),
     padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
     display: "flex",
@@ -43,7 +44,7 @@ export default function AlarmSystems() {
     <>
       <PageTitle>{pageTitle}</PageTitle>
 
-      <SlideDownTitle title={pageTitle} />
+      <SlideDownTitle title={pageTitle} wip />
 
       <Container fluid className={classes.container}>
         <Text

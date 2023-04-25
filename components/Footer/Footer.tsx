@@ -15,10 +15,8 @@ const useStyles = createStyles((theme) => ({
   footer: {
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
-    }`,
-    color: theme.colors.gray[theme.colorScheme === "dark" ? 6 : 7],
+    borderTop: `1px solid ${theme.colors.dark[5]}`,
+    color: theme.colors.gray[6],
   },
 
   logo: {
@@ -50,9 +48,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.xl,
     paddingTop: theme.spacing.xl,
     paddingBottom: theme.spacing.xl,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]
-    }`,
+    borderTop: `1px solid ${theme.colors.dark[4]}`,
 
     [theme.fn.smallerThan("sm")]: {
       flexDirection: "column",

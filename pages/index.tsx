@@ -44,13 +44,7 @@ const useStyles = createStyles(
 
     services: {
       maxWidth: theme.breakpoints.xl,
-      minHeight: 700,
-      padding: `calc(${theme.spacing.xl} * 3) 0`,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-
+      padding: `calc(${theme.spacing.xl} * 4) 0`,
       marginLeft: "auto",
       marginRight: "auto",
 
@@ -91,11 +85,11 @@ export default function Home() {
       />
 
       <Container fluid className={classes.services}>
-        <Title ref={targetRef} order={2} size="h1">
+        <Title ref={targetRef} order={2} size="h1" align="center">
           Paslaugos
         </Title>
         <Divider w="100%" my="xl" />
-        <Services withBorder />
+        <Services />
       </Container>
 
       <Center

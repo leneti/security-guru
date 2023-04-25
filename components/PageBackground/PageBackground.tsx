@@ -1,11 +1,17 @@
-import {
-  Container,
-  Overlay,
-  Center,
-  useMantineColorScheme,
-  Box,
-} from "@mantine/core";
+import { Overlay, Center, Box, createStyles } from "@mantine/core";
+import Image from "next/image";
 import { PageTitle, SlideDownTitle } from "@components";
+import { bgImgHeight } from "@constants";
+import houses from "@assets/unsplash-houses.webp";
+
+const useStyles = createStyles(() => ({
+  container: {
+    position: "relative",
+    minHeight: bgImgHeight,
+  },
+
+  image: { objectFit: "cover" },
+}));
 
 export interface PageBGProps {
   pageTitle: string;
@@ -13,33 +19,26 @@ export interface PageBGProps {
 }
 
 export default function PageBackground({ pageTitle, children }: PageBGProps) {
-  const dark = useMantineColorScheme().colorScheme === "dark";
+  const { classes } = useStyles();
 
   return (
     <>
       <PageTitle>{pageTitle}</PageTitle>
       <SlideDownTitle title={pageTitle} />
 
-      <Box
-        sx={{
-          position: "relative",
-          backgroundImage: "url(/unsplash-houses.webp)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <Overlay opacity={0} zIndex={0} blur={dark ? 1 : 2} />
-        <Container
-          fluid
-          p={0}
-          sx={{
-            position: "relative",
-          }}
-        >
-          <Center py="xl" sx={{ minHeight: 700 }}>
+      <Box className={classes.container}>
+        <Image
+          src={houses}
+          alt="houses"
+          fill
+          className={classes.image}
+          priority
+        />
+        <Overlay opacity={0.1} zIndex={0} blur={1}>
+          <Center p="xl" sx={{ minHeight: bgImgHeight }}>
             {children}
           </Center>
-        </Container>
+        </Overlay>
       </Box>
     </>
   );

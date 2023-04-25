@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useMantineColorScheme } from "@mantine/core";
 import { useGlobalStyles } from "@constants";
+import Ikona_Oranzine from "@assets/logo/Ikona_Oranzine.webp";
+import HLogotipas_Oranzine from "@assets/logo/HLogotipas_Oranzine.webp";
+import Logotipas_Oranzine from "@assets/logo/Logotipas_Oranzine.webp";
 
 interface LogoProps {
   iconOnly?: boolean;
@@ -12,9 +14,7 @@ interface LogoProps {
 const defaultSize = 50;
 
 export default function Logo({ iconOnly, size, drawer }: LogoProps) {
-  const { colorScheme } = useMantineColorScheme();
   const { classes: gClasses } = useGlobalStyles();
-  const dark = colorScheme === "dark";
 
   const logoSize = size ?? defaultSize;
 
@@ -23,17 +23,9 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
       <Link href="/">
         <Image
           alt="SG logo"
-          src={
-            dark
-              ? "/logo/Ikona_Oranzine.webp"
-              : "/logo/Ikona_Tamsiai_Zalia.webp"
-          }
-          height={0}
-          width={0}
-          style={{
-            height: logoSize + 10,
-            width: "auto",
-          }}
+          src={Ikona_Oranzine}
+          height={logoSize + 10}
+          width={((logoSize + 10) / 2001) * 2000}
           unoptimized
         />
       </Link>
@@ -45,17 +37,9 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
       <Link href="/">
         <Image
           alt="SG logo"
-          src={
-            dark
-              ? "/logo/HLogotipas_Oranzine.webp"
-              : "/logo/HLogotipas_Tamsiai_Zalia.webp"
-          }
-          height={0}
-          width={0}
-          style={{
-            height: logoSize * 0.75,
-            width: "auto",
-          }}
+          src={HLogotipas_Oranzine}
+          height={logoSize * 0.75}
+          width={(logoSize / 341) * 2000 * 0.75}
           unoptimized
         />
       </Link>
@@ -73,34 +57,18 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
       >
         <Image
           alt="SG logo"
-          src={
-            dark
-              ? "/logo/Logotipas_Oranzine.webp"
-              : "/logo/Logotipas_Tamsiai_Zalia.webp"
-          }
-          height={0}
-          width={0}
-          style={{
-            height: logoSize + 10,
-            width: "auto",
-          }}
+          src={Logotipas_Oranzine}
+          height={logoSize + 10}
+          width={((logoSize + 10) / 785) * 2000}
           unoptimized
         />
       </Link>
       <Link href="/" className={gClasses.bigDisplay}>
         <Image
           alt="SG logo"
-          src={
-            dark
-              ? "/logo/HLogotipas_Oranzine.webp"
-              : "/logo/HLogotipas_Tamsiai_Zalia.webp"
-          }
-          height={0}
-          width={0}
-          style={{
-            height: logoSize,
-            width: "auto",
-          }}
+          src={HLogotipas_Oranzine}
+          height={logoSize}
+          width={(logoSize / 341) * 2000}
           unoptimized
         />
       </Link>
