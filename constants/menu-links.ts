@@ -1,15 +1,16 @@
 import {
   TablerIcon,
-  IconInfoCircle,
-  // IconShieldCheck,
+  IconShieldCheck,
   IconMail,
   IconBriefcase,
+  IconTools,
 } from "@tabler/icons";
 
 interface LinkBasic {
   label: string;
   icon: TablerIcon;
   initiallyOpened?: boolean;
+  hidden?: boolean;
 }
 
 interface LinkUrl {
@@ -28,7 +29,7 @@ export const menuLinks: Link[] = [
   {
     label: "Apie mus",
     url: "/apie-mus",
-    icon: IconInfoCircle, // IconUser | IconBriefcase
+    icon: IconShieldCheck, // IconUser | IconBriefcase | IconInfoCircle
   },
   {
     label: "Paslaugos",
@@ -57,6 +58,11 @@ export const menuLinks: Link[] = [
       },
     ],
   },
+  // {
+  //   label: "Projektai",
+  //   url: "/projektai",
+  //   icon: IconTools, // IconNotebook | IconSignature | IconArchive
+  // },
   {
     label: "Susisiekite",
     url: "/susisiekite",

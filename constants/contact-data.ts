@@ -6,7 +6,7 @@ import {
   IconBuildingEstate,
 } from "@tabler/icons";
 
-export default [
+export const contactData = [
   { title: "El. paštas", description: "info@securityguru.lt", icon: IconAt },
   {
     title: "Tel. Nr.",

@@ -1,28 +1,10 @@
-import { createStyles, Container, Text } from "@mantine/core";
-import { PageTitle, SlideDownTitle } from "@components";
-import { bgImgHeight } from "@constants";
+import { createStyles, Text } from "@mantine/core";
+import { PageBackground } from "@components";
 import html from "./_page_content/pss.json";
 
 const pageTitle = "Priešgaisrinės signalizacijos sistemos";
 
 const useStyles = createStyles((theme) => ({
-  container: {
-    minHeight: bgImgHeight,
-    backgroundColor: theme.fn.primaryColor(),
-    padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-
-    [theme.fn.smallerThan("md")]: {
-      padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 3)`,
-    },
-
-    [theme.fn.smallerThan("sm")]: {
-      padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
-    },
-  },
-
   content: {
     width: "75%",
     maxWidth: theme.breakpoints.xl,
@@ -41,18 +23,12 @@ export default function FireAlarms() {
   const { classes } = useStyles();
 
   return (
-    <>
-      <PageTitle>{pageTitle}</PageTitle>
-
-      <SlideDownTitle title={pageTitle} wip />
-
-      <Container fluid className={classes.container}>
-        <Text
-          variant="lightBg"
-          className={classes.content}
-          dangerouslySetInnerHTML={html}
-        />
-      </Container>
-    </>
+    <PageBackground pageTitle={pageTitle} wip colorOnly>
+      <Text
+        variant="lightBg"
+        className={classes.content}
+        dangerouslySetInnerHTML={html}
+      />
+    </PageBackground>
   );
 }
