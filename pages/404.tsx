@@ -7,6 +7,7 @@ import {
   Group,
   useMantineTheme,
 } from "@mantine/core";
+import Link from "next/link";
 
 function Illustration(props: React.ComponentPropsWithoutRef<"svg">) {
   const theme = useMantineTheme();
@@ -81,10 +82,12 @@ export default function NothingFoundBackground() {
           >
             Puslapis, kurį bandote atidaryti, neegzistuoja. Galbūt klaidingai
             įvedėte adresą arba puslapis perkeltas į kitą URL adresą. Jei
-            manote, kad įvyko klaida, kreipkitės į Security Guru komandą.
+            manote, kad įvyko klaida, prašome kreiptis į Security Guru komandą.
           </Text>
           <Group position="center">
-            <Button size="md">Atgal į pradžią</Button>
+            <Button component={Link} href="/" size="md">
+              Atgal į pradžią
+            </Button>
           </Group>
         </div>
       </div>
