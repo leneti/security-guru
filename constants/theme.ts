@@ -1,4 +1,4 @@
-import { MantineThemeOverride, ColorScheme } from "@mantine/core";
+import { MantineThemeOverride } from "@mantine/core";
 import { getBGColor } from "./getBGColor";
 
 export const baseTheme = {
@@ -35,36 +35,22 @@ export const baseTheme = {
   },
 };
 
-export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
-  colorScheme,
+export const getTheme = (): MantineThemeOverride => ({
+  colorScheme: "dark",
 
   colors: {
-    brand:
-      colorScheme === "dark"
-        ? [
-            "#FFF3EA",
-            "#FFDFC6",
-            "#FFCDA4",
-            "#FFBC85",
-            "#FFAB66",
-            "#FF9B49",
-            "#FF8D2F",
-            "#FF8017",
-            "#FF7301",
-            "#EB6A00",
-          ]
-        : [
-            "#C3C9C9",
-            "#718986",
-            "#425B58",
-            "#243E3C",
-            "#112D2A",
-            "#05221F",
-            "#040C0B",
-            "#020404",
-            "#010202",
-            "#000101",
-          ],
+    brand: [
+      "#FFF3EA",
+      "#FFDFC6",
+      "#FFCDA4",
+      "#FFBC85",
+      "#FFAB66",
+      "#FF9B49",
+      "#FF8D2F",
+      "#FF8017",
+      "#FF7301",
+      "#EB6A00",
+    ],
     "brand-orange": [
       "#FFF3EA",
       "#FFDFC6",
@@ -111,18 +97,12 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
       variants: {
         filled: (theme) => ({
           root: {
-            color:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[6]
-                : theme.colors.gray[1],
+            color: theme.colors.dark[6],
           },
         }),
         gradient: (theme) => ({
           root: {
-            color:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[6]
-                : theme.colors.gray[1],
+            color: theme.colors.dark[6],
           },
         }),
       },
@@ -134,12 +114,8 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
           root: {
             color:
               params.color === "dimmed"
-                ? theme.colorScheme === "dark"
-                  ? theme.colors.dark[5]
-                  : theme.colors.gray[5]
-                : theme.colorScheme === "dark"
-                ? theme.colors.dark[6]
-                : theme.colors.gray[1],
+                ? theme.colors.dark[5]
+                : theme.colors.dark[6],
           },
         }),
       },
@@ -149,7 +125,7 @@ export const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
       variants: {
         lightBg: (theme) => ({
           root: {
-            color: theme.colorScheme === "dark" ? theme.black : theme.white,
+            color: theme.black,
           },
         }),
       },

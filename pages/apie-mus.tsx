@@ -82,10 +82,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   description: {
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[5],
+    color: theme.colors.dark[6],
     textAlign: "center",
   },
 

@@ -1,10 +1,4 @@
-import {
-  Overlay,
-  Center,
-  useMantineColorScheme,
-  Box,
-  createStyles,
-} from "@mantine/core";
+import { Overlay, Center, Box, createStyles } from "@mantine/core";
 import Image from "next/image";
 import { PageTitle, SlideDownTitle } from "@components";
 import { bgImgHeight } from "@constants";
@@ -25,7 +19,6 @@ export interface PageBGProps {
 }
 
 export default function PageBackground({ pageTitle, children }: PageBGProps) {
-  const dark = useMantineColorScheme().colorScheme === "dark";
   const { classes } = useStyles();
 
   return (
@@ -41,7 +34,7 @@ export default function PageBackground({ pageTitle, children }: PageBGProps) {
           className={classes.image}
           priority
         />
-        <Overlay opacity={0.1} zIndex={0} blur={dark ? 1 : 2}>
+        <Overlay opacity={0.1} zIndex={0} blur={1}>
           <Center p="xl" sx={{ minHeight: bgImgHeight }}>
             {children}
           </Center>

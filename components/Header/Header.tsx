@@ -1,13 +1,5 @@
-import {
-  createStyles,
-  Menu,
-  Group,
-  ActionIcon,
-  useMantineColorScheme,
-  clsx,
-  UnstyledButton,
-} from "@mantine/core";
-import { IconChevronDown, IconSun, IconMoon } from "@tabler/icons";
+import { createStyles, Menu, Group, clsx, UnstyledButton } from "@mantine/core";
+import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
 import { Logo } from "@components";
 import { menuLinks, useGlobalStyles } from "@constants";
@@ -47,27 +39,18 @@ const useStyles = createStyles((theme) => ({
     padding: "8px 12px",
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    color: theme.colors.dark[0],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[4]
-          : theme.colors.gray[2],
+      backgroundColor: theme.colors.dark[4],
     },
   },
 
   subLink: {
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    color: theme.colors.dark[0],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
   },
@@ -77,19 +60,13 @@ const useStyles = createStyles((theme) => ({
   },
 
   switch: {
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[5]
-        : theme.colors.gray[2],
+    backgroundColor: theme.colors.dark[5],
     color: theme.fn.primaryColor(),
     border: "none",
     borderRadius: 8,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[4]
-          : theme.colors.gray[3],
+      backgroundColor: theme.colors.dark[4],
     },
   },
 
@@ -100,13 +77,9 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const SHOW_THEME_SWITCH = process.env.REACT_APP_SHOW_THEME_SWITCH === "true";
-
 export default function HeaderMenu() {
   const { classes } = useStyles();
   const { classes: gClasses } = useGlobalStyles();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
 
   const items = menuLinks.map((link) => {
     if ("links" in link) {
@@ -140,36 +113,13 @@ export default function HeaderMenu() {
     );
   });
 
-  const ThemeSwitch = ({ className }: { className: string }) => (
-    <ActionIcon
-      variant="outline"
-      onClick={() => toggleColorScheme()}
-      title="Toggle color scheme"
-      className={clsx(className, classes.switch)}
-      size="lg"
-    >
-      {dark ? (
-        <IconSun size={22} aria-label="Toggle color scheme (current: dark)" />
-      ) : (
-        <IconMoon size={22} aria-label="Toggle color scheme (current: light)" />
-      )}
-    </ActionIcon>
-  );
-
   return (
-    <nav
-      className={clsx(
-        classes.inner,
-        !SHOW_THEME_SWITCH && classes.centerHeader
-      )}
-    >
+    <nav className={clsx(classes.inner, classes.centerHeader)}>
       <BurgerMenu />
       <Logo />
       <Group spacing={5} className={gClasses.bigDisplay} noWrap>
         {items}
-        {SHOW_THEME_SWITCH && <ThemeSwitch className={gClasses.bigDisplay} />}
       </Group>
-      {SHOW_THEME_SWITCH && <ThemeSwitch className={gClasses.smallDisplay} />}
     </nav>
   );
 }

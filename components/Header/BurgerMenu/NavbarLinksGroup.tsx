@@ -16,16 +16,13 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     width: "100%",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+    color: theme.colors.dark[0],
     fontSize: theme.fontSizes.md,
     borderRadius: theme.radius.md,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[9]
-          : theme.colors.gray[0],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      backgroundColor: theme.colors.dark[9],
+      color: theme.white,
     },
   },
 
@@ -34,10 +31,7 @@ const useStyles = createStyles((theme) => ({
     marginLeft: theme.spacing.md,
     fontWeight: 500,
     fontSize: theme.fontSizes.md,
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    color: theme.colors.dark[0],
   },
 
   subLink: {
@@ -48,21 +42,13 @@ const useStyles = createStyles((theme) => ({
     paddingLeft: 36,
     marginLeft: 35,
     fontSize: theme.fontSizes.md,
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    borderLeft: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
+    color: theme.colors.dark[0],
+    borderLeft: `1px solid ${theme.colors.dark[4]}`,
     borderBottomRightRadius: theme.radius.md,
     borderTopRightRadius: theme.radius.md,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[9]
-          : theme.colors.gray[0],
+      backgroundColor: theme.colors.dark[9],
     },
   },
 

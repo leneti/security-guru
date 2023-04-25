@@ -20,18 +20,12 @@ const useStyles = createStyles((theme) => ({
   },
 
   title: {
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.fn.primaryColor(),
-    fontWeight: theme.colorScheme === "dark" ? "bold" : "normal",
+    color: theme.colors.dark[0],
+    fontWeight: "bold",
   },
 
   description: {
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[2]
-        : theme.colors.gray[9],
+    color: theme.colors.dark[2],
   },
 }));
 

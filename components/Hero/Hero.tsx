@@ -14,11 +14,8 @@ import { bgImgHeight } from "@constants";
 import houses from "@assets/unsplash-houses.webp";
 
 const leftPadding = "60px";
-const overlayGradient = {
-  dark: "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)",
-  light:
-    "linear-gradient(90deg, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, .1) 100%)",
-};
+const overlayGradient =
+  "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)";
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -71,10 +68,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   title: {
-    color:
-      theme.colorScheme === "dark"
-        ? theme.white
-        : theme.colors.dark[theme.fn.primaryShade()],
+    color: theme.white,
     fontSize: "clamp(34px, 6vw, 60px)",
     fontWeight: 900,
     lineHeight: 1.1,
@@ -89,7 +83,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   description: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    color: theme.white,
     maxWidth: 600,
     fontSize: "clamp(14px, 2vw, 20px)",
 
@@ -124,10 +118,10 @@ export default function Hero() {
         priority
       />
       <Overlay
-        gradient={mounted ? overlayGradient[theme.colorScheme] : undefined}
+        gradient={mounted ? overlayGradient : undefined}
         opacity={mounted ? 1 : 0}
         zIndex={0}
-        blur={theme.colorScheme === "dark" ? 1 : 2}
+        blur={1}
       >
         <Container className={classes.content} size={theme.breakpoints.xl}>
           <Title className={classes.title}>
