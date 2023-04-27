@@ -114,7 +114,9 @@ const useStyles = createStyles((theme) => {
 export default function GetInTouch() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const fieldSize = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
+    ? "sm"
+    : "md";
   const phoneUtil = PhoneNumberUtil.getInstance();
   const notificationId = "form-submit";
 
@@ -183,7 +185,7 @@ export default function GetInTouch() {
   };
 
   return (
-    <Paper shadow="lg" radius="lg">
+    <Paper shadow="lg" radius="lg" sx={{ zIndex: "inherit" }}>
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
           <Text size="lg" weight={700} className={classes.title}>
@@ -203,7 +205,7 @@ export default function GetInTouch() {
               required
               name="sprendimas"
               label="Pasirinkite sprendimą"
-              size={smallScreen ? "md" : "sm"}
+              size={fieldSize}
               {...form.getInputProps("solution")}
             >
               <Group mt="xs">
@@ -222,28 +224,28 @@ export default function GetInTouch() {
                 required
                 label="Vardas / Įmonės pavadinimas"
                 placeholder="Security Guru"
-                size={smallScreen ? "md" : "sm"}
+                size={fieldSize}
                 {...form.getInputProps("name")}
               />
               <TextInput
                 required
                 label="Miestas"
                 placeholder="Miestas"
-                size={smallScreen ? "md" : "sm"}
+                size={fieldSize}
                 {...form.getInputProps("city")}
               />
               <TextInput
                 required
                 label="El. paštas"
                 placeholder="security.guru@gmail.com"
-                size={smallScreen ? "md" : "sm"}
+                size={fieldSize}
                 {...form.getInputProps("email")}
               />
               <TextInput
                 required
                 label="Tel. Nr"
                 placeholder="+37061234567"
-                size={smallScreen ? "md" : "sm"}
+                size={fieldSize}
                 {...form.getInputProps("number")}
               />
             </SimpleGrid>
@@ -254,16 +256,12 @@ export default function GetInTouch() {
               placeholder="Pateikite visą svarbią informaciją"
               minRows={3}
               required
-              size={smallScreen ? "md" : "sm"}
+              size={fieldSize}
               {...form.getInputProps("message")}
             />
 
             <Group position="right" mt="xl">
-              <Button
-                type="submit"
-                className={classes.button}
-                size={smallScreen ? "md" : "sm"}
-              >
+              <Button type="submit" className={classes.button} size={fieldSize}>
                 Siųsti laišką
               </Button>
             </Group>
