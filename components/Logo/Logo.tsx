@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useGlobalStyles } from "@constants";
@@ -9,18 +10,20 @@ interface LogoProps {
   iconOnly?: boolean;
   size?: number;
   drawer?: boolean;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 const defaultSize = 50;
 
-export default function Logo({ iconOnly, size, drawer }: LogoProps) {
+export default function Logo(props: LogoProps) {
+  const { iconOnly, size, drawer, onClick } = props;
   const { classes: gClasses } = useGlobalStyles();
 
   const logoSize = size ?? defaultSize;
 
   if (iconOnly) {
     return (
-      <Link href="/">
+      <Link href="/" onClick={onClick}>
         <Image
           alt="SG logo"
           src={Ikona_Oranzine}
@@ -34,7 +37,7 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
 
   if (drawer) {
     return (
-      <Link href="/">
+      <Link href="/" onClick={onClick}>
         <Image
           alt="SG logo"
           src={HLogotipas_Oranzine}
@@ -50,6 +53,7 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
     <>
       <Link
         href="/"
+        onClick={onClick}
         className={gClasses.smallDisplay}
         style={{
           paddingBottom: "1rem",
@@ -63,7 +67,7 @@ export default function Logo({ iconOnly, size, drawer }: LogoProps) {
           unoptimized
         />
       </Link>
-      <Link href="/" className={gClasses.bigDisplay}>
+      <Link href="/" onClick={onClick} className={gClasses.bigDisplay}>
         <Image
           alt="SG logo"
           src={HLogotipas_Oranzine}

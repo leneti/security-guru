@@ -31,7 +31,7 @@ export default function NavbarSimple() {
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.Header>
-            <Logo drawer />
+            <Logo drawer onClick={close} />
             <Drawer.CloseButton size={px("1.75rem")} />
           </Drawer.Header>
           <Drawer.Body mt="xs">{linksGroup}</Drawer.Body>

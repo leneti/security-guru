@@ -74,21 +74,21 @@ export function LinksGroup({
   url,
   closeDrawer,
 }: LinksGroupProps) {
-  const { classes, theme } = useStyles();
-  const hasLinks = Array.isArray(links);
+  const { classes } = useStyles();
   const [opened, { toggle }] = useDisclosure(initiallyOpened || false);
-  const items = (hasLinks ? links : []).map((link) => (
-    <Link
-      key={link.label}
-      className={classes.subLink}
-      href={link.url}
-      onClick={closeDrawer}
-    >
-      {link.label}
-    </Link>
-  ));
 
   if (!url) {
+    const items = (Array.isArray(links) ? links : []).map((link) => (
+      <Link
+        key={link.label}
+        className={classes.subLink}
+        href={link.url}
+        onClick={closeDrawer}
+      >
+        {link.label}
+      </Link>
+    ));
+
     return (
       <>
         <UnstyledButton onClick={toggle} className={classes.control}>

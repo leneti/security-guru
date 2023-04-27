@@ -28,6 +28,11 @@ const useStyles = createStyles((theme) => ({
       padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
     },
   },
+
+  content: {
+    minHeight: bgImgHeight,
+    zIndex: 1,
+  },
 }));
 
 export interface PageBGProps {
@@ -60,11 +65,10 @@ export default function PageBackground(props: PageBGProps) {
             className={classes.image}
             priority
           />
-          <Overlay opacity={0.1} zIndex={0} blur={1}>
-            <Center p="xl" sx={{ minHeight: bgImgHeight }}>
-              {children}
-            </Center>
-          </Overlay>
+          <Overlay opacity={0.1} zIndex={0} blur={1} />
+          <Center p="xl" className={classes.content}>
+            {children}
+          </Center>
         </Box>
       )}
     </>
