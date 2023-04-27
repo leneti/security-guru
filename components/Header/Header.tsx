@@ -2,8 +2,9 @@ import { createStyles, Menu, Group, clsx, UnstyledButton } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
 import { Logo } from "@components";
-import { menuLinks, useGlobalStyles } from "@constants";
-import BurgerMenu from "./BurgerMenu";
+import { menuLinks } from "@constants";
+import { useGlobalStyles } from "@utils";
+import { BurgerMenu } from "./BurgerMenu";
 
 const headerHeight = 110;
 

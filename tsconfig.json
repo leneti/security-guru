@@ -3,13 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components": ["./components"],
-      "@components/*": ["./components/*"],
-      "@constants": ["./constants"],
-      "@constants/*": ["./constants/*"],
-      "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
-      "@site/*": ["./*"]
+      "@components": ["./components"],
+      "@constants": ["./constants"],
+      "@pages/*": ["./pages/*"],
+      "@site/*": ["./*"],
+      "@utils": ["./utils"]
     }
   },
   "include": [

@@ -26,5 +26,5 @@ This is a project for a home & office security system provider. The company is b
 2. Run local development instance:
 
    ```sh
-   yarn start
+   yarn run dev
    ```

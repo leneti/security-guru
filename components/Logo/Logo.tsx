@@ -1,17 +1,10 @@
-import { MouseEventHandler } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useGlobalStyles } from "@constants";
+import { useGlobalStyles } from "@utils";
 import Ikona_Oranzine from "@assets/logo/Ikona_Oranzine.webp";
 import HLogotipas_Oranzine from "@assets/logo/HLogotipas_Oranzine.webp";
 import Logotipas_Oranzine from "@assets/logo/Logotipas_Oranzine.webp";
-
-interface LogoProps {
-  iconOnly?: boolean;
-  size?: number;
-  drawer?: boolean;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
-}
+import { LogoProps } from "./types";
 
 const defaultSize = 50;
 

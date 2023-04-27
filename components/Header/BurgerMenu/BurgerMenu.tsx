@@ -1,8 +1,9 @@
 import { Drawer, Burger, clsx, createStyles, px } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Logo } from "@components";
-import { useGlobalStyles, menuLinks } from "@constants";
-import { LinksGroup } from "./NavbarLinksGroup";
+import { menuLinks } from "@constants";
+import { useGlobalStyles } from "@utils";
+import NavbarLinksGroup from "./NavbarLinksGroup";
 
 const useStyles = createStyles((theme) => ({
   burger: {
@@ -17,7 +18,7 @@ export default function NavbarSimple() {
   const { classes } = useStyles();
 
   const linksGroup = menuLinks.map((item) => (
-    <LinksGroup {...item} key={item.label} closeDrawer={close} />
+    <NavbarLinksGroup {...item} key={item.label} closeDrawer={close} />
   ));
 
   return (

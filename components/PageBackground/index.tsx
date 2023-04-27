@@ -1,1 +1,2 @@
-export { default, type PageBGProps } from "./PageBackground";
+export { default as PageBackground } from "./PageBackground";
+export * from "./types";

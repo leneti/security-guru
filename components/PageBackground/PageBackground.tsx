@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PageTitle, SlideDownTitle } from "@components";
 import { bgImgHeight } from "@constants";
 import houses from "@assets/unsplash-houses.webp";
+import { PageBGProps } from "./types";
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -35,15 +36,8 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export interface PageBGProps {
-  pageTitle: string;
-  children?: React.ReactNode;
-  colorOnly?: boolean;
-  wip?: boolean;
-}
-
 export default function PageBackground(props: PageBGProps) {
-  const { pageTitle, children, colorOnly, wip } = props;
+  const { pageTitle, colorOnly, wip, children } = props;
   const { classes } = useStyles();
 
   return (

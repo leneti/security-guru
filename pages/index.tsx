@@ -59,15 +59,19 @@ const useStyles = createStyles(
         paddingRight: theme.spacing.xl,
       },
     },
+
+    contactBtnBox: {
+      marginBottom: `calc(${theme.spacing.xl} * 3)`,
+    },
   })
 );
 
 export default function Home() {
-  const reducedMotion = useReducedMotion();
-  const { classes } = useStyles({ reducedMotion });
+  const { classes } = useStyles({ reducedMotion: useReducedMotion() });
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLHeadingElement>({
     offset: 20,
   });
+  const scrollToServices = () => scrollIntoView({ alignment: "start" });
 
   return (
     <>
@@ -77,11 +81,7 @@ export default function Home() {
 
       <UnstyledButton
         className={classes.scrollDownArrow}
-        onClick={() =>
-          scrollIntoView({
-            alignment: "start",
-          })
-        }
+        onClick={scrollToServices}
       />
 
       <Container fluid className={classes.services}>
@@ -92,11 +92,7 @@ export default function Home() {
         <Services />
       </Container>
 
-      <Center
-        sx={(theme) => ({
-          marginBottom: `calc(${theme.spacing.xl} * 3)`,
-        })}
-      >
+      <Center className={classes.contactBtnBox}>
         <Button
           component={Link}
           href="/susisiekite"

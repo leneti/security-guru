@@ -1,5 +1,5 @@
 import { MantineThemeOverride } from "@mantine/core";
-import { getBGColor } from "./getBGColor";
+import { getBGColor } from "@site/utils/getBGColor";
 
 export const baseTheme = {
   fontSizes: {
@@ -35,7 +35,7 @@ export const baseTheme = {
   },
 };
 
-export const getTheme = (): MantineThemeOverride => ({
+export const theme: MantineThemeOverride = {
   colorScheme: "dark",
 
   colors: {
@@ -141,4 +141,4 @@ export const getTheme = (): MantineThemeOverride => ({
       backgroundColor: getBGColor(theme),
     },
   }),
-});
+};
