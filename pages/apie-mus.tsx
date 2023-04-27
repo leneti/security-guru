@@ -36,10 +36,12 @@ const useStyles = createStyles((theme) => ({
     right: 0,
     top: 80,
     height: 100,
+    width: 100,
 
     [theme.fn.smallerThan("md")]: {
       top: 90,
       height: 90,
+      width: 90,
     },
   },
 }));
