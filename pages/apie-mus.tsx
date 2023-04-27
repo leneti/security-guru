@@ -35,10 +35,11 @@ const useStyles = createStyles((theme) => ({
     transform: "scaleX(-1)",
     right: 0,
     top: 80,
-    height: "10vh",
+    height: 100,
 
     [theme.fn.smallerThan("md")]: {
       top: 90,
+      height: 90,
     },
   },
 }));
@@ -69,8 +70,7 @@ function Feature({ icon: Icon, title, description }: FeatureProps) {
 const pageTitle = "Apie mus";
 
 export default function About() {
-  const { classes } = useStyles();
-  const theme = useMantineTheme();
+  const { classes, theme } = useStyles();
   const noMotion = useReducedMotion();
 
   const features = ABOUT_US_FEATURES.map((feature, index) => (

@@ -37,7 +37,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function PageBackground(props: PageBGProps) {
-  const { pageTitle, children, colorOnly, wip } = props;
+  const { pageTitle, colorOnly, wip, children } = props;
   const { classes } = useStyles();
 
   return (
