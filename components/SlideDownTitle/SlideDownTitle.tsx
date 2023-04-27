@@ -4,6 +4,7 @@ import { useReducedMotion } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import { PrevUrlContext } from "@pages/_app";
 import { baseTheme, flatLinks } from "@constants";
+import { SlideDownTitleProps } from "./types";
 
 const marginBottom = "1.5rem";
 
@@ -26,11 +27,6 @@ const scaleY: MantineTransition = {
   },
   transitionProperty: "transform, opacity, margin-bottom height",
 };
-
-export interface SlideDownTitleProps {
-  title: string;
-  wip?: boolean;
-}
 
 const WIPText = ({ wip }: Pick<SlideDownTitleProps, "wip">) =>
   wip ? (

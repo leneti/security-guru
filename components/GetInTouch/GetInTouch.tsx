@@ -16,18 +16,8 @@ import { useMediaQuery } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
 import { PhoneNumberUtil } from "google-libphonenumber";
 import { IconX, IconCheck } from "@tabler/icons";
-
-import { ContactInfo } from "@components";
+import { ContactForm, ContactInfo } from "@components";
 import { emailRegex, numberRegex, ERROR_MESSAGES } from "@constants";
-
-export interface ContactForm {
-  solution: string;
-  name: string;
-  email: string;
-  city: string;
-  number: string;
-  message: string;
-}
 
 const useStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan("sm");

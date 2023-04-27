@@ -8,7 +8,8 @@ import {
   Box,
   createStyles,
 } from "@mantine/core";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import { ServiceCardProps } from "./types";
 
 const CARD_HEIGHT = 420;
 const IMAGE_HEIGHT = 200;
@@ -31,13 +32,6 @@ const useStyles = createStyles(() => ({
     objectFit: "cover",
   },
 }));
-
-export interface ServiceCardProps {
-  image: StaticImageData;
-  title: string;
-  description: string;
-  price: string;
-}
 
 export default function ServiceCard({
   image,

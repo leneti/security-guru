@@ -1,5 +1,5 @@
 import { Grid } from "@mantine/core";
-import ServiceCard from "@components/ServiceCard";
+import { ServiceCard } from "@components";
 import ass from "@assets/services/ass.webp";
 import ias from "@assets/services/ias.webp";
 import iks from "@assets/services/iks.webp";

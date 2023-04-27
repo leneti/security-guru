@@ -1,1 +1,2 @@
-export { default, type ContactForm } from "./GetInTouch";
+export { default as GetInTouch } from "./GetInTouch";
+export * from "./types";

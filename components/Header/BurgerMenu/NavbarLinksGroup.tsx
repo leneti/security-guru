@@ -7,8 +7,9 @@ import {
   createStyles,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { TablerIcon, IconChevronDown } from "@tabler/icons";
+import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
+import { LinksGroupProps } from "./types";
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -57,16 +58,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface LinksGroupProps {
-  icon: TablerIcon;
-  label: string;
-  initiallyOpened?: boolean;
-  links?: { label: string; url: string }[];
-  url?: string;
-  closeDrawer: () => void;
-}
-
-export function LinksGroup({
+export default function NavbarLinksGroup({
   icon: Icon,
   label,
   initiallyOpened,
