@@ -5,3 +5,4 @@ export * from "./regexes";
 export * from "./theme";
 export * from "./measurements";
 export * from "./about-us";
+export * from "./services";

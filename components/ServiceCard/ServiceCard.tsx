@@ -9,6 +9,7 @@ import {
   createStyles,
 } from "@mantine/core";
 import Image from "next/image";
+import Link from "next/link";
 import { ServiceCardProps } from "./types";
 
 const CARD_HEIGHT = 420;
@@ -38,6 +39,7 @@ export default function ServiceCard({
   title,
   description,
   price,
+  url,
 }: ServiceCardProps) {
   const { classes } = useStyles();
 
@@ -65,7 +67,14 @@ export default function ServiceCard({
         {description}
       </Text>
 
-      <Button variant="outline" fullWidth mt="md" radius="md">
+      <Button
+        component={Link}
+        href={url}
+        variant="outline"
+        fullWidth
+        mt="md"
+        radius="md"
+      >
         Sužinoti daugiau
       </Button>
     </Card>
