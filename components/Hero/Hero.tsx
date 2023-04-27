@@ -21,6 +21,14 @@ const useStyles = createStyles((theme) => ({
   hero: {
     position: "relative",
     height: bgImgHeight,
+
+    [theme.fn.smallerThan("md")]: {
+      height: 600,
+    },
+
+    [theme.fn.smallerThan("sm")]: {
+      height: 500,
+    },
   },
 
   content: {
