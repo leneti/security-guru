@@ -101,14 +101,16 @@ const useStyles = createStyles((theme) => {
   };
 });
 
+const phoneUtil = PhoneNumberUtil.getInstance();
+const notificationId = "form-submit";
+const labelProps = { style: { marginBottom: "0.25rem" } };
+
 export default function GetInTouch() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const fieldSize = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
-    ? "sm"
-    : "md";
-  const phoneUtil = PhoneNumberUtil.getInstance();
-  const notificationId = "form-submit";
+  const smallScreen = useMediaQuery(theme.fn.smallerThan("sm").substring(7));
+  const fieldSize = smallScreen ? "md" : "sm";
+  const btnSize = smallScreen ? "lg" : "sm";
 
   const form = useForm({
     initialValues: {
@@ -213,6 +215,7 @@ export default function GetInTouch() {
               <TextInput
                 required
                 label="Vardas / Įmonės pavadinimas"
+                labelProps={labelProps}
                 placeholder="Security Guru"
                 size={fieldSize}
                 {...form.getInputProps("name")}
@@ -220,6 +223,7 @@ export default function GetInTouch() {
               <TextInput
                 required
                 label="Miestas"
+                labelProps={labelProps}
                 placeholder="Miestas"
                 size={fieldSize}
                 {...form.getInputProps("city")}
@@ -227,6 +231,7 @@ export default function GetInTouch() {
               <TextInput
                 required
                 label="El. paštas"
+                labelProps={labelProps}
                 placeholder="security.guru@gmail.com"
                 size={fieldSize}
                 {...form.getInputProps("email")}
@@ -234,6 +239,7 @@ export default function GetInTouch() {
               <TextInput
                 required
                 label="Tel. Nr"
+                labelProps={labelProps}
                 placeholder="+37061234567"
                 size={fieldSize}
                 {...form.getInputProps("number")}
@@ -243,6 +249,7 @@ export default function GetInTouch() {
             <Textarea
               mt="md"
               label="Pastabos"
+              labelProps={labelProps}
               placeholder="Pateikite visą svarbią informaciją"
               minRows={3}
               required
@@ -251,7 +258,7 @@ export default function GetInTouch() {
             />
 
             <Group position="right" mt="xl">
-              <Button type="submit" className={classes.button} size={fieldSize}>
+              <Button type="submit" className={classes.button} size={btnSize}>
                 Siųsti laišką
               </Button>
             </Group>
