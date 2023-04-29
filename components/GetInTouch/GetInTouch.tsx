@@ -14,7 +14,6 @@ import {
 import { useForm } from "@mantine/form";
 import { useMediaQuery } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
-import { PhoneNumberUtil } from "google-libphonenumber";
 import { IconX, IconCheck } from "@tabler/icons";
 import { ContactForm, ContactInfo } from "@components";
 import { emailRegex, numberRegex, ERROR_MESSAGES } from "@constants";
@@ -101,7 +100,6 @@ const useStyles = createStyles((theme) => {
   };
 });
 
-const phoneUtil = PhoneNumberUtil.getInstance();
 const notificationId = "form-submit";
 const labelProps = { style: { marginBottom: "0.25rem" } };
 
@@ -127,8 +125,7 @@ export default function GetInTouch() {
         emailRegex.test(value) ? null : ERROR_MESSAGES.INCORRECT_EMAIL,
       number: (value) => {
         try {
-          return numberRegex.test(value) &&
-            phoneUtil.isValidNumber(phoneUtil.parse(value, "LT"))
+          return numberRegex.test(value)
             ? null
             : ERROR_MESSAGES.INCORRECT_NUMBER;
         } catch (error) {
