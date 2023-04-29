@@ -7,34 +7,39 @@ import {
   AspectRatio,
 } from "@mantine/core";
 import { PageBackground } from "@components";
-import Image from "next/image";
+import Image, { ImageLoaderProps } from "next/image";
 
 const mockdata = [
   {
     title: "Top 10 places to visit in Norway this summer",
     image:
-      "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80",
+      "photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
     date: "August 18, 2022",
   },
   {
     title: "Best forests to visit in North America",
     image:
-      "https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80",
+      "photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
     date: "August 27, 2022",
   },
   {
     title: "Hawaii beaches review: better than you think",
     image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80",
+      "photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
     date: "September 9, 2022",
   },
   {
     title: "Mountains at night: 12 best locations to enjoy the view",
     image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80",
+      "photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
     date: "September 12, 2022",
   },
 ];
+
+const unsplashLoader = ({ src, width, quality }: ImageLoaderProps) =>
+  `https://images.unsplash.com/${src}&auto=format&fit=crop&w=${width}&q=${
+    quality || 75
+  }`;
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -68,21 +73,20 @@ function ArticlesCardsGrid() {
       withBorder
     >
       <AspectRatio ratio={1920 / 1080}>
-        <Image src={image} alt={title} width={400} height={250} />
+        <Image
+          loader={unsplashLoader}
+          src={image}
+          alt={title}
+          width={400}
+          height={250}
+        />
       </AspectRatio>
 
-      <Text
-        variant="lightBg"
-        color="dimmed"
-        size="xs"
-        transform="uppercase"
-        weight={700}
-        mt="md"
-      >
+      <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
         {date}
       </Text>
 
-      <Text variant="lightBg" className={classes.title} mt={5}>
+      <Text className={classes.title} mt={5}>
         {title}
       </Text>
     </Card>
