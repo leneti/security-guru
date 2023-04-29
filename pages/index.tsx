@@ -6,6 +6,7 @@ import {
   UnstyledButton,
   Center,
   Button,
+  px,
 } from "@mantine/core";
 import { useReducedMotion, useScrollIntoView } from "@mantine/hooks";
 import { IconChevronRight } from "@tabler/icons";
@@ -58,6 +59,18 @@ const useStyles = createStyles(
         paddingLeft: theme.spacing.xl,
         paddingRight: theme.spacing.xl,
       },
+
+      [theme.fn.smallerThan("md")]: {
+        paddingTop: `calc(${theme.spacing.xl} * 3)`,
+      },
+
+      [theme.fn.smallerThan("sm")]: {
+        paddingTop: `calc(${theme.spacing.xl} * 2)`,
+      },
+
+      [theme.fn.smallerThan("xs")]: {
+        paddingTop: theme.spacing.xl,
+      },
     },
 
     contactBtnBox: {
@@ -69,7 +82,7 @@ const useStyles = createStyles(
 export default function Home() {
   const { classes } = useStyles({ reducedMotion: useReducedMotion() });
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLHeadingElement>({
-    offset: 20,
+    offset: 20 + px("5rem"),
   });
   const scrollToServices = () => scrollIntoView({ alignment: "start" });
 
@@ -80,6 +93,7 @@ export default function Home() {
       <Hero />
 
       <UnstyledButton
+        title="Eiti žemyn"
         className={classes.scrollDownArrow}
         onClick={scrollToServices}
       />

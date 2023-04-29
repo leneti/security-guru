@@ -7,6 +7,7 @@ import {
   Button,
   Text,
   useMantineTheme,
+  clsx,
 } from "@mantine/core";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,21 +19,27 @@ const overlayGradient =
   "linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%)";
 
 const useStyles = createStyles((theme) => ({
-  hero: {
-    position: "relative",
-    height: bgImgHeight,
+  dynamicHeight: {
+    minHeight: bgImgHeight,
 
     [theme.fn.smallerThan("md")]: {
-      height: 600,
+      minHeight: `calc(${bgImgHeight} - 6.25rem)`,
     },
 
     [theme.fn.smallerThan("sm")]: {
-      height: 500,
+      minHeight: `calc(${bgImgHeight} - 6.25rem * 2)`,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      minHeight: `calc(${bgImgHeight} - 6.25rem * 3)`,
     },
   },
 
+  hero: {
+    position: "relative",
+  },
+
   content: {
-    height: bgImgHeight,
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
@@ -60,7 +67,6 @@ const useStyles = createStyles((theme) => ({
     },
 
     [theme.fn.smallerThan("md")]: {
-      height: 600,
       paddingRight: `clamp(
         ${theme.spacing.md},
         calc(100vw - ${theme.breakpoints.md}),
@@ -70,14 +76,17 @@ const useStyles = createStyles((theme) => ({
     },
 
     [theme.fn.smallerThan("sm")]: {
-      height: 500,
       paddingBottom: `calc(${theme.spacing.xl} * 6)`,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      paddingBottom: `calc(${theme.spacing.xl} * 5)`,
     },
   },
 
   title: {
     color: theme.white,
-    fontSize: "clamp(34px, 6vw, 60px)",
+    fontSize: "clamp(2.125rem, 6vw, 4rem)",
     fontWeight: 900,
     lineHeight: 1.1,
 
@@ -92,20 +101,24 @@ const useStyles = createStyles((theme) => ({
 
   description: {
     color: theme.white,
-    maxWidth: 600,
-    fontSize: "clamp(14px, 2vw, 20px)",
+    maxWidth: "37.5rem",
+    fontSize: "clamp(1rem, 2vw, 1.5rem)",
 
     [theme.fn.smallerThan("sm")]: {
       maxWidth: "100%",
     },
   },
 
-  control: {
+  CTA: {
     marginTop: `calc(${theme.spacing.xl} * 1.5)`,
 
     [theme.fn.smallerThan("sm")]: {
       width: "100%",
     },
+  },
+
+  image: {
+    objectFit: "cover",
   },
 }));
 
@@ -117,12 +130,12 @@ export default function Hero() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className={classes.hero}>
+    <div className={clsx(classes.hero, classes.dynamicHeight)}>
       <Image
         src={houses}
         alt="houses"
         fill
-        style={{ objectFit: "cover" }}
+        className={classes.image}
         priority
       />
       <Overlay
@@ -131,11 +144,14 @@ export default function Hero() {
         zIndex={0}
         blur={1}
       >
-        <Container className={classes.content} size={theme.breakpoints.xl}>
+        <Container
+          className={clsx(classes.content, classes.dynamicHeight)}
+          size={theme.breakpoints.xl}
+        >
           <Title className={classes.title}>
             Namų ir verslo apsaugos sprendimai
           </Title>
-          <Text className={classes.description} mt="xl" weight={600}>
+          <Text className={clsx(classes.description)} mt="xl" weight={600}>
             Aukščiausio lygio paslaugos fizinės bei elektroninės apsaugos
             srityse
           </Text>
@@ -145,7 +161,7 @@ export default function Hero() {
             href="/susisiekite"
             size="xl"
             radius="xl"
-            className={classes.control}
+            className={classes.CTA}
           >
             Susisiekite su mumis
           </Button>

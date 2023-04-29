@@ -1,1 +1,1 @@
-export const bgImgHeight = 700;
+export const bgImgHeight = "43.75rem";

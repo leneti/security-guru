@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { ServiceCardProps } from "./types";
+import { useMediaQuery } from "@mantine/hooks";
 
 const CARD_HEIGHT = 420;
 const IMAGE_HEIGHT = 200;
@@ -41,7 +42,8 @@ export default function ServiceCard({
   price,
   url,
 }: ServiceCardProps) {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
+  const smallScreen = useMediaQuery(theme.fn.smallerThan("sm").substring(7));
 
   return (
     <Card
@@ -74,6 +76,7 @@ export default function ServiceCard({
         fullWidth
         mt="md"
         radius="md"
+        size={smallScreen ? "lg" : "md"}
       >
         Sužinoti daugiau
       </Button>

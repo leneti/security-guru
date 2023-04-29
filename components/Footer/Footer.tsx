@@ -15,7 +15,6 @@ const useStyles = createStyles((theme) => ({
   footer: {
     paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-    borderTop: `1px solid ${theme.colors.dark[5]}`,
     color: theme.colors.gray[6],
   },
 
@@ -66,13 +65,13 @@ const useStyles = createStyles((theme) => ({
 export default function Footer() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
-  const smallScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+  const smallScreen = useMediaQuery(theme.fn.smallerThan("md").substring(7));
 
   return (
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <Logo iconOnly size={40} />
+          <Logo iconOnly />
           <Text size="xs" className={classes.description}>
             Kokybė, profesionalumas ir inovatyvumas
           </Text>

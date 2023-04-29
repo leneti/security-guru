@@ -22,6 +22,11 @@ const useStyles = createStyles((theme) => ({
   grid: {
     maxWidth: theme.breakpoints.xl,
     alignSelf: "center",
+    paddingBlock: `calc(${theme.spacing.xl} * 2)`,
+
+    [theme.fn.smallerThan("md")]: {
+      paddingBlock: theme.spacing.xl,
+    },
   },
 
   description: {

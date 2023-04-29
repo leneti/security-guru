@@ -4,8 +4,9 @@ import { PageTitle, SlideDownTitle } from "@components";
 import { bgImgHeight } from "@constants";
 import houses from "@assets/unsplash-houses.webp";
 import { PageBGProps } from "./types";
+import { getBGColor } from "@site/utils";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, { wip }: { wip?: boolean }) => ({
   container: {
     position: "relative",
     minHeight: bgImgHeight,
@@ -14,8 +15,7 @@ const useStyles = createStyles((theme) => ({
   image: { objectFit: "cover" },
 
   colorOnly: {
-    minHeight: bgImgHeight,
-    backgroundColor: theme.fn.primaryColor(),
+    backgroundColor: wip ? getBGColor(theme) : theme.fn.primaryColor(),
     padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
     display: "flex",
     justifyContent: "center",
@@ -26,7 +26,7 @@ const useStyles = createStyles((theme) => ({
     },
 
     [theme.fn.smallerThan("sm")]: {
-      padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
+      padding: `${theme.spacing.xl} ${theme.spacing.xl}`,
     },
   },
 
@@ -38,7 +38,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function PageBackground(props: PageBGProps) {
   const { pageTitle, colorOnly, wip, children } = props;
-  const { classes } = useStyles();
+  const { classes } = useStyles({ wip });
 
   return (
     <>
