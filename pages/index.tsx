@@ -10,8 +10,9 @@ import {
 } from "@mantine/core";
 import { useReducedMotion, useScrollIntoView } from "@mantine/hooks";
 import { IconChevronRight } from "@tabler/icons";
-import { Hero, PageTitle, Services } from "@components";
 import Link from "next/link";
+import { Hero, PageTitle, Services } from "@components";
+import { headerHeight } from "@constants";
 
 const useStyles = createStyles(
   (theme, { reducedMotion }: { reducedMotion: boolean }) => ({
@@ -82,7 +83,7 @@ const useStyles = createStyles(
 export default function Home() {
   const { classes } = useStyles({ reducedMotion: useReducedMotion() });
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLHeadingElement>({
-    offset: 20 + px("5rem"),
+    offset: 20 + px(headerHeight),
   });
   const scrollToServices = () => scrollIntoView({ alignment: "start" });
 
