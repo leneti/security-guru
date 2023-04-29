@@ -29,10 +29,6 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan("sm")]: {
       minHeight: `calc(${bgImgHeight} - 6.25rem * 2)`,
     },
-
-    [theme.fn.smallerThan("xs")]: {
-      minHeight: `calc(${bgImgHeight} - 6.25rem * 3)`,
-    },
   },
 
   hero: {
