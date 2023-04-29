@@ -9,28 +9,12 @@ const baseUrl = "/paslaugos";
 
 export const serviceData: ServiceCardProps[] = [
   {
-    image: ias,
-    title: "Integruoti apsaugos sprendimai",
-    price: "nuo €200",
-    description:
-      "Pagal užsakymą įrengiame integruotą apsaugos sistemą, kuri apima apsaugos signalizaciją, eismo kontrolę, priešgaisrinę signalizaciją ir stebėjimo sistemas.",
-    url: `${baseUrl}/integruoti-apsaugos-sprendimai`,
-  },
-  {
     image: ass,
     title: "Apsaugos signalizacijos sistemos",
     price: "nuo €200",
     description:
       "Montuojame ir įrengiame apsaugos signalizacijas namuose ir biuruose, kad užtikrinti jūsų patalpų saugumą.",
     url: `${baseUrl}/apsaugos-signalizacijos-sistemos`,
-  },
-  {
-    image: pss,
-    title: "Priešgaisrinės signalizacijos sistemos",
-    price: "nuo €200",
-    description:
-      "Montuojame ir įrengiame priešgaisrinę signalizaciją namuose ir biuruose, kad aptiktume ir įspėti apie gaisrą.",
-    url: `${baseUrl}/priesgaisrines-signalizacijos-sistemos`,
   },
   {
     image: iks,
@@ -41,11 +25,27 @@ export const serviceData: ServiceCardProps[] = [
     url: `${baseUrl}/ieigos-kontroles-sistemos`,
   },
   {
+    image: pss,
+    title: "Priešgaisrinės signalizacijos sistemos",
+    price: "nuo €200",
+    description:
+      "Montuojame ir įrengiame priešgaisrinę signalizaciją namuose ir biuruose, kad aptiktume ir įspėti apie gaisrą.",
+    url: `${baseUrl}/priesgaisrines-signalizacijos-sistemos`,
+  },
+  {
     image: vss,
     title: "Vaizdo stebėjimo sistemos",
     price: "nuo €200",
     description:
       "Montuojame ir įrengiame stebėjimo sistemas namuose ir biuruose, kad  stebėti veiklą ir aptikti bet kokį įtartiną elgesį.",
     url: `${baseUrl}/vaizdo-stebejimo-sistemos`,
+  },
+  {
+    image: ias,
+    title: "Integruoti apsaugos sprendimai",
+    price: "nuo €200",
+    description:
+      "Pagal užsakymą įrengiame integruotą apsaugos sistemą, kuri apima apsaugos signalizaciją, eismo kontrolę, priešgaisrinę signalizaciją ir stebėjimo sistemas.",
+    url: `${baseUrl}/integruoti-apsaugos-sprendimai`,
   },
 ];
