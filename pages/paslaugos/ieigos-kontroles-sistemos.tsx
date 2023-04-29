@@ -1,7 +1,7 @@
 import { Text } from "@mantine/core";
 import { PageBackground } from "@components";
 import html from "./_page_content/iks.json";
-import { useServiceStyles } from "./_utils";
+import { useServiceStyles } from "@utils";
 
 const pageTitle = "Įeigos kontrolės sistemos";
 
