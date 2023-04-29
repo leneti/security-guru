@@ -8,3 +8,7 @@ export interface LinksGroupProps {
   url?: string;
   closeDrawer: () => void;
 }
+
+export interface BurgerMenuProps {
+  burgerClass?: string;
+}

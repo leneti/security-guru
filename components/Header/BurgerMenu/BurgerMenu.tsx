@@ -1,21 +1,15 @@
-import { Drawer, Burger, clsx, createStyles, px } from "@mantine/core";
+import { Drawer, Burger, clsx, px } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Logo } from "@components";
 import { menuLinks } from "@constants";
 import { useGlobalStyles } from "@utils";
 import NavbarLinksGroup from "./NavbarLinksGroup";
+import { BurgerMenuProps } from "./types";
 
-const useStyles = createStyles((theme) => ({
-  burger: {
-    position: "absolute",
-    left: theme.spacing.md,
-  },
-}));
-
-export default function NavbarSimple() {
+export default function BurgerMenu(props: BurgerMenuProps) {
+  const { burgerClass } = props;
   const { classes: gClasses } = useGlobalStyles();
   const [opened, { close, toggle }] = useDisclosure(false);
-  const { classes } = useStyles();
 
   const linksGroup = menuLinks.map((item) => (
     <NavbarLinksGroup {...item} key={item.label} closeDrawer={close} />
@@ -32,7 +26,7 @@ export default function NavbarSimple() {
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.Header>
-            <Logo drawer onClick={close} />
+            <Logo size={40} onClick={close} />
             <Drawer.CloseButton size={px("1.75rem")} />
           </Drawer.Header>
           <Drawer.Body mt="xs">{linksGroup}</Drawer.Body>
@@ -42,8 +36,8 @@ export default function NavbarSimple() {
       <Burger
         opened={opened}
         onClick={toggle}
-        size="md"
-        className={clsx(gClasses.smallDisplay, classes.burger)}
+        title="Atidaryti meniu"
+        className={clsx(gClasses.smallDisplay, burgerClass)}
       />
     </>
   );

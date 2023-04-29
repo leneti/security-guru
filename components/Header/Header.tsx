@@ -1,86 +1,102 @@
-import { createStyles, Menu, Group, clsx, UnstyledButton } from "@mantine/core";
+import {
+  createStyles,
+  Menu,
+  Group,
+  clsx,
+  UnstyledButton,
+  Box,
+} from "@mantine/core";
+import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
 import { Logo } from "@components";
-import { menuLinks } from "@constants";
-import { useGlobalStyles } from "@utils";
+import { headerHeight, menuLinks } from "@constants";
+import { getBGColor, useGlobalStyles } from "@utils";
 import { BurgerMenu } from "./BurgerMenu";
 
-const headerHeight = 110;
+const useStyles = createStyles(
+  (theme, { isScrolled }: { isScrolled: boolean }) => ({
+    outer: {
+      width: "100%",
+      backgroundColor: getBGColor(theme),
+      position: "sticky",
+      top: 0,
+      zIndex: 2,
+      boxShadow: isScrolled ? theme.shadows.md : "none",
+      height: headerHeight,
+    },
 
-const useStyles = createStyles((theme) => ({
-  inner: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: headerHeight,
-    maxWidth: theme.breakpoints.xl,
-    marginLeft: "auto",
-    marginRight: "auto",
+    inner: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      height: headerHeight,
+      maxWidth: theme.breakpoints.xl,
+      marginLeft: "auto",
+      marginRight: "auto",
 
-    [`@media (max-width: calc(${theme.spacing.xl} * 2 + ${theme.breakpoints.xl}))`]:
-      {
-        paddingLeft: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
-        paddingRight: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+      [`@media (max-width: calc(${theme.spacing.xl} * 2 + ${theme.breakpoints.xl}))`]:
+        {
+          paddingLeft: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+          paddingRight: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+        },
+
+      [theme.fn.smallerThan("xl")]: {
+        paddingLeft: theme.spacing.xl,
+        paddingRight: theme.spacing.xl,
       },
-
-    [theme.fn.smallerThan("xl")]: {
-      paddingLeft: theme.spacing.xl,
-      paddingRight: theme.spacing.xl,
     },
 
-    [theme.fn.smallerThan("md")]: {
-      height: headerHeight + 10,
+    linkGroup: {
+      display: "flex",
     },
-  },
 
-  link: {
-    display: "block",
-    lineHeight: 1,
-    padding: "8px 12px",
-    borderRadius: theme.radius.sm,
-    textDecoration: "none",
-    color: theme.colors.dark[0],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
+    link: {
+      display: "block",
+      lineHeight: 1,
+      padding: "8px 12px",
+      borderRadius: theme.radius.sm,
+      textDecoration: "none",
+      color: theme.colors.dark[0],
+      fontSize: theme.fontSizes.sm,
+      fontWeight: 500,
 
-    "&:hover": {
-      backgroundColor: theme.colors.dark[4],
+      "&:hover": {
+        backgroundColor: theme.colors.dark[4],
+      },
     },
-  },
 
-  subLink: {
-    textDecoration: "none",
-    color: theme.colors.dark[0],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-  },
-
-  linkLabel: {
-    marginRight: 5,
-  },
-
-  switch: {
-    backgroundColor: theme.colors.dark[5],
-    color: theme.fn.primaryColor(),
-    border: "none",
-    borderRadius: 8,
-
-    "&:hover": {
-      backgroundColor: theme.colors.dark[4],
+    subLink: {
+      textDecoration: "none",
+      color: theme.colors.dark[0],
+      fontSize: theme.fontSizes.sm,
+      fontWeight: 500,
     },
-  },
 
-  centerHeader: {
-    [theme.fn.smallerThan("md")]: {
-      justifyContent: "center",
+    linkLabel: {
+      marginRight: 5,
     },
-  },
-}));
+
+    switch: {
+      backgroundColor: theme.colors.dark[5],
+      color: theme.fn.primaryColor(),
+      border: "none",
+      borderRadius: 8,
+
+      "&:hover": {
+        backgroundColor: theme.colors.dark[4],
+      },
+    },
+  })
+);
 
 export default function HeaderMenu() {
-  const { classes } = useStyles();
+  const [{ y }] = useWindowScroll();
+  const { classes, theme } = useStyles({ isScrolled: y > 0 });
   const { classes: gClasses } = useGlobalStyles();
+  const extraSmallScreen = useMediaQuery(
+    theme.fn.smallerThan("xs").substring(7)
+  );
 
   const items = menuLinks.map((link) => {
     if ("links" in link) {
@@ -115,12 +131,18 @@ export default function HeaderMenu() {
   });
 
   return (
-    <nav className={clsx(classes.inner, classes.centerHeader)}>
-      <BurgerMenu />
-      <Logo />
-      <Group spacing={5} className={gClasses.bigDisplay} noWrap>
-        {items}
-      </Group>
-    </nav>
+    <Box className={classes.outer}>
+      <nav className={classes.inner}>
+        <Logo size={extraSmallScreen ? 40 : 50} />
+        <BurgerMenu />
+        <Group
+          spacing={5}
+          className={clsx(gClasses.bigDisplay, classes.linkGroup)}
+          noWrap
+        >
+          {items}
+        </Group>
+      </nav>
+    </Box>
   );
 }

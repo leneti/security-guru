@@ -4,7 +4,7 @@ import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { theme } from "@constants";
-import { Header, Footer } from "@components";
+import { Header, Footer, RouterTransition } from "@components";
 import { usePreviousRoute } from "@utils";
 
 export const PrevUrlContext = createContext("");
@@ -23,6 +23,8 @@ export default function App(props: AppProps) {
       </Head>
 
       <Notifications position="top-right" />
+
+      <RouterTransition />
 
       <Header />
 
