@@ -7,10 +7,11 @@ import { emailRegex, ERROR_MESSAGES } from "@constants";
 const phoneUtil = PhoneNumberUtil.getInstance();
 
 let sentEmailCounter = 0;
-const maxSentEmails = 200; // Comes from AWS free-account limit
+const maxSentEmails = 2; // Comes from AWS free-account limit
+const resetTime = 1000 * 60 * 60 * 24; // 24 hour
 setInterval(() => {
   sentEmailCounter = 0;
-}, 1000 * 60 * 60 * 24);
+}, 1000 * 60 * 15);
 
 type ResponseData = {
   message: string;
