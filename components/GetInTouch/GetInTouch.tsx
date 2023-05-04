@@ -170,7 +170,7 @@ export default function GetInTouch() {
         notifications.update({
           id: notificationId,
           withCloseButton: true,
-          autoClose: 50000,
+          autoClose: 5000,
           title: "Kažkas nutiko...",
           message: err.response?.data?.message ?? "Bandykite dar kartą vėliau.",
           color: "red",
