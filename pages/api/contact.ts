@@ -147,11 +147,18 @@ export default function handler(
   )
     .then(() => {
       sentEmailCounter++;
+
+      console.log(`Sent emails today: ${sentEmailCounter}/${maxSentEmails}`);
+
       res.status(200).json({
         message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
       });
     })
     .catch((err) => {
+      console.log(
+        `Couldn't send email. Sent today: ${sentEmailCounter}/${maxSentEmails}`
+      );
+
       res.status(502).send({
         message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
         err,
