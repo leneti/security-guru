@@ -1,8 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
 import { PhoneNumberUtil } from "google-libphonenumber";
-import { ContactForm } from "@components";
-import { emailRegex, ERROR_MESSAGES } from "@constants";
+import { ContactForm } from "@components/GetInTouch";
+import { ERROR_MESSAGES } from "@constants/error-messages";
+import { emailRegex } from "@constants/regexes";
+import logger from "@utils/logger";
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 
@@ -128,7 +130,7 @@ export default function handler(
   }
 
   if (sentEmailCounter >= maxSentEmails) {
-    console.log(
+    logger.warn(
       `Couldn't send email. Sent today: ${sentEmailCounter}/${maxSentEmails}`
     );
 
@@ -154,13 +156,15 @@ export default function handler(
     .then(() => {
       sentEmailCounter++;
 
-      console.log(`Sent emails today: ${sentEmailCounter}/${maxSentEmails}`);
+      logger.info(`Sent emails today: ${sentEmailCounter}/${maxSentEmails}`);
 
       res.status(200).json({
         message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
       });
     })
     .catch((err) => {
+      logger.error("Couldn't send email.", err);
+
       res.status(502).send({
         message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
         err,
