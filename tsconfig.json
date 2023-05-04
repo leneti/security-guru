@@ -4,13 +4,11 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": ["./assets/*"],
-      "@components": ["./components"],
       "@components/*": ["./components/*"],
       "@constants": ["./constants"],
       "@constants/*": ["./constants/*"],
       "@pages/*": ["./pages/*"],
       "@site/*": ["./*"],
-      "@utils": ["./utils"],
       "@utils/*": ["./utils/*"]
     }
   },

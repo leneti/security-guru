@@ -1,8 +1,8 @@
 import { Drawer, Burger, clsx, px } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Logo } from "@components";
-import { menuLinks } from "@constants";
-import { useGlobalStyles } from "@utils";
+import { Logo } from "@components/Logo";
+import { menuLinks } from "@constants/menu-links";
+import { useGlobalStyles } from "@utils/useGlobalStyles";
 import NavbarLinksGroup from "./NavbarLinksGroup";
 import { BurgerMenuProps } from "./types";
 

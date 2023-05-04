@@ -24,7 +24,7 @@ export default function App(props: AppProps) {
         <title>Security Guru</title>
       </Head>
 
-      <Notifications position="top-right" />
+      <Notifications />
 
       <RouterTransition />
 
