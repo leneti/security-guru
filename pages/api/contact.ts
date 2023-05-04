@@ -9,9 +9,10 @@ import logger from "@utils/logger";
 const phoneUtil = PhoneNumberUtil.getInstance();
 
 let sentEmailCounter = 0;
-const maxSentEmails = Number(process.env.REACT_APP_MAX_EMAILS) ?? 200;
-const resetTime =
-  Number(process.env.REACT_APP_RESET_TIME) ?? 1000 * 60 * 60 * 24;
+const maxSentEmails = Number(process.env.REACT_APP_MAX_EMAILS ?? 200);
+const resetTime = Number(
+  process.env.REACT_APP_RESET_TIME ?? 1000 * 60 * 60 * 24
+);
 setInterval(() => {
   sentEmailCounter = 0;
 }, resetTime);
