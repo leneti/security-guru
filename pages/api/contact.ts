@@ -121,7 +121,7 @@ export default function handler(
       .send({ message: "Serveris priima tik susisiekimo formą." });
   }
 
-  if (!process.env.REACT_APP_SES_EMAIL_DEV) {
+  if (!process.env.REACT_APP_SES_EMAIL) {
     return res
       .status(500)
       .send({ message: "Serveris neturi prieigos prie el. pašto paslaugų." });
@@ -147,8 +147,8 @@ export default function handler(
   }
 
   return sendMail(
-    process.env.REACT_APP_SES_EMAIL_DEV,
-    [process.env.REACT_APP_SES_EMAIL_DEV],
+    process.env.REACT_APP_SES_EMAIL,
+    [process.env.REACT_APP_SES_EMAIL],
     req.body
   )
     .then(() => {
