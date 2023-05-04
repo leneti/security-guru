@@ -7,11 +7,12 @@ import { emailRegex, ERROR_MESSAGES } from "@constants";
 const phoneUtil = PhoneNumberUtil.getInstance();
 
 let sentEmailCounter = 0;
-const maxSentEmails = 2; // Comes from AWS free-account limit
-const resetTime = 1000 * 60 * 60 * 24; // 24 hour
+const maxSentEmails = Number(process.env.REACT_APP_MAX_EMAILS) ?? 200;
+const resetTime =
+  Number(process.env.REACT_APP_RESET_TIME) ?? 1000 * 60 * 60 * 24;
 setInterval(() => {
   sentEmailCounter = 0;
-}, 1000 * 60 * 15);
+}, resetTime);
 
 type ResponseData = {
   message: string;
@@ -127,6 +128,10 @@ export default function handler(
   }
 
   if (sentEmailCounter >= maxSentEmails) {
+    console.log(
+      `Couldn't send email. Sent today: ${sentEmailCounter}/${maxSentEmails}`
+    );
+
     return res.status(500).send({
       message:
         "Serveris šiuo metu negali atlikti veiksmų. Parašykite mums tiesiogiai į info@securityguru.lt",
@@ -156,10 +161,6 @@ export default function handler(
       });
     })
     .catch((err) => {
-      console.log(
-        `Couldn't send email. Sent today: ${sentEmailCounter}/${maxSentEmails}`
-      );
-
       res.status(502).send({
         message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
         err,
