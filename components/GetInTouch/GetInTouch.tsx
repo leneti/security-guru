@@ -15,7 +15,8 @@ import { useForm } from "@mantine/form";
 import { useMediaQuery } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
 import { IconX, IconCheck } from "@tabler/icons";
-import { ContactForm, ContactInfo } from "@components";
+import { ContactForm } from "@components/GetInTouch";
+import { ContactInfo } from "@components/ContactInfo";
 import { emailRegex, numberRegex, ERROR_MESSAGES } from "@constants";
 
 const useStyles = createStyles((theme) => {
@@ -109,6 +110,9 @@ export default function GetInTouch() {
   const smallScreen = useMediaQuery(theme.fn.smallerThan("sm").substring(7));
   const fieldSize = smallScreen ? "md" : "sm";
   const btnSize = smallScreen ? "lg" : "sm";
+  const notificationStyle = {
+    borderColor: theme.colors.dark[4],
+  };
 
   const form = useForm({
     initialValues: {
@@ -141,6 +145,7 @@ export default function GetInTouch() {
       title: "Siunčiama...",
       message: "Siunčiame laišką Security Guru komandai, prašome palaukti.",
       loading: true,
+      style: notificationStyle,
     });
 
     axios
@@ -156,6 +161,7 @@ export default function GetInTouch() {
             "Sėkmingai išsiuntėme laišką Security Guru komandai!",
           color: "teal",
           icon: <IconCheck />,
+          style: notificationStyle,
         });
 
         form.reset();
@@ -164,11 +170,12 @@ export default function GetInTouch() {
         notifications.update({
           id: notificationId,
           withCloseButton: true,
-          autoClose: 5000,
+          autoClose: 50000,
           title: "Kažkas nutiko...",
           message: err.response?.data?.message ?? "Bandykite dar kartą vėliau.",
           color: "red",
           icon: <IconX />,
+          style: notificationStyle,
         });
       });
   };

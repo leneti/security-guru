@@ -11,7 +11,9 @@ import {
 import { useReducedMotion, useScrollIntoView } from "@mantine/hooks";
 import { IconChevronRight } from "@tabler/icons";
 import Link from "next/link";
-import { Hero, PageTitle, Services } from "@components";
+import { Hero } from "@components/Hero";
+import { PageTitle } from "@components/PageTitle";
+import { Services } from "@components/Services";
 import { headerHeight } from "@constants";
 
 const useStyles = createStyles(

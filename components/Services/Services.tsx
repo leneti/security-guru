@@ -1,5 +1,5 @@
 import { Grid } from "@mantine/core";
-import { ServiceCard } from "@components";
+import { ServiceCard } from "@components/ServiceCard";
 import { serviceData } from "@constants";
 
 export default function Services() {

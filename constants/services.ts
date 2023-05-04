@@ -3,7 +3,7 @@ import ias from "@assets/services/ias.webp";
 import iks from "@assets/services/iks.webp";
 import pss from "@assets/services/pss.webp";
 import vss from "@assets/services/vss.webp";
-import { ServiceCardProps } from "@components";
+import { ServiceCardProps } from "@components/ServiceCard";
 
 const baseUrl = "/paslaugos";
 

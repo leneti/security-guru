@@ -6,7 +6,7 @@ import {
   Container,
   AspectRatio,
 } from "@mantine/core";
-import { PageBackground } from "@components";
+import { PageBackground } from "@components/PageBackground";
 import Image, { ImageLoaderProps } from "next/image";
 
 const mockdata = [

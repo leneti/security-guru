@@ -1,4 +1,5 @@
-import { GetInTouch, PageBackground } from "@components";
+import { PageBackground } from "@components/PageBackground";
+import { GetInTouch } from "@components/GetInTouch";
 
 const pageTitle = "Susisiekite";
 
