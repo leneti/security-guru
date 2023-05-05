@@ -8,4 +8,5 @@ export default {
   info: print("info"),
   warn: print("warn"),
   error: print("error"),
+  log: print("info"),
 };
