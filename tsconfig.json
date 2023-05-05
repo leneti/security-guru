@@ -3,13 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["./assets/*"],
-      "@components/*": ["./components/*"],
-      "@constants": ["./constants"],
-      "@constants/*": ["./constants/*"],
-      "@pages/*": ["./pages/*"],
-      "@site/*": ["./*"],
-      "@utils/*": ["./utils/*"]
+      "@site/*": ["./*"]
     }
   },
   "include": [

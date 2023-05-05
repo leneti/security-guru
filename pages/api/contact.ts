@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
 import { PhoneNumberUtil } from "google-libphonenumber";
-import { ContactForm } from "@components/GetInTouch";
-import { ERROR_MESSAGES } from "@constants/error-messages";
-import { emailRegex } from "@constants/regexes";
-import logger from "@utils/logger";
+import { ContactForm } from "@site/components/GetInTouch";
+import { ERROR_MESSAGES } from "@site/constants/error-messages";
+import { emailRegex } from "@site/constants/regexes";
+import logger from "@site/utils/logger";
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 

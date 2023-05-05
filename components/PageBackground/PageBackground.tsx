@@ -1,11 +1,11 @@
 import { Overlay, Center, Box, createStyles, Container } from "@mantine/core";
 import Image from "next/image";
-import { SlideDownTitle } from "@components/SlideDownTitle";
-import { PageTitle } from "@components/PageTitle";
-import { bgImgHeight } from "@constants";
-import houses from "@assets/unsplash-houses.webp";
+import { SlideDownTitle } from "@site/components/SlideDownTitle";
+import { PageTitle } from "@site/components/PageTitle";
+import { bgImgHeight } from "@site/constants";
+import houses from "@site/assets/unsplash-houses.webp";
 import { PageBGProps } from "./types";
-import { getBGColor } from "@site/utils";
+import { getBGColor } from "@site/utils/getBGColor";
 
 const useStyles = createStyles((theme, { wip }: { wip?: boolean }) => ({
   container: {

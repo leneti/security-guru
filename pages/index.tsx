@@ -11,10 +11,10 @@ import {
 import { useReducedMotion, useScrollIntoView } from "@mantine/hooks";
 import { IconChevronRight } from "@tabler/icons";
 import Link from "next/link";
-import { Hero } from "@components/Hero";
-import { PageTitle } from "@components/PageTitle";
-import { Services } from "@components/Services";
-import { headerHeight } from "@constants";
+import { Hero } from "@site/components/Hero";
+import { PageTitle } from "@site/components/PageTitle";
+import { Services } from "@site/components/Services";
+import { headerHeight } from "@site/constants";
 
 const useStyles = createStyles(
   (theme, { reducedMotion }: { reducedMotion: boolean }) => ({

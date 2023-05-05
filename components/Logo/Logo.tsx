@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import Ikona_Oranzine from "@assets/logo/Ikona_Oranzine.webp";
-import HLogotipas_Oranzine from "@assets/logo/HLogotipas_Oranzine.webp";
-import Logotipas_Oranzine from "@assets/logo/Logotipas_Oranzine.webp";
+import Ikona_Oranzine from "@site/assets/logo/Ikona_Oranzine.webp";
+import HLogotipas_Oranzine from "@site/assets/logo/HLogotipas_Oranzine.webp";
+import Logotipas_Oranzine from "@site/assets/logo/Logotipas_Oranzine.webp";
 import { LogoProps } from "./types";
 import { rem } from "@mantine/core";
 

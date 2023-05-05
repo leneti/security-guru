@@ -9,8 +9,8 @@ import {
 } from "@mantine/core";
 import { useReducedMotion } from "@mantine/hooks";
 import { useRouter } from "next/router";
-import { PrevUrlContext } from "@pages/_app";
-import { flatLinks } from "@constants";
+import { PrevUrlContext } from "@site/pages/_app";
+import { flatLinks } from "@site/constants";
 import { SlideDownTitleProps } from "./types";
 
 const marginBottom = "1.5rem";

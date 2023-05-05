@@ -1,9 +1,9 @@
-import ass from "@assets/services/ass.webp";
-import ias from "@assets/services/ias.webp";
-import iks from "@assets/services/iks.webp";
-import pss from "@assets/services/pss.webp";
-import vss from "@assets/services/vss.webp";
-import { ServiceCardProps } from "@components/ServiceCard";
+import ass from "@site/assets/services/ass.webp";
+import ias from "@site/assets/services/ias.webp";
+import iks from "@site/assets/services/iks.webp";
+import pss from "@site/assets/services/pss.webp";
+import vss from "@site/assets/services/vss.webp";
+import { ServiceCardProps } from "@site/components/ServiceCard";
 
 const baseUrl = "/paslaugos";
 

@@ -1,3 +1,5 @@
+// Error message enum
+
 export enum ERROR_MESSAGES {
   INCORRECT_NUMBER = "Netinkamas tel. nr.",
   INCORRECT_EMAIL = "Netinkamas el. paštas",

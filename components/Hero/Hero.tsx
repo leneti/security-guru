@@ -11,8 +11,8 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import Image from "next/image";
-import { bgImgHeight } from "@constants";
-import houses from "@assets/unsplash-houses.webp";
+import { bgImgHeight } from "@site/constants";
+import houses from "@site/assets/unsplash-houses.webp";
 
 const leftPadding = "60px";
 const overlayGradient =
