@@ -8,9 +8,9 @@ import {
 } from "@mantine/core";
 import { useReducedMotion } from "@mantine/hooks";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { PageBackground } from "@components";
+import { PageBackground } from "@components/PageBackground";
 import { ABOUT_US_FEATURES } from "@constants";
-import { getBGColor } from "@utils";
+import { getBGColor } from "@utils/getBGColor";
 
 interface FeatureProps {
   icon: React.FC<any>;

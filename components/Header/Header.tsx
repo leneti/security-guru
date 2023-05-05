@@ -9,9 +9,11 @@ import {
 import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
-import { Logo } from "@components";
-import { headerHeight, menuLinks } from "@constants";
-import { getBGColor, useGlobalStyles } from "@utils";
+import { Logo } from "@components/Logo";
+import { menuLinks } from "@constants/menu-links";
+import { headerHeight } from "@constants/measurements";
+import { getBGColor } from "@utils/getBGColor";
+import { useGlobalStyles } from "@utils/useGlobalStyles";
 import { BurgerMenu } from "./BurgerMenu";
 
 const useStyles = createStyles(
@@ -90,7 +92,7 @@ const useStyles = createStyles(
   })
 );
 
-export default function HeaderMenu() {
+export default function Header() {
   const [{ y }] = useWindowScroll();
   const { classes, theme } = useStyles({ isScrolled: y > 0 });
   const { classes: gClasses } = useGlobalStyles();

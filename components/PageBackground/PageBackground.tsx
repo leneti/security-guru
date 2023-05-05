@@ -1,6 +1,7 @@
 import { Overlay, Center, Box, createStyles, Container } from "@mantine/core";
 import Image from "next/image";
-import { PageTitle, SlideDownTitle } from "@components";
+import { SlideDownTitle } from "@components/SlideDownTitle";
+import { PageTitle } from "@components/PageTitle";
 import { bgImgHeight } from "@constants";
 import houses from "@assets/unsplash-houses.webp";
 import { PageBGProps } from "./types";
