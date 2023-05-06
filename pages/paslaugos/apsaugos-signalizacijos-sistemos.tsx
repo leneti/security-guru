@@ -1,6 +1,6 @@
 import { Text } from "@mantine/core";
 import { PageBackground } from "@site/components/PageBackground";
-import { useServiceStyles } from "@site/utils/serviceStyles";
+import { useServiceStyles } from "@site/utils/useServiceStyles";
 import html from "./_page_content/ass.json";
 
 const pageTitle = "Apsaugos signalizacijos sistemos";
