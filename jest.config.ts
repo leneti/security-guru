@@ -5,7 +5,6 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig = {
-  // automock: false,
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",
@@ -14,10 +13,8 @@ const customJestConfig = {
   moduleNameMapper: {
     "@site/(.*)": "<rootDir>/$1",
   },
-  // modulePathIgnorePatterns: [],
-  // resetMocks: false,
+  modulePathIgnorePatterns: ["<rootDir>/.*/__mocks__"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-  // slowTestThreshold: 5,
   testEnvironment: "jest-environment-jsdom",
   verbose: true,
 };

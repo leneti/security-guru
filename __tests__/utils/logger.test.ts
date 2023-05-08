@@ -1,4 +1,4 @@
-import logger from "@site/utils/logger";
+const logger = jest.requireActual("@site/utils/logger").default;
 
 const expectedLogs = [
   {
@@ -8,8 +8,10 @@ const expectedLogs = [
   },
   {
     type: "error",
-    args: ["test"],
-    expected: ["[security-guru][ERROR] test"],
+    args: [{ message: "test" }],
+    expected: [
+      `[security-guru][ERROR] ${JSON.stringify({ message: "test" }, null, 2)}`,
+    ],
   },
   {
     type: "warn",

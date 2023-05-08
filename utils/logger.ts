@@ -1,7 +1,9 @@
 const print =
   (type: string) =>
-  (message: string, ...args: any[]) => {
-    console.log(`[security-guru][${type.toUpperCase()}] ${message}`, ...args);
+  (message: any, ...args: any[]) => {
+    const isString = typeof message === "string";
+    const toPrint = isString ? message : JSON.stringify(message, null, 2);
+    console.log(`[security-guru][${type.toUpperCase()}] ${toPrint}`, ...args);
   };
 
 export default {

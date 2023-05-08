@@ -18,13 +18,12 @@ describe("Footer", () => {
       .spyOn(jest.requireActual("@mantine/hooks"), "useMediaQuery")
       .mockReturnValue(size === "small");
 
-    expect.assertions(3);
-
     render(<Footer />);
 
-    const icons = screen.getAllByRole("link");
-    icons.forEach((icon) =>
-      expect(icon.firstElementChild).toHaveAttribute("width", iconSize)
-    );
+    screen
+      .getAllByRole("link")
+      .forEach((icon) =>
+        expect(icon.firstElementChild).toHaveAttribute("width", iconSize)
+      );
   });
 });

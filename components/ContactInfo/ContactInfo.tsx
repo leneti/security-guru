@@ -47,6 +47,7 @@ export default function ContactInfo() {
       </div>
     </div>
   ));
+
   return (
     <SimpleGrid
       cols={1}
