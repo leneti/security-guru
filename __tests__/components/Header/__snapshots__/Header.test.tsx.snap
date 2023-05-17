@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header matches snapshot when scrolled 0 px 1`] = `
+<div>
+  <div
+    class="mantine-15n1ayh"
+  >
+    <nav
+      class="mantine-15v2uj8"
+    >
+      <a
+        data-testid="logo"
+        size="50"
+      >
+        Mocked Logo
+      </a>
+      <button
+        class="mantine-UnstyledButton-root mantine-Burger-root mantine-hxvumk"
+        title="Atidaryti meniu"
+        type="button"
+      >
+        <div
+          class="mantine-zpoir7 mantine-Burger-burger"
+        />
+      </button>
+      <div>
+        Mock Group
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Header matches snapshot when scrolled 1 px 1`] = `
+<div>
+  <div
+    class="mantine-1d79mma"
+  >
+    <nav
+      class="mantine-15v2uj8"
+    >
+      <a
+        data-testid="logo"
+        size="50"
+      >
+        Mocked Logo
+      </a>
+      <button
+        class="mantine-UnstyledButton-root mantine-Burger-root mantine-hxvumk"
+        title="Atidaryti meniu"
+        type="button"
+      >
+        <div
+          class="mantine-zpoir7 mantine-Burger-burger"
+        />
+      </button>
+      <div>
+        Mock Group
+      </div>
+    </nav>
+  </div>
+</div>
+`;

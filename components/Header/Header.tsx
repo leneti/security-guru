@@ -10,11 +10,11 @@ import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
 import { Logo } from "@site/components/Logo";
+import { BurgerMenu } from "@site/components/Header/BurgerMenu";
 import { menuLinks } from "@site/constants/menu-links";
 import { headerHeight } from "@site/constants/measurements";
 import { getBGColor } from "@site/utils/getBGColor";
 import { useGlobalStyles } from "@site/utils/useGlobalStyles";
-import { BurgerMenu } from "./BurgerMenu";
 
 const useStyles = createStyles(
   (theme, { isScrolled }: { isScrolled: boolean }) => ({

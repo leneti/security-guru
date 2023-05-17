@@ -58,19 +58,15 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function NavbarLinksGroup({
-  icon: Icon,
-  label,
-  initiallyOpened,
-  links,
-  url,
-  closeDrawer,
-}: LinksGroupProps) {
+export default function NavbarLinksGroup(props: LinksGroupProps) {
+  const { icon: Icon, label, initiallyOpened, closeDrawer } = props;
+
   const { classes } = useStyles();
   const [opened, { toggle }] = useDisclosure(initiallyOpened || false);
 
-  if (!url) {
-    const items = (Array.isArray(links) ? links : []).map((link) => (
+  if ("links" in props) {
+    const { links } = props;
+    const items = links.map((link) => (
       <Link
         key={link.label}
         className={classes.subLink}
@@ -105,6 +101,8 @@ export default function NavbarLinksGroup({
       </>
     );
   }
+
+  const { url } = props;
 
   return (
     <UnstyledButton

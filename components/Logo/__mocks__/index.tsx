@@ -1,3 +1,7 @@
-export function Logo() {
-  return <div>Mocked Logo</div>;
+export function Logo(props: any) {
+  return (
+    <a data-testid="logo" {...props}>
+      Mocked Logo
+    </a>
+  );
 }

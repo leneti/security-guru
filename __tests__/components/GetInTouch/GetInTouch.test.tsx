@@ -1,8 +1,8 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import axios from "axios";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { notifications } from "@mantine/notifications";
 import { GetInTouch } from "@site/components/GetInTouch";
-import { ErrorMessages } from "@site/constants";
+import { ErrorMessages } from "@site/constants/error-messages";
 import * as mCore from "@mantine/core";
 
 jest.mock("axios");
