@@ -8,3 +8,4 @@ export * from "./theme";
 export * from "./measurements";
 export * from "./about-us";
 export * from "./services";
+export * from "./app-name";

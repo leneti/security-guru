@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo renders default 1`] = `
+<div>
+  <a
+    href="/"
+  >
+    <img
+      alt="Security Guru logotipas"
+      data-nimg="1"
+      decoding="async"
+      height="50"
+      loading="lazy"
+      src="/img.jpg"
+      style="color: transparent; height: 3.125rem; width: 18.328445747800586rem;"
+      width="293.2551319648094"
+    />
+  </a>
+</div>
+`;
+
+exports[`Logo renders icon only 1`] = `
+<div>
+  <a
+    href="/"
+  >
+    <img
+      alt="Security Guru logotipas"
+      data-nimg="1"
+      decoding="async"
+      height="50"
+      loading="lazy"
+      src="/img.jpg"
+      style="color: transparent; height: 3.125rem; width: 3.1234382808595704rem;"
+      width="49.97501249375313"
+    />
+  </a>
+</div>
+`;
+
+exports[`Logo renders vertical 1`] = `
+<div>
+  <a
+    href="/"
+  >
+    <img
+      alt="Security Guru logotipas"
+      data-nimg="1"
+      decoding="async"
+      height="50"
+      loading="lazy"
+      src="/img.jpg"
+      style="color: transparent; height: 3.125rem; width: 7.961783439490445rem;"
+      width="127.38853503184713"
+    />
+  </a>
+</div>
+`;

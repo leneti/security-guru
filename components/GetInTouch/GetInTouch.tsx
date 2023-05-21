@@ -17,7 +17,12 @@ import { notifications } from "@mantine/notifications";
 import { IconX, IconCheck } from "@tabler/icons";
 import { ContactForm } from "@site/components/GetInTouch";
 import { ContactInfo } from "@site/components/ContactInfo";
-import { emailRegex, numberRegex, ErrorMessages } from "@site/constants";
+import {
+  emailRegex,
+  numberRegex,
+  ErrorMessages,
+  APP_NAME,
+} from "@site/constants";
 import logger from "@site/utils/logger";
 
 const useStyles = createStyles((theme) => {
@@ -225,7 +230,7 @@ export default function GetInTouch() {
                 required
                 label="Vardas / Įmonės pavadinimas"
                 labelProps={labelProps}
-                placeholder="Security Guru"
+                placeholder={APP_NAME}
                 size={fieldSize}
                 {...form.getInputProps("name")}
               />
