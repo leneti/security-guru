@@ -13,14 +13,14 @@ import { Logo } from "@site/components/Logo";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
 import { menuLinks } from "@site/constants/menu-links";
 import { headerHeight } from "@site/constants/measurements";
-import { getBGColor } from "@site/utils/getBGColor";
+import { useBGColor } from "@site/utils/useBGColor";
 import { useGlobalStyles } from "@site/utils/useGlobalStyles";
 
 const useStyles = createStyles(
   (theme, { isScrolled }: { isScrolled: boolean }) => ({
     outer: {
       width: "100%",
-      backgroundColor: getBGColor(theme),
+      backgroundColor: useBGColor(),
       position: "sticky",
       top: 0,
       zIndex: 2,

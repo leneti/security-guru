@@ -3,7 +3,7 @@ import { Overlay, Center, Box, createStyles, Container } from "@mantine/core";
 import { SlideDownTitle } from "@site/components/SlideDownTitle";
 import { PageTitle } from "@site/components/PageTitle";
 import { bgImgHeight } from "@site/constants";
-import { getBGColor } from "@site/utils/getBGColor";
+import { useBGColor } from "@site/utils/useBGColor";
 import houses from "@site/assets/unsplash-houses.webp";
 import { PageBGProps } from "./types";
 
@@ -16,7 +16,7 @@ const useStyles = createStyles((theme, { wip }: { wip?: boolean }) => ({
   image: { objectFit: "cover" },
 
   colorOnly: {
-    backgroundColor: wip ? getBGColor(theme) : theme.fn.primaryColor(),
+    backgroundColor: wip ? useBGColor() : theme.fn.primaryColor(),
     padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
     display: "flex",
     justifyContent: "center",
