@@ -5,7 +5,7 @@ import { APP_NAME, APP_NAME_DEV } from "@site/constants";
 jest.mock("next/head", () => ({
   __esModule: true,
   default: ({ children }: { children: React.ReactNode }) => (
-    <div className="mock-next-head">{children}</div>
+    <div data-testid="mock-next-head">{children}</div>
   ),
 }));
 

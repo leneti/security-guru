@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feature render 1`] = `
+<div>
+  <div>
+    <div
+      class="mantine-ThemeIcon-root mantine-1jywupq"
+    >
+      <i>
+        mock-icon
+      </i>
+    </div>
+    <h2
+      class="mantine-Text-root mantine-Title-root mantine-1qt2cm2"
+    >
+      mock-feature
+    </h2>
+    <div
+      class="mantine-Text-root mantine-1poidil"
+    >
+      mock-description
+    </div>
+  </div>
+</div>
+`;
