@@ -31,10 +31,10 @@ jobs:
         with:
           cmd: build
 
-      #      - name: Test
-      #        uses: borales/actions-yarn@v4
-      #        with:
-      #          cmd: test
+      - name: Test
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test
 
       #      - name: Merge develop -> main
       #        uses: devmasx/merge-branch@master
