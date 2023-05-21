@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactInfo renders 1`] = `
+<div>
+  <div
+    class="mantine-SimpleGrid-root mantine-185uj33"
+  >
+    <div
+      class="mantine-12v0vsc"
+    >
+      <div
+        class="mantine-zidq9q"
+      >
+        <div>
+          mock_
+          IconAt
+        </div>
+      </div>
+      <div>
+        <div
+          class="mantine-Text-root mantine-1dnllud"
+        >
+          El. paštas
+        </div>
+        <div
+          class="mantine-Text-root mantine-1ylbvz9"
+        >
+          info@securityguru.lt
+        </div>
+      </div>
+    </div>
+    <div
+      class="mantine-12v0vsc"
+    >
+      <div
+        class="mantine-zidq9q"
+      >
+        <div>
+          mock_
+          IconPhone
+        </div>
+      </div>
+      <div>
+        <div
+          class="mantine-Text-root mantine-1dnllud"
+        >
+          Tel. Nr.
+        </div>
+        <div
+          class="mantine-Text-root mantine-1ylbvz9"
+        >
+          +37060334255, +37060283726
+        </div>
+      </div>
+    </div>
+    <div
+      class="mantine-12v0vsc"
+    >
+      <div
+        class="mantine-zidq9q"
+      >
+        <div>
+          mock_
+          IconMapPin
+        </div>
+      </div>
+      <div>
+        <div
+          class="mantine-Text-root mantine-1dnllud"
+        >
+          Dirbame
+        </div>
+        <div
+          class="mantine-Text-root mantine-1ylbvz9"
+        >
+          Vilniuje ir Vilniaus apskrityje
+        </div>
+      </div>
+    </div>
+    <div
+      class="mantine-12v0vsc"
+    >
+      <div
+        class="mantine-zidq9q"
+      >
+        <div>
+          mock_
+          IconSun
+        </div>
+      </div>
+      <div>
+        <div
+          class="mantine-Text-root mantine-1dnllud"
+        >
+          Darbo laikas
+        </div>
+        <div
+          class="mantine-Text-root mantine-1ylbvz9"
+        >
+          I-VII 9:00-21:00
+        </div>
+      </div>
+    </div>
+    <div
+      class="mantine-12v0vsc"
+    >
+      <div
+        class="mantine-zidq9q"
+      >
+        <div>
+          mock_
+          IconBuildingEstate
+        </div>
+      </div>
+      <div>
+        <div
+          class="mantine-Text-root mantine-1dnllud"
+        >
+          Įm. kodas
+        </div>
+        <div
+          class="mantine-Text-root mantine-1ylbvz9"
+        >
+          306109454
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -15,9 +15,15 @@ import { useForm } from "@mantine/form";
 import { useMediaQuery } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
 import { IconX, IconCheck } from "@tabler/icons";
-import { ContactForm } from "@components/GetInTouch";
-import { ContactInfo } from "@components/ContactInfo";
-import { emailRegex, numberRegex, ERROR_MESSAGES } from "@constants";
+import { ContactForm } from "@site/components/GetInTouch";
+import { ContactInfo } from "@site/components/ContactInfo";
+import {
+  emailRegex,
+  numberRegex,
+  ErrorMessages,
+  APP_NAME,
+} from "@site/constants";
+import logger from "@site/utils/logger";
 
 const useStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan("sm");
@@ -126,16 +132,11 @@ export default function GetInTouch() {
 
     validate: {
       email: (value) =>
-        emailRegex.test(value) ? null : ERROR_MESSAGES.INCORRECT_EMAIL,
-      number: (value) => {
-        try {
-          return numberRegex.test(value)
-            ? null
-            : ERROR_MESSAGES.INCORRECT_NUMBER;
-        } catch (error) {
-          return ERROR_MESSAGES.INCORRECT_NUMBER;
-        }
-      },
+        emailRegex.test(value) ? null : ErrorMessages.INCORRECT_EMAIL,
+      number: (value) =>
+        numberRegex.test(value) ? null : ErrorMessages.INCORRECT_NUMBER,
+      name: (value) =>
+        /^[^\w\d]+$/.test(value) ? ErrorMessages.INCORRECT_NAME : null,
     },
   });
 
@@ -146,19 +147,18 @@ export default function GetInTouch() {
       message: "Siunčiame laišką Security Guru komandai, prašome palaukti.",
       loading: true,
       style: notificationStyle,
+      autoClose: false,
     });
 
     axios
       .post("/api/contact", values)
-      .then((res) => {
+      .then(() => {
         notifications.update({
           id: notificationId,
           withCloseButton: true,
           autoClose: 5000,
           title: "Valio!",
-          message:
-            res.data?.message ??
-            "Sėkmingai išsiuntėme laišką Security Guru komandai!",
+          message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
           color: "teal",
           icon: <IconCheck />,
           style: notificationStyle,
@@ -167,12 +167,22 @@ export default function GetInTouch() {
         form.reset();
       })
       .catch((err) => {
+        logger.error(err);
+        let title = "Kažkas nutiko...";
+        let message: string =
+          err?.response?.data?.message ?? "Bandykite dar kartą vėliau.";
+
+        if (message.startsWith("[BAD_CONTACT_FORM]")) {
+          message = message.replace("[BAD_CONTACT_FORM] ", "");
+          title = "Netinkamai užpildyta forma";
+        }
+
         notifications.update({
           id: notificationId,
           withCloseButton: true,
           autoClose: 5000,
-          title: "Kažkas nutiko...",
-          message: err.response?.data?.message ?? "Bandykite dar kartą vėliau.",
+          title,
+          message,
           color: "red",
           icon: <IconX />,
           style: notificationStyle,
@@ -220,7 +230,7 @@ export default function GetInTouch() {
                 required
                 label="Vardas / Įmonės pavadinimas"
                 labelProps={labelProps}
-                placeholder="Security Guru"
+                placeholder={APP_NAME}
                 size={fieldSize}
                 {...form.getInputProps("name")}
               />
@@ -236,7 +246,7 @@ export default function GetInTouch() {
                 required
                 label="El. paštas"
                 labelProps={labelProps}
-                placeholder="security.guru@gmail.com"
+                placeholder="info@securityguru.lt"
                 size={fieldSize}
                 {...form.getInputProps("email")}
               />

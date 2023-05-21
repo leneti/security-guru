@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
 import { PhoneNumberUtil } from "google-libphonenumber";
-import { ContactForm } from "@components/GetInTouch";
-import { ERROR_MESSAGES } from "@constants/error-messages";
-import { emailRegex } from "@constants/regexes";
-import logger from "@utils/logger";
+import { ContactForm } from "@site/components/GetInTouch";
+import { ErrorMessages } from "@site/constants/error-messages";
+import { emailRegex } from "@site/constants/regexes";
+import logger from "@site/utils/logger";
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 
@@ -24,41 +24,45 @@ type ResponseData = {
 
 const badContactForm = (obj: any): string => {
   if (!("solution" in obj)) {
-    return ERROR_MESSAGES.WRONG_SOLUTION;
+    return ErrorMessages.WRONG_SOLUTION;
   }
 
   if (!("name" in obj)) {
-    return ERROR_MESSAGES.NO_NAME;
+    return ErrorMessages.NO_NAME;
   }
 
   if (!("email" in obj)) {
-    return ERROR_MESSAGES.NO_EMAIL;
+    return ErrorMessages.NO_EMAIL;
   }
 
   if (!("city" in obj)) {
-    return ERROR_MESSAGES.NO_CITY;
+    return ErrorMessages.NO_CITY;
   }
 
   if (!("number" in obj)) {
-    return ERROR_MESSAGES.NO_NUMBER;
+    return ErrorMessages.NO_NUMBER;
   }
 
   if (!("message" in obj)) {
-    return ERROR_MESSAGES.NO_MESSAGE;
+    return ErrorMessages.NO_MESSAGE;
   }
 
   const { solution, email, number } = obj as ContactForm;
 
   if (!/^(Namams|Verslui)$/.test(solution)) {
-    return ERROR_MESSAGES.WRONG_SOLUTION;
+    return ErrorMessages.WRONG_SOLUTION;
   }
 
   if (!emailRegex.test(email)) {
-    return ERROR_MESSAGES.INCORRECT_EMAIL;
+    return ErrorMessages.INCORRECT_EMAIL;
   }
 
-  if (!phoneUtil.isValidNumber(phoneUtil.parse(number, "LT"))) {
-    return ERROR_MESSAGES.INCORRECT_NUMBER;
+  try {
+    if (!phoneUtil.isValidNumber(phoneUtil.parse(number, "LT"))) {
+      return ErrorMessages.INCORRECT_NUMBER;
+    }
+  } catch (error) {
+    return ErrorMessages.INCORRECT_NUMBER;
   }
 
   return "";
@@ -145,7 +149,7 @@ export default function handler(
 
   if (reason) {
     return res.status(400).send({
-      message: `Netinkamai užpildyta forma. ${reason}`,
+      message: `[BAD_CONTACT_FORM] ${reason}`,
     });
   }
 
@@ -159,9 +163,7 @@ export default function handler(
 
       logger.info(`Sent emails today: ${sentEmailCounter}/${maxSentEmails}`);
 
-      res.status(200).json({
-        message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
-      });
+      res.status(200);
     })
     .catch((err) => {
       logger.error("Couldn't send email.", err);

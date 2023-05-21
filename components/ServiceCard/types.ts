@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 
 export interface ServiceCardProps {
-  image: StaticImageData;
+  image: string | StaticImageData;
   title: string;
   description: string;
   price: string;
