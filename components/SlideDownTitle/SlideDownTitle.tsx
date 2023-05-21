@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   Title,
   Transition,
@@ -8,9 +9,8 @@ import {
   clsx,
 } from "@mantine/core";
 import { useReducedMotion } from "@mantine/hooks";
-import { useRouter } from "next/router";
-import { PrevUrlContext } from "@site/pages/_app";
 import { flatLinks } from "@site/constants";
+import { usePrevUrlContext } from "@site/contexts/prevUrl";
 import { SlideDownTitleProps } from "./types";
 
 const marginBottom = "1.5rem";
@@ -78,7 +78,7 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
   const { title, wip = false } = props;
   const noMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
-  const prevUrl = useContext(PrevUrlContext);
+  const prevUrl = usePrevUrlContext();
   const currentUrl = useRouter().asPath;
   const direction =
     flatLinks.findIndex(({ url }) => url === currentUrl) >

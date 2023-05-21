@@ -1,4 +1,3 @@
-import { createContext } from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
@@ -7,13 +6,10 @@ import { theme } from "@site/constants/theme";
 import { Header } from "@site/components/Header";
 import { Footer } from "@site/components/Footer";
 import { RouterTransition } from "@site/components/RouterTransition";
-import { usePreviousRoute } from "@site/utils/usePreviousRoute";
-
-export const PrevUrlContext = createContext("");
+import PrevUrlProvider from "@site/contexts/prevUrl";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
-  const prevUrl = usePreviousRoute();
 
   return (
     <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
@@ -30,9 +26,9 @@ export default function App(props: AppProps) {
 
       <Header />
 
-      <PrevUrlContext.Provider value={prevUrl}>
+      <PrevUrlProvider>
         <Component {...pageProps} />
-      </PrevUrlContext.Provider>
+      </PrevUrlProvider>
 
       <Footer />
     </MantineProvider>
