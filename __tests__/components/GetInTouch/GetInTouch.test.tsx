@@ -1,9 +1,10 @@
 import axios from "axios";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import * as mCore from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { GetInTouch } from "@site/components/GetInTouch";
+import { theme } from "@site/constants/theme";
 import { ErrorMessages } from "@site/constants/error-messages";
-import * as mCore from "@mantine/core";
 
 jest.mock("axios");
 jest.mock("@site/components/ContactInfo");
@@ -47,6 +48,13 @@ const mockFormData: FormFields = {
   message: "Mock Message",
 };
 
+const renderWithTheme = () =>
+  render(
+    <mCore.MantineProvider theme={theme}>
+      <GetInTouch />
+    </mCore.MantineProvider>
+  );
+
 describe("GetInTouch", () => {
   const fillForm = (overrideFormData?: Partial<FormFields>) => {
     const formData = { ...mockFormData, ...overrideFormData };
@@ -74,7 +82,7 @@ describe("GetInTouch", () => {
     const mockAxiosPost = jest.fn().mockName("axios.post");
     (axios.post as jest.Mock).mockImplementation(mockAxiosPost);
 
-    render(<GetInTouch />);
+    renderWithTheme();
 
     const submitBtn = screen.getByRole("button");
 
@@ -86,7 +94,7 @@ describe("GetInTouch", () => {
     const mockAxiosPost = jest.fn().mockName("axios.post");
     (axios.post as jest.Mock).mockImplementation(mockAxiosPost);
 
-    render(<GetInTouch />);
+    renderWithTheme();
 
     const submitBtn = screen.getByRole("button");
 
@@ -108,7 +116,7 @@ describe("GetInTouch", () => {
       jest.fn(() => Promise.resolve()).mockName("axios.post")
     );
 
-    render(<GetInTouch />);
+    renderWithTheme();
 
     fillForm();
 
@@ -159,7 +167,7 @@ describe("GetInTouch", () => {
         .spyOn(notifications, "update")
         .mockImplementation(jest.fn().mockName("notifications.update"));
 
-      render(<GetInTouch />);
+      renderWithTheme();
 
       fillForm();
 
@@ -192,7 +200,7 @@ describe("GetInTouch", () => {
 
       const buttonMock = jest.spyOn(mCore, "Button");
 
-      render(<GetInTouch />);
+      renderWithTheme();
 
       expect(buttonMock).toHaveBeenCalledWith(
         expect.objectContaining({ size: componentSize }),

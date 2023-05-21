@@ -99,11 +99,6 @@ export const theme: MantineThemeOverride = {
             color: theme.colors.dark[6],
           },
         }),
-        gradient: (theme) => ({
-          root: {
-            color: theme.colors.dark[6],
-          },
-        }),
       },
     },
 

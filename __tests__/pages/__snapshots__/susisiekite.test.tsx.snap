@@ -3,8 +3,7 @@
 exports[`Contact-us page renders 1`] = `
 <div>
   <div
-    data-testid="Mock-PageBackground"
-    pagetitle="Susisiekite"
+    data-testid="Mock-PageBackground Susisiekite"
   >
     <div>
       Mock GetInTouch
