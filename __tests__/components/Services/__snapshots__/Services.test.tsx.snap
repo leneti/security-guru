@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Services renders 1`] = `
+<div>
+  <div
+    class="mantine-Grid-root mantine-16fdnqw"
+  >
+    <div
+      class="mantine-Grid-col mantine-xlsyji"
+    >
+      <h3>
+        Mock title: 
+        Apsaugos signalizacijos sistemos
+      </h3>
+      <div>
+        Mock image: 
+        {"src":"/img.jpg","height":40,"width":40,"blurDataURL":"data:image/png;base64,imagedata"}
+      </div>
+      <div>
+        Mock description: 
+        Montuojame ir įrengiame apsaugos signalizacijas namuose ir biuruose, kad užtikrinti jūsų patalpų saugumą.
+      </div>
+      <div>
+        Mock price: 
+        nuo €200
+      </div>
+      <div>
+        Mock url: 
+        /paslaugos/apsaugos-signalizacijos-sistemos
+      </div>
+    </div>
+    <div
+      class="mantine-Grid-col mantine-xlsyji"
+    >
+      <h3>
+        Mock title: 
+        Įeigos kontrolės sistemos
+      </h3>
+      <div>
+        Mock image: 
+        {"src":"/img.jpg","height":40,"width":40,"blurDataURL":"data:image/png;base64,imagedata"}
+      </div>
+      <div>
+        Mock description: 
+        Diegiame ir įrengiame eismo valdymo sistemas biuruose ir viešosiose vietose eismo srautams valdyti ir saugumui užtikrinti.
+      </div>
+      <div>
+        Mock price: 
+        nuo €100
+      </div>
+      <div>
+        Mock url: 
+        /paslaugos/ieigos-kontroles-sistemos
+      </div>
+    </div>
+    <div
+      class="mantine-Grid-col mantine-xlsyji"
+    >
+      <h3>
+        Mock title: 
+        Priešgaisrinės signalizacijos sistemos
+      </h3>
+      <div>
+        Mock image: 
+        {"src":"/img.jpg","height":40,"width":40,"blurDataURL":"data:image/png;base64,imagedata"}
+      </div>
+      <div>
+        Mock description: 
+        Montuojame ir įrengiame priešgaisrinę signalizaciją namuose ir biuruose, kad aptiktume ir įspėti apie gaisrą.
+      </div>
+      <div>
+        Mock price: 
+        nuo €200
+      </div>
+      <div>
+        Mock url: 
+        /paslaugos/priesgaisrines-signalizacijos-sistemos
+      </div>
+    </div>
+    <div
+      class="mantine-Grid-col mantine-xlsyji"
+    >
+      <h3>
+        Mock title: 
+        Vaizdo stebėjimo sistemos
+      </h3>
+      <div>
+        Mock image: 
+        {"src":"/img.jpg","height":40,"width":40,"blurDataURL":"data:image/png;base64,imagedata"}
+      </div>
+      <div>
+        Mock description: 
+        Montuojame ir įrengiame stebėjimo sistemas namuose ir biuruose, kad  stebėti veiklą ir aptikti bet kokį įtartiną elgesį.
+      </div>
+      <div>
+        Mock price: 
+        nuo €200
+      </div>
+      <div>
+        Mock url: 
+        /paslaugos/vaizdo-stebejimo-sistemos
+      </div>
+    </div>
+    <div
+      class="mantine-Grid-col mantine-xlsyji"
+    >
+      <h3>
+        Mock title: 
+        Integruoti apsaugos sprendimai
+      </h3>
+      <div>
+        Mock image: 
+        {"src":"/img.jpg","height":40,"width":40,"blurDataURL":"data:image/png;base64,imagedata"}
+      </div>
+      <div>
+        Mock description: 
+        Pagal užsakymą įrengiame integruotą apsaugos sistemą, kuri apima apsaugos signalizaciją, eismo kontrolę, priešgaisrinę signalizaciją ir stebėjimo sistemas.
+      </div>
+      <div>
+        Mock price: 
+        nuo €200
+      </div>
+      <div>
+        Mock url: 
+        /paslaugos/integruoti-apsaugos-sprendimai
+      </div>
+    </div>
+  </div>
+</div>
+`;

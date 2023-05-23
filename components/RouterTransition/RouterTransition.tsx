@@ -8,9 +8,7 @@ export default function RouterTransition() {
   const router = useRouter();
   const theme = useMantineTheme();
   const smallScreen = useMediaQuery(theme.fn.smallerThan("sm").substring(7));
-  const extraLargeScreen = useMediaQuery(
-    theme.fn.smallerThan("xl").substring(7)
-  );
+  const xlScreen = !useMediaQuery(theme.fn.smallerThan("xl").substring(7));
 
   useEffect(() => {
     const handleStart = (url: string) =>
@@ -28,7 +26,7 @@ export default function RouterTransition() {
     };
   }, [router.asPath, router.events]);
 
-  if (!extraLargeScreen) {
+  if (xlScreen) {
     return null;
   }
 

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SlideDownTitle renders title sliding from left 1`] = `
+<div>
+  <h1
+    class="mantine-Text-root mantine-Title-root mantine-q55mz5"
+  >
+    mock-title
+  </h1>
+</div>
+`;
+
+exports[`SlideDownTitle renders title sliding from right 1`] = `
+<div>
+  <h1
+    class="mantine-Text-root mantine-Title-root mantine-106pfj9"
+  >
+    mock-title
+  </h1>
+</div>
+`;
+
+exports[`SlideDownTitle renders title with no transition 1`] = `
+<div>
+  <h1
+    class="mantine-Text-root mantine-Title-root mantine-cx5884"
+  >
+    mock-title
+  </h1>
+</div>
+`;

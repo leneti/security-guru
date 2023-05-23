@@ -9,18 +9,18 @@ import {
 import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons";
 import Link from "next/link";
-import { Logo } from "@components/Logo";
-import { menuLinks } from "@constants/menu-links";
-import { headerHeight } from "@constants/measurements";
-import { getBGColor } from "@utils/getBGColor";
-import { useGlobalStyles } from "@utils/useGlobalStyles";
-import { BurgerMenu } from "./BurgerMenu";
+import { Logo } from "@site/components/Logo";
+import { BurgerMenu } from "@site/components/Header/BurgerMenu";
+import { menuLinks } from "@site/constants/menu-links";
+import { headerHeight } from "@site/constants/measurements";
+import { useBGColor } from "@site/utils/useBGColor";
+import { useGlobalStyles } from "@site/utils/useGlobalStyles";
 
 const useStyles = createStyles(
   (theme, { isScrolled }: { isScrolled: boolean }) => ({
     outer: {
       width: "100%",
-      backgroundColor: getBGColor(theme),
+      backgroundColor: useBGColor(),
       position: "sticky",
       top: 0,
       zIndex: 2,

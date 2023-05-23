@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact-us page renders 1`] = `
+<div>
+  <div
+    data-testid="Mock-PageBackground Susisiekite"
+  >
+    <div>
+      Mock GetInTouch
+    </div>
+  </div>
+</div>
+`;
