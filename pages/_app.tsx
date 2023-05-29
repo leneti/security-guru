@@ -14,7 +14,14 @@ export default function App(props: AppProps) {
   return (
     <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
       <Head>
-        <meta name="description" content="Apsaugos sprendimai" />
+        <meta
+          name="description"
+          content="Aukščiausio lygio paslaugos fizinės bei elektroninės namų ir verslo apsaugos srityse."
+        />
+        <meta
+          name="keywords"
+          content="Namų apsauga,saugumas,apsauga,apsaugos sprendimai,verslo saugos sprendimai,signalizacija,signalizacijos sistemos,spynos,kameros"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.webp" />
         <title>Security Guru</title>
