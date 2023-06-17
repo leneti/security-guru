@@ -1813,7 +1813,7 @@
     "@tabler/icons" "2.22.0"
     prop-types "^15.7.2"
 
-"@tabler/icons@2.22.0", "@tabler/icons@^2.22.0":
+"@tabler/icons@2.22.0":
   version "2.22.0"
   resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-2.22.0.tgz#1d2d56503e6485faa920b8f9aaf55e1f745cda25"
   integrity sha512-lOsGHqRPIKNARMWHHFkUUJH78C8ptQmUcDnumFBUI4YLRKFouKa7uAZL3ZfuH0HjDpOhsnWqUYZ7FhMCLcGpAQ==
