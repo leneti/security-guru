@@ -14,7 +14,7 @@ import {
 import { useForm } from "@mantine/form";
 import { useMediaQuery } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
-import { IconX, IconCheck } from "@tabler/icons";
+import { IconX, IconCheck } from "@tabler/icons-react";
 import { ContactForm } from "@site/components/GetInTouch";
 import { ContactInfo } from "@site/components/ContactInfo";
 import {

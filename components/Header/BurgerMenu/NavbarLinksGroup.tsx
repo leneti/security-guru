@@ -7,7 +7,7 @@ import {
   createStyles,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconChevronDown } from "@tabler/icons";
+import { IconChevronDown } from "@tabler/icons-react";
 import Link from "next/link";
 import { LinksGroupProps } from "./types";
 

@@ -4,7 +4,7 @@ import {
   IconMapPin,
   IconAt,
   IconBuildingEstate,
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 
 export const contactData = [
   { title: "El. paštas", description: "info@securityguru.lt", icon: IconAt },

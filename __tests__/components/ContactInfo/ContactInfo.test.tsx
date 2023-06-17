@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { ContactInfo } from "@site/components/ContactInfo";
 
 jest.mock(
-  "@tabler/icons",
+  "@tabler/icons-react",
   () =>
     new Proxy(
       {

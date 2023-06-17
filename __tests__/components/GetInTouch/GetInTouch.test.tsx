@@ -9,7 +9,7 @@ import { ErrorMessages } from "@site/constants/error-messages";
 jest.mock("axios");
 jest.mock("@site/components/ContactInfo");
 jest.mock(
-  "@tabler/icons",
+  "@tabler/icons-react",
   () =>
     new Proxy(
       {
