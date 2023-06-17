@@ -1,14 +1,14 @@
 import {
-  TablerIcon,
+  TablerIconsProps,
   IconShieldCheck,
   IconMail,
   IconBriefcase,
-  IconTools,
-} from "@tabler/icons";
+  // IconTools,
+} from "@tabler/icons-react";
 
 interface LinkBasic {
   label: string;
-  icon: TablerIcon;
+  icon: React.FC<TablerIconsProps>;
   initiallyOpened?: boolean;
   hidden?: boolean;
 }

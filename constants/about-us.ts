@@ -4,7 +4,7 @@ import {
   IconUser,
   IconMessage2,
   IconLock,
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 
 export const ABOUT_US_FEATURES = [
   {

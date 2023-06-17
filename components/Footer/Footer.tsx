@@ -7,7 +7,11 @@ import {
   ActionIcon,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconBrandInstagram, IconBrandFacebook, IconMail } from "@tabler/icons";
+import {
+  IconBrandInstagram,
+  IconBrandFacebook,
+  IconMail,
+} from "@tabler/icons-react";
 import Link from "next/link";
 import { Logo } from "@site/components/Logo";
 

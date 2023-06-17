@@ -1,7 +1,7 @@
-import { TablerIcon } from "@tabler/icons";
+import { TablerIconsProps } from "@tabler/icons-react";
 
 interface LinksGroupBasics {
-  icon: TablerIcon;
+  icon: React.FC<TablerIconsProps>;
   label: string;
   initiallyOpened?: boolean;
   closeDrawer: () => void;

@@ -7,7 +7,7 @@ import {
   Box,
 } from "@mantine/core";
 import { useMediaQuery, useWindowScroll } from "@mantine/hooks";
-import { IconChevronDown } from "@tabler/icons";
+import { IconChevronDown } from "@tabler/icons-react";
 import Link from "next/link";
 import { Logo } from "@site/components/Logo";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";

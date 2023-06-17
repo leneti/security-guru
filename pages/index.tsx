@@ -9,7 +9,7 @@ import {
   px,
 } from "@mantine/core";
 import { useReducedMotion, useScrollIntoView } from "@mantine/hooks";
-import { IconChevronRight } from "@tabler/icons";
+import { IconChevronRight } from "@tabler/icons-react";
 import Link from "next/link";
 import { Hero } from "@site/components/Hero";
 import { PageTitle } from "@site/components/PageTitle";
