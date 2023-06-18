@@ -33,7 +33,7 @@ exports[`Home page renders scroll button with animation 1`] = `
     class="mantine-Center-root mantine-1y5prk2"
   >
     <a
-      class="mantine-UnstyledButton-root mantine-Button-root mantine-1s2d5g8"
+      class="mantine-UnstyledButton-root mantine-Button-root mantine-bouam0"
       data-button="true"
       href="/susisiekite"
       type="button"
@@ -50,7 +50,7 @@ exports[`Home page renders scroll button with animation 1`] = `
           class="mantine-Button-icon mantine-Button-rightIcon mantine-467wo8"
         >
           <svg
-            class="icon icon-tabler icon-tabler-chevron-right"
+            class="tabler-icon tabler-icon-chevron-right"
             fill="none"
             height="20"
             stroke="currentColor"
@@ -62,12 +62,7 @@ exports[`Home page renders scroll button with animation 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M0 0h24v24H0z"
-              fill="none"
-              stroke="none"
-            />
-            <polyline
-              points="9 6 15 12 9 18"
+              d="M9 6l6 6l-6 6"
             />
           </svg>
         </span>
@@ -110,7 +105,7 @@ exports[`Home page renders scroll button without animation 1`] = `
     class="mantine-Center-root mantine-1y5prk2"
   >
     <a
-      class="mantine-UnstyledButton-root mantine-Button-root mantine-1s2d5g8"
+      class="mantine-UnstyledButton-root mantine-Button-root mantine-bouam0"
       data-button="true"
       href="/susisiekite"
       type="button"
@@ -127,7 +122,7 @@ exports[`Home page renders scroll button without animation 1`] = `
           class="mantine-Button-icon mantine-Button-rightIcon mantine-467wo8"
         >
           <svg
-            class="icon icon-tabler icon-tabler-chevron-right"
+            class="tabler-icon tabler-icon-chevron-right"
             fill="none"
             height="20"
             stroke="currentColor"
@@ -139,12 +134,7 @@ exports[`Home page renders scroll button without animation 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M0 0h24v24H0z"
-              fill="none"
-              stroke="none"
-            />
-            <polyline
-              points="9 6 15 12 9 18"
+              d="M9 6l6 6l-6 6"
             />
           </svg>
         </span>
