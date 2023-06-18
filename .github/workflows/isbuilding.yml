@@ -2,11 +2,6 @@ name: isBuilding
 
 on:
   pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
-      - ready_for_review
     branches:
       - develop
       - main
