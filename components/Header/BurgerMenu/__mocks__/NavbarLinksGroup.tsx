@@ -1,14 +1,12 @@
 import { LinksGroupProps } from "../types";
 
-export default function NavbarLinksGroupMock({
-  label,
-  links,
-  url,
-}: Partial<LinksGroupProps>) {
-  if (!url) {
+export default function NavbarLinksGroupMock(props: Partial<LinksGroupProps>) {
+  const { label } = props;
+
+  if ("links" in props) {
     return (
       <div className={`mock_navbar_links_group--${label}`}>
-        {links?.map(({ label, url }) => (
+        {props.links?.map(({ label, url }) => (
           <a key={url} href={url} className={`mock_navbar_link--${label}`}>
             {label}
           </a>
@@ -16,9 +14,14 @@ export default function NavbarLinksGroupMock({
       </div>
     );
   }
-  return (
-    <a href={url} className={`mock_navbar_link--${label}`}>
-      {label}
-    </a>
-  );
+
+  if ("url" in props) {
+    return (
+      <a href={props.url} className={`mock_navbar_link--${label}`}>
+        {label}
+      </a>
+    );
+  }
+
+  return null;
 }

@@ -44,12 +44,10 @@ export default function About() {
   const { classes, theme } = useStyles();
   const noMotion = useReducedMotion();
 
-  const features = ABOUT_US_FEATURES.map((feature, index) => (
-    <Feature {...feature} key={index} />
-  ));
+  const features = ABOUT_US_FEATURES.map((feature, index) => <Feature {...feature} key={index} />);
 
   return (
-    <PageBackground pageTitle={pageTitle} colorOnly>
+    <PageBackground pageTitle={pageTitle} colorOnly fullWidth>
       <SimpleGrid
         cols={3}
         spacing={50}
