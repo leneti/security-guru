@@ -7,11 +7,11 @@ interface LinksGroupBasics {
   closeDrawer: () => void;
 }
 
-interface LinksGroupSingle extends LinksGroupBasics {
+export interface LinksGroupSingle extends LinksGroupBasics {
   url: string;
 }
 
-interface LinksGroupDropdown extends LinksGroupBasics {
+export interface LinksGroupDropdown extends LinksGroupBasics {
   links: { label: string; url: string }[];
 }
 

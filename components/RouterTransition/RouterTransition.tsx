@@ -11,8 +11,7 @@ export default function RouterTransition() {
   const xlScreen = !useMediaQuery(theme.fn.smallerThan("xl").substring(7));
 
   useEffect(() => {
-    const handleStart = (url: string) =>
-      url !== router.asPath && nprogress.start();
+    const handleStart = (url: string) => url !== router.asPath && nprogress.start();
     const handleComplete = () => nprogress.complete();
 
     router.events.on("routeChangeStart", handleStart);
@@ -30,11 +29,5 @@ export default function RouterTransition() {
     return null;
   }
 
-  return (
-    <NavigationProgress
-      autoReset
-      progressLabel="Puslapis kraunamas"
-      size={smallScreen ? 2 : 1}
-    />
-  );
+  return <NavigationProgress size={smallScreen ? 2 : 1} />;
 }
