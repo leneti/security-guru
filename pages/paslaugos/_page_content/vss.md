@@ -1,3 +1,0 @@
-Vaizdo stebėjimo sistemos yra skirtos teritorijų, patalpų, kiemų bei specifinių daiktų stebėjimui ir apsaugai. Jos atlieka aptikimo, atpažinimo, identifikavimo, autentifikavimo bei specialias užduotis. Įdiegta vaizdo stebėjimo sistema ne tik leidžia stebėti nuotolinį ar vietinį objektą bei atkurti įvykių eigą, bet atlieka ir prevencijos bei atbaidymo funkcijas. Mūsų įmonė teikia vaizdo stebėjimo sistemų montavimo, priežiūros ir remonto paslaugas.
-
-Projekto kaina nuo **200 eurų**.

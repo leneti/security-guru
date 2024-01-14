@@ -1,6 +1,13 @@
 // @ts-check
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
+const initBundleAnalyzer = require("@next/bundle-analyzer");
+const initMdx = require("@next/mdx");
+
+const withBundleAnalyzer = initBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
+});
+
+const withMDX = initMdx({
+  extension: /\.mdx?$/,
 });
 
 /** @type {import('next').NextConfig} */
@@ -17,8 +24,9 @@ const nextConfig = {
       },
     ],
   },
+  pageExtensions: ["tsx", "mdx"],
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withBundleAnalyzer(withMDX(nextConfig));

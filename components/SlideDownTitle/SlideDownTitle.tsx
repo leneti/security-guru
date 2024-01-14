@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import {
-  Title,
-  Transition,
-  type MantineTransition,
-  Text,
-  createStyles,
-  clsx,
-} from "@mantine/core";
+import { Title, Transition, type MantineTransition, Text, createStyles, clsx } from "@mantine/core";
 import { useReducedMotion } from "@mantine/hooks";
 import { flatLinks } from "@site/constants";
 import { usePrevUrlContext } from "@site/contexts/prevUrl";
@@ -76,7 +69,7 @@ const WIPText = ({ wip }: Pick<SlideDownTitleProps, "wip">) =>
 
 export default function SlideDownTitle(props: SlideDownTitleProps) {
   const { title, wip = false } = props;
-  const noMotion = useReducedMotion();
+  const noMotion = !!useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const prevUrl = usePrevUrlContext();
   const currentUrl = useRouter().asPath;
@@ -102,10 +95,7 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
     </Transition>
   ) : (
     <>
-      <Title
-        align="center"
-        className={clsx(classes.title, classes.horizontallyMovingTitle)}
-      >
+      <Title align="center" className={clsx(classes.title, classes.horizontallyMovingTitle)}>
         {title}
       </Title>
       <WIPText wip={wip} />

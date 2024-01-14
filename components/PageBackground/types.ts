@@ -3,4 +3,5 @@ export interface PageBGProps {
   children?: React.ReactNode;
   colorOnly?: boolean;
   wip?: boolean;
+  fullWidth?: boolean;
 }

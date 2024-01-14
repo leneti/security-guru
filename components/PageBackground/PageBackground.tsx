@@ -17,6 +17,20 @@ const useStyles = createStyles((theme, { wip }: { wip?: boolean }) => ({
 
   colorOnly: {
     backgroundColor: wip ? useBGColor() : theme.fn.primaryColor(),
+    padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
+    display: "flex",
+    flexDirection: "column",
+
+    width: "100%",
+    maxWidth: `calc(33rem + ${theme.spacing.xl})`,
+
+    [theme.fn.smallerThan("sm")]: {
+      padding: `${theme.spacing.xl} ${theme.spacing.xl}`,
+    },
+  },
+
+  fullWidthColorOnly: {
+    backgroundColor: wip ? useBGColor() : theme.fn.primaryColor(),
     padding: `calc(${theme.spacing.xl} * 2) calc(${theme.spacing.xl} * 4)`,
     display: "flex",
     justifyContent: "center",
@@ -38,7 +52,7 @@ const useStyles = createStyles((theme, { wip }: { wip?: boolean }) => ({
 }));
 
 export default function PageBackground(props: PageBGProps) {
-  const { pageTitle, colorOnly, wip, children } = props;
+  const { pageTitle, colorOnly, wip, fullWidth, children } = props;
   const { classes } = useStyles({ wip });
 
   return (
@@ -48,7 +62,7 @@ export default function PageBackground(props: PageBGProps) {
       <SlideDownTitle title={pageTitle} wip={wip} />
 
       {colorOnly ? (
-        <Container fluid className={classes.colorOnly}>
+        <Container fluid className={fullWidth ? classes.fullWidthColorOnly : classes.colorOnly}>
           {children}
         </Container>
       ) : (

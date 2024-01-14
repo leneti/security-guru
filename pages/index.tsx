@@ -16,74 +16,71 @@ import { PageTitle } from "@site/components/PageTitle";
 import { Services } from "@site/components/Services";
 import { headerHeight } from "@site/constants";
 
-const useStyles = createStyles(
-  (theme, { reducedMotion }: { reducedMotion: boolean }) => ({
-    scrollDownArrow: {
-      position: "relative",
-      width: "100%",
+const useStyles = createStyles((theme, { reducedMotion }: { reducedMotion: boolean }) => ({
+  scrollDownArrow: {
+    position: "relative",
+    width: "100%",
 
-      ["::before"]: {
-        animation: `bounce 1s ease ${reducedMotion ? "0" : "3"}`,
-        bottom: theme.spacing.xl,
-        color: theme.white,
-        content: '"╲╱"',
-        fontSize: "2rem",
-        left: "50%",
-        letterSpacing: "-2px",
-        lineHeight: "4rem",
-        marginLeft: "-3rem",
-        opacity: 0.8,
-        position: "absolute",
-        textAlign: "center",
-        width: "6rem",
-        zIndex: 1,
-      },
-
-      ["@keyframes bounce"]: {
-        ["50%"]: {
-          transform: "translateY(-50%)",
-        },
-      },
+    ["::before"]: {
+      animation: `bounce 1s ease ${reducedMotion ? "0" : "3"}`,
+      bottom: theme.spacing.xl,
+      color: theme.white,
+      content: '"╲╱"',
+      fontSize: "2rem",
+      left: "50%",
+      letterSpacing: "-2px",
+      lineHeight: "4rem",
+      marginLeft: "-3rem",
+      opacity: 0.8,
+      position: "absolute",
+      textAlign: "center",
+      width: "6rem",
+      zIndex: 1,
     },
 
-    services: {
-      maxWidth: theme.breakpoints.xl,
-      padding: `calc(${theme.spacing.xl} * 4) 0`,
-      marginLeft: "auto",
-      marginRight: "auto",
-
-      [`@media (max-width: calc(${theme.spacing.xl} * 2 + ${theme.breakpoints.xl}))`]:
-        {
-          paddingLeft: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
-          paddingRight: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
-        },
-
-      [theme.fn.smallerThan("xl")]: {
-        paddingLeft: theme.spacing.xl,
-        paddingRight: theme.spacing.xl,
-      },
-
-      [theme.fn.smallerThan("md")]: {
-        paddingTop: `calc(${theme.spacing.xl} * 3)`,
-      },
-
-      [theme.fn.smallerThan("sm")]: {
-        paddingTop: `calc(${theme.spacing.xl} * 2)`,
-      },
-
-      [theme.fn.smallerThan("xs")]: {
-        paddingTop: theme.spacing.xl,
+    ["@keyframes bounce"]: {
+      ["50%"]: {
+        transform: "translateY(-50%)",
       },
     },
+  },
 
-    contactBtnBox: {
-      marginBottom: `calc(${theme.spacing.xl} * 3)`,
+  services: {
+    maxWidth: theme.breakpoints.xl,
+    padding: `calc(${theme.spacing.xl} * 4) 0`,
+    marginLeft: "auto",
+    marginRight: "auto",
+
+    [`@media (max-width: calc(${theme.spacing.xl} * 2 + ${theme.breakpoints.xl}))`]: {
+      paddingLeft: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
+      paddingRight: `calc(${theme.spacing.xl} - ((100vw - ${theme.breakpoints.xl}) / 2))`,
     },
-  })
-);
+
+    [theme.fn.smallerThan("xl")]: {
+      paddingLeft: theme.spacing.xl,
+      paddingRight: theme.spacing.xl,
+    },
+
+    [theme.fn.smallerThan("md")]: {
+      paddingTop: `calc(${theme.spacing.xl} * 3)`,
+    },
+
+    [theme.fn.smallerThan("sm")]: {
+      paddingTop: `calc(${theme.spacing.xl} * 2)`,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      paddingTop: theme.spacing.xl,
+    },
+  },
+
+  contactBtnBox: {
+    marginBottom: `calc(${theme.spacing.xl} * 3)`,
+  },
+}));
 
 export default function Home() {
-  const { classes } = useStyles({ reducedMotion: useReducedMotion() });
+  const { classes } = useStyles({ reducedMotion: !!useReducedMotion() });
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLHeadingElement>({
     offset: 20 + px(headerHeight),
   });

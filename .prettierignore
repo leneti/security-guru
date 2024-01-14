@@ -1,0 +1,4 @@
+.next/
+.swc
+coverage/
+node_modules/

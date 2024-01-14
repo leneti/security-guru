@@ -10,8 +10,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "md-to-html.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
