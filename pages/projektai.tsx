@@ -1,13 +1,7 @@
-import {
-  createStyles,
-  SimpleGrid,
-  Card,
-  Text,
-  Container,
-  AspectRatio,
-} from "@mantine/core";
+import { SimpleGrid, Card, Text, Container, AspectRatio } from "@mantine/core";
 import { PageBackground } from "@site/components/PageBackground";
 import Image, { ImageLoaderProps } from "next/image";
+import classes from "./projektai.module.css";
 
 const mockdata = [
   {
@@ -41,27 +35,7 @@ const unsplashLoader = ({ src, width, quality }: ImageLoaderProps) =>
     quality || 75
   }`;
 
-const useStyles = createStyles((theme) => ({
-  card: {
-    transition: "transform 150ms ease, box-shadow 150ms ease",
-    backgroundColor: "transparent",
-    boxShadow: theme.shadows.md,
-
-    "&:hover": {
-      transform: "scale(1.01)",
-      boxShadow: theme.shadows.xl,
-    },
-  },
-
-  title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 600,
-  },
-}));
-
 function ArticlesCardsGrid() {
-  const { classes } = useStyles();
-
   const cards = mockdata.map(({ title, image, date }) => (
     <Card
       key={title}
@@ -82,7 +56,7 @@ function ArticlesCardsGrid() {
         />
       </AspectRatio>
 
-      <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
+      <Text c="dimmed" size="xs" tt="uppercase" fw={700} mt="md">
         {date}
       </Text>
 
@@ -94,9 +68,7 @@ function ArticlesCardsGrid() {
 
   return (
     <Container py="xl">
-      <SimpleGrid cols={2} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
-        {cards}
-      </SimpleGrid>
+      <SimpleGrid cols={{ base: 1, sm: 2 }}>{cards}</SimpleGrid>
     </Container>
   );
 }

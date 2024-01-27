@@ -1,0 +1,5 @@
+.button {
+  &[data-variant="filled"] {
+    color: var(--mantine-color-dark-6);
+  }
+}

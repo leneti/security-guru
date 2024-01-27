@@ -1,0 +1,52 @@
+.control {
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  color: var(--mantine-color-dark-0);
+  font-size: var(--mantine-font-size-md);
+  border-radius: var(--mantine-radius-md);
+
+  &:hover {
+    background-color: var(--mantine-color-dark-9);
+    color: var(--mantine-color-white);
+  }
+}
+
+.link {
+  text-decoration: none;
+  margin-left: var(--mantine-spacing-md);
+  font-weight: 500;
+  font-size: var(--mantine-font-size-md);
+  color: var(--mantine-color-dark-0);
+}
+
+.subLink {
+  font-weight: 500;
+  display: block;
+  text-decoration: none;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  padding-left: 36px;
+  margin-left: 35px;
+  font-size: var(--mantine-font-size-md);
+  color: var(--mantine-color-dark-0);
+  border-left: 1px solid var(--mantine-color-dark-4);
+  border-bottom-right-radius: var(--mantine-radius-md);
+  border-top-right-radius: var(--mantine-radius-md);
+
+  &:hover {
+    background-color: var(--mantine-color-dark-9);
+  }
+}
+
+.chevron {
+  transition: transform 300ms ease;
+}
+
+.logo {
+  height: 50px;
+
+  @media (min-width: $mantine-breakpoint-xs) {
+    height: 40px;
+  }
+}

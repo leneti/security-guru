@@ -9,7 +9,6 @@ const customJestConfig = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
-  // coverageThreshold: undefined,
   moduleNameMapper: {
     "@site/(.*)": "<rootDir>/$1",
   },

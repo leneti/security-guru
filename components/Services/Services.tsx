@@ -6,7 +6,7 @@ export default function Services() {
   return (
     <Grid columns={6} grow>
       {serviceData.map((service) => (
-        <Grid.Col sm={6} md={3} lg={2} key={service.title}>
+        <Grid.Col span={{ base: 6, md: 3, lg: 2 }} key={service.title}>
           <ServiceCard {...service} />
         </Grid.Col>
       ))}

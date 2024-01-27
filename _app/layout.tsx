@@ -1,4 +1,9 @@
-import { type Metadata } from "next";
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+import "@mantine/core/styles.css";
+
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="lt">
-      <body>{children}</body>
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body>
+        <MantineProvider>{children}</MantineProvider>
+      </body>
     </html>
   );
 }

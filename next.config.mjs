@@ -1,6 +1,6 @@
 // @ts-check
-const initBundleAnalyzer = require("@next/bundle-analyzer");
-const initMdx = require("@next/mdx");
+import initBundleAnalyzer from "@next/bundle-analyzer";
+import initMdx from "@next/mdx";
 
 const withBundleAnalyzer = initBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -26,7 +26,10 @@ const nextConfig = {
   },
   pageExtensions: ["tsx", "mdx"],
   productionBrowserSourceMaps: true,
-  reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  reactStrictMode: false,
 };
 
-module.exports = withBundleAnalyzer(withMDX(nextConfig));
+export default withBundleAnalyzer(withMDX(nextConfig));

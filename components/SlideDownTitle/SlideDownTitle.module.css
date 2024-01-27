@@ -1,0 +1,35 @@
+.title {
+  fontweight: 900;
+  margintop: var(--mantine-spacing-xs);
+  marginbottom: 1.5rem;
+  paddingbottom: var(--mantine-spacing-sm);
+  paddingleft: var(--mantine-spacing-xl);
+  paddingright: var(--mantine-spacing-xl);
+}
+
+.horizontallyMovingTitle {
+  opacity: 0;
+
+  @media (prefers-reduced-motion) {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transform: scaleX(0.9);
+    transitionproperty: opacity transform;
+    transitionduration: 0.2s;
+  }
+}
+
+.horizontallyMovingTitle.left {
+  transformorigin: left center 0;
+}
+
+.horizontallyMovingTitle.right {
+  transformorigin: right center 0;
+}
+
+.horizontallyMovingTitle.mounted {
+  opacity: 1;
+  transform: scaleX(1);
+}

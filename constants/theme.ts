@@ -1,42 +1,60 @@
-import { MantineThemeOverride } from "@mantine/core";
+import {
+  createTheme,
+  type CSSVariablesResolver,
+  Button,
+  Text,
+  Title,
+} from "@mantine/core";
+import buttonClasses from "@site/constants/variants/button.module.css";
+import textClasses from "@site/constants/variants/text.module.css";
+import titleClasses from "@site/constants/variants/title.module.css";
 
-export const baseTheme = {
-  fontSizes: {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    md: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
+export const resolver: CSSVariablesResolver = () => ({
+  variables: {
+    "--mantine-primary-color": "#FFAB66",
+    "--mantine-primary-color-0": "#FFF3EA",
+    "--mantine-primary-color-1": "#FFDFC6",
+    "--mantine-primary-color-2": "#FFCDA4",
+    "--mantine-primary-color-3": "#FFBC85",
+    "--mantine-primary-color-4": "#FFAB66",
+    "--mantine-primary-color-5": "#FF9B49",
+    "--mantine-primary-color-6": "#FF8D2F",
+    "--mantine-primary-color-7": "#FF8017",
+    "--mantine-primary-color-8": "#FF7301",
+    "--mantine-primary-color-9": "#EB6A00",
+    "--bg-image-height": "43.75rem",
+    "--hero-left-pading": "60px",
+    "--service-card-image-height": "200px",
   },
-
-  radius: {
-    xs: "0.125rem",
-    sm: "0.25rem",
-    md: "0.5rem",
-    lg: "1rem",
-    xl: "2rem",
+  light: {
+    "--mantine-primary-color": "#05221F",
+    "--mantine-primary-color-0": "#C3C9C9",
+    "--mantine-primary-color-1": "#718986",
+    "--mantine-primary-color-2": "#425B58",
+    "--mantine-primary-color-3": "#243E3C",
+    "--mantine-primary-color-4": "#112D2A",
+    "--mantine-primary-color-5": "#05221F",
+    "--mantine-primary-color-6": "#040C0B",
+    "--mantine-primary-color-7": "#020404",
+    "--mantine-primary-color-8": "#010202",
+    "--mantine-primary-color-9": "#000101",
   },
-
-  spacing: {
-    xs: "0.625rem",
-    sm: "0.75rem",
-    md: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem",
+  dark: {
+    "--mantine-primary-color": "#FFAB66",
+    "--mantine-primary-color-0": "#FFF3EA",
+    "--mantine-primary-color-1": "#FFDFC6",
+    "--mantine-primary-color-2": "#FFCDA4",
+    "--mantine-primary-color-3": "#FFBC85",
+    "--mantine-primary-color-4": "#FFAB66",
+    "--mantine-primary-color-5": "#FF9B49",
+    "--mantine-primary-color-6": "#FF8D2F",
+    "--mantine-primary-color-7": "#FF8017",
+    "--mantine-primary-color-8": "#FF7301",
+    "--mantine-primary-color-9": "#EB6A00",
   },
+});
 
-  breakpoints: {
-    xs: "36em",
-    sm: "48em",
-    md: "62em",
-    lg: "75em",
-    xl: "88em",
-  },
-};
-
-export const theme: MantineThemeOverride = {
-  colorScheme: "dark",
-
+export const theme = createTheme({
   colors: {
     brand: [
       "#FFF3EA",
@@ -91,48 +109,17 @@ export const theme: MantineThemeOverride = {
   primaryShade: { light: 5, dark: 4 },
   primaryColor: "brand",
 
-  components: {
-    Button: {
-      variants: {
-        filled: (theme) => ({
-          root: {
-            color: theme.colors.dark[6],
-          },
-        }),
-      },
-    },
-
-    Text: {
-      variants: {
-        lightBg: (theme, params) => ({
-          root: {
-            color:
-              params.color === "dimmed"
-                ? theme.colors.dark[5]
-                : theme.colors.dark[6],
-          },
-        }),
-      },
-    },
-
-    Title: {
-      variants: {
-        lightBg: (theme) => ({
-          root: {
-            color: theme.black,
-          },
-        }),
-      },
-    },
+  breakpoints: {
+    xs: "36em",
+    sm: "48em",
+    md: "62em",
+    lg: "75em",
+    xl: "88em",
   },
 
-  globalStyles: (theme) => ({
-    "*, *::before, *::after": {
-      boxSizing: "border-box",
-    },
-
-    body: {
-      backgroundColor: theme.colors.dark[6],
-    },
-  }),
-};
+  components: {
+    Button: Button.extend({ classNames: buttonClasses }),
+    Text: Text.extend({ classNames: textClasses }),
+    Title: Title.extend({ classNames: titleClasses }),
+  },
+});

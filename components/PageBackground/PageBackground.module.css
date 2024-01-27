@@ -1,0 +1,52 @@
+.container {
+  position: relative;
+  min-height: var(--bg-image-height);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.colorOnly {
+  background-color: var(--mantine-primary-color);
+  padding: calc(var(--mantine-spacing-xl) * 2) var(--mantine-spacing-xl);
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: calc(33rem + var(--mantine-spacing-xl));
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: var(--mantine-spacing-xl) var(--mantine-spacing-xl);
+  }
+}
+
+.colorOnly.wip {
+  background-color: var(--mantine-color-dark-6);
+}
+
+.fullWidthColorOnly {
+  background-color: var(--mantine-primary-color);
+  padding: calc(var(--mantine-spacing-xl) * 2)
+    calc(var(--mantine-spacing-xl) * 4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    padding: calc(var(--mantine-spacing-xl) * 2)
+      calc(var(--mantine-spacing-xl) * 3);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: var(--mantine-spacing-xl) var(--mantine-spacing-xl);
+  }
+}
+.fullWidthColorOnly.wip {
+  background-color: var(--mantine-color-dark-6);
+}
+
+.content {
+  min-height: var(--bg-image-height);
+  z-index: 1;
+}

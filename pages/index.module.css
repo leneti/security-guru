@@ -1,0 +1,72 @@
+.title {
+  text-align: center;
+}
+
+.scrollDownArrow {
+  position: relative;
+  width: 100%;
+
+  &::before {
+    animation: bounce 1s ease 3;
+    bottom: var(--mantine-spacing-xl);
+    color: theme.white;
+    content: ╲╱;
+    font-size: 2rem;
+    left: 50%;
+    letter-spacing: -2px;
+    line-height: 4rem;
+    margin-left: -3rem;
+    opacity: 0.8;
+    position: absolute;
+    text-align: center;
+    width: 6rem;
+    z-index: 1;
+
+    @media (prefers-reduced-motion) {
+      animation: bounce 1s ease 0;
+    }
+  }
+
+  @keyframes bounce {
+    50% {
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.services {
+  max-width: var(--mantine-breakpoint-xl);
+  padding: calc(var(--mantine-spacing-xl) * 4) 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: calc(var(--mantine-spacing-xl) * 2 + var(--mantine-breakpoint-xl))) {
+    padding-left: calc(
+      var(--mantine-spacing-xl) - ((100vw - $mantine-breakpoint-xl) / 2)
+    );
+    padding-right: calc(
+      var(--mantine-spacing-xl) - ((100vw - $mantine-breakpoint-xl) / 2)
+    );
+  }
+
+  @media (max-width: $mantine-breakpoint-xl) {
+    padding-left: var(--mantine-spacing-xl);
+    padding-right: var(--mantine-spacing-xl);
+  }
+
+  @media (max-width: $mantine-breakpoint-md) {
+    padding-top: calc(var(--mantine-spacing-xl) * 3);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-top: calc(var(--mantine-spacing-xl) * 2);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding-top: var(--mantine-spacing-xl);
+  }
+}
+
+.contactBtnBox {
+  marginbottom: calc(var(--mantine-spacing-xl) * 3);
+}

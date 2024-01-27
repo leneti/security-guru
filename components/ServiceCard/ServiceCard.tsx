@@ -1,39 +1,10 @@
-import {
-  Card,
-  Text,
-  Badge,
-  Button,
-  Group,
-  Title,
-  Box,
-  createStyles,
-} from "@mantine/core";
+import { Card, Text, Badge, Button, Group, Title, Box } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import { ServiceCardProps } from "./types";
-import { useMediaQuery } from "@mantine/hooks";
+import classes from "./ServiceCard.module.css";
 
 const CARD_HEIGHT = 420;
-const IMAGE_HEIGHT = 200;
-
-const useStyles = createStyles(() => ({
-  card: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-
-  cardImageBox: {
-    position: "relative",
-    margin: "-1rem -1rem 0 -1rem",
-    height: IMAGE_HEIGHT,
-    width: "100%",
-  },
-
-  image: {
-    objectFit: "cover",
-  },
-}));
 
 export default function ServiceCard({
   image,
@@ -42,9 +13,6 @@ export default function ServiceCard({
   price,
   url,
 }: ServiceCardProps) {
-  const { classes, theme } = useStyles();
-  const smallScreen = useMediaQuery(theme.fn.smallerThan("sm").substring(7));
-
   return (
     <Card
       shadow="xl"
@@ -58,7 +26,7 @@ export default function ServiceCard({
         <Image src={image} alt={title} fill className={classes.image} />
       </Box>
 
-      <Group position="apart" mt="md" mb="xs">
+      <Group justify="space-between" mt="md" mb="xs">
         <Title order={3}>{title}</Title>
         <Badge color="brand-light-green.6" variant="dot">
           {price}
@@ -76,7 +44,7 @@ export default function ServiceCard({
         fullWidth
         mt="md"
         radius="md"
-        size={smallScreen ? "lg" : "md"}
+        className={classes.learnMoreBtn}
       >
         Sužinoti daugiau
       </Button>

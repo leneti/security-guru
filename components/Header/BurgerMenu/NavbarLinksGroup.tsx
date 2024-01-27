@@ -1,67 +1,13 @@
-import {
-  Group,
-  Box,
-  Collapse,
-  ThemeIcon,
-  UnstyledButton,
-  createStyles,
-} from "@mantine/core";
+import { Group, Box, Collapse, ThemeIcon, UnstyledButton } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
 import Link from "next/link";
-import { LinksGroupProps } from "./types";
-
-const useStyles = createStyles((theme) => ({
-  control: {
-    fontWeight: 500,
-    display: "block",
-    width: "100%",
-    padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    color: theme.colors.dark[0],
-    fontSize: theme.fontSizes.md,
-    borderRadius: theme.radius.md,
-
-    "&:hover": {
-      backgroundColor: theme.colors.dark[9],
-      color: theme.white,
-    },
-  },
-
-  link: {
-    textDecoration: "none",
-    marginLeft: theme.spacing.md,
-    fontWeight: 500,
-    fontSize: theme.fontSizes.md,
-    color: theme.colors.dark[0],
-  },
-
-  subLink: {
-    fontWeight: 500,
-    display: "block",
-    textDecoration: "none",
-    padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    paddingLeft: 36,
-    marginLeft: 35,
-    fontSize: theme.fontSizes.md,
-    color: theme.colors.dark[0],
-    borderLeft: `1px solid ${theme.colors.dark[4]}`,
-    borderBottomRightRadius: theme.radius.md,
-    borderTopRightRadius: theme.radius.md,
-
-    "&:hover": {
-      backgroundColor: theme.colors.dark[9],
-    },
-  },
-
-  chevron: {
-    transition: "transform 300ms ease",
-  },
-}));
+import type { LinksGroupProps } from "./types";
+import classes from "./NavbarLinksGroup.module.css";
 
 export default function NavbarLinksGroup(props: LinksGroupProps) {
   const { icon: Icon, label, initiallyOpened, closeDrawer } = props;
 
-  const { classes } = useStyles();
   const [opened, { toggle }] = useDisclosure(initiallyOpened || false);
 
   if ("links" in props) {
@@ -80,8 +26,8 @@ export default function NavbarLinksGroup(props: LinksGroupProps) {
     return (
       <>
         <UnstyledButton onClick={toggle} className={classes.control}>
-          <Group position="apart">
-            <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Group justify="space-between">
+            <Box style={{ display: "flex", alignItems: "center" }}>
               <ThemeIcon variant="light" size={40}>
                 <Icon size={20} />
               </ThemeIcon>
@@ -111,8 +57,8 @@ export default function NavbarLinksGroup(props: LinksGroupProps) {
       className={classes.control}
       onClick={closeDrawer}
     >
-      <Group position="apart">
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Group justify="space-between">
+        <Box style={{ display: "flex", alignItems: "center" }}>
           <ThemeIcon variant="light" size={40}>
             <Icon size={20} />
           </ThemeIcon>
