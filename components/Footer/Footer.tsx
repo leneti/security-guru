@@ -33,31 +33,26 @@ export default function Footer() {
             href="https://www.facebook.com/people/Security-guru/100088856047734/"
             target="_blank"
             title="Facebook puslapis"
+            variant="subtle"
           >
-            <IconBrandFacebook
-              className={classes.icon}
-              // size={smallScreen ? 28 : 18}
-              stroke={1.5}
-            />
+            <IconBrandFacebook className={classes.icon} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
             component={Link}
             href="https://www.instagram.com/mbsecurityguru/"
             target="_blank"
             title="Instagram paskyra"
+            variant="subtle"
           >
-            <IconBrandInstagram
-              className={classes.icon}
-              // size={smallScreen ? 28 : 18}
-              stroke={1.5}
-            />
+            <IconBrandInstagram className={classes.icon} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon component={Link} href="/kontaktai" title="Susisiekite">
-            <IconMail
-              className={classes.icon}
-              // size={smallScreen ? 28 : 18}
-              stroke={1.5}
-            />
+          <ActionIcon
+            component={Link}
+            href="/kontaktai"
+            title="Susisiekite"
+            variant="subtle"
+          >
+            <IconMail className={classes.icon} stroke={1.5} />
           </ActionIcon>
         </Group>
       </Container>

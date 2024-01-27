@@ -28,7 +28,7 @@ export default function ServiceCard({
 
       <Group justify="space-between" mt="md" mb="xs">
         <Title order={3}>{title}</Title>
-        <Badge color="brand-light-green.6" variant="dot">
+        <Badge color="lime" variant="dot">
           {price}
         </Badge>
       </Group>
@@ -44,6 +44,7 @@ export default function ServiceCard({
         fullWidth
         mt="md"
         radius="md"
+        color="primary.4"
         className={classes.learnMoreBtn}
       >
         Sužinoti daugiau

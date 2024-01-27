@@ -20,13 +20,17 @@ export default function Logo(props: LogoProps) {
   const width = (logoSize * 2000) / (iconOnly ? 2001 : vertical ? 785 : 341);
 
   return (
-    <Link href="/" onClick={onClick}>
+    <Link
+      href="/"
+      onClick={onClick}
+      style={{ height: logoSize }}
+      className={extraClasses}
+    >
       <Image
         alt={logoAltText}
         src={src}
         height={logoSize}
         width={width}
-        className={extraClasses}
         style={{
           height: rem(logoSize),
           width: rem(width),

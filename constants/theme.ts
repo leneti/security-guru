@@ -4,6 +4,7 @@ import {
   Button,
   Text,
   Title,
+  Divider,
 } from "@mantine/core";
 import buttonClasses from "@site/constants/variants/button.module.css";
 import textClasses from "@site/constants/variants/text.module.css";
@@ -22,9 +23,16 @@ export const resolver: CSSVariablesResolver = () => ({
     "--mantine-primary-color-7": "#FF8017",
     "--mantine-primary-color-8": "#FF7301",
     "--mantine-primary-color-9": "#EB6A00",
+    "--mantine-spacing-xs": "0.625rem",
+    "--mantine-spacing-sm": "0.75rem",
+    "--mantine-spacing-md": "1rem",
+    "--mantine-spacing-lg": "1.25rem",
+    "--mantine-spacing-xl": "1.5rem",
+    "--mantine-spacing-xxl": "2rem",
     "--bg-image-height": "43.75rem",
     "--hero-left-pading": "60px",
     "--service-card-image-height": "200px",
+    "--header-height": "5rem",
   },
   light: {
     "--mantine-primary-color": "#05221F",
@@ -56,7 +64,7 @@ export const resolver: CSSVariablesResolver = () => ({
 
 export const theme = createTheme({
   colors: {
-    brand: [
+    primary: [
       "#FFF3EA",
       "#FFDFC6",
       "#FFCDA4",
@@ -68,7 +76,7 @@ export const theme = createTheme({
       "#FF7301",
       "#EB6A00",
     ],
-    "brand-orange": [
+    "primary-orange": [
       "#FFF3EA",
       "#FFDFC6",
       "#FFCDA4",
@@ -80,7 +88,7 @@ export const theme = createTheme({
       "#FF7301",
       "#EB6A00",
     ],
-    "brand-green": [
+    "primary-green": [
       "#C3C9C9",
       "#718986",
       "#425B58",
@@ -92,7 +100,7 @@ export const theme = createTheme({
       "#010202",
       "#000101",
     ],
-    "brand-light-green": [
+    "primary-light-green": [
       "#FEFEFE",
       "#E9EBE3",
       "#D5D9CB",
@@ -107,7 +115,7 @@ export const theme = createTheme({
   },
 
   primaryShade: { light: 5, dark: 4 },
-  primaryColor: "brand",
+  primaryColor: "primary",
 
   breakpoints: {
     xs: "36em",
@@ -121,5 +129,6 @@ export const theme = createTheme({
     Button: Button.extend({ classNames: buttonClasses }),
     Text: Text.extend({ classNames: textClasses }),
     Title: Title.extend({ classNames: titleClasses }),
+    Divider: Divider.extend({ defaultProps: { color: "dark.4" } }),
   },
 });

@@ -63,7 +63,7 @@
 }
 
 .title {
-  color: theme.white;
+  color: var(--mantine-color-white);
   font-size: clamp(2.125rem, 6vw, 4rem);
   font-weight: 900;
   line-height: 1.1;
@@ -78,7 +78,7 @@
 }
 
 .description {
-  color: theme.white;
+  color: var(--mantine-color-white);
   max-width: 37.5rem;
   font-size: clamp(1rem, 2vw, 1.5rem);
 
@@ -89,6 +89,7 @@
 
 .CTA {
   margin-top: calc(var(--mantine-spacing-xl) * 1.5);
+  color: var(--mantine-color-black);
 
   @media (max-width: $mantine-breakpoint-sm) {
     width: 100%;

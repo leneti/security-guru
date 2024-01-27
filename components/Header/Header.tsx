@@ -45,13 +45,19 @@ export default function Header() {
 
   return (
     <Box
-      style={{ boxShadow: isScrolled ? "var(--mantine-shadow-md)" : "none" }}
+      style={{ boxShadow: isScrolled ? "var(--mantine-shadow-xl)" : "none" }}
       className={classes.outer}
     >
       <nav className={classes.inner}>
-        <Logo classNames={classes.logo} />
+        <Logo size={40} classNames={classes.smallDisplayOnly} />
+        <Logo size={50} classNames={classes.bigDisplayOnly} />
         <BurgerMenu />
-        <Group className={classes.linkGroup} visibleFrom="md" wrap="nowrap">
+        <Group
+          className={classes.linkGroup}
+          gap="xs"
+          visibleFrom="md"
+          wrap="nowrap"
+        >
           {items}
         </Group>
       </nav>

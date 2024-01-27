@@ -2,38 +2,6 @@
   text-align: center;
 }
 
-.scrollDownArrow {
-  position: relative;
-  width: 100%;
-
-  &::before {
-    animation: bounce 1s ease 3;
-    bottom: var(--mantine-spacing-xl);
-    color: theme.white;
-    content: ╲╱;
-    font-size: 2rem;
-    left: 50%;
-    letter-spacing: -2px;
-    line-height: 4rem;
-    margin-left: -3rem;
-    opacity: 0.8;
-    position: absolute;
-    text-align: center;
-    width: 6rem;
-    z-index: 1;
-
-    @media (prefers-reduced-motion) {
-      animation: bounce 1s ease 0;
-    }
-  }
-
-  @keyframes bounce {
-    50% {
-      transform: translateY(-50%);
-    }
-  }
-}
-
 .services {
   max-width: var(--mantine-breakpoint-xl);
   padding: calc(var(--mantine-spacing-xl) * 4) 0;
@@ -68,5 +36,9 @@
 }
 
 .contactBtnBox {
-  marginbottom: calc(var(--mantine-spacing-xl) * 3);
+  margin-bottom: calc(var(--mantine-spacing-xl) * 3);
+}
+
+.contactBtn {
+  --button-color: var(--mantine-color-primary-4) !important;
 }
