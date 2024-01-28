@@ -12,7 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { IconX, IconCheck } from "@tabler/icons-react";
-import { ContactForm } from "@site/components/GetInTouch";
+import type { ContactForm } from "./types";
 import { ContactInfo } from "@site/components/ContactInfo";
 import {
   emailRegex,
