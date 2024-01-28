@@ -3,7 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Logo } from "@site/components/Logo";
 import { menuLinks } from "@site/constants/menu-links";
 import NavbarLinksGroup from "@site/components/Header/BurgerMenu/NavbarLinksGroup";
-import { BurgerMenuProps } from "./types";
+import type { BurgerMenuProps } from "./types";
 
 const drawerLabel = "Naršymo meniu";
 const openDrawerLabel = "Atidaryti meniu";

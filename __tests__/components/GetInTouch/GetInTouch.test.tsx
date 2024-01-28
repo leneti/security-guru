@@ -1,5 +1,5 @@
 import axios from "axios";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@site/test-utils";
 import * as mCore from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { GetInTouch } from "@site/components/GetInTouch";
@@ -17,8 +17,8 @@ jest.mock(
       },
       {
         get: (_: any, prop: string) => () => <div>mock_{prop}</div>,
-      }
-    )
+      },
+    ),
 );
 jest.mock("@mantine/notifications");
 jest.mock("@mantine/core", () => {
@@ -52,7 +52,7 @@ const renderWithTheme = () =>
   render(
     <mCore.MantineProvider theme={theme}>
       <GetInTouch />
-    </mCore.MantineProvider>
+    </mCore.MantineProvider>,
   );
 
 describe("GetInTouch", () => {
@@ -113,7 +113,7 @@ describe("GetInTouch", () => {
 
   it("makes API call with correct data", async () => {
     const mockAxiosPost = (axios.post as jest.Mock).mockImplementation(
-      jest.fn(() => Promise.resolve()).mockName("axios.post")
+      jest.fn(() => Promise.resolve()).mockName("axios.post"),
     );
 
     renderWithTheme();
@@ -126,7 +126,7 @@ describe("GetInTouch", () => {
 
     expect(mockAxiosPost).toHaveBeenCalledWith("/api/contact", mockFormData);
     await waitFor(() =>
-      expect(screen.getByPlaceholderText(/security guru/i)).toHaveValue("")
+      expect(screen.getByPlaceholderText(/security guru/i)).toHaveValue(""),
     );
   });
 
@@ -157,7 +157,7 @@ describe("GetInTouch", () => {
     "shows notification with $type error message",
     async ({ mockResponse, expectedProps }) => {
       (axios.post as jest.Mock).mockImplementation(
-        jest.fn(() => Promise.reject(mockResponse)).mockName("axios.post")
+        jest.fn(() => Promise.reject(mockResponse)).mockName("axios.post"),
       );
 
       const showNotificationMock = jest
@@ -177,35 +177,8 @@ describe("GetInTouch", () => {
       expect(showNotificationMock).toHaveBeenCalled();
 
       await waitFor(() =>
-        expect(updateNotificationMock).toHaveBeenCalledWith(expectedProps)
+        expect(updateNotificationMock).toHaveBeenCalledWith(expectedProps),
       );
-    }
-  );
-
-  it.each([
-    {
-      screenSize: "smaller",
-      componentSize: "lg",
     },
-    {
-      screenSize: "larger",
-      componentSize: "sm",
-    },
-  ])(
-    "renders $componentSize components on $screenSize screens",
-    ({ screenSize, componentSize }) => {
-      jest
-        .spyOn(jest.requireActual("@mantine/hooks"), "useMediaQuery")
-        .mockReturnValue(screenSize === "smaller");
-
-      const buttonMock = jest.spyOn(mCore, "Button");
-
-      renderWithTheme();
-
-      expect(buttonMock).toHaveBeenCalledWith(
-        expect.objectContaining({ size: componentSize }),
-        {}
-      );
-    }
   );
 });

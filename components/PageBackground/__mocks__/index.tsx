@@ -1,4 +1,4 @@
-import { PageBGProps } from "../types";
+import type { PageBGProps } from "../types";
 
 export function PageBackground(props: Partial<PageBGProps>) {
   const { wip, pageTitle, children, colorOnly } = props;

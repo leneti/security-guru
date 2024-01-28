@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "@site/test-utils";
 import { Feature } from "@site/components/Feature";
 
 describe("Feature", () => {
@@ -10,7 +10,7 @@ describe("Feature", () => {
         icon={jest.fn(() => (
           <i>mock-icon</i>
         ))}
-      />
+      />,
     );
     expect(container).toMatchSnapshot();
   });

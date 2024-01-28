@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { Title, Transition, type MantineTransition, Text } from "@mantine/core";
 import { flatLinks } from "@site/constants";
 import { usePrevUrlContext } from "@site/contexts/prevUrl";
-import { SlideDownTitleProps } from "./types";
+import type { SlideDownTitleProps } from "./types";
 import clsx from "clsx";
 import classes from "./SlideDownTitle.module.css";
 

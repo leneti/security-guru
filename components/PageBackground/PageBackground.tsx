@@ -3,7 +3,7 @@ import { Overlay, Center, Box, Container } from "@mantine/core";
 import { SlideDownTitle } from "@site/components/SlideDownTitle";
 import { PageTitle } from "@site/components/PageTitle";
 import houses from "@site/assets/unsplash-houses.webp";
-import { PageBGProps } from "./types";
+import type { PageBGProps } from "./types";
 import classes from "./PageBackground.module.css";
 import clsx from "clsx";
 

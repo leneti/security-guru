@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@site/test-utils";
 import { PageTitle } from "@site/components/PageTitle";
 import { APP_NAME, APP_NAME_DEV } from "@site/constants";
 
@@ -42,6 +42,6 @@ describe("PageTitle", () => {
       render(<PageTitle>{children}</PageTitle>);
 
       expect(screen.getByText(title)).toBeInTheDocument();
-    }
+    },
   );
 });

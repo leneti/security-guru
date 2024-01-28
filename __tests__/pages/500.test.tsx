@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@site/test-utils";
 import Error500 from "@site/pages/500";
 
 describe("Error 500 page", () => {

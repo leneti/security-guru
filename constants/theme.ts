@@ -1,12 +1,10 @@
 import {
   createTheme,
   type CSSVariablesResolver,
-  Button,
   Text,
   Title,
   Divider,
 } from "@mantine/core";
-import buttonClasses from "@site/constants/variants/button.module.css";
 import textClasses from "@site/constants/variants/text.module.css";
 import titleClasses from "@site/constants/variants/title.module.css";
 
@@ -126,7 +124,6 @@ export const theme = createTheme({
   },
 
   components: {
-    Button: Button.extend({ classNames: buttonClasses }),
     Text: Text.extend({ classNames: textClasses }),
     Title: Title.extend({ classNames: titleClasses }),
     Divider: Divider.extend({ defaultProps: { color: "dark.4" } }),

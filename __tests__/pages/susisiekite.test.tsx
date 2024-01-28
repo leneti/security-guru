@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "@site/test-utils";
 import ContactUs from "@site/pages/susisiekite";
 
 jest.mock("@site/components/PageBackground");

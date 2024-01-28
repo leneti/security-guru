@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@site/test-utils";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "@site/constants/theme";
 import About from "@site/pages/apie-mus";
@@ -17,7 +17,7 @@ describe("About", () => {
     render(
       <MantineProvider theme={theme}>
         <About />
-      </MantineProvider>
+      </MantineProvider>,
     );
 
     expect(screen.getByText(/mock player.*/i)).toBeInTheDocument();

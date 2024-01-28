@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@site/test-utils";
 import Projects from "@site/pages/projektai";
 
 jest.mock("@site/components/PageBackground");

@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "@site/test-utils";
 import { ContactInfo } from "@site/components/ContactInfo";
 
 jest.mock(
@@ -10,8 +10,8 @@ jest.mock(
       },
       {
         get: (_: any, prop: string) => () => <div>mock_{prop}</div>,
-      }
-    )
+      },
+    ),
 );
 
 describe("ContactInfo", () => {

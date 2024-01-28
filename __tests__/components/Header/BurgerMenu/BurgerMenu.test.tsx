@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@site/test-utils";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
 import { flatLinks } from "@site/constants/menu-links";
 
@@ -57,7 +57,7 @@ describe("BurgerMenu", () => {
     expect(toggleMock).toHaveBeenCalledTimes(1);
 
     expect(screen.getAllByRole("link", { hidden: true })).toHaveLength(
-      flatLinks.length
+      flatLinks.length,
     );
   });
 });

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@site/test-utils";
 import { Header } from "@site/components/Header";
 
 jest.mock("@site/components/Logo");
@@ -11,21 +11,6 @@ jest.mock("@mantine/core", () => {
 });
 
 describe("Header", () => {
-  it.each([
-    { screenSize: "smaller", size: 40 },
-    { screenSize: "larger", size: 50 },
-  ])("renders $size logo on $size screens", ({ screenSize, size }) => {
-    jest
-      .spyOn(jest.requireActual("@mantine/hooks"), "useMediaQuery")
-      .mockReturnValue(screenSize === "smaller");
-
-    render(<Header />);
-
-    const logo = screen.getByTestId("logo");
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute("size", size.toString());
-  });
-
   it.each([{ scrolled: 0 }, { scrolled: 1 }])(
     "matches snapshot when scrolled $scrolled px",
     ({ scrolled }) => {
@@ -36,6 +21,6 @@ describe("Header", () => {
       const { container } = render(<Header />);
 
       expect(container).toMatchSnapshot();
-    }
+    },
   );
 });

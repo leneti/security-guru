@@ -11,13 +11,13 @@ const phoneUtil = PhoneNumberUtil.getInstance();
 let sentEmailCounter = 0;
 const maxSentEmails = Number(process.env.REACT_APP_MAX_EMAILS ?? 200);
 const resetTime = Number(
-  process.env.REACT_APP_RESET_TIME ?? 1000 * 60 * 60 * 24
+  process.env.REACT_APP_RESET_TIME ?? 1000 * 60 * 60 * 24,
 );
 setInterval(() => {
   sentEmailCounter = 0;
 }, resetTime);
 
-type ResponseData = {
+export type ResponseData = {
   message: string;
   err?: any;
 };
@@ -120,7 +120,7 @@ const sendMail = (sender: string, receivers: string[], data: ContactForm) => {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
+  res: NextApiResponse<ResponseData>,
 ) {
   if (req.method !== "POST") {
     return res
@@ -136,7 +136,7 @@ export default function handler(
 
   if (sentEmailCounter >= maxSentEmails) {
     logger.warn(
-      `Couldn't send email. Sent today: ${sentEmailCounter}/${maxSentEmails}`
+      `Couldn't send email. Sent today: ${sentEmailCounter}/${maxSentEmails}`,
     );
 
     return res.status(500).send({
@@ -156,7 +156,7 @@ export default function handler(
   return sendMail(
     process.env.REACT_APP_SES_EMAIL,
     [process.env.REACT_APP_SES_EMAIL],
-    req.body
+    req.body,
   )
     .then(() => {
       sentEmailCounter++;

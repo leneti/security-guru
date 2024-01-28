@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@site/test-utils";
 import { PageBGProps, PageBackground } from "@site/components/PageBackground";
 
 jest.mock("@site/components/PageTitle");
@@ -7,25 +7,26 @@ jest.mock("@site/components/SlideDownTitle");
 const mockTitle = "Test title";
 const mockContent = "Mock content";
 
-const testProps: { toRender: string; props: Omit<PageBGProps, "pageTitle"> }[] = [
-  { toRender: "content and image background", props: {} },
-  { toRender: "content on colored background", props: { colorOnly: true } },
-  {
-    toRender: "wip content on colored background",
-    props: { colorOnly: true, wip: true },
-  },
-  {
-    toRender: "content on colored background and full width",
-    props: { colorOnly: true, fullWidth: true },
-  },
-];
+const testProps: { toRender: string; props: Omit<PageBGProps, "pageTitle"> }[] =
+  [
+    { toRender: "content and image background", props: {} },
+    { toRender: "content on colored background", props: { colorOnly: true } },
+    {
+      toRender: "wip content on colored background",
+      props: { colorOnly: true, wip: true },
+    },
+    {
+      toRender: "content on colored background and full width",
+      props: { colorOnly: true, fullWidth: true },
+    },
+  ];
 
 describe("PageBackground", () => {
   it.each(testProps)("renders $toRender", ({ props }) => {
     render(
       <PageBackground {...props} pageTitle={mockTitle}>
         {mockContent}
-      </PageBackground>
+      </PageBackground>,
     );
 
     const { wip, colorOnly } = props;

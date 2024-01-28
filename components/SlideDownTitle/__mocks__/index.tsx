@@ -1,4 +1,4 @@
-import { SlideDownTitleProps } from "../types";
+import type { SlideDownTitleProps } from "../types";
 
 export function SlideDownTitle(props: SlideDownTitleProps) {
   const { title, wip } = props;
