@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  background-color: var(--mantine-color-dark-7);
+  background-color: var(--mantine-color-background);
   border-radius: var(--mantine-radius-lg);
   padding: 4;
 
@@ -28,19 +28,15 @@
 
 .input {
   --input-label-size: var(--mantine-font-size-sm);
-  --input-description-size: calc(
-    var(--mantine-font-size-sm) - calc(0.125rem * var(--mantine-scale))
-  );
-  --input-height: var(--input-height-sm);
   --input-fz: var(--mantine-font-size-sm);
 
   @media (max-width: $mantine-breakpoint-sm) {
     --input-label-size: var(--mantine-font-size-md);
-    --input-description-size: calc(
-      var(--mantine-font-size-md) - calc(0.125rem * var(--mantine-scale))
-    );
-    --input-height: var(--input-height-md);
     --input-fz: var(--mantine-font-size-md);
+  }
+
+  & label {
+    line-height: 2;
   }
 }
 

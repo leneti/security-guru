@@ -173,6 +173,8 @@ export default function GetInTouch() {
             <Textarea
               mt="md"
               label="Pastabos"
+              minRows={3}
+              autosize
               labelProps={labelProps}
               placeholder="Pateikite visą svarbią informaciją"
               required
