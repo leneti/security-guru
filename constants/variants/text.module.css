@@ -1,4 +1,4 @@
-.text {
+.root {
   &[data-variant="lightBg"] {
     --mantine-color-dimmed: var(--mantine-color-dark-5);
     color: var(--mantine-color-dark-6);

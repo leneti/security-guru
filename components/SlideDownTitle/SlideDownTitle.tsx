@@ -68,6 +68,7 @@ export default function SlideDownTitle(props: SlideDownTitleProps) {
           classes.title,
           classes.horizontallyMovingTitle,
           classes[direction],
+          mounted && classes.mounted,
           wip && classes.wip,
         )}
       >

@@ -4,7 +4,7 @@
   border-radius: var(--mantine-radius-lg);
   padding: 4;
 
-  @media (max-width:$mantine-breakpoint-sm) {
+  @media (max-width: $mantine-breakpoint-sm) {
     width: 90vw;
     flex-direction: column;
   }
@@ -16,7 +16,7 @@
   padding: var(--mantine-spacing-xl);
   padding-left: calc(var(--mantine-spacing-xl) * 2);
 
-  @media (max-width:$mantine-breakpoint-sm) {
+  @media (max-width: $mantine-breakpoint-sm) {
     padding: var(--mantine-spacing-md);
     padding-left: var(--mantine-spacing-md);
   }
@@ -28,17 +28,25 @@
 
 .input {
   --input-label-size: var(--mantine-font-size-sm);
-  --input-description-size: calc(var(--mantine-font-size-sm) - calc(0.125rem * var(--mantine-scale)));
+  --input-description-size: calc(
+    var(--mantine-font-size-sm) - calc(0.125rem * var(--mantine-scale))
+  );
   --input-height: var(--input-height-sm);
   --input-fz: var(--mantine-font-size-sm);
-  
-  
-  @media (max-width:$mantine-breakpoint-sm) {
+
+  @media (max-width: $mantine-breakpoint-sm) {
     --input-label-size: var(--mantine-font-size-md);
-    --input-description-size: calc(var(--mantine-font-size-md) - calc(0.125rem * var(--mantine-scale)));
+    --input-description-size: calc(
+      var(--mantine-font-size-md) - calc(0.125rem * var(--mantine-scale))
+    );
     --input-height: var(--input-height-md);
     --input-fz: var(--mantine-font-size-md);
   }
+}
+
+.radio > div {
+  --label-order: 2;
+  gap: var(--mantine-spacing-sm);
 }
 
 .radioGroup {
@@ -47,7 +55,7 @@
   --label-fz: var(--mantine-font-size-sm);
   --label-lh: var(--label-lh-sm);
 
-  @media (max-width:$mantine-breakpoint-sm) {
+  @media (max-width: $mantine-breakpoint-sm) {
     --radio-size: var(--radio-size-md);
     --radio-icon-size: var(--radio-icon-size-md);
     --label-fz: var(--mantine-font-size-md);
@@ -67,47 +75,50 @@
   flex: 0 0 15rem;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     right: -1px;
     top: 5%;
     height: 90%;
-    border-right: 1px solid ${theme.fn.primaryColor()};
+    border-right: 1px solid var(--mantine-primary-color);
   }
 
-  @media (max-width:$mantine-breakpoint-sm) {
+  @media (max-width: $mantine-breakpoint-sm) {
     margin-bottom: var(--mantine-spacing-sm);
     padding-left: var(--mantine-spacing-md);
     padding-bottom: calc(var(--mantine-spacing-xl) * 2);
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -1px;
       left: 5%;
       width: 90%;
       border-right: none;
-      border-bottom: 1px solid ${theme.fn.primaryColor()};
+      border-bottom: 1px solid var(--mantine-primary-color);
     }
   }
 }
 
 .title {
   margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
-  font-family: Greycliff CF, var(--mantine-font-family);
-  font-weigth: 700;
+  font-family:
+    Greycliff CF,
+    var(--mantine-font-family);
+  font-weight: 700;
 
-  @media (max-width:$mantine-breakpoint-sm) {
+  @media (max-width: $mantine-breakpoint-sm) {
     margin-bottom: var(--mantine-spacing-xl);
   }
 }
 
 .button {
+  color: var(--mantine-color-black);
   --button-height: var(--button-height-sm);
   --button-padding-x: var(--button-padding-x-sm);
   --button-fz: var(--mantine-font-size-sm);
 
-  @media (max-width:$mantine-breakpoint-sm) {
+  @media (max-width: $mantine-breakpoint-sm) {
     flex: 1;
     --button-height: var(--button-height-lg);
     --button-padding-x: var(--button-padding-x-lg);

@@ -1,4 +1,4 @@
-.title {
+.root {
   &[data-variant="lightBg"] {
     color: var(--mantine-color-black);
   }

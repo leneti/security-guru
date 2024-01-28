@@ -122,8 +122,16 @@ export default function GetInTouch() {
               {...form.getInputProps("solution")}
             >
               <Group mt="xs">
-                <Radio value="Namams" label="Namams" />
-                <Radio value="Verslui" label="Verslui" />
+                <Radio
+                  value="Namams"
+                  label="Namams"
+                  className={classes.radio}
+                />
+                <Radio
+                  value="Verslui"
+                  label="Verslui"
+                  className={classes.radio}
+                />
               </Group>
             </Radio.Group>
 
@@ -167,7 +175,6 @@ export default function GetInTouch() {
               label="Pastabos"
               labelProps={labelProps}
               placeholder="Pateikite visą svarbią informaciją"
-              minRows={3}
               required
               className={classes.input}
               {...form.getInputProps("message")}
