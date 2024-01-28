@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "@site/test-utils";
 import { Hero } from "@site/components/Hero";
 
 describe("Hero", () => {

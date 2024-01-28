@@ -1,0 +1,34 @@
+.grid {
+  max-width: var(--mantine-breakpoint-xl);
+  align-self: center;
+  padding-block: calc(var(--mantine-spacing-xl) * 2);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    padding-block: var(--mantine-spacing-xl);
+  }
+}
+
+.description {
+  color: var(--mantine-color-dark-6);
+  text-align: center;
+}
+
+.animation {
+  position: absolute;
+  pointer-events: none;
+  transform: scaleX(-1);
+  right: 0px;
+  top: 80px;
+  height: 100px;
+  width: 100px;
+
+  @media (max-width: $mantine-breakpoint-md) {
+    top: 90px;
+    height: 90px;
+    width: 90px;
+  }
+
+  @media (prefers-reduced-motion) {
+    display: none;
+  }
+}

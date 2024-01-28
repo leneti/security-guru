@@ -1,6 +1,6 @@
 import { ThemeIcon, Title, useMantineTheme, Text } from "@mantine/core";
 import { FeatureProps } from "@site/components/Feature";
-import { useBGColor } from "@site/utils/useBGColor";
+import classes from "./Feature.module.css";
 
 export default function Feature({
   icon: Icon,
@@ -11,13 +11,15 @@ export default function Feature({
 
   return (
     <div>
-      <ThemeIcon variant="filled" color={useBGColor()} size={40} radius={40}>
-        <Icon size="1.25rem" stroke={1.5} color={theme.fn.primaryColor()} />
+      <ThemeIcon variant="filled" color="dark.6" size={40} radius={40}>
+        <Icon size="1.25rem" stroke={1.5} className={classes.icon} />
       </ThemeIcon>
+
       <Title order={2} my="sm" variant="lightBg">
         {title}
       </Title>
-      <Text size="sm" color="dimmed" sx={{ lineHeight: 1.6 }} variant="lightBg">
+
+      <Text size="sm" c="dimmed" lh={1.6} variant="lightBg">
         {description}
       </Text>
     </div>

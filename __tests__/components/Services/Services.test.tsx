@@ -1,7 +1,5 @@
-import { render } from "@testing-library/react";
+import { render } from "@site/test-utils";
 import { Services } from "@site/components/Services";
-
-jest.mock("@site/components/ServiceCard");
 
 describe("Services", () => {
   it("renders", () => {

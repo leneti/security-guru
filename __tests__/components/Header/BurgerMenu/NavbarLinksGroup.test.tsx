@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@site/test-utils";
 import NavbarLinksGroup from "@site/components/Header/BurgerMenu/NavbarLinksGroup";
 
 const mockUrl = "/mock";
@@ -16,7 +16,7 @@ describe("NavbarLinksGroup", () => {
         url={mockUrl}
         label={mockLabel}
         closeDrawer={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByText("Mock Icon")).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("NavbarLinksGroup", () => {
         links={mockLinks}
         label={mockLabel}
         closeDrawer={jest.fn()}
-      />
+      />,
     );
 
     const dropdownButton = screen.getByRole("button");

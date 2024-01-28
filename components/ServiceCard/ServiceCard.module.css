@@ -1,0 +1,27 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardImageBox {
+  position: relative;
+  margin: -1rem -1rem 0 -1rem;
+  height: var(--service-card-image-height);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.learnMoreBtn {
+  --button-height: var(--button-height-md);
+  --button-padding-x: var(--button-padding-x-md);
+  --button-fz: var(--mantine-font-size-md);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    --button-height: var(--button-height-lg);
+    --button-padding-x: var(--button-padding-x-lg);
+    --button-fz: var(--mantine-font-size-lg);
+  }
+}

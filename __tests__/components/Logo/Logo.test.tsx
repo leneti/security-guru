@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "@site/test-utils";
 import { Logo } from "@site/components/Logo";
 
 describe("Logo", () => {

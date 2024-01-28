@@ -1,8 +1,15 @@
-import { AppProps } from "next/app";
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import "@mantine/nprogress/styles.css";
+import "./styles.css";
+
+import type { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import { theme } from "@site/constants/theme";
+import { theme, resolver } from "@site/constants/theme";
 import { Header } from "@site/components/Header";
 import { Footer } from "@site/components/Footer";
 import { RouterTransition } from "@site/components/RouterTransition";
@@ -12,7 +19,7 @@ export default function App(props: AppProps) {
   const { Component, pageProps } = props;
 
   return (
-    <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
+    <MantineProvider theme={theme} cssVariablesResolver={resolver}>
       <Head>
         <meta
           name="description"

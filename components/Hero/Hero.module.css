@@ -1,0 +1,101 @@
+.dynamicHeight {
+  min-height: var(--bg-image-height);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    min-height: calc(var(--bg-image-height) - 6.25rem);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    min-height: calc(var(--bg-image-height) - 6.25rem * 2);
+  }
+}
+
+.hero {
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 1;
+  padding-bottom: calc(var(--mantine-spacing-xl) * 8);
+  padding-right: clamp(
+    var(--mantine-spacing-md),
+    calc(100vw - var(--mantine-breakpoint-md)),
+    calc(var(--mantine-breakpoint-xl) - var(--mantine-breakpoint-md))
+  );
+  padding-left: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-xl) {
+    padding-right: clamp(
+      var(--mantine-spacing-md),
+      calc(100vw - var(--mantine-breakpoint-md)),
+      calc(
+        var(--mantine-breakpoint-xl) - var(--mantine-breakpoint-md) -
+          var(--hero-left-pading)
+      )
+    );
+    padding-left: clamp(
+      var(--mantine-spacing-md),
+      calc(100vw - var(--mantine-breakpoint-md)),
+      var(--hero-left-pading)
+    );
+  }
+
+  @media (max-width: $mantine-breakpoint-md) {
+    padding-right: clamp(
+      var(--mantine-spacing-md),
+      calc(100vw - var(--mantine-breakpoint-md)),
+      calc(var(--mantine-breakpoint-xl) - var(--mantine-breakpoint-md))
+    );
+    padding-left: var(--mantine-spacing-md);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-bottom: calc(var(--mantine-spacing-xl) * 6);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding-bottom: calc(var(--mantine-spacing-xl) * 5);
+  }
+}
+
+.title {
+  color: var(--mantine-color-white);
+  font-size: clamp(2.125rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    line-height: 1.2;
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    line-height: 1.3;
+  }
+}
+
+.description {
+  color: var(--mantine-color-white);
+  max-width: 37.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    max-width: 100%;
+  }
+}
+
+.CTA {
+  margin-top: calc(var(--mantine-spacing-xl) * 1.5);
+  color: var(--mantine-color-black);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: 100%;
+  }
+}
+
+.image {
+  object-fit: cover;
+}

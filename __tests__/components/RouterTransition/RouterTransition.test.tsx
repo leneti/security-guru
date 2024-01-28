@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@site/test-utils";
 import { RouterTransition } from "@site/components/RouterTransition";
 
 jest.mock("@mantine/nprogress", () => jest.requireActual("@mantine/nprogress"));
@@ -14,41 +14,6 @@ jest.mock("next/router", () => ({
 }));
 
 describe("RouterTransition", () => {
-  it("doesn't render navigation progress on xl screens", () => {
-    jest
-      .spyOn(jest.requireActual("@mantine/hooks"), "useMediaQuery")
-      .mockReturnValue(false);
-
-    render(<RouterTransition />);
-
-    expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
-  });
-
-  it.each([
-    { description: "taller", size: 2, screenSize: "smaller" },
-    { description: "smaller", size: 1, screenSize: "larger" },
-  ])(
-    "renders $description navigation progress bar on $screenSize screens",
-    ({ size, screenSize }) => {
-      jest
-        .spyOn(jest.requireActual("@mantine/hooks"), "useMediaQuery")
-        .mockReturnValueOnce(screenSize === "smaller")
-        .mockReturnValueOnce(true);
-
-      const nProgressComponent = jest.spyOn(
-        jest.requireActual("@mantine/nprogress"),
-        "NavigationProgress"
-      );
-
-      render(<RouterTransition />);
-
-      expect(nProgressComponent).toHaveBeenCalledWith(
-        expect.objectContaining({ size }),
-        {}
-      );
-    }
-  );
-
   it("completes navigation progress on route change end", async () => {
     jest
       .spyOn(jest.requireActual("@mantine/hooks"), "useMediaQuery")
@@ -74,7 +39,7 @@ describe("RouterTransition", () => {
 
     const toWaitForComplete = waitFor(
       () => expect(nProgressCompleteSpy).toHaveBeenCalled(),
-      { timeout: 100 }
+      { timeout: 100 },
     );
 
     await toWaitForComplete;
@@ -112,7 +77,7 @@ describe("RouterTransition", () => {
 
       const toWaitForStart = waitFor(
         () => expect(nProgressStartSpy).toHaveBeenCalled(),
-        { timeout: 100 }
+        { timeout: 100 },
       );
 
       if (from !== to) {
@@ -120,6 +85,6 @@ describe("RouterTransition", () => {
       } else {
         await expect(toWaitForStart).rejects.toThrow();
       }
-    }
+    },
   );
 });

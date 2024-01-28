@@ -1,0 +1,29 @@
+version: "3"
+
+tasks:
+  fix-css:
+    silent: true
+    vars:
+      FILE: "{{.CLI_ARGS}}"
+      TEMP_FILE: temp.css
+    cmds:
+      - test -n {{.FILE}} || (echo "Provide a file name" && exit 1)
+      - test -f {{.FILE}} || (echo "File not found" && exit 1)
+
+      - sed -ri 's/:\s\{/ {/g' {{.FILE}}
+      - awk '{gsub(/"|`/, ""); print}' {{.FILE}} > {{.TEMP_FILE}} && mv {{.TEMP_FILE}} {{.FILE}} && rm -f {{.TEMP_FILE}}
+      - sed -ri 's/\\[|\]//g' {{.FILE}}
+
+      - sed -ri 's/^([^a-zA-Z)]*),$/\\1/' {{.FILE}}
+      - sed -ri 's/^([^:]*):(.*),$/\\1:\\2;/' {{.FILE}}
+      - sed -ri 's/^( *)\),$/\\1);/' {{.FILE}}
+
+      - sed -ri 's/([a-z]*)([A-Z])([a-z]*):( [^\{])/\\1-\\L\\2\\3:\\4/' {{.FILE}}
+      - sed -ri 's/[$]?[\{]?theme\.colors\.([a-z]*)\.?([0-9]).?[}]?/var(--mantine-color-\\1-\\2)/g' {{.FILE}}
+      - sed -ri 's/[$]?[\{]?theme\.spacing\.([a-z][a-z])[\}]?/var(--mantine-spacing-\\1)/g' {{.FILE}}
+      - sed -ri 's/[$]?[\{]?theme\.radius\.([a-z][a-z])[\}]?/var(--mantine-radius-\\1)/g' {{.FILE}}
+      - sed -ri 's/[$]?[\{]?theme\.shadows\.([a-z][a-z])[\}]?/var(--mantine-shadow-\\1)/g' {{.FILE}}
+      - sed -ri 's/[$]?[\{]?theme\.breakpoints\.([a-z][a-z])[}]?/var(--mantine-breakpoint-\\1)/g' {{.FILE}}
+      - sed -ri 's/\[?theme\.fn\.smallerThan\(([a-z][a-z])\)\]?/@media (max-width:$mantine-breakpoint-\\1)/g' {{.FILE}}
+
+      - sed -ri 's/^([a-zA-Z]*) [\{]$/.\\1 {/' {{.FILE}}

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@site/test-utils";
 import { SlideDownTitle } from "@site/components/SlideDownTitle";
 
 jest.mock("@site/contexts/prevUrl", () => ({
@@ -31,7 +31,7 @@ describe("SlideDownTitle", () => {
 
     await waitFor(() => expect(heading).toHaveProperty("style.opacity", "1"));
     await waitFor(() =>
-      expect(heading).toHaveProperty("style.transform", "scaleY(1)")
+      expect(heading).toHaveProperty("style.transform", "scaleY(1)"),
     );
   });
 
@@ -54,7 +54,7 @@ describe("SlideDownTitle", () => {
     const { container } = render(<SlideDownTitle title={mockTitle} />);
 
     expect(
-      screen.getByRole("heading", { name: mockTitle })
+      screen.getByRole("heading", { name: mockTitle }),
     ).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });

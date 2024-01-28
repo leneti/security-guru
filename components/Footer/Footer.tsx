@@ -1,12 +1,4 @@
-import {
-  createStyles,
-  Text,
-  Container,
-  Group,
-  useMantineTheme,
-  ActionIcon,
-} from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
+import { Text, Container, Group, ActionIcon } from "@mantine/core";
 import {
   IconBrandInstagram,
   IconBrandFacebook,
@@ -14,63 +6,9 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { Logo } from "@site/components/Logo";
-
-const useStyles = createStyles((theme) => ({
-  footer: {
-    paddingTop: `calc(${theme.spacing.xl} * 2)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-    color: theme.colors.gray[6],
-  },
-
-  logo: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-
-  description: {
-    marginTop: theme.spacing.xs,
-    textAlign: "center",
-  },
-
-  inner: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-
-  wrapper: {
-    width: 160,
-  },
-
-  afterFooter: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: theme.spacing.xl,
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
-    borderTop: `1px solid ${theme.colors.dark[4]}`,
-
-    [theme.fn.smallerThan("sm")]: {
-      flexDirection: "column",
-    },
-  },
-
-  social: {
-    [theme.fn.smallerThan("md")]: {
-      marginTop: theme.spacing.xl,
-      gap: theme.spacing.xl,
-    },
-  },
-}));
+import classes from "./Footer.module.css";
 
 export default function Footer() {
-  const theme = useMantineTheme();
-  const { classes } = useStyles();
-  const smallScreen = useMediaQuery(theme.fn.smallerThan("md").substring(7));
-
   return (
     <footer className={classes.footer}>
       <Container className={classes.inner}>
@@ -84,37 +22,37 @@ export default function Footer() {
       <Container className={classes.afterFooter}>
         <Text size="sm">© {new Date().getFullYear()} MB Security Guru</Text>
 
-        <Group spacing="xs" className={classes.social} position="right" noWrap>
+        <Group
+          gap="xs"
+          className={classes.social}
+          justify="flex-end"
+          wrap="nowrap"
+        >
           <ActionIcon
             component={Link}
             href="https://www.facebook.com/people/Security-guru/100088856047734/"
             target="_blank"
             title="Facebook puslapis"
+            variant="subtle"
           >
-            <IconBrandFacebook
-              size={smallScreen ? 28 : 18}
-              stroke={1.5}
-              color={theme.fn.primaryColor()}
-            />
+            <IconBrandFacebook className={classes.icon} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
             component={Link}
             href="https://www.instagram.com/mbsecurityguru/"
             target="_blank"
             title="Instagram paskyra"
+            variant="subtle"
           >
-            <IconBrandInstagram
-              size={smallScreen ? 28 : 18}
-              stroke={1.5}
-              color={theme.fn.primaryColor()}
-            />
+            <IconBrandInstagram className={classes.icon} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon component={Link} href="/kontaktai" title="Susisiekite">
-            <IconMail
-              size={smallScreen ? 28 : 18}
-              stroke={1.5}
-              color={theme.fn.primaryColor()}
-            />
+          <ActionIcon
+            component={Link}
+            href="/kontaktai"
+            title="Susisiekite"
+            variant="subtle"
+          >
+            <IconMail className={classes.icon} stroke={1.5} />
           </ActionIcon>
         </Group>
       </Container>

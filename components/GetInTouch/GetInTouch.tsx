@@ -7,15 +7,12 @@ import {
   Button,
   Group,
   SimpleGrid,
-  createStyles,
   Radio,
-  useMantineTheme,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useMediaQuery } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
 import { IconX, IconCheck } from "@tabler/icons-react";
-import { ContactForm } from "@site/components/GetInTouch";
+import type { ContactForm } from "./types";
 import { ContactInfo } from "@site/components/ContactInfo";
 import {
   emailRegex,
@@ -24,102 +21,12 @@ import {
   APP_NAME,
 } from "@site/constants";
 import logger from "@site/utils/logger";
-
-const useStyles = createStyles((theme) => {
-  const BREAKPOINT = theme.fn.smallerThan("sm");
-
-  return {
-    wrapper: {
-      display: "flex",
-      backgroundColor: theme.colors.dark[7],
-      borderRadius: theme.radius.lg,
-      padding: 4,
-
-      [BREAKPOINT]: {
-        width: "90vw",
-        flexDirection: "column",
-      },
-    },
-
-    form: {
-      boxSizing: "border-box",
-      flex: 1,
-      padding: theme.spacing.xl,
-      paddingLeft: `calc(${theme.spacing.xl} * 2)`,
-
-      [BREAKPOINT]: {
-        padding: theme.spacing.md,
-        paddingLeft: theme.spacing.md,
-      },
-    },
-
-    fields: {
-      marginTop: -12,
-    },
-
-    contacts: {
-      position: "relative",
-      marginLeft: 8,
-      marginRight: 8,
-      padding: theme.spacing.xl,
-      flex: "0 0 15rem",
-
-      "&:before": {
-        content: '""',
-        position: "absolute",
-        right: -1,
-        top: "5%",
-        height: "90%",
-        borderRight: `1px solid ${theme.fn.primaryColor()}`,
-      },
-
-      [BREAKPOINT]: {
-        marginBottom: theme.spacing.sm,
-        paddingLeft: theme.spacing.md,
-        paddingBottom: `calc(${theme.spacing.xl} * 2)`,
-
-        "&:before": {
-          content: '""',
-          position: "absolute",
-          bottom: -1,
-          left: "5%",
-          width: "90%",
-          borderRight: "none",
-          borderBottom: `1px solid ${theme.fn.primaryColor()}`,
-        },
-      },
-    },
-
-    title: {
-      marginBottom: `calc(${theme.spacing.xl} * 1.5)`,
-      fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-
-      [BREAKPOINT]: {
-        marginBottom: theme.spacing.xl,
-      },
-    },
-
-    button: {
-      [BREAKPOINT]: {
-        flex: 1,
-      },
-    },
-  };
-});
+import classes from "./GetInTouch.module.css";
 
 const notificationId = "form-submit";
 const labelProps = { style: { marginBottom: "0.25rem" } };
 
 export default function GetInTouch() {
-  const { classes } = useStyles();
-  const theme = useMantineTheme();
-  const smallScreen = useMediaQuery(theme.fn.smallerThan("sm").substring(7));
-  const fieldSize = smallScreen ? "md" : "sm";
-  const btnSize = smallScreen ? "lg" : "sm";
-  const notificationStyle = {
-    borderColor: theme.colors.dark[4],
-  };
-
   const form = useForm({
     initialValues: {
       solution: "",
@@ -146,7 +53,7 @@ export default function GetInTouch() {
       title: "Siunčiama...",
       message: "Siunčiame laišką Security Guru komandai, prašome palaukti.",
       loading: true,
-      style: notificationStyle,
+      className: classes.notification,
       autoClose: false,
     });
 
@@ -161,7 +68,7 @@ export default function GetInTouch() {
           message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
           color: "teal",
           icon: <IconCheck />,
-          style: notificationStyle,
+          className: classes.notification,
         });
 
         form.reset();
@@ -185,16 +92,16 @@ export default function GetInTouch() {
           message,
           color: "red",
           icon: <IconX />,
-          style: notificationStyle,
+          className: classes.notification,
         });
       });
   };
 
   return (
-    <Paper shadow="lg" radius="lg" sx={{ zIndex: "inherit" }}>
+    <Paper shadow="lg" radius="lg" style={{ zIndex: "inherit" }}>
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
-          <Text size="lg" weight={700} className={classes.title}>
+          <Text size="lg" className={classes.title}>
             Informacija
           </Text>
 
@@ -202,7 +109,7 @@ export default function GetInTouch() {
         </div>
 
         <form className={classes.form} onSubmit={form.onSubmit(onSubmit)}>
-          <Text size="lg" weight={700} className={classes.title}>
+          <Text size="lg" className={classes.title}>
             Susisiekite su mumis
           </Text>
 
@@ -211,27 +118,30 @@ export default function GetInTouch() {
               required
               name="sprendimas"
               label="Pasirinkite sprendimą"
-              size={fieldSize}
+              className={classes.radioGroup}
               {...form.getInputProps("solution")}
             >
               <Group mt="xs">
-                <Radio value="Namams" label="Namams" />
-                <Radio value="Verslui" label="Verslui" />
+                <Radio
+                  value="Namams"
+                  label="Namams"
+                  className={classes.radio}
+                />
+                <Radio
+                  value="Verslui"
+                  label="Verslui"
+                  className={classes.radio}
+                />
               </Group>
             </Radio.Group>
 
-            <SimpleGrid
-              mt="sm"
-              cols={2}
-              spacing="md"
-              breakpoints={[{ maxWidth: "sm", cols: 1 }]}
-            >
+            <SimpleGrid mt="sm" cols={{ base: 1, sm: 2 }} spacing="md">
               <TextInput
                 required
                 label="Vardas / Įmonės pavadinimas"
                 labelProps={labelProps}
                 placeholder={APP_NAME}
-                size={fieldSize}
+                className={classes.input}
                 {...form.getInputProps("name")}
               />
               <TextInput
@@ -239,7 +149,7 @@ export default function GetInTouch() {
                 label="Miestas"
                 labelProps={labelProps}
                 placeholder="Miestas"
-                size={fieldSize}
+                className={classes.input}
                 {...form.getInputProps("city")}
               />
               <TextInput
@@ -247,7 +157,7 @@ export default function GetInTouch() {
                 label="El. paštas"
                 labelProps={labelProps}
                 placeholder="info@securityguru.lt"
-                size={fieldSize}
+                className={classes.input}
                 {...form.getInputProps("email")}
               />
               <TextInput
@@ -255,7 +165,7 @@ export default function GetInTouch() {
                 label="Tel. Nr"
                 labelProps={labelProps}
                 placeholder="+37061234567"
-                size={fieldSize}
+                className={classes.input}
                 {...form.getInputProps("number")}
               />
             </SimpleGrid>
@@ -263,16 +173,17 @@ export default function GetInTouch() {
             <Textarea
               mt="md"
               label="Pastabos"
+              minRows={3}
+              autosize
               labelProps={labelProps}
               placeholder="Pateikite visą svarbią informaciją"
-              minRows={3}
               required
-              size={fieldSize}
+              className={classes.input}
               {...form.getInputProps("message")}
             />
 
-            <Group position="right" mt="xl">
-              <Button type="submit" className={classes.button} size={btnSize}>
+            <Group justify="flex-end" mt="xl">
+              <Button type="submit" className={classes.button}>
                 Siųsti laišką
               </Button>
             </Group>
