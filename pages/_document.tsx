@@ -11,7 +11,7 @@ export default class _Document extends Document {
     return (
       <Html lang="lt">
         <Head>
-          <ColorSchemeScript defaultColorScheme="auto" />
+          <ColorSchemeScript forceColorScheme="dark" />
         </Head>
         <body>
           <Main />

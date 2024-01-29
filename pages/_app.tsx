@@ -19,7 +19,11 @@ export default function App(props: AppProps) {
   const { Component, pageProps } = props;
 
   return (
-    <MantineProvider theme={theme} cssVariablesResolver={resolver}>
+    <MantineProvider
+      theme={theme}
+      cssVariablesResolver={resolver}
+      forceColorScheme="dark"
+    >
       <Head>
         <meta
           name="description"
