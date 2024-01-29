@@ -16,8 +16,9 @@ so the website's locale is set to Lithuanian as well.
 
 - React 18
 - TypeScript
-- Mantine
-- Next.js 13
+- Mantine v7
+- Next.js 14 (page)
+  - `app` directory coming soon
 - AWS Amplify
 
 ## Running locally
@@ -31,5 +32,5 @@ so the website's locale is set to Lithuanian as well.
 2. Run local development instance:
 
    ```sh
-   yarn run dev
+   yarn dev
    ```
