@@ -1,4 +1,4 @@
-name: isBuilding
+name: Can-be-deployed
 
 on:
   pull_request:
