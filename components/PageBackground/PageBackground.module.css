@@ -1,3 +1,12 @@
+.title {
+  font-weight: 900;
+  margin-top: var(--mantine-spacing-xs);
+  margin-bottom: 1.5rem;
+  padding-bottom: var(--mantine-spacing-sm);
+  padding-left: var(--mantine-spacing-xl);
+  padding-right: var(--mantine-spacing-xl);
+}
+
 .container {
   position: relative;
   min-height: var(--bg-image-height);

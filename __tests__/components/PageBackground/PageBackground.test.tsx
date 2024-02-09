@@ -2,10 +2,10 @@ import { render, screen } from "@site/test-utils";
 import { PageBGProps, PageBackground } from "@site/components/PageBackground";
 
 jest.mock("@site/components/PageTitle");
-jest.mock("@site/components/SlideDownTitle");
 
 const mockTitle = "Test title";
 const mockContent = "Mock content";
+const wipText = "Puslapis ruošiamas";
 
 const testProps: { toRender: string; props: Omit<PageBGProps, "pageTitle"> }[] =
   [
@@ -35,9 +35,9 @@ describe("PageBackground", () => {
     expect(heading).toHaveTextContent(mockTitle);
 
     if (wip) {
-      expect(heading).toHaveClass("WIP");
+      expect(screen.getByText(wipText)).toBeInTheDocument();
     } else {
-      expect(heading).not.toHaveClass("WIP");
+      expect(screen.queryByText(wipText)).not.toBeInTheDocument();
     }
 
     if (colorOnly) {

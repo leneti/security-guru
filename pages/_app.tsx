@@ -13,7 +13,6 @@ import { theme, resolver } from "@site/constants/theme";
 import { Header } from "@site/components/Header";
 import { Footer } from "@site/components/Footer";
 import { RouterTransition } from "@site/components/RouterTransition";
-import PrevUrlProvider from "@site/contexts/prevUrl";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -44,9 +43,7 @@ export default function App(props: AppProps) {
 
       <Header />
 
-      <PrevUrlProvider>
-        <Component {...pageProps} />
-      </PrevUrlProvider>
+      <Component {...pageProps} />
 
       <Footer />
     </MantineProvider>

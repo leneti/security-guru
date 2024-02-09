@@ -31,7 +31,7 @@ export const resolver: CSSVariablesResolver = () => ({
     "--hero-left-pading": "60px",
     "--service-card-image-height": "200px",
     "--header-height": "5rem",
-    "--mantine-color-background": "var(--mantine-color-dark-7)",
+    "--mantine-color-background": "var(--mantine-color-dark-7)", // "#021614",
   },
   light: {
     "--mantine-primary-color": "#05221F",
