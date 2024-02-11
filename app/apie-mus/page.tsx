@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next/types";
 import { SimpleGrid } from "@mantine/core";
 import { PageBackground } from "@site/components/PageBackground";
 import { Feature } from "@site/components/Feature";

@@ -2,7 +2,7 @@ import axios from "axios";
 import { render, screen, fireEvent, waitFor } from "@site/test-utils";
 import * as mCore from "@mantine/core";
 import { notifications } from "@mantine/notifications";
-import { GetInTouch } from "@site/components/GetInTouch";
+import { GetInTouch } from "@site/app/susisiekite/GetInTouch";
 import { theme } from "@site/constants/theme";
 import { ErrorMessages } from "@site/constants/error-messages";
 

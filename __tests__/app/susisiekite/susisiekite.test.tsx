@@ -2,7 +2,7 @@ import { render } from "@site/test-utils";
 import ContactUs from "@site/app/susisiekite/page";
 
 jest.mock("@site/components/PageBackground");
-jest.mock("@site/components/GetInTouch");
+jest.mock("@site/app/susisiekite/GetInTouch");
 
 describe("Contact-us page", () => {
   it("renders", () => {

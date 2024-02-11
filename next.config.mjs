@@ -28,4 +28,5 @@ const nextConfig = {
   reactStrictMode: false,
 };
 
-export default withBundleAnalyzer(initMdx()(nextConfig));
+const withMDX = initMdx();
+export default withBundleAnalyzer(withMDX(nextConfig));

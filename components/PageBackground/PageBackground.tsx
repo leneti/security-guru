@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Overlay, Center, Box, Container, Title, Text } from "@mantine/core";
-import { PageTitle } from "@site/components/PageTitle";
 import houses from "@site/assets/unsplash-houses.webp";
 import type { PageBGProps } from "./types";
 import classes from "./PageBackground.module.css";
@@ -11,8 +10,6 @@ export default function PageBackground(props: PageBGProps) {
 
   return (
     <>
-      {/* <PageTitle>{pageTitle}</PageTitle> */}
-
       <Title ta="center" className={classes.title}>
         {pageTitle}
       </Title>
@@ -22,6 +19,7 @@ export default function PageBackground(props: PageBGProps) {
           Puslapis ruošiamas
         </Text>
       )}
+
       {colorOnly ? (
         <Container
           fluid
