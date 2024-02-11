@@ -1,8 +1,18 @@
 import { Title, Text, Button, Container, Group, rem } from "@mantine/core";
-import classes from "./500.module.css";
+import classes from "./error.module.css";
+import { useEffect } from "react";
 
-export default function ServerError() {
-  const refreshPage = () => window.location.reload();
+interface ErrorPage {
+  error: Error & { digest?: string };
+  reset: () => void;
+}
+
+export default function Error(props: ErrorPage) {
+  const { error, reset } = props;
+
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
 
   return (
     <div className={classes.root}>
@@ -18,7 +28,7 @@ export default function ServerError() {
             variant="white"
             className={classes.refreshBtn}
             size="md"
-            onClick={refreshPage}
+            onClick={reset}
           >
             Atnaujinti puslapį
           </Button>
