@@ -1,12 +1,12 @@
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import type { Metadata } from "next";
+import type { Metadata } from "next/types";
 import { theme, resolver } from "@site/constants/theme";
 import { Notifications } from "@mantine/notifications";
 import { Header } from "@site/components/Header";
 import { Footer } from "@site/components/Footer";
-import { RouterTransition } from "@site/components/RouterTransition";
 
 export const metadata: Metadata = {
   title: {
@@ -30,8 +30,9 @@ export default function RootLayout({
   return (
     <html lang="lt">
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="dark" />
       </head>
+
       <body>
         <MantineProvider
           theme={theme}
@@ -39,8 +40,6 @@ export default function RootLayout({
           forceColorScheme="dark"
         >
           <Notifications />
-
-          <RouterTransition />
 
           <Header />
 

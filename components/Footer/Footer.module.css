@@ -11,7 +11,7 @@
 }
 
 .description {
-  margin-top: var(--mantine-spacing-xs);
+  margin-top: var(--mantine-spacing-xs) !important;
   text-align: center;
 }
 
@@ -20,6 +20,12 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
+
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  max-width: var(--mantine-breakpoint-md);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wrapper {
@@ -30,10 +36,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: var(--mantine-spacing-xl);
-  padding-top: var(--mantine-spacing-xl);
-  padding-bottom: var(--mantine-spacing-xl);
   border-top: 1px solid var(--mantine-color-dark-4);
+
+  margin: var(--mantine-spacing-xl) auto 0;
+  padding: var(--mantine-spacing-xl) var(--mantine-spacing-md);
+  max-width: var(--mantine-breakpoint-md);
 
   @media (max-width: $mantine-breakpoint-sm) {
     flex-direction: column;

@@ -21,6 +21,7 @@
   top: 0;
   z-index: 2;
   height: var(--header-height);
+  box-shadow: var(--mantine-shadow-xl);
 }
 
 .inner {

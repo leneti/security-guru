@@ -1,3 +1,5 @@
+"use client";
+
 import { Drawer, Burger, px } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Logo } from "@site/components/Logo";
