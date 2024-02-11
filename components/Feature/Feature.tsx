@@ -1,4 +1,4 @@
-import { ThemeIcon, Title, useMantineTheme, Text } from "@mantine/core";
+import { ThemeIcon, Title, Text } from "@mantine/core";
 import { FeatureProps } from "@site/components/Feature";
 import classes from "./Feature.module.css";
 
@@ -7,8 +7,6 @@ export default function Feature({
   title,
   description,
 }: FeatureProps) {
-  const theme = useMantineTheme();
-
   return (
     <div>
       <ThemeIcon variant="filled" color="dark.6" size={40} radius={40}>

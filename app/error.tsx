@@ -1,3 +1,5 @@
+"use client";
+
 import { Title, Text, Button, Container, Group, rem } from "@mantine/core";
 import classes from "./error.module.css";
 import { useEffect } from "react";

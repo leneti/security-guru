@@ -11,7 +11,7 @@ export default function PageBackground(props: PageBGProps) {
 
   return (
     <>
-      <PageTitle>{pageTitle}</PageTitle>
+      {/* <PageTitle>{pageTitle}</PageTitle> */}
 
       <Title ta="center" className={classes.title}>
         {pageTitle}
