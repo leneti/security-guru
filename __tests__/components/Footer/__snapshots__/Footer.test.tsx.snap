@@ -16,7 +16,7 @@ exports[`Footer renders 1`] = `
     class="footer"
   >
     <div
-      class="inner m-7485cace mantine-Container-root"
+      class="inner"
     >
       <div
         class="logo"
@@ -46,7 +46,7 @@ exports[`Footer renders 1`] = `
       </div>
     </div>
     <div
-      class="afterFooter m-7485cace mantine-Container-root"
+      class="afterFooter"
     >
       <p
         class="mantine-focus-auto m-b6d8b162 mantine-Text-root"

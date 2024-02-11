@@ -1,9 +1,9 @@
 import { render, screen } from "@site/test-utils";
-import Error404 from "@site/pages/404";
+import NotFound from "@site/app/not-found";
 
-describe("Error 404 page", () => {
+describe("Not found page", () => {
   it("has a link back to home page", () => {
-    render(<Error404 />);
+    render(<NotFound />);
 
     expect(screen.getByRole("link")).toHaveAttribute("href", "/");
   });

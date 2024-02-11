@@ -28,11 +28,10 @@ exports[`Hero renders 1`] = `
     />
     <div
       class="m-9814e45f mantine-Overlay-root"
-      style="--overlay-filter: blur(calc(0.0625rem * var(--mantine-scale))); --overlay-z-index: 0; opacity: 1; --overlay-bg: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%);"
+      style="--overlay-bg: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .5) 40%); --overlay-filter: blur(calc(0.0625rem * var(--mantine-scale))); --overlay-z-index: 200;"
     >
       <div
         class="content dynamicHeight m-7485cace mantine-Container-root"
-        style="--container-size: 88em;"
       >
         <h1
           class="title m-8a5d1357 mantine-Title-root"

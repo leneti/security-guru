@@ -2,6 +2,11 @@
   fill: var(--mantine-color-dark-4);
 }
 
+.backToStart {
+  align-self: center;
+  color: var(--mantine-color-black);
+}
+
 .root {
   padding-top: 30px;
   padding-bottom: 130px;
@@ -24,6 +29,8 @@
   padding-top: 220px;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: $mantine-breakpoint-sm) {
     padding-top: 120px;
