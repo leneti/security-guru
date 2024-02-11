@@ -1,3 +1,5 @@
+"use client";
+
 import axios from "axios";
 import {
   Paper,
@@ -12,7 +14,6 @@ import {
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { IconX, IconCheck } from "@tabler/icons-react";
-import type { ContactForm } from "./types";
 import { ContactInfo } from "@site/components/ContactInfo";
 import {
   emailRegex,
@@ -21,6 +22,7 @@ import {
   APP_NAME,
 } from "@site/constants";
 import logger from "@site/utils/logger";
+import type { ContactForm } from "./types";
 import classes from "./GetInTouch.module.css";
 
 const notificationId = "form-submit";
@@ -173,7 +175,7 @@ export default function GetInTouch() {
             <Textarea
               mt="md"
               label="Pastabos"
-              minRows={3}
+              minRows={2}
               autosize
               labelProps={labelProps}
               placeholder="Pateikite visą svarbią informaciją"

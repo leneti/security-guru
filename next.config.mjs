@@ -6,10 +6,6 @@ const withBundleAnalyzer = initBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-const withMDX = initMdx({
-  extension: /\.mdx?$/,
-});
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -32,4 +28,4 @@ const nextConfig = {
   reactStrictMode: false,
 };
 
-export default withBundleAnalyzer(withMDX(nextConfig));
+export default withBundleAnalyzer(initMdx()(nextConfig));

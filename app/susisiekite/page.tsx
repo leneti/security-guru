@@ -1,7 +1,12 @@
 import { PageBackground } from "@site/components/PageBackground";
 import { GetInTouch } from "@site/components/GetInTouch";
+import type { Metadata } from "next/types";
 
 const pageTitle = "Susisiekite";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+};
 
 export default function Contacts() {
   return (
