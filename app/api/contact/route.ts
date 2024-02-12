@@ -1,7 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { SES } from "@aws-sdk/client-ses";
 import { PhoneNumberUtil } from "google-libphonenumber";
-import { ContactForm } from "@site/components/GetInTouch";
+import type { ContactForm } from "@site/app/susisiekite/GetInTouch";
 import { ErrorMessages } from "@site/constants/error-messages";
 import { emailRegex } from "@site/constants/regexes";
 import logger from "@site/utils/logger";
@@ -118,20 +117,12 @@ const sendMail = (sender: string, receivers: string[], data: ContactForm) => {
   return new SES({ region: "eu-west-2", credentials }).sendEmail(params);
 };
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>,
-) {
-  if (req.method !== "POST") {
-    return res
-      .status(403)
-      .send({ message: "Serveris priima tik susisiekimo formą." });
-  }
-
+export async function POST({ body }: Request) {
   if (!process.env.REACT_APP_SES_EMAIL) {
-    return res
-      .status(500)
-      .send({ message: "Serveris neturi prieigos prie el. pašto paslaugų." });
+    return Response.json(
+      { message: "Serveris neturi prieigos prie el. pašto paslaugų." },
+      { status: 500 },
+    );
   }
 
   if (sentEmailCounter >= maxSentEmails) {
@@ -139,38 +130,47 @@ export default function handler(
       `Couldn't send email. Sent today: ${sentEmailCounter}/${maxSentEmails}`,
     );
 
-    return res.status(500).send({
-      message:
-        "Serveris šiuo metu negali atlikti veiksmų. Parašykite mums tiesiogiai į info@securityguru.lt",
-    });
+    return Response.json(
+      {
+        message:
+          "Serveris šiuo metu negali atlikti veiksmų. Parašykite mums tiesiogiai į info@securityguru.lt",
+      },
+      { status: 500 },
+    );
   }
 
-  const reason = badContactForm(req.body);
+  const reason = badContactForm(body);
 
   if (reason) {
-    return res.status(400).send({
-      message: `[BAD_CONTACT_FORM] ${reason}`,
-    });
+    return Response.json(
+      {
+        message: `[BAD_CONTACT_FORM] ${reason}`,
+      },
+      { status: 400 },
+    );
   }
 
   return sendMail(
     process.env.REACT_APP_SES_EMAIL,
     [process.env.REACT_APP_SES_EMAIL],
-    req.body,
+    body as unknown as ContactForm,
   )
     .then(() => {
       sentEmailCounter++;
 
       logger.info(`Sent emails today: ${sentEmailCounter}/${maxSentEmails}`);
 
-      res.status(200);
+      return Response.json(undefined, { status: 200 });
     })
     .catch((err) => {
       logger.error("Couldn't send email.", err);
 
-      res.status(502).send({
-        message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
-        err,
-      });
+      return Response.json(
+        {
+          message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
+          err,
+        },
+        { status: 502 },
+      );
     });
 }
