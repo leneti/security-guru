@@ -23,7 +23,13 @@ export default function ServiceCard({
       className={classes.card}
     >
       <Box className={classes.cardImageBox}>
-        <Image src={image} alt={title} fill className={classes.image} />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={classes.image}
+          sizes="(min-width: 75em) 33vw, (min-width: 62em) 50vw, 100vw"
+        />
       </Box>
 
       <Group justify="space-between" mt="md" mb="xs">
