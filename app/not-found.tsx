@@ -1,5 +1,5 @@
-import { Container, Title, Text, Button, Group } from "@mantine/core";
-import Link from "next/link";
+import { Container, Title, Text, Button } from "@mantine/core";
+import Link from "@link";
 import classes from "./not-found.module.css";
 
 export default function NothingFoundBackground() {

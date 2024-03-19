@@ -1,6 +1,6 @@
 import { Card, Text, Badge, Button, Group, Title, Box } from "@mantine/core";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@link";
 import type { ServiceCardProps } from "./types";
 import classes from "./ServiceCard.module.css";
 

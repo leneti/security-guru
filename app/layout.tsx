@@ -9,7 +9,7 @@ import { theme, resolver } from "@site/constants/theme";
 import { Notifications } from "@mantine/notifications";
 import { Header } from "@site/components/Header";
 import { Footer } from "@site/components/Footer";
-import { RouterTransition } from "./navigation";
+import { NavigationProgressBar } from "@site/navigation/wrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -42,7 +42,7 @@ export default function RootLayout({
           cssVariablesResolver={resolver}
           forceColorScheme="dark"
         >
-          <RouterTransition />
+          <NavigationProgressBar />
 
           <Notifications />
 

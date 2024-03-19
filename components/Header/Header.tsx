@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
-import Link from "next/link";
+import Link from "@link";
 import { Logo } from "@site/components/Logo";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
 import { menuLinks } from "@site/constants/menu-links";

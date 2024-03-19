@@ -1,6 +1,6 @@
 import { Overlay, Container, Title, Button, Text } from "@mantine/core";
 import clsx from "clsx";
-import Link from "next/link";
+import Link from "@link";
 import Image from "next/image";
 import houses from "@site/assets/unsplash-houses.webp";
 import classes from "./Hero.module.css";

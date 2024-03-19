@@ -4,7 +4,7 @@ import {
   IconBrandFacebook,
   IconMail,
 } from "@tabler/icons-react";
-import Link from "next/link";
+import Link from "@link";
 import { Logo } from "@site/components/Logo";
 import classes from "./Footer.module.css";
 

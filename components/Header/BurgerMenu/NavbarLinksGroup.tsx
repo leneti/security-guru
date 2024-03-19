@@ -1,7 +1,7 @@
 import { Group, Box, Collapse, ThemeIcon, UnstyledButton } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
-import Link from "next/link";
+import Link from "@link";
 import type { LinksGroupProps } from "./types";
 import classes from "./NavbarLinksGroup.module.css";
 

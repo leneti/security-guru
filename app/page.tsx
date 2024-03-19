@@ -2,7 +2,7 @@
 
 import { Container, Title, Divider, Center, Button } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons-react";
-import Link from "next/link";
+import Link from "@link";
 import { Hero } from "@site/components/Hero";
 import { Services } from "@site/components/Services";
 import classes from "./home.module.css";
