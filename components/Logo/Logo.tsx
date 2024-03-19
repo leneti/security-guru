@@ -36,6 +36,7 @@ export default function Logo(props: LogoProps) {
           width: rem(width),
         }}
         unoptimized
+        priority
       />
     </Link>
   );

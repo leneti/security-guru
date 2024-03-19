@@ -1,4 +1,5 @@
 import "@mantine/core/styles.css";
+import "@mantine/nprogress/styles.css";
 import "@mantine/notifications/styles.css";
 import "@site/app/global.css";
 
@@ -8,6 +9,7 @@ import { theme, resolver } from "@site/constants/theme";
 import { Notifications } from "@mantine/notifications";
 import { Header } from "@site/components/Header";
 import { Footer } from "@site/components/Footer";
+import { RouterTransition } from "./navigation";
 
 export const metadata: Metadata = {
   title: {
@@ -40,6 +42,8 @@ export default function RootLayout({
           cssVariablesResolver={resolver}
           forceColorScheme="dark"
         >
+          <RouterTransition />
+
           <Notifications />
 
           <Header />
