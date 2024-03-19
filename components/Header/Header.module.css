@@ -19,8 +19,15 @@
   background-color: var(--mantine-color-background);
   position: sticky;
   top: 0;
-  z-index: 2;
+  /* Home page hero image effect overlay - 200
+     Menu pop-up - 300
+     So this has to be in-between the two
+  */
+  z-index: 250;
   height: var(--header-height);
+}
+
+.outerBoxShadow {
   box-shadow: var(--mantine-shadow-xl);
 }
 
@@ -55,7 +62,7 @@
 .link {
   display: block;
   line-height: 1rem;
-  padding: 8px 12px;
+  padding: 8px 12px !important;
   border-radius: var(--mantine-radius-sm);
   text-decoration: none;
   color: var(--mantine-color-dark-0);

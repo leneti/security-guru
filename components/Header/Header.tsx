@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Menu,
   MenuTarget,
@@ -7,16 +9,22 @@ import {
   UnstyledButton,
   Box,
 } from "@mantine/core";
+import { useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
 import Link from "next/link";
 import { Logo } from "@site/components/Logo";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
 import { menuLinks } from "@site/constants/menu-links";
 import classes from "./Header.module.css";
+import clsx from "clsx";
 
 export default function Header() {
+  const [scroll] = useWindowScroll();
+
   return (
-    <Box className={classes.outer}>
+    <Box
+      className={clsx(classes.outer, scroll.y > 40 && classes.outerBoxShadow)}
+    >
       <nav className={classes.inner}>
         <Logo size={40} classNames={classes.smallDisplayOnly} />
         <Logo size={50} classNames={classes.bigDisplayOnly} />
