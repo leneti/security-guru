@@ -25,6 +25,7 @@
   */
   z-index: 250;
   height: var(--header-height);
+  transition: translate 400ms ease;
 }
 
 .outerBoxShadow {

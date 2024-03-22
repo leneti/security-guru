@@ -10,7 +10,7 @@ import {
   MenuTarget,
   UnstyledButton,
 } from "@mantine/core";
-import { useWindowScroll } from "@mantine/hooks";
+import { useHeadroom, useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
 import { Logo } from "@site/components/Logo";
@@ -20,10 +20,12 @@ import classes from "./Header.module.css";
 
 export default function Header() {
   const [scroll] = useWindowScroll();
+  const pinned = useHeadroom({ fixedAt: 120 });
 
   return (
     <Box
       className={clsx(classes.outer, scroll.y > 40 && classes.outerBoxShadow)}
+      style={{ translate: `0 ${pinned ? 0 : "-6.875rem"}` }}
     >
       <nav className={classes.inner}>
         <Logo size={40} classNames={classes.smallDisplayOnly} />
