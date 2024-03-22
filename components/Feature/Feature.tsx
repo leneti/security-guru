@@ -1,4 +1,4 @@
-import { ThemeIcon, Title, Text } from "@mantine/core";
+import { Text, ThemeIcon, Title } from "@mantine/core";
 import { FeatureProps } from "@site/components/Feature";
 import classes from "./Feature.module.css";
 

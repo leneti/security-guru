@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import ContactUs from "@site/app/susisiekite/page";
+import { render } from "@site/test-utils";
 
 jest.mock("@site/components/PageBackground");
 jest.mock("@site/app/susisiekite/GetInTouch");

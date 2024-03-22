@@ -1,11 +1,11 @@
-import { Text, Group, ActionIcon } from "@mantine/core";
+import { ActionIcon, Group, Text } from "@mantine/core";
 import {
-  IconBrandInstagram,
   IconBrandFacebook,
+  IconBrandInstagram,
   IconMail,
 } from "@tabler/icons-react";
-import Link from "@link";
 import { Logo } from "@site/components/Logo";
+import Link from "@link";
 import classes from "./Footer.module.css";
 
 export default function Footer() {

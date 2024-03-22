@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from "@site/test-utils";
 import Error500 from "@site/app/error";
+import { fireEvent, render, screen } from "@site/test-utils";
 
 describe("Error 500 page", () => {
   it("reloads page on button click", () => {

@@ -1,5 +1,5 @@
-import { PageBackground } from "@site/components/PageBackground";
 import type { Metadata } from "next/types";
+import { PageBackground } from "@site/components/PageBackground";
 import ArticlesCardsGrid from "./articles";
 
 const pageTitle = "Projektai";

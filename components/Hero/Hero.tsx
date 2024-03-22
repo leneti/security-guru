@@ -1,8 +1,8 @@
-import { Overlay, Container, Title, Button, Text } from "@mantine/core";
 import clsx from "clsx";
-import Link from "@link";
 import Image from "next/image";
+import { Button, Container, Overlay, Text, Title } from "@mantine/core";
 import houses from "@site/assets/unsplash-houses.webp";
+import Link from "@link";
 import classes from "./Hero.module.css";
 
 const overlayGradient =

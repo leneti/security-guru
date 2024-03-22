@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "explorer http://localhost:3000 & next dev",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
     "postbuild": "next-sitemap",
@@ -46,6 +46,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.2",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@tsconfig/next": "^2.0.1",
     "@types/google-libphonenumber": "^7.4.30",
     "@types/jest": "^29.5.11",

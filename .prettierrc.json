@@ -1,4 +1,18 @@
 {
   "printWidth": 80,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "importOrder": [
+    "^@mantine/.*[.]css$",
+    "^react(-dom)?$",
+    "<THIRD_PARTY_MODULES>",
+    "^@(?!site|link)",
+    "^@site/.*(?<!css)$",
+    "^@link",
+    "^[./]",
+    "[.]css$"
+  ],
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

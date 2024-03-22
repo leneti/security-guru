@@ -1,5 +1,5 @@
-import { render, screen } from "@site/test-utils";
 import { Header } from "@site/components/Header";
+import { render, screen } from "@site/test-utils";
 
 jest.mock("@site/components/Logo");
 jest.mock("@mantine/core", () => {

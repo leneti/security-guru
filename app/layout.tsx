@@ -1,15 +1,14 @@
 import "@mantine/core/styles.css";
-import "@mantine/nprogress/styles.css";
 import "@mantine/notifications/styles.css";
-import "@site/app/global.css";
-
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import "@mantine/nprogress/styles.css";
 import type { Metadata } from "next/types";
-import { theme, resolver } from "@site/constants/theme";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import { Header } from "@site/components/Header";
 import { Footer } from "@site/components/Footer";
+import { Header } from "@site/components/Header";
+import { resolver, theme } from "@site/constants/theme";
 import { NavigationProgressBar } from "@site/navigation/wrapper";
+import "@site/app/global.css";
 
 export const metadata: Metadata = {
   title: {

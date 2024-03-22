@@ -1,9 +1,9 @@
 import {
-  IconSun,
-  IconPhone,
-  IconMapPin,
   IconAt,
   IconBuildingEstate,
+  IconMapPin,
+  IconPhone,
+  IconSun,
 } from "@tabler/icons-react";
 
 export const contactData = [

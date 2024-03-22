@@ -1,6 +1,6 @@
-import { PageBackground } from "@site/components/PageBackground";
-import { GetInTouch } from "@site/app/susisiekite/GetInTouch";
 import type { Metadata } from "next/types";
+import { GetInTouch } from "@site/app/susisiekite/GetInTouch";
+import { PageBackground } from "@site/components/PageBackground";
 
 const pageTitle = "Susisiekite";
 

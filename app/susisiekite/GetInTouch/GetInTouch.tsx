@@ -2,28 +2,28 @@
 
 import axios from "axios";
 import {
-  Paper,
-  Text,
-  TextInput,
-  Textarea,
   Button,
   Group,
-  SimpleGrid,
+  Paper,
   Radio,
+  SimpleGrid,
+  Text,
+  Textarea,
+  TextInput,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
-import { IconX, IconCheck } from "@tabler/icons-react";
+import { IconCheck, IconX } from "@tabler/icons-react";
 import { ContactInfo } from "@site/components/ContactInfo";
 import {
-  emailRegex,
-  numberRegex,
-  ErrorMessages,
   APP_NAME,
+  emailRegex,
+  ErrorMessages,
+  numberRegex,
 } from "@site/constants";
 import logger from "@site/utils/logger";
-import type { ContactForm } from "./types";
 import classes from "./GetInTouch.module.css";
+import type { ContactForm } from "./types";
 
 const notificationId = "form-submit";
 const labelProps = { style: { marginBottom: "0.25rem" } };

@@ -1,9 +1,9 @@
-import Image from "next/image";
-import { Overlay, Center, Box, Container, Title, Text } from "@mantine/core";
-import houses from "@site/assets/unsplash-houses.webp";
-import type { PageBGProps } from "./types";
-import classes from "./PageBackground.module.css";
 import clsx from "clsx";
+import Image from "next/image";
+import { Box, Center, Container, Overlay, Text, Title } from "@mantine/core";
+import houses from "@site/assets/unsplash-houses.webp";
+import classes from "./PageBackground.module.css";
+import type { PageBGProps } from "./types";
 
 export default function PageBackground(props: PageBGProps) {
   const { pageTitle, colorOnly, wip, fullWidth, children } = props;

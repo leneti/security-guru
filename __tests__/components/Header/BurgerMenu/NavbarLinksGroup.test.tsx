@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from "@site/test-utils";
 import NavbarLinksGroup from "@site/components/Header/BurgerMenu/NavbarLinksGroup";
+import { fireEvent, render, screen } from "@site/test-utils";
 
 const mockUrl = "/mock";
 const mockLabel = "mock_label";

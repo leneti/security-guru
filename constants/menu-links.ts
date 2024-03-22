@@ -1,9 +1,8 @@
 import {
-  TablerIconsProps,
-  IconShieldCheck,
+  IconBriefcase, // IconTools,
   IconMail,
-  IconBriefcase,
-  // IconTools,
+  IconShieldCheck,
+  TablerIconsProps,
 } from "@tabler/icons-react";
 
 interface LinkBasic {
@@ -71,5 +70,5 @@ export const menuLinks: Link[] = [
 ];
 
 export const flatLinks = menuLinks.flatMap((link) =>
-  "url" in link ? { url: link.url } : link.links.map(({ url }) => ({ url }))
+  "url" in link ? { url: link.url } : link.links.map(({ url }) => ({ url })),
 );

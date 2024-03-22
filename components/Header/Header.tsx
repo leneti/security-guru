@@ -1,22 +1,22 @@
 "use client";
 
+import clsx from "clsx";
 import {
-  Menu,
-  MenuTarget,
-  MenuItem,
-  MenuDropdown,
-  Group,
-  UnstyledButton,
   Box,
+  Group,
+  Menu,
+  MenuDropdown,
+  MenuItem,
+  MenuTarget,
+  UnstyledButton,
 } from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
-import Link from "@link";
-import { Logo } from "@site/components/Logo";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
+import { Logo } from "@site/components/Logo";
 import { menuLinks } from "@site/constants/menu-links";
+import Link from "@link";
 import classes from "./Header.module.css";
-import clsx from "clsx";
 
 export default function Header() {
   const [scroll] = useWindowScroll();

@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import { NavigationProgress, nprogress } from "@mantine/nprogress";
 
 function HandleOnCompleteChild() {

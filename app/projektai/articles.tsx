@@ -1,7 +1,7 @@
 "use client";
 
-import { SimpleGrid, Card, Text, Container, AspectRatio } from "@mantine/core";
 import Image, { ImageLoaderProps } from "next/image";
+import { AspectRatio, Card, Container, SimpleGrid, Text } from "@mantine/core";
 import classes from "./projektai.module.css";
 
 const mockdata = [

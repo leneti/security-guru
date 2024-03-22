@@ -1,5 +1,5 @@
+import { PageBackground, PageBGProps } from "@site/components/PageBackground";
 import { render, screen } from "@site/test-utils";
-import { PageBGProps, PageBackground } from "@site/components/PageBackground";
 
 jest.mock("@site/components/PageTitle");
 

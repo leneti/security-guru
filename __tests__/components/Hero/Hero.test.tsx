@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import { Hero } from "@site/components/Hero";
+import { render } from "@site/test-utils";
 
 describe("Hero", () => {
   it("renders", () => {

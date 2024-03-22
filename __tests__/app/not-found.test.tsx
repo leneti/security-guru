@@ -1,5 +1,5 @@
-import { render, screen } from "@site/test-utils";
 import NotFound from "@site/app/not-found";
+import { render, screen } from "@site/test-utils";
 
 describe("Not found page", () => {
   it("has a link back to home page", () => {

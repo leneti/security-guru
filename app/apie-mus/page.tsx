@@ -1,9 +1,9 @@
 import type { Metadata } from "next/types";
 import { SimpleGrid } from "@mantine/core";
-import { PageBackground } from "@site/components/PageBackground";
-import { Feature } from "@site/components/Feature";
-import { ABOUT_US_FEATURES } from "@site/constants";
 import LottieAnimation from "@site/app/apie-mus/animation";
+import { Feature } from "@site/components/Feature";
+import { PageBackground } from "@site/components/PageBackground";
+import { ABOUT_US_FEATURES } from "@site/constants";
 import classes from "./apie-mus.module.css";
 
 const pageTitle = "Apie mus";

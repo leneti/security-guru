@@ -1,7 +1,7 @@
 "use client";
 
-import NextLink from "next/link";
 import { forwardRef } from "react";
+import NextLink from "next/link";
 import { nprogress } from "@mantine/nprogress";
 import { shouldTriggerStartEvent } from "./should-start";
 

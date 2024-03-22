@@ -1,5 +1,5 @@
-import { render, screen } from "@site/test-utils";
 import Projects from "@site/app/projektai/page";
+import { render, screen } from "@site/test-utils";
 
 jest.mock("@site/components/PageBackground");
 

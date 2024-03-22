@@ -1,5 +1,5 @@
-import { SES } from "@aws-sdk/client-ses";
 import { PhoneNumberUtil } from "google-libphonenumber";
+import { SES } from "@aws-sdk/client-ses";
 import type { ContactForm } from "@site/app/susisiekite/GetInTouch";
 import { ErrorMessages } from "@site/constants/error-messages";
 import { emailRegex } from "@site/constants/regexes";

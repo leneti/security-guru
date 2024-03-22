@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import { Services } from "@site/components/Services";
+import { render } from "@site/test-utils";
 
 describe("Services", () => {
   it("renders", () => {

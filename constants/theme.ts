@@ -3,9 +3,9 @@
 import {
   createTheme,
   type CSSVariablesResolver,
+  Divider,
   Text,
   Title,
-  Divider,
 } from "@mantine/core";
 import textClasses from "@site/constants/variants/text.module.css";
 import titleClasses from "@site/constants/variants/title.module.css";

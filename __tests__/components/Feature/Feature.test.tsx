@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import { Feature } from "@site/components/Feature";
+import { render } from "@site/test-utils";
 
 describe("Feature", () => {
   it("render", () => {

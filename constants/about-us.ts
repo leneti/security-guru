@@ -1,9 +1,9 @@
 import {
-  IconTrophy,
-  IconShieldCheck,
-  IconUser,
-  IconMessage2,
   IconLock,
+  IconMessage2,
+  IconShieldCheck,
+  IconTrophy,
+  IconUser,
 } from "@tabler/icons-react";
 
 export const ABOUT_US_FEATURES = [

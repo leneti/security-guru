@@ -1,8 +1,8 @@
-import { Card, Text, Badge, Button, Group, Title, Box } from "@mantine/core";
 import Image from "next/image";
+import { Badge, Box, Button, Card, Group, Text, Title } from "@mantine/core";
 import Link from "@link";
-import type { ServiceCardProps } from "./types";
 import classes from "./ServiceCard.module.css";
+import type { ServiceCardProps } from "./types";
 
 const CARD_HEIGHT = 420;
 

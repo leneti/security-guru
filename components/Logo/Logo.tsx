@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Link from "@link";
-import Ikona_Oranzine from "@site/assets/logo/Ikona_Oranzine.webp";
 import HLogotipas_Oranzine from "@site/assets/logo/HLogotipas_Oranzine.webp";
+import Ikona_Oranzine from "@site/assets/logo/Ikona_Oranzine.webp";
 import Logotipas_Oranzine from "@site/assets/logo/Logotipas_Oranzine.webp";
-import type { LogoProps } from "./types";
+import Link from "@link";
 import classes from "./Logo.module.css";
+import type { LogoProps } from "./types";
 
 const defaultSize = 50;
 const logoAltText = "Security Guru logotipas";

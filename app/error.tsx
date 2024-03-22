@@ -1,8 +1,8 @@
 "use client";
 
-import { Title, Text, Button, Container, Group, rem } from "@mantine/core";
-import classes from "./error.module.css";
 import { useEffect } from "react";
+import { Button, Container, Group, Text, Title } from "@mantine/core";
+import classes from "./error.module.css";
 
 interface ErrorPage {
   error: Error & { digest?: string };

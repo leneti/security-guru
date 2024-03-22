@@ -1,6 +1,6 @@
-import { render, screen, fireEvent } from "@site/test-utils";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
 import { flatLinks } from "@site/constants/menu-links";
+import { fireEvent, render, screen } from "@site/test-utils";
 
 jest.mock("@site/components/Logo");
 jest.mock("@site/components/Header/BurgerMenu/NavbarLinksGroup");

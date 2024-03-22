@@ -1,7 +1,14 @@
 import { JSX } from "react";
-import type { LinksGroupSingle, LinksGroupDropdown, LinksGroupProps } from "../types";
+import type {
+  LinksGroupDropdown,
+  LinksGroupProps,
+  LinksGroupSingle,
+} from "../types";
 
-function NavbarLinksGroupMock({ label, links }: LinksGroupDropdown): JSX.Element;
+function NavbarLinksGroupMock({
+  label,
+  links,
+}: LinksGroupDropdown): JSX.Element;
 function NavbarLinksGroupMock({ label, url }: LinksGroupSingle): JSX.Element;
 
 function NavbarLinksGroupMock(props: LinksGroupProps) {
