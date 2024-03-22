@@ -71,6 +71,7 @@ export default function GetInTouch() {
           color: "teal",
           icon: <IconCheck />,
           className: classes.notification,
+          loading: false,
         });
 
         form.reset();
@@ -95,6 +96,7 @@ export default function GetInTouch() {
           color: "red",
           icon: <IconX />,
           className: classes.notification,
+          loading: false,
         });
       });
   };

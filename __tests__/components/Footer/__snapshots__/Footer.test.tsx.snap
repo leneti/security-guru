@@ -27,13 +27,14 @@ exports[`Footer renders 1`] = `
         >
           <img
             alt="Security Guru logotipas"
+            class="logo"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="50"
-            loading="lazy"
             src="/img.jpg"
             style="color: transparent;"
-            width="49.97501249375313"
+            width="50"
           />
         </a>
         <p
@@ -146,7 +147,7 @@ exports[`Footer renders 1`] = `
         <a
           class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
           data-variant="subtle"
-          href="/kontaktai"
+          href="/susisiekite"
           style="--ai-bg: transparent; --ai-hover: var(--mantine-color-primary-light-hover); --ai-color: var(--mantine-color-primary-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;"
           title="Susisiekite"
         >

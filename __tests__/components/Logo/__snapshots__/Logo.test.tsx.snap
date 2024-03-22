@@ -18,13 +18,14 @@ exports[`Logo renders default 1`] = `
   >
     <img
       alt="Security Guru logotipas"
+      class="logo"
       data-nimg="1"
       decoding="async"
+      fetchpriority="high"
       height="50"
-      loading="lazy"
       src="/img.jpg"
       style="color: transparent;"
-      width="293.2551319648094"
+      width="50"
     />
   </a>
 </div>
@@ -48,13 +49,14 @@ exports[`Logo renders icon only 1`] = `
   >
     <img
       alt="Security Guru logotipas"
+      class="logo"
       data-nimg="1"
       decoding="async"
+      fetchpriority="high"
       height="50"
-      loading="lazy"
       src="/img.jpg"
       style="color: transparent;"
-      width="49.97501249375313"
+      width="50"
     />
   </a>
 </div>
@@ -78,13 +80,14 @@ exports[`Logo renders vertical 1`] = `
   >
     <img
       alt="Security Guru logotipas"
+      class="logo"
       data-nimg="1"
       decoding="async"
+      fetchpriority="high"
       height="50"
-      loading="lazy"
       src="/img.jpg"
       style="color: transparent;"
-      width="127.38853503184713"
+      width="50"
     />
   </a>
 </div>

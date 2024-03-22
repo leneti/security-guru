@@ -49,7 +49,7 @@ export default function Footer() {
           </ActionIcon>
           <ActionIcon
             component={Link}
-            href="/kontaktai"
+            href="/susisiekite"
             title="Susisiekite"
             variant="subtle"
           >
