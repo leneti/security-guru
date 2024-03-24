@@ -1,7 +1,8 @@
-import type { TablerIconsProps } from "@tabler/icons-react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
+import type { Icon, IconProps } from "@tabler/icons-react";
 
 export interface FeatureProps {
-  icon: (props: TablerIconsProps) => React.JSX.Element;
+  icon: ForwardRefExoticComponent<Omit<IconProps, "ref"> & RefAttributes<Icon>>;
   title: React.ReactNode;
   description: React.ReactNode;
 }

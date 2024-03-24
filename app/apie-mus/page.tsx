@@ -20,7 +20,7 @@ export default function About() {
         spacing={{ base: "xl", md: 50 }}
         className={classes.grid}
       >
-        {ABOUT_US_FEATURES.map((feature, index) => (
+        {ABOUT_US_FEATURES.map((feature) => (
           <Feature {...feature} key={feature.title} />
         ))}
       </SimpleGrid>

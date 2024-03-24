@@ -12,7 +12,7 @@ describe("NavbarLinksGroup", () => {
   it("renders link", () => {
     render(
       <NavbarLinksGroup
-        icon={() => <div>Mock Icon</div>}
+        icon={(() => <div>Mock Icon</div>) as any}
         url={mockUrl}
         label={mockLabel}
         closeDrawer={jest.fn()}
@@ -27,7 +27,7 @@ describe("NavbarLinksGroup", () => {
   it("renders link group", async () => {
     render(
       <NavbarLinksGroup
-        icon={() => <div>Mock Icon</div>}
+        icon={(() => <div>Mock Icon</div>) as any}
         links={mockLinks}
         label={mockLabel}
         closeDrawer={jest.fn()}

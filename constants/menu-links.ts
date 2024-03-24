@@ -1,13 +1,15 @@
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import {
+  type Icon,
   IconBriefcase, // IconTools,
   IconMail,
+  type IconProps,
   IconShieldCheck,
-  TablerIconsProps,
 } from "@tabler/icons-react";
 
 interface LinkBasic {
   label: string;
-  icon: React.FC<TablerIconsProps>;
+  icon: ForwardRefExoticComponent<Omit<IconProps, "ref"> & RefAttributes<Icon>>;
   initiallyOpened?: boolean;
   hidden?: boolean;
 }

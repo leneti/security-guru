@@ -1,5 +1,5 @@
 import { Text, ThemeIcon, Title } from "@mantine/core";
-import { FeatureProps } from "@site/components/Feature";
+import type { FeatureProps } from "@site/components/Feature";
 import classes from "./Feature.module.css";
 
 export default function Feature({

@@ -1,7 +1,8 @@
-import { TablerIconsProps } from "@tabler/icons-react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
+import type { Icon, IconProps } from "@tabler/icons-react";
 
 interface LinksGroupBasics {
-  icon: React.FC<TablerIconsProps>;
+  icon: ForwardRefExoticComponent<Omit<IconProps, "ref"> & RefAttributes<Icon>>;
   label: string;
   initiallyOpened?: boolean;
   closeDrawer: () => void;
