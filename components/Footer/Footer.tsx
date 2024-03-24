@@ -1,25 +1,26 @@
-import { Text, Container, Group, ActionIcon } from "@mantine/core";
+import { ActionIcon, Group, Text } from "@mantine/core";
 import {
-  IconBrandInstagram,
   IconBrandFacebook,
+  IconBrandInstagram,
   IconMail,
 } from "@tabler/icons-react";
-import Link from "next/link";
 import { Logo } from "@site/components/Logo";
+import Link from "@link";
 import classes from "./Footer.module.css";
 
 export default function Footer() {
   return (
     <footer className={classes.footer}>
-      <Container className={classes.inner}>
+      <div className={classes.inner}>
         <div className={classes.logo}>
           <Logo iconOnly />
           <Text size="xs" className={classes.description}>
             Kokybė, profesionalumas ir inovatyvumas
           </Text>
         </div>
-      </Container>
-      <Container className={classes.afterFooter}>
+      </div>
+
+      <div className={classes.afterFooter}>
         <Text size="sm">© {new Date().getFullYear()} MB Security Guru</Text>
 
         <Group
@@ -48,14 +49,14 @@ export default function Footer() {
           </ActionIcon>
           <ActionIcon
             component={Link}
-            href="/kontaktai"
+            href="/susisiekite"
             title="Susisiekite"
             variant="subtle"
           >
             <IconMail className={classes.icon} stroke={1.5} />
           </ActionIcon>
         </Group>
-      </Container>
+      </div>
     </footer>
   );
 }

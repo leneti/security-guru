@@ -1,64 +1,77 @@
-import { Menu, Group, UnstyledButton, Box } from "@mantine/core";
-import { useWindowScroll } from "@mantine/hooks";
+"use client";
+
+import clsx from "clsx";
+import {
+  Box,
+  Group,
+  Menu,
+  MenuDropdown,
+  MenuItem,
+  MenuTarget,
+  UnstyledButton,
+} from "@mantine/core";
+import { useHeadroom, useWindowScroll } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
-import Link from "next/link";
-import { Logo } from "@site/components/Logo";
 import { BurgerMenu } from "@site/components/Header/BurgerMenu";
+import { Logo } from "@site/components/Logo";
 import { menuLinks } from "@site/constants/menu-links";
+import Link from "@link";
 import classes from "./Header.module.css";
 
 export default function Header() {
-  const [{ y }] = useWindowScroll();
-  const isScrolled = y > 0;
-
-  const items = menuLinks.map((link) => {
-    if ("links" in link) {
-      const menuItems = link.links.map(({ url, label }) => (
-        <Link key={url} href={url} className={classes.subLink}>
-          <Menu.Item>{label}</Menu.Item>
-        </Link>
-      ));
-
-      return (
-        <Menu key={link.label}>
-          <Menu.Target>
-            <UnstyledButton className={classes.link}>
-              <span className={classes.linkLabel}>{link.label}</span>
-              <IconChevronDown
-                size={12}
-                stroke={1.5}
-                aria-label="Toggle menu dropdown"
-              />
-            </UnstyledButton>
-          </Menu.Target>
-          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-        </Menu>
-      );
-    }
-
-    return (
-      <Link key={link.label} href={link.url} className={classes.link}>
-        {link.label}
-      </Link>
-    );
-  });
+  const [scroll] = useWindowScroll();
+  const pinned = useHeadroom({ fixedAt: 120 });
 
   return (
     <Box
-      style={{ boxShadow: isScrolled ? "var(--mantine-shadow-xl)" : "none" }}
-      className={classes.outer}
+      className={clsx(classes.outer, scroll.y > 40 && classes.outerBoxShadow)}
+      style={{ translate: `0 ${pinned ? 0 : "-6.875rem"}` }}
     >
       <nav className={classes.inner}>
         <Logo size={40} classNames={classes.smallDisplayOnly} />
         <Logo size={50} classNames={classes.bigDisplayOnly} />
+
         <BurgerMenu />
+
         <Group
           className={classes.linkGroup}
           gap="xs"
           visibleFrom="md"
           wrap="nowrap"
         >
-          {items}
+          {menuLinks.map((link) => {
+            if (!("links" in link)) {
+              return (
+                <Link key={link.label} href={link.url} className={classes.link}>
+                  {link.label}
+                </Link>
+              );
+            }
+
+            const { label, links } = link;
+
+            return (
+              <Menu key={label}>
+                <MenuTarget>
+                  <UnstyledButton className={classes.link}>
+                    <span className={classes.linkLabel}>{label}</span>
+                    <IconChevronDown
+                      size={12}
+                      stroke={1.5}
+                      aria-label="Toggle menu dropdown"
+                    />
+                  </UnstyledButton>
+                </MenuTarget>
+                <MenuDropdown>
+                  {links.map(({ url, label }) => (
+                    <Link key={url} href={url} className={classes.subLink}>
+                      <MenuItem>{label}</MenuItem>
+                    </Link>
+                  ))}
+                </MenuDropdown>
+              </Menu>
+            );
+          })}
         </Group>
       </nav>
     </Box>

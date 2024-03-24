@@ -1,20 +1,24 @@
-import Image from "next/image";
-import { Overlay, Center, Box, Container } from "@mantine/core";
-import { SlideDownTitle } from "@site/components/SlideDownTitle";
-import { PageTitle } from "@site/components/PageTitle";
-import houses from "@site/assets/unsplash-houses.webp";
-import type { PageBGProps } from "./types";
-import classes from "./PageBackground.module.css";
 import clsx from "clsx";
+import Image from "next/image";
+import { Box, Center, Container, Overlay, Text, Title } from "@mantine/core";
+import houses from "@site/assets/unsplash-houses.webp";
+import classes from "./PageBackground.module.css";
+import type { PageBGProps } from "./types";
 
 export default function PageBackground(props: PageBGProps) {
   const { pageTitle, colorOnly, wip, fullWidth, children } = props;
 
   return (
     <>
-      <PageTitle>{pageTitle}</PageTitle>
+      <Title ta="center" className={classes.title}>
+        {pageTitle}
+      </Title>
 
-      <SlideDownTitle title={pageTitle} wip={wip} />
+      {wip && (
+        <Text ta="center" mb="lg" c="dimmed">
+          Puslapis ruošiamas
+        </Text>
+      )}
 
       {colorOnly ? (
         <Container

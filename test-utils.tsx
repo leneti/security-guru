@@ -1,6 +1,6 @@
-import { ReactNode, ReactElement } from "react";
-import { render, RenderOptions } from "@testing-library/react";
+import { ReactElement, ReactNode } from "react";
 import { MantineProvider } from "@mantine/core";
+import { render, RenderOptions } from "@testing-library/react";
 import { resolver, theme } from "@site/constants";
 
 const AllTheProviders = ({ children }: { children: ReactNode }) => {

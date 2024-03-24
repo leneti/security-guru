@@ -1,14 +1,15 @@
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import {
-  TablerIconsProps,
-  IconShieldCheck,
+  type Icon,
+  IconBriefcase, // IconTools,
   IconMail,
-  IconBriefcase,
-  // IconTools,
+  type IconProps,
+  IconShieldCheck,
 } from "@tabler/icons-react";
 
 interface LinkBasic {
   label: string;
-  icon: React.FC<TablerIconsProps>;
+  icon: ForwardRefExoticComponent<Omit<IconProps, "ref"> & RefAttributes<Icon>>;
   initiallyOpened?: boolean;
   hidden?: boolean;
 }
@@ -71,5 +72,5 @@ export const menuLinks: Link[] = [
 ];
 
 export const flatLinks = menuLinks.flatMap((link) =>
-  "url" in link ? { url: link.url } : link.links.map(({ url }) => ({ url }))
+  "url" in link ? { url: link.url } : link.links.map(({ url }) => ({ url })),
 );

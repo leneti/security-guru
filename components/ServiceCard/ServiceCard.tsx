@@ -1,8 +1,8 @@
-import { Card, Text, Badge, Button, Group, Title, Box } from "@mantine/core";
 import Image from "next/image";
-import Link from "next/link";
-import type { ServiceCardProps } from "./types";
+import { Badge, Box, Button, Card, Group, Text, Title } from "@mantine/core";
+import Link from "@link";
 import classes from "./ServiceCard.module.css";
+import type { ServiceCardProps } from "./types";
 
 const CARD_HEIGHT = 420;
 
@@ -23,7 +23,13 @@ export default function ServiceCard({
       className={classes.card}
     >
       <Box className={classes.cardImageBox}>
-        <Image src={image} alt={title} fill className={classes.image} />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={classes.image}
+          sizes="(min-width: 75em) 33vw, (min-width: 62em) 50vw, 100vw"
+        />
       </Box>
 
       <Group justify="space-between" mt="md" mb="xs">

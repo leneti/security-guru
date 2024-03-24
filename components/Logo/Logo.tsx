@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
-import Ikona_Oranzine from "@site/assets/logo/Ikona_Oranzine.webp";
 import HLogotipas_Oranzine from "@site/assets/logo/HLogotipas_Oranzine.webp";
+import Ikona_Oranzine from "@site/assets/logo/Ikona_Oranzine.webp";
 import Logotipas_Oranzine from "@site/assets/logo/Logotipas_Oranzine.webp";
+import Link from "@link";
+import classes from "./Logo.module.css";
 import type { LogoProps } from "./types";
-import { rem } from "@mantine/core";
 
 const defaultSize = 50;
 const logoAltText = "Security Guru logotipas";
@@ -17,7 +17,6 @@ export default function Logo(props: LogoProps) {
     : vertical
       ? Logotipas_Oranzine
       : HLogotipas_Oranzine;
-  const width = (logoSize * 2000) / (iconOnly ? 2001 : vertical ? 785 : 341);
 
   return (
     <Link
@@ -30,12 +29,9 @@ export default function Logo(props: LogoProps) {
         alt={logoAltText}
         src={src}
         height={logoSize}
-        width={width}
-        style={{
-          height: rem(logoSize),
-          width: rem(width),
-        }}
+        className={classes.logo}
         unoptimized
+        priority
       />
     </Link>
   );

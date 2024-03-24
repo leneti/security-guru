@@ -1,4 +1,4 @@
-import { Text, Box, SimpleGrid } from "@mantine/core";
+import { Box, SimpleGrid, Text } from "@mantine/core";
 import { contactData } from "@site/constants";
 import classes from "./ContactInfo.module.css";
 

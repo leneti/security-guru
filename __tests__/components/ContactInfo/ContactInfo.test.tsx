@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import { ContactInfo } from "@site/components/ContactInfo";
+import { render } from "@site/test-utils";
 
 jest.mock(
   "@tabler/icons-react",

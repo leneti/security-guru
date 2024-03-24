@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import { Logo } from "@site/components/Logo";
+import { render } from "@site/test-utils";
 
 describe("Logo", () => {
   it.each([

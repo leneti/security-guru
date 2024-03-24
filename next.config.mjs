@@ -6,10 +6,6 @@ const withBundleAnalyzer = initBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-const withMDX = initMdx({
-  extension: /\.mdx?$/,
-});
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -24,7 +20,7 @@ const nextConfig = {
       },
     ],
   },
-  pageExtensions: ["tsx", "mdx"],
+  pageExtensions: ["ts", "tsx", "mdx"],
   productionBrowserSourceMaps: true,
   eslint: {
     ignoreDuringBuilds: true,
@@ -32,4 +28,5 @@ const nextConfig = {
   reactStrictMode: false,
 };
 
+const withMDX = initMdx();
 export default withBundleAnalyzer(withMDX(nextConfig));

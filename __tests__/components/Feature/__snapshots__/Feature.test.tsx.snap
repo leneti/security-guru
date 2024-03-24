@@ -28,7 +28,7 @@ exports[`Feature render 1`] = `
       class="m-8a5d1357 mantine-Title-root"
       data-order="2"
       data-variant="lightBg"
-      style="--title-fw: var(--mantine-h2-font-weight); --title-lh: var(--mantine-h2-line-height); --title-fz: var(--mantine-h2-font-size);"
+      style="--title-fw: var(--mantine-h2-font-weight); --title-lh: var(--mantine-h2-line-height); --title-fz: var(--mantine-h2-font-size); margin-block: var(--mantine-spacing-sm);"
     >
       mock-feature
     </h2>

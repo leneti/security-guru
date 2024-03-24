@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import { Footer } from "@site/components/Footer";
+import { render } from "@site/test-utils";
 
 describe("Footer", () => {
   it("renders", () => {

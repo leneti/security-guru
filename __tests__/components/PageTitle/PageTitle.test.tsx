@@ -1,6 +1,6 @@
-import { render, screen } from "@site/test-utils";
 import { PageTitle } from "@site/components/PageTitle";
 import { APP_NAME, APP_NAME_DEV } from "@site/constants";
+import { render, screen } from "@site/test-utils";
 
 jest.mock("next/head", () => ({
   __esModule: true,

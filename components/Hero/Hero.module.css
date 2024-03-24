@@ -15,6 +15,8 @@
 }
 
 .content {
+  --container-size: var(--mantine-breakpoint-xl);
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -89,7 +91,7 @@
 
 .CTA {
   margin-top: calc(var(--mantine-spacing-xl) * 1.5);
-  color: var(--mantine-color-black);
+  color: var(--mantine-color-black) !important;
 
   @media (max-width: $mantine-breakpoint-sm) {
     width: 100%;

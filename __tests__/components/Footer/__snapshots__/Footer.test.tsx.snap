@@ -16,7 +16,7 @@ exports[`Footer renders 1`] = `
     class="footer"
   >
     <div
-      class="inner m-7485cace mantine-Container-root"
+      class="inner"
     >
       <div
         class="logo"
@@ -27,13 +27,14 @@ exports[`Footer renders 1`] = `
         >
           <img
             alt="Security Guru logotipas"
+            class="logo"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="50"
-            loading="lazy"
             src="/img.jpg"
             style="color: transparent;"
-            width="49.97501249375313"
+            width="50"
           />
         </a>
         <p
@@ -46,7 +47,7 @@ exports[`Footer renders 1`] = `
       </div>
     </div>
     <div
-      class="afterFooter m-7485cace mantine-Container-root"
+      class="afterFooter"
     >
       <p
         class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
@@ -70,19 +71,10 @@ exports[`Footer renders 1`] = `
           title="Facebook puslapis"
         >
           <span
-            aria-hidden="true"
-            class="m-302b9fb1 mantine-ActionIcon-loader"
-          >
-            <span
-              class="m-b34414df m-5ae2e3c mantine-Loader-root"
-              style="--loader-size: calc(var(--ai-size) * 0.55); --loader-color: var(--ai-color);"
-            />
-          </span>
-          <span
             class="m-8d3afb97 mantine-ActionIcon-icon"
           >
             <svg
-              class="icon"
+              class="tabler-icon tabler-icon-brand-facebook icon"
               fill="none"
               height="24"
               stroke="currentColor"
@@ -108,19 +100,10 @@ exports[`Footer renders 1`] = `
           title="Instagram paskyra"
         >
           <span
-            aria-hidden="true"
-            class="m-302b9fb1 mantine-ActionIcon-loader"
-          >
-            <span
-              class="m-b34414df m-5ae2e3c mantine-Loader-root"
-              style="--loader-size: calc(var(--ai-size) * 0.55); --loader-color: var(--ai-color);"
-            />
-          </span>
-          <span
             class="m-8d3afb97 mantine-ActionIcon-icon"
           >
             <svg
-              class="icon"
+              class="tabler-icon tabler-icon-brand-instagram icon"
               fill="none"
               height="24"
               stroke="currentColor"
@@ -146,24 +129,15 @@ exports[`Footer renders 1`] = `
         <a
           class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
           data-variant="subtle"
-          href="/kontaktai"
+          href="/susisiekite"
           style="--ai-bg: transparent; --ai-hover: var(--mantine-color-primary-light-hover); --ai-color: var(--mantine-color-primary-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;"
           title="Susisiekite"
         >
           <span
-            aria-hidden="true"
-            class="m-302b9fb1 mantine-ActionIcon-loader"
-          >
-            <span
-              class="m-b34414df m-5ae2e3c mantine-Loader-root"
-              style="--loader-size: calc(var(--ai-size) * 0.55); --loader-color: var(--ai-color);"
-            />
-          </span>
-          <span
             class="m-8d3afb97 mantine-ActionIcon-icon"
           >
             <svg
-              class="icon"
+              class="tabler-icon tabler-icon-mail icon"
               fill="none"
               height="24"
               stroke="currentColor"

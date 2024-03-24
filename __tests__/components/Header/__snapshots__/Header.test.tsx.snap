@@ -14,7 +14,6 @@ exports[`Header matches snapshot when scrolled 0 px 1`] = `
   </style>
   <div
     class="outer"
-    style="box-shadow: none;"
   >
     <nav
       class="inner"
@@ -65,7 +64,6 @@ exports[`Header matches snapshot when scrolled 1 px 1`] = `
   </style>
   <div
     class="outer"
-    style="box-shadow: var(--mantine-shadow-xl);"
   >
     <nav
       class="inner"

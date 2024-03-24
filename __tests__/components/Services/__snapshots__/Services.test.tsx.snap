@@ -45,9 +45,9 @@ exports[`Services renders 1`] = `
               data-nimg="fill"
               decoding="async"
               loading="lazy"
-              sizes="100vw"
+              sizes="(min-width: 75em) 33vw, (min-width: 62em) 50vw, 100vw"
               src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+              srcset="/_next/image?url=%2Fimg.jpg&w=256&q=75 256w, /_next/image?url=%2Fimg.jpg&w=384&q=75 384w, /_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
               style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
             />
           </div>
@@ -90,15 +90,6 @@ exports[`Services renders 1`] = `
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              aria-hidden="true"
-              class="m-a25b86ee mantine-Button-loader"
-            >
-              <span
-                class="m-b34414df m-5ae2e3c mantine-Loader-root"
-                style="--loader-size: calc(var(--button-height) / 1.8); --loader-color: var(--button-color);"
-              />
-            </span>
-            <span
               class="m-80f1301b mantine-Button-inner"
             >
               <span
@@ -113,10 +104,10 @@ exports[`Services renders 1`] = `
       <style
         data-mantine-styles="inline"
       >
-        .__m__-rf{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-rf{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-rf{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
+        .__m__-rc{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-rc{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-rc{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-rf"
+        class="m-96bdd299 mantine-Grid-col __m__-rc"
       >
         <div
           class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
@@ -132,9 +123,9 @@ exports[`Services renders 1`] = `
               data-nimg="fill"
               decoding="async"
               loading="lazy"
-              sizes="100vw"
+              sizes="(min-width: 75em) 33vw, (min-width: 62em) 50vw, 100vw"
               src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+              srcset="/_next/image?url=%2Fimg.jpg&w=256&q=75 256w, /_next/image?url=%2Fimg.jpg&w=384&q=75 384w, /_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
               style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
             />
           </div>
@@ -177,15 +168,6 @@ exports[`Services renders 1`] = `
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              aria-hidden="true"
-              class="m-a25b86ee mantine-Button-loader"
-            >
-              <span
-                class="m-b34414df m-5ae2e3c mantine-Loader-root"
-                style="--loader-size: calc(var(--button-height) / 1.8); --loader-color: var(--button-color);"
-              />
-            </span>
-            <span
               class="m-80f1301b mantine-Button-inner"
             >
               <span
@@ -200,10 +182,10 @@ exports[`Services renders 1`] = `
       <style
         data-mantine-styles="inline"
       >
-        .__m__-rs{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-rs{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-rs{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
+        .__m__-rm{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-rm{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-rm{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-rs"
+        class="m-96bdd299 mantine-Grid-col __m__-rm"
       >
         <div
           class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
@@ -219,9 +201,9 @@ exports[`Services renders 1`] = `
               data-nimg="fill"
               decoding="async"
               loading="lazy"
-              sizes="100vw"
+              sizes="(min-width: 75em) 33vw, (min-width: 62em) 50vw, 100vw"
               src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+              srcset="/_next/image?url=%2Fimg.jpg&w=256&q=75 256w, /_next/image?url=%2Fimg.jpg&w=384&q=75 384w, /_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
               style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
             />
           </div>
@@ -264,15 +246,6 @@ exports[`Services renders 1`] = `
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              aria-hidden="true"
-              class="m-a25b86ee mantine-Button-loader"
-            >
-              <span
-                class="m-b34414df m-5ae2e3c mantine-Loader-root"
-                style="--loader-size: calc(var(--button-height) / 1.8); --loader-color: var(--button-color);"
-              />
-            </span>
-            <span
               class="m-80f1301b mantine-Button-inner"
             >
               <span
@@ -287,10 +260,10 @@ exports[`Services renders 1`] = `
       <style
         data-mantine-styles="inline"
       >
-        .__m__-r19{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-r19{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-r19{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
+        .__m__-r10{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-r10{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-r10{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-r19"
+        class="m-96bdd299 mantine-Grid-col __m__-r10"
       >
         <div
           class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
@@ -306,9 +279,9 @@ exports[`Services renders 1`] = `
               data-nimg="fill"
               decoding="async"
               loading="lazy"
-              sizes="100vw"
+              sizes="(min-width: 75em) 33vw, (min-width: 62em) 50vw, 100vw"
               src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+              srcset="/_next/image?url=%2Fimg.jpg&w=256&q=75 256w, /_next/image?url=%2Fimg.jpg&w=384&q=75 384w, /_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
               style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
             />
           </div>
@@ -351,15 +324,6 @@ exports[`Services renders 1`] = `
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              aria-hidden="true"
-              class="m-a25b86ee mantine-Button-loader"
-            >
-              <span
-                class="m-b34414df m-5ae2e3c mantine-Loader-root"
-                style="--loader-size: calc(var(--button-height) / 1.8); --loader-color: var(--button-color);"
-              />
-            </span>
-            <span
               class="m-80f1301b mantine-Button-inner"
             >
               <span
@@ -374,10 +338,10 @@ exports[`Services renders 1`] = `
       <style
         data-mantine-styles="inline"
       >
-        .__m__-r1m{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-r1m{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-r1m{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
+        .__m__-r1a{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-r1a{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-r1a{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-r1m"
+        class="m-96bdd299 mantine-Grid-col __m__-r1a"
       >
         <div
           class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
@@ -393,9 +357,9 @@ exports[`Services renders 1`] = `
               data-nimg="fill"
               decoding="async"
               loading="lazy"
-              sizes="100vw"
+              sizes="(min-width: 75em) 33vw, (min-width: 62em) 50vw, 100vw"
               src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+              srcset="/_next/image?url=%2Fimg.jpg&w=256&q=75 256w, /_next/image?url=%2Fimg.jpg&w=384&q=75 384w, /_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
               style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
             />
           </div>
@@ -437,15 +401,6 @@ exports[`Services renders 1`] = `
             href="/paslaugos/integruoti-apsaugos-sprendimai"
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
-            <span
-              aria-hidden="true"
-              class="m-a25b86ee mantine-Button-loader"
-            >
-              <span
-                class="m-b34414df m-5ae2e3c mantine-Loader-root"
-                style="--loader-size: calc(var(--button-height) / 1.8); --loader-color: var(--button-color);"
-              />
-            </span>
             <span
               class="m-80f1301b mantine-Button-inner"
             >

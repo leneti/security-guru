@@ -1,5 +1,5 @@
-import { render } from "@site/test-utils";
 import { Feature } from "@site/components/Feature";
+import { render } from "@site/test-utils";
 
 describe("Feature", () => {
   it("render", () => {
@@ -7,9 +7,7 @@ describe("Feature", () => {
       <Feature
         title="mock-feature"
         description="mock-description"
-        icon={jest.fn(() => (
-          <i>mock-icon</i>
-        ))}
+        icon={jest.fn(() => <i>mock-icon</i>) as any}
       />,
     );
     expect(container).toMatchSnapshot();

@@ -1,5 +1,5 @@
-import nextJest from "next/jest";
 import type { Config } from "jest";
+import nextJest from "next/jest";
 
 const createJestConfig = nextJest({
   dir: "./",
@@ -7,7 +7,6 @@ const createJestConfig = nextJest({
 
 const customJestConfig: Config = {
   clearMocks: true,
-  collectCoverage: true,
   collectCoverageFrom: [
     "pages/**/*.{ts,tsx}",
     "!pages/_app.tsx",
@@ -21,8 +20,9 @@ const customJestConfig: Config = {
   coverageProvider: "v8",
   moduleNameMapper: {
     "@site/(.*)": "<rootDir>/$1",
+    "@link": "<rootDir>/navigation/link",
   },
-  modulePathIgnorePatterns: ["<rootDir>/.*/__mocks__"],
+  modulePathIgnorePatterns: ["<rootDir>/.*/__mocks__", "<rootDir>/navigation"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jest-environment-jsdom",
   verbose: true,
