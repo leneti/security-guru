@@ -15,7 +15,8 @@
     "test": "jest",
     "test:cov": "jest --coverage",
     "update-deps": "npx npm-check-updates -u -d",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.540.0",

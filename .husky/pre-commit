@@ -1,2 +1,6 @@
+set -e
+set -o pipefail
+set -u
+
 npm run typecheck
-npx lint-staged
+npm run lint-staged
