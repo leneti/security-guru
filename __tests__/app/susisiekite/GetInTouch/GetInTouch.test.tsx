@@ -113,7 +113,9 @@ describe("GetInTouch", () => {
 
   it("makes API call with correct data", async () => {
     const mockAxiosPost = (axios.post as jest.Mock).mockImplementation(
-      jest.fn(() => Promise.resolve()).mockName("axios.post"),
+      jest
+        .fn(() => Promise.resolve({ data: { message: "Success" } }))
+        .mockName("axios.post"),
     );
 
     renderWithTheme();

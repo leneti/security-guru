@@ -20,7 +20,7 @@ const nextConfig = {
       },
     ],
   },
-  pageExtensions: ["tsx", "mdx"],
+  pageExtensions: ["ts", "tsx", "mdx"],
   productionBrowserSourceMaps: true,
   eslint: {
     ignoreDuringBuilds: true,

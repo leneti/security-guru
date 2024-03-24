@@ -48,7 +48,7 @@ const badContactForm = (obj: any): string => {
 
   const { solution, email, number } = obj as ContactForm;
 
-  if (!/^(Namams|Verslui)$/.test(solution)) {
+  if (!["Namams", "Verslui"].includes(solution)) {
     return ErrorMessages.WRONG_SOLUTION;
   }
 
@@ -117,10 +117,14 @@ const sendMail = (sender: string, receivers: string[], data: ContactForm) => {
   return new SES({ region: "eu-west-2", credentials }).sendEmail(params);
 };
 
-export async function POST({ body }: Request) {
+export async function POST(request: Request) {
+  const body = await request.json();
+
   if (!process.env.REACT_APP_SES_EMAIL) {
     return Response.json(
-      { message: "Serveris neturi prieigos prie el. pašto paslaugų." },
+      {
+        message: "Serveris neturi prieigos prie el. pašto paslaugų.",
+      } satisfies ResponseData,
       { status: 500 },
     );
   }
@@ -134,7 +138,7 @@ export async function POST({ body }: Request) {
       {
         message:
           "Serveris šiuo metu negali atlikti veiksmų. Parašykite mums tiesiogiai į info@securityguru.lt",
-      },
+      } satisfies ResponseData,
       { status: 500 },
     );
   }
@@ -145,7 +149,8 @@ export async function POST({ body }: Request) {
     return Response.json(
       {
         message: `[BAD_CONTACT_FORM] ${reason}`,
-      },
+        err: `[BAD_CONTACT_FORM] ${reason}`,
+      } satisfies ResponseData,
       { status: 400 },
     );
   }
@@ -160,7 +165,12 @@ export async function POST({ body }: Request) {
 
       logger.info(`Sent emails today: ${sentEmailCounter}/${maxSentEmails}`);
 
-      return Response.json(undefined, { status: 200 });
+      return Response.json(
+        {
+          message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
+        } satisfies ResponseData,
+        { status: 200 },
+      );
     })
     .catch((err) => {
       logger.error("Couldn't send email.", err);
@@ -169,7 +179,7 @@ export async function POST({ body }: Request) {
         {
           message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
           err,
-        },
+        } satisfies ResponseData,
         { status: 502 },
       );
     });

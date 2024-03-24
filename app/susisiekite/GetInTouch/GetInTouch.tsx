@@ -61,13 +61,13 @@ export default function GetInTouch() {
 
     axios
       .post("/api/contact", values)
-      .then(() => {
+      .then(({ data: { message } }) => {
         notifications.update({
           id: notificationId,
           withCloseButton: true,
           autoClose: 5000,
           title: "Valio!",
-          message: "Sėkmingai išsiuntėme laišką Security Guru komandai!",
+          message,
           color: "teal",
           icon: <IconCheck />,
           className: classes.notification,
