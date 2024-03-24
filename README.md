@@ -10,15 +10,14 @@ This is a project for a home & office security system provider. The company is b
 so the website's locale is set to Lithuanian as well.
 
 - [Production release](https://www.securityguru.lt/)
-- [Release Candidates](https://main.d3kmbs8dhm4x35.amplifyapp.com/)
 
 ## Tech stack
 
 - React 18
 - TypeScript
+- CSS modules
 - Mantine v7
-- Next.js 14 (page)
-  - `app` directory coming soon
+- Next.js 14
 - AWS Amplify
 
 ## Running locally
@@ -26,11 +25,11 @@ so the website's locale is set to Lithuanian as well.
 1. Install dependencies:
 
    ```sh
-   yarn install
+   npm install
    ```
 
 2. Run local development instance:
 
    ```sh
-   yarn dev
+   npm run dev
    ```
