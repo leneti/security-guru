@@ -16,7 +16,7 @@ setInterval(() => {
   sentEmailCounter = 0;
 }, resetTime);
 
-export type ResponseData = {
+type ResponseData = {
   message: string;
   err?: any;
 };

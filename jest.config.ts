@@ -8,10 +8,10 @@ const createJestConfig = nextJest({
 const customJestConfig: Config = {
   clearMocks: true,
   collectCoverageFrom: [
-    "pages/**/*.{ts,tsx}",
-    "!pages/_app.tsx",
-    "!pages/_document.tsx",
-    "!pages/index.tsx",
+    "app/**/*.{ts,tsx}",
+    "!app/layout.tsx",
+    "!app/page.tsx",
+    "!app/api/contact/route.ts",
     "components/**/*.{ts,tsx}",
     "constants/**/*.{ts,tsx}",
     "utils/**/*.{ts,tsx}",
