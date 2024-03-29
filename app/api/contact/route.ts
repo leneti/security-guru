@@ -16,7 +16,7 @@ setInterval(() => {
   sentEmailCounter = 0;
 }, resetTime);
 
-export type ResponseData = {
+type ResponseData = {
   message: string;
   err?: any;
 };
@@ -152,6 +152,13 @@ export async function POST(request: Request) {
         err: `[BAD_CONTACT_FORM] ${reason}`,
       } satisfies ResponseData,
       { status: 400 },
+    );
+  }
+
+  if (body.message === "Playwright Test") {
+    return Response.json(
+      { message: "Success [Playwright]" } satisfies ResponseData,
+      { status: 200 },
     );
   }
 
