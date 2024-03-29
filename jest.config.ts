@@ -22,7 +22,11 @@ const customJestConfig: Config = {
     "@site/(.*)": "<rootDir>/$1",
     "@link": "<rootDir>/navigation/link",
   },
-  modulePathIgnorePatterns: ["<rootDir>/.*/__mocks__", "<rootDir>/navigation"],
+  modulePathIgnorePatterns: [
+    "<rootDir>/.*/__mocks__",
+    "<rootDir>/navigation",
+    "<rootDir>/e2e",
+  ],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jest-environment-jsdom",
   verbose: true,

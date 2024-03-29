@@ -155,6 +155,13 @@ export async function POST(request: Request) {
     );
   }
 
+  if (body.message === "Playwright Test") {
+    return Response.json(
+      { message: "Success [Playwright]" } satisfies ResponseData,
+      { status: 200 },
+    );
+  }
+
   return sendMail(
     process.env.REACT_APP_SES_EMAIL,
     [process.env.REACT_APP_SES_EMAIL],
