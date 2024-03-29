@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "explorer http://localhost:3000 & next dev",
+    "dev:ci": "next dev",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
     "postbuild": "next-sitemap",
