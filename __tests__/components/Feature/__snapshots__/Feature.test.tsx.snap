@@ -14,7 +14,7 @@ exports[`Feature render 1`] = `
   </style>
   <div>
     <div
-      class="m-7341320d mantine-ThemeIcon-root"
+      class="m_7341320d mantine-ThemeIcon-root"
       color="dark.6"
       data-variant="filled"
       radius="40"
@@ -25,7 +25,7 @@ exports[`Feature render 1`] = `
       </i>
     </div>
     <h2
-      class="m-8a5d1357 mantine-Title-root"
+      class="m_8a5d1357 mantine-Title-root"
       data-order="2"
       data-variant="lightBg"
       style="--title-fw: var(--mantine-h2-font-weight); --title-lh: var(--mantine-h2-line-height); --title-fz: var(--mantine-h2-font-size); margin-block: var(--mantine-spacing-sm);"
@@ -33,7 +33,7 @@ exports[`Feature render 1`] = `
       mock-feature
     </h2>
     <p
-      class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+      class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
       data-size="sm"
       data-variant="lightBg"
       style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm); line-height: 1.6;"

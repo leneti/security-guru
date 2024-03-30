@@ -18,10 +18,10 @@ exports[`Services renders 1`] = `
     .__m__-r0{--grid-gutter:var(--mantine-spacing-md);}
   </style>
   <div
-    class="m-410352e9 mantine-Grid-root __m__-r0"
+    class="m_410352e9 mantine-Grid-root __m__-r0"
   >
     <div
-      class="m-dee7bd2f mantine-Grid-inner"
+      class="m_dee7bd2f mantine-Grid-inner"
     >
       <style
         data-mantine-styles="inline"
@@ -29,10 +29,10 @@ exports[`Services renders 1`] = `
         .__m__-r2{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-r2{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-r2{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-r2"
+        class="m_96bdd299 mantine-Grid-col __m__-r2"
       >
         <div
-          class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
+          class="card m_e615b15f mantine-Card-root m_1b7284a3 mantine-Paper-root"
           data-with-border="true"
           style="--paper-radius: var(--mantine-radius-md); --paper-shadow: var(--mantine-shadow-xl); height: 100%; min-height: calc(26.25rem * var(--mantine-scale));"
         >
@@ -52,30 +52,30 @@ exports[`Services renders 1`] = `
             />
           </div>
           <div
-            class="m-4081bf90 mantine-Group-root"
+            class="m_4081bf90 mantine-Group-root"
             style="--group-gap: var(--mantine-spacing-md); --group-align: center; --group-justify: space-between; --group-wrap: wrap;"
           >
             <h3
-              class="m-8a5d1357 mantine-Title-root"
+              class="m_8a5d1357 mantine-Title-root"
               data-order="3"
               style="--title-fw: var(--mantine-h3-font-weight); --title-lh: var(--mantine-h3-line-height); --title-fz: var(--mantine-h3-font-size);"
             >
               Apsaugos signalizacijos sistemos
             </h3>
             <div
-              class="m-fbd81e3d m-347db0ec mantine-Badge-root"
+              class="m_fbd81e3d m_347db0ec mantine-Badge-root"
               data-variant="dot"
               style="--badge-dot-color: var(--mantine-color-lime-filled);"
             >
               <span
-                class="m-5add502a mantine-Badge-label"
+                class="m_5add502a mantine-Badge-label"
               >
                 nuo €200
               </span>
             </div>
           </div>
           <p
-            class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+            class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
             color="dimmed"
             data-size="sm"
             style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm); --text-color: var(--mantine-color-dimmed);"
@@ -83,17 +83,17 @@ exports[`Services renders 1`] = `
             Montuojame ir įrengiame apsaugos signalizacijas namuose ir biuruose, kad užtikrinti jūsų patalpų saugumą.
           </p>
           <a
-            class="mantine-focus-auto mantine-active learnMoreBtn m-77c9d27d mantine-Button-root m-87cf2631 mantine-UnstyledButton-root"
+            class="mantine-focus-auto mantine-active learnMoreBtn m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
             data-block="true"
             data-variant="outline"
             href="/paslaugos/apsaugos-signalizacijos-sistemos"
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              class="m-80f1301b mantine-Button-inner"
+              class="m_80f1301b mantine-Button-inner"
             >
               <span
-                class="m-811560b9 mantine-Button-label"
+                class="m_811560b9 mantine-Button-label"
               >
                 Sužinoti daugiau
               </span>
@@ -107,10 +107,10 @@ exports[`Services renders 1`] = `
         .__m__-rc{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-rc{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-rc{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-rc"
+        class="m_96bdd299 mantine-Grid-col __m__-rc"
       >
         <div
-          class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
+          class="card m_e615b15f mantine-Card-root m_1b7284a3 mantine-Paper-root"
           data-with-border="true"
           style="--paper-radius: var(--mantine-radius-md); --paper-shadow: var(--mantine-shadow-xl); height: 100%; min-height: calc(26.25rem * var(--mantine-scale));"
         >
@@ -130,30 +130,30 @@ exports[`Services renders 1`] = `
             />
           </div>
           <div
-            class="m-4081bf90 mantine-Group-root"
+            class="m_4081bf90 mantine-Group-root"
             style="--group-gap: var(--mantine-spacing-md); --group-align: center; --group-justify: space-between; --group-wrap: wrap;"
           >
             <h3
-              class="m-8a5d1357 mantine-Title-root"
+              class="m_8a5d1357 mantine-Title-root"
               data-order="3"
               style="--title-fw: var(--mantine-h3-font-weight); --title-lh: var(--mantine-h3-line-height); --title-fz: var(--mantine-h3-font-size);"
             >
               Įeigos kontrolės sistemos
             </h3>
             <div
-              class="m-fbd81e3d m-347db0ec mantine-Badge-root"
+              class="m_fbd81e3d m_347db0ec mantine-Badge-root"
               data-variant="dot"
               style="--badge-dot-color: var(--mantine-color-lime-filled);"
             >
               <span
-                class="m-5add502a mantine-Badge-label"
+                class="m_5add502a mantine-Badge-label"
               >
                 nuo €100
               </span>
             </div>
           </div>
           <p
-            class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+            class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
             color="dimmed"
             data-size="sm"
             style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm); --text-color: var(--mantine-color-dimmed);"
@@ -161,17 +161,17 @@ exports[`Services renders 1`] = `
             Diegiame ir įrengiame eismo valdymo sistemas biuruose ir viešosiose vietose eismo srautams valdyti ir saugumui užtikrinti.
           </p>
           <a
-            class="mantine-focus-auto mantine-active learnMoreBtn m-77c9d27d mantine-Button-root m-87cf2631 mantine-UnstyledButton-root"
+            class="mantine-focus-auto mantine-active learnMoreBtn m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
             data-block="true"
             data-variant="outline"
             href="/paslaugos/ieigos-kontroles-sistemos"
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              class="m-80f1301b mantine-Button-inner"
+              class="m_80f1301b mantine-Button-inner"
             >
               <span
-                class="m-811560b9 mantine-Button-label"
+                class="m_811560b9 mantine-Button-label"
               >
                 Sužinoti daugiau
               </span>
@@ -185,10 +185,10 @@ exports[`Services renders 1`] = `
         .__m__-rm{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-rm{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-rm{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-rm"
+        class="m_96bdd299 mantine-Grid-col __m__-rm"
       >
         <div
-          class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
+          class="card m_e615b15f mantine-Card-root m_1b7284a3 mantine-Paper-root"
           data-with-border="true"
           style="--paper-radius: var(--mantine-radius-md); --paper-shadow: var(--mantine-shadow-xl); height: 100%; min-height: calc(26.25rem * var(--mantine-scale));"
         >
@@ -208,30 +208,30 @@ exports[`Services renders 1`] = `
             />
           </div>
           <div
-            class="m-4081bf90 mantine-Group-root"
+            class="m_4081bf90 mantine-Group-root"
             style="--group-gap: var(--mantine-spacing-md); --group-align: center; --group-justify: space-between; --group-wrap: wrap;"
           >
             <h3
-              class="m-8a5d1357 mantine-Title-root"
+              class="m_8a5d1357 mantine-Title-root"
               data-order="3"
               style="--title-fw: var(--mantine-h3-font-weight); --title-lh: var(--mantine-h3-line-height); --title-fz: var(--mantine-h3-font-size);"
             >
               Priešgaisrinės signalizacijos sistemos
             </h3>
             <div
-              class="m-fbd81e3d m-347db0ec mantine-Badge-root"
+              class="m_fbd81e3d m_347db0ec mantine-Badge-root"
               data-variant="dot"
               style="--badge-dot-color: var(--mantine-color-lime-filled);"
             >
               <span
-                class="m-5add502a mantine-Badge-label"
+                class="m_5add502a mantine-Badge-label"
               >
                 nuo €200
               </span>
             </div>
           </div>
           <p
-            class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+            class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
             color="dimmed"
             data-size="sm"
             style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm); --text-color: var(--mantine-color-dimmed);"
@@ -239,17 +239,17 @@ exports[`Services renders 1`] = `
             Montuojame ir įrengiame priešgaisrinę signalizaciją namuose ir biuruose, kad aptiktume ir įspėti apie gaisrą.
           </p>
           <a
-            class="mantine-focus-auto mantine-active learnMoreBtn m-77c9d27d mantine-Button-root m-87cf2631 mantine-UnstyledButton-root"
+            class="mantine-focus-auto mantine-active learnMoreBtn m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
             data-block="true"
             data-variant="outline"
             href="/paslaugos/priesgaisrines-signalizacijos-sistemos"
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              class="m-80f1301b mantine-Button-inner"
+              class="m_80f1301b mantine-Button-inner"
             >
               <span
-                class="m-811560b9 mantine-Button-label"
+                class="m_811560b9 mantine-Button-label"
               >
                 Sužinoti daugiau
               </span>
@@ -263,10 +263,10 @@ exports[`Services renders 1`] = `
         .__m__-r10{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-r10{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-r10{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-r10"
+        class="m_96bdd299 mantine-Grid-col __m__-r10"
       >
         <div
-          class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
+          class="card m_e615b15f mantine-Card-root m_1b7284a3 mantine-Paper-root"
           data-with-border="true"
           style="--paper-radius: var(--mantine-radius-md); --paper-shadow: var(--mantine-shadow-xl); height: 100%; min-height: calc(26.25rem * var(--mantine-scale));"
         >
@@ -286,30 +286,30 @@ exports[`Services renders 1`] = `
             />
           </div>
           <div
-            class="m-4081bf90 mantine-Group-root"
+            class="m_4081bf90 mantine-Group-root"
             style="--group-gap: var(--mantine-spacing-md); --group-align: center; --group-justify: space-between; --group-wrap: wrap;"
           >
             <h3
-              class="m-8a5d1357 mantine-Title-root"
+              class="m_8a5d1357 mantine-Title-root"
               data-order="3"
               style="--title-fw: var(--mantine-h3-font-weight); --title-lh: var(--mantine-h3-line-height); --title-fz: var(--mantine-h3-font-size);"
             >
               Vaizdo stebėjimo sistemos
             </h3>
             <div
-              class="m-fbd81e3d m-347db0ec mantine-Badge-root"
+              class="m_fbd81e3d m_347db0ec mantine-Badge-root"
               data-variant="dot"
               style="--badge-dot-color: var(--mantine-color-lime-filled);"
             >
               <span
-                class="m-5add502a mantine-Badge-label"
+                class="m_5add502a mantine-Badge-label"
               >
                 nuo €200
               </span>
             </div>
           </div>
           <p
-            class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+            class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
             color="dimmed"
             data-size="sm"
             style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm); --text-color: var(--mantine-color-dimmed);"
@@ -317,17 +317,17 @@ exports[`Services renders 1`] = `
             Montuojame ir įrengiame stebėjimo sistemas namuose ir biuruose, kad  stebėti veiklą ir aptikti bet kokį įtartiną elgesį.
           </p>
           <a
-            class="mantine-focus-auto mantine-active learnMoreBtn m-77c9d27d mantine-Button-root m-87cf2631 mantine-UnstyledButton-root"
+            class="mantine-focus-auto mantine-active learnMoreBtn m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
             data-block="true"
             data-variant="outline"
             href="/paslaugos/vaizdo-stebejimo-sistemos"
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              class="m-80f1301b mantine-Button-inner"
+              class="m_80f1301b mantine-Button-inner"
             >
               <span
-                class="m-811560b9 mantine-Button-label"
+                class="m_811560b9 mantine-Button-label"
               >
                 Sužinoti daugiau
               </span>
@@ -341,10 +341,10 @@ exports[`Services renders 1`] = `
         .__m__-r1a{--col-flex-grow:1;--col-flex-basis:100%;--col-max-width:100%;}@media(min-width: 62em){.__m__-r1a{--col-flex-grow:1;--col-flex-basis:50%;--col-max-width:100%;}}@media(min-width: 75em){.__m__-r1a{--col-flex-grow:1;--col-flex-basis:33.333333333333336%;--col-max-width:100%;}}
       </style>
       <div
-        class="m-96bdd299 mantine-Grid-col __m__-r1a"
+        class="m_96bdd299 mantine-Grid-col __m__-r1a"
       >
         <div
-          class="card m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
+          class="card m_e615b15f mantine-Card-root m_1b7284a3 mantine-Paper-root"
           data-with-border="true"
           style="--paper-radius: var(--mantine-radius-md); --paper-shadow: var(--mantine-shadow-xl); height: 100%; min-height: calc(26.25rem * var(--mantine-scale));"
         >
@@ -364,30 +364,30 @@ exports[`Services renders 1`] = `
             />
           </div>
           <div
-            class="m-4081bf90 mantine-Group-root"
+            class="m_4081bf90 mantine-Group-root"
             style="--group-gap: var(--mantine-spacing-md); --group-align: center; --group-justify: space-between; --group-wrap: wrap;"
           >
             <h3
-              class="m-8a5d1357 mantine-Title-root"
+              class="m_8a5d1357 mantine-Title-root"
               data-order="3"
               style="--title-fw: var(--mantine-h3-font-weight); --title-lh: var(--mantine-h3-line-height); --title-fz: var(--mantine-h3-font-size);"
             >
               Integruoti apsaugos sprendimai
             </h3>
             <div
-              class="m-fbd81e3d m-347db0ec mantine-Badge-root"
+              class="m_fbd81e3d m_347db0ec mantine-Badge-root"
               data-variant="dot"
               style="--badge-dot-color: var(--mantine-color-lime-filled);"
             >
               <span
-                class="m-5add502a mantine-Badge-label"
+                class="m_5add502a mantine-Badge-label"
               >
                 nuo €200
               </span>
             </div>
           </div>
           <p
-            class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+            class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
             color="dimmed"
             data-size="sm"
             style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm); --text-color: var(--mantine-color-dimmed);"
@@ -395,17 +395,17 @@ exports[`Services renders 1`] = `
             Pagal užsakymą įrengiame integruotą apsaugos sistemą, kuri apima apsaugos signalizaciją, eismo kontrolę, priešgaisrinę signalizaciją ir stebėjimo sistemas.
           </p>
           <a
-            class="mantine-focus-auto mantine-active learnMoreBtn m-77c9d27d mantine-Button-root m-87cf2631 mantine-UnstyledButton-root"
+            class="mantine-focus-auto mantine-active learnMoreBtn m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
             data-block="true"
             data-variant="outline"
             href="/paslaugos/integruoti-apsaugos-sprendimai"
             style="--button-radius: var(--mantine-radius-md); --button-bg: transparent; --button-hover: rgba(255, 171, 102, 0.05); --button-color: var(--mantine-color-primary-4); --button-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-primary-4);"
           >
             <span
-              class="m-80f1301b mantine-Button-inner"
+              class="m_80f1301b mantine-Button-inner"
             >
               <span
-                class="m-811560b9 mantine-Button-label"
+                class="m_811560b9 mantine-Button-label"
               >
                 Sužinoti daugiau
               </span>

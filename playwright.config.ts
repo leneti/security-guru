@@ -5,7 +5,8 @@ import { defineConfig, devices } from "@playwright/test";
 dotenv.config({ path: path.resolve(__dirname, ".env.example") });
 
 export default defineConfig({
-  testDir: "./e2e",
+  testDir: "./e2e/tests",
+  outputDir: "./e2e/results",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
