@@ -18,7 +18,7 @@ exports[`ContactInfo renders 1`] = `
     .__m__-r0{--sg-spacing-x:var(--mantine-spacing-md);--sg-spacing-y:var(--mantine-spacing-md);--sg-cols:2;}@media(min-width: 48em){.__m__-r0{--sg-cols:1;}}
   </style>
   <div
-    class="m-2415a157 mantine-SimpleGrid-root __m__-r0"
+    class="m_2415a157 mantine-SimpleGrid-root __m__-r0"
   >
     <div
       class="wrapper"
@@ -33,14 +33,14 @@ exports[`ContactInfo renders 1`] = `
       </div>
       <div>
         <p
-          class="mantine-focus-auto title m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto title m_b6d8b162 mantine-Text-root"
           data-size="xs"
           style="--text-fz: var(--mantine-font-size-xs); --text-lh: var(--mantine-line-height-xs);"
         >
           El. paštas
         </p>
         <p
-          class="mantine-focus-auto description m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto description m_b6d8b162 mantine-Text-root"
         >
           info@securityguru.lt
         </p>
@@ -59,14 +59,14 @@ exports[`ContactInfo renders 1`] = `
       </div>
       <div>
         <p
-          class="mantine-focus-auto title m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto title m_b6d8b162 mantine-Text-root"
           data-size="xs"
           style="--text-fz: var(--mantine-font-size-xs); --text-lh: var(--mantine-line-height-xs);"
         >
           Tel. Nr.
         </p>
         <p
-          class="mantine-focus-auto description m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto description m_b6d8b162 mantine-Text-root"
         >
           +37060334255, +37060283726
         </p>
@@ -85,14 +85,14 @@ exports[`ContactInfo renders 1`] = `
       </div>
       <div>
         <p
-          class="mantine-focus-auto title m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto title m_b6d8b162 mantine-Text-root"
           data-size="xs"
           style="--text-fz: var(--mantine-font-size-xs); --text-lh: var(--mantine-line-height-xs);"
         >
           Dirbame
         </p>
         <p
-          class="mantine-focus-auto description m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto description m_b6d8b162 mantine-Text-root"
         >
           Vilniuje ir Vilniaus apskrityje
         </p>
@@ -111,14 +111,14 @@ exports[`ContactInfo renders 1`] = `
       </div>
       <div>
         <p
-          class="mantine-focus-auto title m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto title m_b6d8b162 mantine-Text-root"
           data-size="xs"
           style="--text-fz: var(--mantine-font-size-xs); --text-lh: var(--mantine-line-height-xs);"
         >
           Darbo laikas
         </p>
         <p
-          class="mantine-focus-auto description m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto description m_b6d8b162 mantine-Text-root"
         >
           I-VII 9:00-21:00
         </p>
@@ -137,14 +137,14 @@ exports[`ContactInfo renders 1`] = `
       </div>
       <div>
         <p
-          class="mantine-focus-auto title m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto title m_b6d8b162 mantine-Text-root"
           data-size="xs"
           style="--text-fz: var(--mantine-font-size-xs); --text-lh: var(--mantine-line-height-xs);"
         >
           Įm. kodas
         </p>
         <p
-          class="mantine-focus-auto description m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto description m_b6d8b162 mantine-Text-root"
         >
           306109454
         </p>

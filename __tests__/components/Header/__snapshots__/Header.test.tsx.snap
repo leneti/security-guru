@@ -33,12 +33,12 @@ exports[`Header matches snapshot when scrolled 0 px 1`] = `
         Mocked Logo
       </a>
       <button
-        class="mantine-focus-auto m-fea6bf1a mantine-Burger-root m-87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
+        class="mantine-focus-auto m_fea6bf1a mantine-Burger-root m_87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
         title="Atidaryti meniu"
         type="button"
       >
         <div
-          class="m-d4fb9cad mantine-Burger-burger"
+          class="m_d4fb9cad mantine-Burger-burger"
           data-reduce-motion="true"
         />
       </button>
@@ -83,12 +83,12 @@ exports[`Header matches snapshot when scrolled 41 px 1`] = `
         Mocked Logo
       </a>
       <button
-        class="mantine-focus-auto m-fea6bf1a mantine-Burger-root m-87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
+        class="mantine-focus-auto m_fea6bf1a mantine-Burger-root m_87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
         title="Atidaryti meniu"
         type="button"
       >
         <div
-          class="m-d4fb9cad mantine-Burger-burger"
+          class="m_d4fb9cad mantine-Burger-burger"
           data-reduce-motion="true"
         />
       </button>
@@ -133,12 +133,12 @@ exports[`Header matches snapshot when scrolled 120 px 1`] = `
         Mocked Logo
       </a>
       <button
-        class="mantine-focus-auto m-fea6bf1a mantine-Burger-root m-87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
+        class="mantine-focus-auto m_fea6bf1a mantine-Burger-root m_87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
         title="Atidaryti meniu"
         type="button"
       >
         <div
-          class="m-d4fb9cad mantine-Burger-burger"
+          class="m_d4fb9cad mantine-Burger-burger"
           data-reduce-motion="true"
         />
       </button>

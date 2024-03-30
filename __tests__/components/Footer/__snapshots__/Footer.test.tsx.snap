@@ -38,7 +38,7 @@ exports[`Footer renders 1`] = `
           />
         </a>
         <p
-          class="mantine-focus-auto description m-b6d8b162 mantine-Text-root"
+          class="mantine-focus-auto description m_b6d8b162 mantine-Text-root"
           data-size="xs"
           style="--text-fz: var(--mantine-font-size-xs); --text-lh: var(--mantine-line-height-xs);"
         >
@@ -50,7 +50,7 @@ exports[`Footer renders 1`] = `
       class="afterFooter"
     >
       <p
-        class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+        class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
         data-size="sm"
         style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm);"
       >
@@ -59,11 +59,11 @@ exports[`Footer renders 1`] = `
          MB Security Guru
       </p>
       <div
-        class="social m-4081bf90 mantine-Group-root"
+        class="social m_4081bf90 mantine-Group-root"
         style="--group-gap: var(--mantine-spacing-xs); --group-align: center; --group-justify: flex-end; --group-wrap: nowrap;"
       >
         <a
-          class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
+          class="mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87cf2631 mantine-UnstyledButton-root"
           data-variant="subtle"
           href="https://www.facebook.com/people/Security-guru/100088856047734/"
           style="--ai-bg: transparent; --ai-hover: var(--mantine-color-primary-light-hover); --ai-color: var(--mantine-color-primary-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;"
@@ -71,7 +71,7 @@ exports[`Footer renders 1`] = `
           title="Facebook puslapis"
         >
           <span
-            class="m-8d3afb97 mantine-ActionIcon-icon"
+            class="m_8d3afb97 mantine-ActionIcon-icon"
           >
             <svg
               class="tabler-icon tabler-icon-brand-facebook icon"
@@ -92,7 +92,7 @@ exports[`Footer renders 1`] = `
           </span>
         </a>
         <a
-          class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
+          class="mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87cf2631 mantine-UnstyledButton-root"
           data-variant="subtle"
           href="https://www.instagram.com/mbsecurityguru/"
           style="--ai-bg: transparent; --ai-hover: var(--mantine-color-primary-light-hover); --ai-color: var(--mantine-color-primary-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;"
@@ -100,7 +100,7 @@ exports[`Footer renders 1`] = `
           title="Instagram paskyra"
         >
           <span
-            class="m-8d3afb97 mantine-ActionIcon-icon"
+            class="m_8d3afb97 mantine-ActionIcon-icon"
           >
             <svg
               class="tabler-icon tabler-icon-brand-instagram icon"
@@ -127,14 +127,14 @@ exports[`Footer renders 1`] = `
           </span>
         </a>
         <a
-          class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
+          class="mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87cf2631 mantine-UnstyledButton-root"
           data-variant="subtle"
           href="/susisiekite"
           style="--ai-bg: transparent; --ai-hover: var(--mantine-color-primary-light-hover); --ai-color: var(--mantine-color-primary-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;"
           title="Susisiekite"
         >
           <span
-            class="m-8d3afb97 mantine-ActionIcon-icon"
+            class="m_8d3afb97 mantine-ActionIcon-icon"
           >
             <svg
               class="tabler-icon tabler-icon-mail icon"
