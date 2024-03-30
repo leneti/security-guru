@@ -1,6 +1,17 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Contact Us page", () => {
+  test("should be navigable from the navbar", async ({ page }) => {
+    await page.goto("/");
+    await page
+      .getByRole("navigation")
+      .getByRole("link", { name: "Susisiekite" })
+      .click();
+    await expect(
+      page.getByRole("heading", { name: "Susisiekite", level: 1 }),
+    ).toBeVisible();
+  });
+
   test("should show company information", async ({ page }) => {
     await page.goto("/susisiekite");
     await expect(page.getByText("info@securityguru.lt")).toBeVisible();
