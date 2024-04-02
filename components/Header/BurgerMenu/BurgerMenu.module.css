@@ -1,0 +1,9 @@
+.drawerContent.drawerContent {
+  z-index: var(--mantine-z-index-max);
+}
+
+.closeButton {
+  @media (min-width: $mantine-breakpoint-xs) {
+    display: none;
+  }
+}

@@ -4,7 +4,7 @@ import classes from "./ContactInfo.module.css";
 
 export default function ContactInfo() {
   return (
-    <SimpleGrid cols={{ base: 2, sm: 1 }} spacing="md">
+    <SimpleGrid cols={{ base: 1, xs: 2, sm: 1 }} spacing="md">
       {contactData.map(({ icon: Icon, title, description }) => (
         <div key={title} className={classes.wrapper}>
           <Box mr="md">

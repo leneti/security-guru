@@ -23,7 +23,7 @@
      Menu pop-up - 300
      So this has to be in-between the two
   */
-  z-index: 250;
+  z-index: calc(var(--mantine-z-index-popover) - 1);
   height: var(--header-height);
   transition: translate 400ms ease;
 }

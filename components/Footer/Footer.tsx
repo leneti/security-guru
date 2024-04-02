@@ -1,3 +1,6 @@
+"use client";
+
+import isMobile from "is-mobile";
 import { ActionIcon, Group, Text } from "@mantine/core";
 import {
   IconBrandFacebook,
@@ -24,15 +27,20 @@ export default function Footer() {
         <Text size="sm">© {new Date().getFullYear()} MB Security Guru</Text>
 
         <Group
-          gap="xs"
+          gap="xl"
           className={classes.social}
           justify="flex-end"
           wrap="nowrap"
         >
           <ActionIcon
             component={Link}
-            href="https://www.facebook.com/people/Security-guru/100088856047734/"
+            href={
+              isMobile()
+                ? "fb://profile?id=100088856047734"
+                : "https://www.facebook.com/people/Security-guru/100088856047734/"
+            }
             target="_blank"
+            className={classes.actionIcon}
             title="Facebook puslapis"
             variant="subtle"
           >
@@ -40,8 +48,13 @@ export default function Footer() {
           </ActionIcon>
           <ActionIcon
             component={Link}
-            href="https://www.instagram.com/mbsecurityguru/"
+            href={
+              isMobile()
+                ? "instagram://user?username=mbsecurityguru"
+                : "https://www.instagram.com/mbsecurityguru/"
+            }
             target="_blank"
+            className={classes.actionIcon}
             title="Instagram paskyra"
             variant="subtle"
           >
@@ -50,6 +63,7 @@ export default function Footer() {
           <ActionIcon
             component={Link}
             href="/susisiekite"
+            className={classes.actionIcon}
             title="Susisiekite"
             variant="subtle"
           >
