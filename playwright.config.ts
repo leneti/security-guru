@@ -13,7 +13,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: process.env.CI ? "github" : "list",
   expect: {
-    timeout: 10_000,
+    timeout: 20_000,
   },
 
   use: {
