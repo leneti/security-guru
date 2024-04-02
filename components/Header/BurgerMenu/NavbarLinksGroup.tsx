@@ -26,23 +26,30 @@ export default function NavbarLinksGroup(props: LinksGroupProps) {
     return (
       <>
         <UnstyledButton onClick={toggle} className={classes.control}>
-          <Group justify="space-between">
+          <Group justify="space-between" className={classes.controlGroup}>
             <Box style={{ display: "flex", alignItems: "center" }}>
-              <ThemeIcon variant="light" size={40}>
+              <ThemeIcon
+                variant="light"
+                style={{ "--ti-bg": "var(--mantine-primary-color-light)" }}
+                size={40}
+              >
                 <Icon size={20} />
               </ThemeIcon>
-              <Box className={classes.link}>{label}</Box>
+
+              <Box className={classes.linkLabel}>{label}</Box>
             </Box>
+
             <IconChevronDown
               className={classes.chevron}
               size={22}
               stroke={1.5}
               style={{
-                transform: opened ? `rotate(-180deg)` : "none",
+                transform: opened ? `rotate(180deg)` : "none",
               }}
             />
           </Group>
         </UnstyledButton>
+
         <Collapse in={opened}>{items}</Collapse>
       </>
     );
@@ -57,12 +64,17 @@ export default function NavbarLinksGroup(props: LinksGroupProps) {
       className={classes.control}
       onClick={closeDrawer}
     >
-      <Group justify="space-between">
+      <Group className={classes.controlGroup}>
         <Box style={{ display: "flex", alignItems: "center" }}>
-          <ThemeIcon variant="light" size={40}>
+          <ThemeIcon
+            variant="light"
+            size={40}
+            style={{ "--ti-bg": "var(--mantine-primary-color-light)" }}
+          >
             <Icon size={20} />
           </ThemeIcon>
-          <Box className={classes.link}>{label}</Box>
+
+          <Box className={classes.linkLabel}>{label}</Box>
         </Box>
       </Group>
     </UnstyledButton>

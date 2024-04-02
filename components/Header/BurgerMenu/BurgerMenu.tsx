@@ -1,10 +1,11 @@
 "use client";
 
-import { Burger, Drawer, px } from "@mantine/core";
+import { Burger, Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NavbarLinksGroup from "@site/components/Header/BurgerMenu/NavbarLinksGroup";
 import { Logo } from "@site/components/Logo";
 import { menuLinks } from "@site/constants/menu-links";
+import classes from "./BurgerMenu.module.css";
 import type { BurgerMenuProps } from "./types";
 
 const drawerLabel = "Naršymo meniu";
@@ -23,15 +24,21 @@ export default function BurgerMenu(props: BurgerMenuProps) {
     <>
       <Drawer.Root opened={opened} onClose={close} hiddenFrom="md">
         <Drawer.Overlay />
-        <Drawer.Content aria-label={drawerLabel}>
+        <Drawer.Content
+          aria-label={drawerLabel}
+          className={classes.drawerContent}
+        >
           <Drawer.Header>
             <Logo size={40} onClick={close} />
             <Drawer.CloseButton
               aria-label={closeDrawerLabel}
-              size={px("1.75rem")}
+              size="xl"
+              className={classes.closeButton}
             />
           </Drawer.Header>
-          <Drawer.Body mt="xs">{linksGroup}</Drawer.Body>
+          <Drawer.Body mt="xs" px={0}>
+            {linksGroup}
+          </Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>
 

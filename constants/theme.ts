@@ -13,6 +13,7 @@ import titleClasses from "@site/constants/variants/title.module.css";
 export const resolver: CSSVariablesResolver = () => ({
   variables: {
     "--mantine-primary-color": "#FFAB66",
+    "--mantine-primary-color-light": "rgba(255, 171, 102, 0.6)",
     "--mantine-primary-color-0": "#FFF3EA",
     "--mantine-primary-color-1": "#FFDFC6",
     "--mantine-primary-color-2": "#FFCDA4",
@@ -50,6 +51,7 @@ export const resolver: CSSVariablesResolver = () => ({
   },
   dark: {
     "--mantine-primary-color": "#FFAB66",
+    "--mantine-primary-color-light": "rgba(255, 171, 102, 0.6)",
     "--mantine-primary-color-0": "#FFF3EA",
     "--mantine-primary-color-1": "#FFDFC6",
     "--mantine-primary-color-2": "#FFCDA4",

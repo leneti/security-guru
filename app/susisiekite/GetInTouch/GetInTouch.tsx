@@ -122,19 +122,22 @@ export default function GetInTouch() {
               required
               name="sprendimas"
               label="Pasirinkite sprendimą"
-              className={classes.radioGroup}
               {...form.getInputProps("solution")}
             >
               <Group mt="xs">
                 <Radio
                   value="Namams"
                   label="Namams"
-                  className={classes.radio}
+                  variant="outline"
+                  size="md"
+                  color="orange.4"
                 />
                 <Radio
                   value="Verslui"
                   label="Verslui"
-                  className={classes.radio}
+                  variant="outline"
+                  size="md"
+                  color="orange.4"
                 />
               </Group>
             </Radio.Group>
@@ -146,6 +149,8 @@ export default function GetInTouch() {
                 labelProps={labelProps}
                 placeholder={APP_NAME}
                 className={classes.input}
+                size="md"
+                type="text"
                 {...form.getInputProps("name")}
               />
               <TextInput
@@ -154,6 +159,8 @@ export default function GetInTouch() {
                 labelProps={labelProps}
                 placeholder="Miestas"
                 className={classes.input}
+                size="md"
+                type="text"
                 {...form.getInputProps("city")}
               />
               <TextInput
@@ -162,6 +169,8 @@ export default function GetInTouch() {
                 labelProps={labelProps}
                 placeholder="info@securityguru.lt"
                 className={classes.input}
+                size="md"
+                type="email"
                 {...form.getInputProps("email")}
               />
               <TextInput
@@ -170,6 +179,8 @@ export default function GetInTouch() {
                 labelProps={labelProps}
                 placeholder="+37061234567"
                 className={classes.input}
+                size="md"
+                type="tel"
                 {...form.getInputProps("number")}
               />
             </SimpleGrid>

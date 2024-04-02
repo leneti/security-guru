@@ -36,26 +36,7 @@
   }
 
   & label {
-    line-height: 2;
-  }
-}
-
-.radio > div {
-  --label-order: 2;
-  gap: var(--mantine-spacing-sm);
-}
-
-.radioGroup {
-  --radio-size: var(--radio-size-sm);
-  --radio-icon-size: var(--radio-icon-size-sm);
-  --label-fz: var(--mantine-font-size-sm);
-  --label-lh: var(--label-lh-sm);
-
-  @media (max-width: $mantine-breakpoint-sm) {
-    --radio-size: var(--radio-size-md);
-    --radio-icon-size: var(--radio-icon-size-md);
-    --label-fz: var(--mantine-font-size-md);
-    --label-lh: var(--label-lh-md);
+    line-height: 2.5;
   }
 }
 
