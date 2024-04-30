@@ -15,12 +15,7 @@ import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons-react";
 import { ContactInfo } from "@site/components/ContactInfo";
-import {
-  APP_NAME,
-  emailRegex,
-  ErrorMessages,
-  numberRegex,
-} from "@site/constants";
+import { emailRegex, ErrorMessages, numberRegex } from "@site/constants";
 import logger from "@site/utils/logger";
 import classes from "./GetInTouch.module.css";
 import type { ContactForm } from "./types";
@@ -147,7 +142,7 @@ export default function GetInTouch() {
                 required
                 label="Vardas / Įmonės pavadinimas"
                 labelProps={labelProps}
-                placeholder={APP_NAME}
+                placeholder="Security Guru"
                 className={classes.input}
                 size="md"
                 type="text"
