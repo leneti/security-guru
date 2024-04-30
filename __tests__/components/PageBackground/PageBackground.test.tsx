@@ -1,8 +1,6 @@
 import { PageBackground, PageBGProps } from "@site/components/PageBackground";
 import { render, screen } from "@site/test-utils";
 
-jest.mock("@site/components/PageTitle");
-
 const mockTitle = "Test title";
 const mockContent = "Mock content";
 const wipText = "Puslapis ruošiamas";

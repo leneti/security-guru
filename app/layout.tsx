@@ -12,8 +12,8 @@ import "@site/app/global.css";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Security Guru",
-    default: "Security Guru",
+    template: `%s :: ${process.env.NODE_ENV === "development" ? "SG_DEV" : "Security Guru"}`,
+    default: `${process.env.NODE_ENV === "development" ? "SG_DEV" : "Security Guru"}`,
   },
   description:
     "Aukščiausio lygio paslaugos fizinės bei elektroninės namų ir verslo apsaugos srityse.",
