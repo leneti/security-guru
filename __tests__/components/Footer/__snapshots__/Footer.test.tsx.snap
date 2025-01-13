@@ -55,7 +55,7 @@ exports[`Footer renders 1`] = `
         style="--text-fz: var(--mantine-font-size-sm); --text-lh: var(--mantine-line-height-sm);"
       >
         © 
-        2024
+        2025
          MB Security Guru
       </p>
       <div
