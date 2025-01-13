@@ -6,7 +6,7 @@ describe("Error 500 page", () => {
     const reset = jest.fn();
     const mockError = new Error("mock error");
 
-    render(<Error500 reset={reset} error={mockError} />);
+    render(<Error500 reset={reset} error={mockError} supressConsole />);
 
     expect(screen.getByText("500")).toBeInTheDocument();
 

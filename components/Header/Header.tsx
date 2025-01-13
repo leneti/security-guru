@@ -28,8 +28,8 @@ export default function Header() {
       style={{ translate: `0 ${pinned ? 0 : "-6.875rem"}` }}
     >
       <nav className={classes.inner}>
-        <Logo size={40} classNames={classes.smallDisplayOnly} />
-        <Logo size={50} classNames={classes.bigDisplayOnly} />
+        <Logo size={40} className={classes.smallDisplayOnly} />
+        <Logo size={50} className={classes.bigDisplayOnly} />
 
         <BurgerMenu />
 

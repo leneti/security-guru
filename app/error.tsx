@@ -7,14 +7,15 @@ import classes from "./error.module.css";
 interface ErrorPage {
   error: Error & { digest?: string };
   reset: () => void;
+  supressConsole?: boolean;
 }
 
 export default function Error(props: ErrorPage) {
-  const { error, reset } = props;
+  const { error, reset, supressConsole } = props;
 
   useEffect(() => {
-    console.error(error);
-  }, [error]);
+    if (!supressConsole) console.error(error);
+  }, [error, supressConsole]);
 
   return (
     <div className={classes.root}>

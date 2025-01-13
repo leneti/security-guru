@@ -30,6 +30,7 @@ const customJestConfig: Config = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jest-environment-jsdom",
   verbose: true,
+  reporters: [["jest-silent-reporter", { useDots: true }]],
 };
 
 export default createJestConfig(customJestConfig);
