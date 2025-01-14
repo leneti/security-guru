@@ -1,8 +1,12 @@
-import "@mantine/core/styles.css";
+import "@mantine/core/styles.layer.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/nprogress/styles.css";
 import type { Metadata } from "next/types";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import {
+  ColorSchemeScript,
+  mantineHtmlProps,
+  MantineProvider,
+} from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { Footer } from "@site/components/Footer";
 import { Header } from "@site/components/Header";
@@ -30,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="lt">
+    <html lang="lt" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>

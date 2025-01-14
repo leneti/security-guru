@@ -8,7 +8,7 @@ function HandleOnCompleteChild() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   useEffect(() => nprogress.complete(), [pathname, searchParams]);
-  return <NavigationProgress />;
+  return <NavigationProgress aria-label="Loading..." />;
 }
 
 export function NavigationProgressBar() {

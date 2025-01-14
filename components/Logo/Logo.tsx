@@ -10,7 +10,7 @@ const defaultSize = 50;
 const logoAltText = "Security Guru logotipas";
 
 export default function Logo(props: LogoProps) {
-  const { iconOnly, size, onClick, vertical, classNames: extraClasses } = props;
+  const { iconOnly, size, onClick, vertical, className: extraClasses } = props;
   const logoSize = size ?? defaultSize;
   const src = iconOnly
     ? Ikona_Oranzine

@@ -19,14 +19,14 @@ exports[`Header matches snapshot when scrolled 0 px 1`] = `
       class="inner"
     >
       <a
-        classnames="smallDisplayOnly"
+        class="smallDisplayOnly"
         data-testid="logo"
         size="40"
       >
         Mocked Logo
       </a>
       <a
-        classnames="bigDisplayOnly"
+        class="bigDisplayOnly"
         data-testid="logo"
         size="50"
       >
@@ -69,14 +69,14 @@ exports[`Header matches snapshot when scrolled 41 px 1`] = `
       class="inner"
     >
       <a
-        classnames="smallDisplayOnly"
+        class="smallDisplayOnly"
         data-testid="logo"
         size="40"
       >
         Mocked Logo
       </a>
       <a
-        classnames="bigDisplayOnly"
+        class="bigDisplayOnly"
         data-testid="logo"
         size="50"
       >
@@ -119,14 +119,14 @@ exports[`Header matches snapshot when scrolled 120 px 1`] = `
       class="inner"
     >
       <a
-        classnames="smallDisplayOnly"
+        class="smallDisplayOnly"
         data-testid="logo"
         size="40"
       >
         Mocked Logo
       </a>
       <a
-        classnames="bigDisplayOnly"
+        class="bigDisplayOnly"
         data-testid="logo"
         size="50"
       >

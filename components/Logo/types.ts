@@ -5,5 +5,5 @@ export interface LogoProps {
   size?: number;
   vertical?: boolean;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
-  classNames?: string;
+  className?: string;
 }
