@@ -1,4 +1,4 @@
-// @ts-check
+import type { NextConfig } from "next";
 import initBundleAnalyzer from "@next/bundle-analyzer";
 import initMdx from "@next/mdx";
 
@@ -6,8 +6,7 @@ const withBundleAnalyzer = initBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -25,7 +24,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  reactStrictMode: false,
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
   },
