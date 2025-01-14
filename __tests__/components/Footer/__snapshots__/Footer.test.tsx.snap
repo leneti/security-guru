@@ -30,7 +30,6 @@ exports[`Footer renders 1`] = `
             class="logo"
             data-nimg="1"
             decoding="async"
-            fetchpriority="high"
             height="50"
             src="/img.jpg"
             style="color: transparent;"
