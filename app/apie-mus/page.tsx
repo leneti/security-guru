@@ -1,6 +1,5 @@
 import type { Metadata } from "next/types";
 import { SimpleGrid } from "@mantine/core";
-// import LottieAnimation from "@site/app/apie-mus/animation";
 import { Feature } from "@site/components/Feature";
 import { PageBackground } from "@site/components/PageBackground";
 import { ABOUT_US_FEATURES } from "@site/constants";
@@ -24,8 +23,6 @@ export default function About() {
           <Feature {...feature} key={feature.title} />
         ))}
       </SimpleGrid>
-
-      {/* <LottieAnimation /> */}
     </PageBackground>
   );
 }
