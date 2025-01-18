@@ -8,6 +8,7 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
+import { AnnouncementBar } from "@site/components/AnnouncementBar";
 import { Footer } from "@site/components/Footer";
 import { Header } from "@site/components/Header";
 import { resolver, theme } from "@site/constants/theme";
@@ -48,6 +49,8 @@ export default function RootLayout({
           <NavigationProgressBar />
 
           <Notifications />
+
+          <AnnouncementBar />
 
           <Header />
 
