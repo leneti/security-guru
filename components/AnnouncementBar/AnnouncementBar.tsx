@@ -7,7 +7,7 @@ import classes from "./AnnouncementBar.module.css";
 export function AnnouncementBar() {
   const [showAnnouncementBar, setShowAnnouncementBar] = useLocalStorage({
     key: "show-announcement-bar",
-    defaultValue: false,
+    defaultValue: true,
   });
 
   if (!showAnnouncementBar) {

@@ -1,7 +1,8 @@
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import {
   type Icon,
-  IconBriefcase, // IconTools,
+  IconBadge4k,
+  IconBriefcase,
   IconMail,
   type IconProps,
   IconShieldCheck,
@@ -28,13 +29,18 @@ type Link = LinkBasic & (LinkParent | LinkUrl);
 
 export const menuLinks: Link[] = [
   {
+    label: "E-parduotuvė",
+    url: "https://securitygurushop.lt/",
+    icon: IconBadge4k,
+  },
+  {
     label: "Apie mus",
     url: "/apie-mus",
-    icon: IconShieldCheck, // IconUser | IconBriefcase | IconInfoCircle
+    icon: IconShieldCheck,
   },
   {
     label: "Paslaugos",
-    icon: IconBriefcase, // IconCog | IconGrid
+    icon: IconBriefcase,
     initiallyOpened: true,
     links: [
       {
@@ -67,7 +73,7 @@ export const menuLinks: Link[] = [
   {
     label: "Susisiekite",
     url: "/susisiekite",
-    icon: IconMail, // IconPhone | IconHeadset | IconMessageCircle
+    icon: IconMail,
   },
 ];
 
