@@ -2,6 +2,10 @@
   color: black;
 }
 
+.wrapper {
+  background-color: white;
+}
+
 .announcementBar {
   display: flex;
   align-items: center;
@@ -9,8 +13,8 @@
   color: black;
   height: auto;
 
-  --site-announcement-bar-stripe-color1: #e8d7ff;
-  --site-announcement-bar-stripe-color2: #ffe9d1;
+  --site-announcement-bar-stripe-color1: rgb(195 201 181 / 0.75);
+  --site-announcement-bar-stripe-color2: rgb(255 188 133 / 0.75);
   background: repeating-linear-gradient(
     35deg,
     var(--site-announcement-bar-stripe-color1),
