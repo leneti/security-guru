@@ -1,6 +1,7 @@
 import "@mantine/core/styles.layer.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/nprogress/styles.css";
+import { cookies } from "next/headers";
 import type { Metadata } from "next/types";
 import {
   ColorSchemeScript,
@@ -8,6 +9,7 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
+import { AnnouncementBar } from "@site/components/AnnouncementBar";
 import { Footer } from "@site/components/Footer";
 import { Header } from "@site/components/Header";
 import { resolver, theme } from "@site/constants/theme";
@@ -28,11 +30,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const showAnnouncementBar =
+    (await cookies()).get("show-announcement-bar")?.value !== "false";
+
+  async function handleAnnouncementBarClose() {
+    "use server";
+    const cookieStore = await cookies();
+    cookieStore.set("show-announcement-bar", "false");
+  }
+
   return (
     <html lang="lt" {...mantineHtmlProps}>
       <head>
@@ -48,6 +59,11 @@ export default function RootLayout({
           <NavigationProgressBar />
 
           <Notifications />
+
+          <AnnouncementBar
+            show={showAnnouncementBar}
+            handleAnnouncementBarClose={handleAnnouncementBarClose}
+          />
 
           <Header />
 

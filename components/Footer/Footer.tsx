@@ -1,6 +1,5 @@
 "use client";
 
-import isMobile from "is-mobile";
 import { ActionIcon, Group, Text } from "@mantine/core";
 import {
   IconBrandFacebook,
@@ -34,11 +33,7 @@ export default function Footer() {
         >
           <ActionIcon
             component={Link}
-            href={
-              isMobile()
-                ? "fb://profile?id=100088856047734"
-                : "https://www.facebook.com/people/Security-guru/100088856047734/"
-            }
+            href="https://www.facebook.com/people/Security-guru/100088856047734/"
             target="_blank"
             className={classes.actionIcon}
             title="Facebook puslapis"
@@ -48,11 +43,7 @@ export default function Footer() {
           </ActionIcon>
           <ActionIcon
             component={Link}
-            href={
-              isMobile()
-                ? "instagram://user?username=mbsecurityguru"
-                : "https://www.instagram.com/mbsecurityguru/"
-            }
+            href="https://www.instagram.com/mbsecurityguru/"
             target="_blank"
             className={classes.actionIcon}
             title="Instagram paskyra"
