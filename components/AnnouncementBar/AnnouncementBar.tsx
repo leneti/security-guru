@@ -1,18 +1,15 @@
-"use client";
-
-import { useLocalStorage } from "@mantine/hooks";
 import Link from "@site/navigation/link";
 import classes from "./AnnouncementBar.module.css";
 
-export function AnnouncementBar() {
-  const [showAnnouncementBar, setShowAnnouncementBar] = useLocalStorage({
-    key: "show-announcement-bar",
-    defaultValue: true,
-  });
+export interface AnnouncementBarProps {
+  show: boolean;
+  handleAnnouncementBarClose(): Promise<void>;
+}
 
-  if (!showAnnouncementBar) {
-    return null;
-  }
+export function AnnouncementBar(props: AnnouncementBarProps) {
+  const { show, handleAnnouncementBarClose } = props;
+
+  if (!show) return null;
 
   return (
     <div className={classes.wrapper}>
@@ -35,7 +32,7 @@ export function AnnouncementBar() {
           type="button"
           aria-label="Close"
           className={classes.closeButton}
-          onClick={() => setShowAnnouncementBar(false)}
+          onClick={handleAnnouncementBarClose}
         >
           <svg viewBox="0 0 15 15" width="14" height="14">
             <g stroke="currentColor" strokeWidth="3.1">
