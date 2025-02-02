@@ -23,6 +23,7 @@ const eslintConfig = [
         },
       ],
       "@typescript-eslint/consistent-type-imports": "error",
+      "@typescript-eslint/no-require-imports": "off",
     },
   }),
 ];
