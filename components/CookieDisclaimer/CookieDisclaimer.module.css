@@ -1,0 +1,41 @@
+.outer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  font-size: var(--mantine-font-size-sm);
+  z-index: var(--mantine-z-index-popover);
+  width: 100%;
+  color: var(--mantine-color-text);
+}
+
+.inner {
+  border: 1px solid #ffdfc622;
+  background-color: var(--mantine-color-dark-6);
+  padding: 1rem;
+  border-radius: var(--mantine-radius-md);
+  max-width: var(--mantine-breakpoint-xs);
+  margin: 0.25rem;
+  filter: var(--mantine-shadow-lg);
+
+  @media (min-width: $mantine-breakpoint-sm) {
+    margin: 1rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--mantine-spacing-xs);
+}
+
+.actions {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.closeButton:hover {
+  background-color: var(--mantine-color-dark-5);
+}

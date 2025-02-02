@@ -1,4 +1,4 @@
-import { Feature } from "@site/components/Feature";
+import { Feature, type FeatureProps } from "@site/components/Feature";
 import { render } from "@site/test-utils";
 
 describe("Feature", () => {
@@ -7,7 +7,9 @@ describe("Feature", () => {
       <Feature
         title="mock-feature"
         description="mock-description"
-        icon={jest.fn(() => <i>mock-icon</i>) as any}
+        icon={
+          jest.fn(() => <i>mock-icon</i>) as unknown as FeatureProps["icon"]
+        }
       />,
     );
     expect(container).toMatchSnapshot();

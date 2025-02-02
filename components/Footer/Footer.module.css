@@ -37,6 +37,7 @@
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid var(--mantine-color-dark-4);
+  gap: var(--mantine-spacing-md);
 
   margin: var(--mantine-spacing-xl) auto 0;
   padding: var(--mantine-spacing-xl) var(--mantine-spacing-md);
@@ -49,8 +50,15 @@
 
 .social {
   @media (max-width: $mantine-breakpoint-md) {
-    margin-top: var(--mantine-spacing-xl);
+    margin-top: var(--mantine-spacing-md);
     gap: var(--mantine-spacing-xl);
+  }
+}
+
+.socialDivider {
+  @media (max-width: $mantine-breakpoint-md) {
+    margin-left: calc(var(--mantine-spacing-xs) * -1);
+    margin-right: calc(var(--mantine-spacing-xs) * -1);
   }
 }
 

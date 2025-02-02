@@ -3,9 +3,14 @@
 import {
   createTheme,
   type CSSVariablesResolver,
+  darken,
+  defaultVariantColorsResolver,
   Divider,
+  parseThemeColor,
+  rgba,
   Text,
   Title,
+  type VariantColorsResolver,
 } from "@mantine/core";
 import textClasses from "@site/constants/variants/text.module.css";
 import titleClasses from "@site/constants/variants/title.module.css";
@@ -51,7 +56,7 @@ export const resolver: CSSVariablesResolver = () => ({
   },
   dark: {
     "--mantine-primary-color": "#FFAB66",
-    "--mantine-primary-color-light": "rgba(255, 171, 102, 0.6)",
+    "--mantine-primary-color-light": "rgba(255, 171, 102, 0.75)",
     "--mantine-primary-color-0": "#FFF3EA",
     "--mantine-primary-color-1": "#FFDFC6",
     "--mantine-primary-color-2": "#FFCDA4",
@@ -64,6 +69,49 @@ export const resolver: CSSVariablesResolver = () => ({
     "--mantine-primary-color-9": "#EB6A00",
   },
 });
+
+export const variantColorResolver: VariantColorsResolver = (input) => {
+  const defaultResolvedColors = defaultVariantColorsResolver(input);
+  const parsedColor = parseThemeColor({
+    color: input.color || input.theme.primaryColor,
+    theme: input.theme,
+  });
+
+  // Override some properties for variant
+  if (
+    parsedColor.isThemeColor &&
+    parsedColor.color === "primary" &&
+    input.variant === "filled"
+  ) {
+    return {
+      ...defaultResolvedColors,
+      color: "var(--mantine-color-black)",
+      hoverColor: "var(--mantine-color-black)",
+    };
+  }
+
+  // Completely override variant
+  if (input.variant === "light") {
+    return {
+      background: rgba(parsedColor.value, 0.1),
+      hover: rgba(parsedColor.value, 0.15),
+      border: `1px solid ${parsedColor.value}`,
+      color: darken(parsedColor.value, 0.1),
+    };
+  }
+
+  // Add new variants support
+  if (input.variant === "danger") {
+    return {
+      background: "var(--mantine-color-red-9)",
+      hover: "var(--mantine-color-red-8)",
+      color: "var(--mantine-color-white)",
+      border: "none",
+    };
+  }
+
+  return defaultResolvedColors;
+};
 
 export const theme = createTheme({
   colors: {
@@ -133,4 +181,17 @@ export const theme = createTheme({
     Title: Title.extend({ classNames: titleClasses }),
     Divider: Divider.extend({ defaultProps: { color: "dark.4" } }),
   },
+
+  headings: {
+    sizes: {
+      h1: { fontSize: "1.5rem", lineHeight: "1.2" },
+      h2: { fontSize: "1.25rem", lineHeight: "1.2" },
+      h3: { fontSize: "1.125rem", lineHeight: "1.2" },
+      h4: { fontSize: "1rem", lineHeight: "1.2" },
+      h5: { fontSize: "0.875rem", lineHeight: "1.2" },
+      h6: { fontSize: "0.75rem", lineHeight: "1.2" },
+    },
+  },
+
+  variantColorResolver,
 });

@@ -1,6 +1,4 @@
-"use client";
-
-import { ActionIcon, Group, Text } from "@mantine/core";
+import { ActionIcon, Divider, Group, Text } from "@mantine/core";
 import {
   IconBrandFacebook,
   IconBrandInstagram,
@@ -8,9 +6,11 @@ import {
 } from "@tabler/icons-react";
 import { Logo } from "@site/components/Logo";
 import Link from "@link";
+import { CookieSettings } from "../CookieDisclaimer/CookieSettings";
+import { getCookieConsent } from "../CookieDisclaimer/toggle-consent";
 import classes from "./Footer.module.css";
 
-export default function Footer() {
+export default async function Footer() {
   return (
     <footer className={classes.footer}>
       <div className={classes.inner}>
@@ -60,6 +60,16 @@ export default function Footer() {
           >
             <IconMail className={classes.icon} stroke={1.5} />
           </ActionIcon>
+
+          <Divider orientation="vertical" className={classes.socialDivider} />
+
+          <CookieSettings
+            iconProps={{
+              actionClassName: classes.actionIcon,
+              iconClassName: classes.icon,
+            }}
+            hasConsent={await getCookieConsent()}
+          />
         </Group>
       </div>
     </footer>

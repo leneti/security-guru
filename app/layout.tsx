@@ -10,8 +10,10 @@ import {
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { AnnouncementBar } from "@site/components/AnnouncementBar";
+import { CookieDisclaimer } from "@site/components/CookieDisclaimer/CookieDisclaimer";
 import { Footer } from "@site/components/Footer";
 import { Header } from "@site/components/Header";
+import { Cookies } from "@site/constants/cookies";
 import { resolver, theme } from "@site/constants/theme";
 import { NavigationProgressBar } from "@site/navigation/wrapper";
 import "@site/app/global.css";
@@ -35,15 +37,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const showAnnouncementBar =
-    (await cookies()).get("show-announcement-bar")?.value !== "false";
-
-  async function handleAnnouncementBarClose() {
+  async function setCookieConsented() {
     "use server";
     const cookieStore = await cookies();
-    cookieStore.set("show-announcement-bar", "false");
+    cookieStore.set(Cookies.Consent, "1");
   }
-
   return (
     <html lang="lt" {...mantineHtmlProps}>
       <head>
@@ -60,14 +58,16 @@ export default async function RootLayout({
 
           <Notifications />
 
-          <AnnouncementBar
-            show={showAnnouncementBar}
-            handleAnnouncementBarClose={handleAnnouncementBarClose}
-          />
+          <AnnouncementBar />
 
           <Header />
 
           {children}
+
+          <CookieDisclaimer
+            consentCookie={(await cookies()).get(Cookies.Consent)?.value}
+            setCookieConsented={setCookieConsented}
+          />
 
           <Footer />
         </MantineProvider>

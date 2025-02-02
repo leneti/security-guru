@@ -1,4 +1,7 @@
-import { PageBackground, PageBGProps } from "@site/components/PageBackground";
+import {
+  PageBackground,
+  type PageBGProps,
+} from "@site/components/PageBackground";
 import { render, screen } from "@site/test-utils";
 
 const mockTitle = "Test title";
