@@ -1,5 +1,6 @@
 import NavbarLinksGroup from "@site/components/Header/BurgerMenu/NavbarLinksGroup";
 import { fireEvent, render, screen } from "@site/test-utils";
+import type { LinksGroupSingle } from "./types";
 
 const mockUrl = "/mock";
 const mockLabel = "mock_label";
@@ -12,7 +13,9 @@ describe("NavbarLinksGroup", () => {
   it("renders link", () => {
     render(
       <NavbarLinksGroup
-        icon={(() => <div>Mock Icon</div>) as any}
+        icon={
+          (() => <div>Mock Icon</div>) as unknown as LinksGroupSingle["icon"]
+        }
         url={mockUrl}
         label={mockLabel}
         closeDrawer={jest.fn()}
@@ -27,7 +30,9 @@ describe("NavbarLinksGroup", () => {
   it("renders link group", async () => {
     render(
       <NavbarLinksGroup
-        icon={(() => <div>Mock Icon</div>) as any}
+        icon={
+          (() => <div>Mock Icon</div>) as unknown as LinksGroupSingle["icon"]
+        }
         links={mockLinks}
         label={mockLabel}
         closeDrawer={jest.fn()}

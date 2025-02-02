@@ -16,7 +16,7 @@ jest.mock(
         __esModule: true,
       },
       {
-        get: (_: any, prop: string) => () => <div>mock_{prop}</div>,
+        get: (_: unknown, prop: string) => () => <div>mock_{prop}</div>,
       },
     ),
 );
@@ -26,7 +26,7 @@ jest.mock("@mantine/core", () => {
   const Btn = orgMantineCore.Button;
   return {
     ...orgMantineCore,
-    Button: jest.fn((props: any) => <Btn {...props} />),
+    Button: jest.fn((props: object) => <Btn {...props} />),
   };
 });
 

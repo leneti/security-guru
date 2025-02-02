@@ -1,6 +1,6 @@
 "use client";
 
-import Image, { ImageLoaderProps } from "next/image";
+import Image, { type ImageLoaderProps } from "next/image";
 import { AspectRatio, Card, Container, SimpleGrid, Text } from "@mantine/core";
 import classes from "./projektai.module.css";
 

@@ -9,7 +9,7 @@ jest.mock(
         __esModule: true,
       },
       {
-        get: (_: any, prop: string) => () => <div>mock_{prop}</div>,
+        get: (_: unknown, prop: string) => () => <div>mock_{prop}</div>,
       },
     ),
 );

@@ -18,10 +18,10 @@ setInterval(() => {
 
 type ResponseData = {
   message: string;
-  err?: any;
+  err?: string;
 };
 
-const badContactForm = (obj: any): string => {
+const badContactForm = (obj: object): string => {
   if (!("solution" in obj)) {
     return ErrorMessages.WRONG_SOLUTION;
   }
@@ -60,7 +60,7 @@ const badContactForm = (obj: any): string => {
     if (!phoneUtil.isValidNumber(phoneUtil.parse(number, "LT"))) {
       return ErrorMessages.INCORRECT_NUMBER;
     }
-  } catch (error) {
+  } catch (_) {
     return ErrorMessages.INCORRECT_NUMBER;
   }
 
