@@ -40,20 +40,8 @@
   max-width: var(--mantine-breakpoint-xl);
   margin-left: auto;
   margin-right: auto;
-
-  @media (max-width: calc(var(--mantine-spacing-xl) * 2 + var(--mantine-breakpoint-xl))) {
-    padding-left: calc(
-      var(--mantine-spacing-xl) - ((100vw - var(--mantine-breakpoint-xl)) / 2)
-    );
-    padding-right: calc(
-      var(--mantine-spacing-xl) - ((100vw - var(--mantine-breakpoint-xl)) / 2)
-    );
-  }
-
-  @media (max-width: $mantine-breakpoint-xl) {
-    padding-left: var(--mantine-spacing-xl);
-    padding-right: var(--mantine-spacing-xl);
-  }
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
 }
 
 .linkGroup {

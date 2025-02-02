@@ -34,6 +34,11 @@ export const menuLinks: Link[] = [
     icon: IconShoppingBag,
   },
   {
+    label: "[TEST] E-parduotuvė",
+    url: "/shop",
+    icon: IconShoppingBag,
+  },
+  {
     label: "Apie mus",
     url: "/apie-mus",
     icon: IconShieldCheck,
