@@ -13,9 +13,9 @@ so the website's locale is set to Lithuanian as well.
 
 ## Tech stack
 
-- React 18
+- React 19
 - TypeScript
 - CSS modules
 - Mantine v7
-- Next.js 14
+- Next.js 15
 - AWS Amplify
