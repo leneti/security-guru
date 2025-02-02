@@ -1,11 +1,11 @@
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import {
   type Icon,
-  IconBadge4k,
   IconBriefcase,
   IconMail,
   type IconProps,
   IconShieldCheck,
+  IconShoppingBag,
 } from "@tabler/icons-react";
 
 interface LinkBasic {
@@ -31,7 +31,7 @@ export const menuLinks: Link[] = [
   {
     label: "E-parduotuvė",
     url: "https://securitygurushop.lt/",
-    icon: IconBadge4k,
+    icon: IconShoppingBag,
   },
   {
     label: "Apie mus",

@@ -90,7 +90,6 @@
 }
 
 .button {
-  color: var(--mantine-color-black);
   --button-height: var(--button-height-sm);
   --button-padding-x: var(--button-padding-x-sm);
   --button-fz: var(--mantine-font-size-sm);

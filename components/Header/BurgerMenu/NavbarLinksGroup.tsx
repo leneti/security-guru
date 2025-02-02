@@ -29,7 +29,6 @@ export default function NavbarLinksGroup(props: LinksGroupProps) {
           <Group justify="space-between" className={classes.controlGroup}>
             <Box style={{ display: "flex", alignItems: "center" }}>
               <ThemeIcon
-                variant="light"
                 style={{ "--ti-bg": "var(--mantine-primary-color-light)" }}
                 size={40}
               >
@@ -67,7 +66,6 @@ export default function NavbarLinksGroup(props: LinksGroupProps) {
       <Group className={classes.controlGroup}>
         <Box style={{ display: "flex", alignItems: "center" }}>
           <ThemeIcon
-            variant="light"
             size={40}
             style={{ "--ti-bg": "var(--mantine-primary-color-light)" }}
           >
