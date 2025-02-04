@@ -1,0 +1,1 @@
+export { VATSwitch } from "./VATSwitch";

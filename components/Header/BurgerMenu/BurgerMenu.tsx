@@ -1,9 +1,11 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Burger, Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NavbarLinksGroup from "@site/components/Header/BurgerMenu/NavbarLinksGroup";
 import { Logo } from "@site/components/Logo";
+import { VATSwitch } from "@site/components/VATSwitch";
 import { menuLinks } from "@site/constants/menu-links";
 import classes from "./BurgerMenu.module.css";
 import type { BurgerMenuProps } from "./types";
@@ -19,6 +21,8 @@ export default function BurgerMenu(props: BurgerMenuProps) {
   const linksGroup = menuLinks.map((item) => (
     <NavbarLinksGroup {...item} key={item.label} closeDrawer={close} />
   ));
+
+  const pathname = usePathname();
 
   return (
     <>
@@ -37,6 +41,12 @@ export default function BurgerMenu(props: BurgerMenuProps) {
             />
           </Drawer.Header>
           <Drawer.Body mt="xs" px={0}>
+            {pathname.includes("shop") && (
+              <div className="px-md mx-md align-center flex justify-between sm:hidden">
+                <span>E-parduotuvės kainos</span>
+                <VATSwitch />
+              </div>
+            )}
             {linksGroup}
           </Drawer.Body>
         </Drawer.Content>

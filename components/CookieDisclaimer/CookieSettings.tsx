@@ -80,9 +80,9 @@ export function CookieSettings(props: CookieSettingsProps) {
               </Title>
               <Text size="sm">
                 Norėdami įsiminti jūsų slapukų nuostatas, turime naudoti
-                slapukus. Išjungę šį slapuką svetainėje, neturėsime galimybės
-                sekti jūsų nuostatų ir svetainėje visada bus rodomas atsakomybės
-                atsisakymas.
+                slapukus. Išjungus šį slapuką, neturėsime galimybės išsaugoti
+                jūsų nuostatų ir svetainėje visada bus rodomas slapukų
+                priminimas.
               </Text>
               <Switch
                 label="Slapukų nuostatos"

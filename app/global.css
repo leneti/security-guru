@@ -8,6 +8,19 @@
   --breakpoint-md: 62em;
   --breakpoint-lg: 75em;
   --breakpoint-xl: 88em;
+
+  --spacing-breakpoint-xs: var(--breakpoint-xs);
+  --spacing-breakpoint-sm: var(--breakpoint-sm);
+  --spacing-breakpoint-md: var(--breakpoint-md);
+  --spacing-breakpoint-lg: var(--breakpoint-lg);
+  --spacing-breakpoint-xl: var(--breakpoint-xl);
+
+  --spacing-xs: 0.625rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.25rem;
+  --spacing-xl: 1.5rem;
+  --spacing-xxl: 2rem;
 }
 
 *,
@@ -17,5 +30,8 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   background-color: var(--mantine-color-background);
+  min-height: 100vh;
 }
