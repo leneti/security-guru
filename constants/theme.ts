@@ -182,6 +182,8 @@ export const theme = createTheme({
     Divider: Divider.extend({ defaultProps: { color: "dark.4" } }),
   },
 
+  cursorType: "pointer",
+
   headings: {
     sizes: {
       h1: { fontSize: "1.5rem", lineHeight: "1.2" },
