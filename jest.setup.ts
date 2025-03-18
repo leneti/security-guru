@@ -1,7 +1,26 @@
 // If you delete this file, remove `setupFilesAfterEnv` from `jest.config.js`
 import "@testing-library/jest-dom";
 
-jest.mock("next/router", () => require("next-router-mock"));
+const nextRouterMock = require("next-router-mock");
+
+jest.mock("next/navigation", () => {
+  const { useRouter } = nextRouterMock;
+  const usePathname = () => {
+    const router = useRouter();
+    return router.pathname;
+  };
+
+  const useSearchParams = () => {
+    const router = useRouter();
+    return new URLSearchParams(router.query);
+  };
+
+  return {
+    useRouter,
+    usePathname,
+    useSearchParams,
+  };
+});
 jest.mock("@site/utils/logger");
 
 const { getComputedStyle } = window;
