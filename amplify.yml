@@ -1,9 +1,12 @@
 version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - npm ci --cache .npm --prefer-offline
+        - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
-    preBuild:
-      commands:
-        - npm ci
     build:
       commands:
         - echo "REACT_APP_SES_EMAIL=$REACT_APP_SES_EMAIL" >> .env
@@ -19,4 +22,6 @@ frontend:
       - "**/*"
   cache:
     paths:
+      - .next/cache/**/*
+      - .npm/**/*
       - node_modules/**/*
