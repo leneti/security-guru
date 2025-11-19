@@ -7,9 +7,9 @@ export async function toggleCookieConsent() {
   const cookieStore = await cookies();
   const consent = cookieStore.get(Cookies.Consent)?.value === "1";
   if (consent) {
-    cookieStore.getAll().forEach((cookie) => {
+    for (const cookie of cookieStore.getAll()) {
       cookieStore.delete(cookie.name);
-    });
+    }
   } else {
     cookieStore.set(Cookies.Consent, "1");
   }

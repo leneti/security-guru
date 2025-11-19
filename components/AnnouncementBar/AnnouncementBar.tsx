@@ -36,7 +36,7 @@ export async function AnnouncementBar() {
           </b>
           🥳️
         </div>
-        {hasCookieConsent && (
+        {hasCookieConsent ? (
           <button
             type="button"
             aria-label="Close"
@@ -49,7 +49,7 @@ export async function AnnouncementBar() {
               </g>
             </svg>
           </button>
-        )}
+        ) : null}
       </div>
     </div>
   );

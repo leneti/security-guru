@@ -43,7 +43,7 @@ export default function NavbarLinksGroup(props: LinksGroupProps) {
               size={22}
               stroke={1.5}
               style={{
-                transform: opened ? `rotate(180deg)` : "none",
+                transform: opened ? "rotate(180deg)" : "none",
               }}
             />
           </Group>

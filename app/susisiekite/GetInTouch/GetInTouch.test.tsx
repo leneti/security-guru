@@ -1,3 +1,4 @@
+// eslint-disable-next-line depend/ban-dependencies -- TODO: replace with `ky`
 import axios from "axios";
 import * as mCore from "@mantine/core";
 import { notifications } from "@mantine/notifications";
@@ -22,7 +23,9 @@ jest.mock(
 );
 jest.mock("@mantine/notifications");
 jest.mock("@mantine/core", () => {
-  const orgMantineCore = jest.requireActual("@mantine/core");
+  const orgMantineCore = jest.requireActual(
+    "@mantine/core",
+  ) as unknown as typeof mCore;
   const Btn = orgMantineCore.Button;
   return {
     ...orgMantineCore,
@@ -55,29 +58,29 @@ const renderWithTheme = () =>
     </mCore.MantineProvider>,
   );
 
+const fillForm = (overrideFormData?: Partial<FormFields>) => {
+  const formData = { ...mockFormData, ...overrideFormData };
+
+  const versluiRadio = screen.getByLabelText(/verslui/i);
+  fireEvent.click(versluiRadio);
+
+  const nameInput = screen.getByPlaceholderText(/security guru/i);
+  fireEvent.change(nameInput, { target: { value: formData.name } });
+
+  const cityInput = screen.getByPlaceholderText(/miestas/i);
+  fireEvent.change(cityInput, { target: { value: formData.city } });
+
+  const emailInput = screen.getByPlaceholderText(/info@securityguru\.lt/i);
+  fireEvent.change(emailInput, { target: { value: formData.email } });
+
+  const numberInput = screen.getByPlaceholderText(/\+37061234567/);
+  fireEvent.change(numberInput, { target: { value: formData.number } });
+
+  const messageInput = screen.getByLabelText(/pastabos/i);
+  fireEvent.change(messageInput, { target: { value: formData.message } });
+};
+
 describe("GetInTouch", () => {
-  const fillForm = (overrideFormData?: Partial<FormFields>) => {
-    const formData = { ...mockFormData, ...overrideFormData };
-
-    const versluiRadio = screen.getByLabelText(/verslui/i);
-    fireEvent.click(versluiRadio);
-
-    const nameInput = screen.getByPlaceholderText(/security guru/i);
-    fireEvent.change(nameInput, { target: { value: formData.name } });
-
-    const cityInput = screen.getByPlaceholderText(/miestas/i);
-    fireEvent.change(cityInput, { target: { value: formData.city } });
-
-    const emailInput = screen.getByPlaceholderText(/info@securityguru\.lt/i);
-    fireEvent.change(emailInput, { target: { value: formData.email } });
-
-    const numberInput = screen.getByPlaceholderText(/\+37061234567/i);
-    fireEvent.change(numberInput, { target: { value: formData.number } });
-
-    const messageInput = screen.getByLabelText(/pastabos/i);
-    fireEvent.change(messageInput, { target: { value: formData.message } });
-  };
-
   it("doesn't make API calls with no data", () => {
     const mockAxiosPost = jest.fn().mockName("axios.post");
     (axios.post as jest.Mock).mockImplementation(mockAxiosPost);
@@ -138,8 +141,8 @@ describe("GetInTouch", () => {
       mockResponse: undefined,
       expectedProps: expect.objectContaining({
         title: "Kažkas nutiko...",
-        message: expect.stringContaining("vėliau"),
-      }),
+        message: expect.stringContaining("vėliau") as string,
+      }) as object,
     },
     {
       type: "specific",
@@ -153,12 +156,13 @@ describe("GetInTouch", () => {
       expectedProps: expect.objectContaining({
         title: "Netinkamai užpildyta forma",
         message: ErrorMessages.INCORRECT_EMAIL,
-      }),
+      }) as object,
     },
   ])(
     "shows notification with $type error message",
     async ({ mockResponse, expectedProps }) => {
       (axios.post as jest.Mock).mockImplementation(
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- test mock
         jest.fn(() => Promise.reject(mockResponse)).mockName("axios.post"),
       );
 

@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import Image from "next/image";
 import { Box, Center, Container, Overlay, Text, Title } from "@mantine/core";
 import houses from "@site/assets/unsplash-houses.webp";
@@ -14,11 +14,11 @@ export default function PageBackground(props: PageBGProps) {
         {pageTitle}
       </Title>
 
-      {wip && (
+      {wip ? (
         <Text ta="center" mb="lg" c="dimmed">
           Puslapis ruošiamas
         </Text>
-      )}
+      ) : null}
 
       {colorOnly ? (
         <Container

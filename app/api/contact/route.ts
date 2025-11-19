@@ -60,7 +60,7 @@ const badContactForm = (obj: object): string => {
     if (!phoneUtil.isValidNumber(phoneUtil.parse(number, "LT"))) {
       return ErrorMessages.INCORRECT_NUMBER;
     }
-  } catch (_) {
+  } catch {
     return ErrorMessages.INCORRECT_NUMBER;
   }
 
@@ -89,12 +89,12 @@ const sendMail = (sender: string, receivers: string[], data: ContactForm) => {
     },
     Message: {
       Subject: {
-        Charset: "UTF-8",
+        Charset: "utf8",
         Data: `Kliento užklausa - ${name} - ${city}`,
       },
       Body: {
         Html: {
-          Charset: "UTF-8",
+          Charset: "utf8",
           Data: htmlTemplate(data),
         },
       },
@@ -118,7 +118,7 @@ const sendMail = (sender: string, receivers: string[], data: ContactForm) => {
 };
 
 export async function POST(request: Request) {
-  const body = await request.json();
+  const body = (await request.json()) as Record<string, unknown>;
 
   if (!process.env.REACT_APP_SES_EMAIL) {
     return Response.json(
@@ -179,13 +179,13 @@ export async function POST(request: Request) {
         { status: 200 },
       );
     })
-    .catch((err) => {
-      logger.error("Couldn't send email.", err);
+    .catch((error: string | undefined) => {
+      logger.error("Couldn't send email.", error);
 
       return Response.json(
         {
           message: "Laiško išsiųsti nepavyko. Bandykite dar kartą vėliau.",
-          err,
+          err: error,
         } satisfies ResponseData,
         { status: 502 },
       );

@@ -14,7 +14,7 @@ function isModifiedEvent(event: React.MouseEvent): boolean {
     event.ctrlKey ||
     event.shiftKey ||
     event.altKey || // triggers resource download
-    (event.nativeEvent && event.nativeEvent.button === 1)
+    event.nativeEvent.button === 1
   );
 }
 
@@ -22,7 +22,7 @@ export function shouldTriggerStartEvent(
   href: string,
   clickEvent?: React.MouseEvent,
 ) {
-  const current = window.location;
+  const current = globalThis.location;
   const target = getURL(href);
 
   if (clickEvent && isModifiedEvent(clickEvent)) return false; // modified events: fallback to browser behaviour

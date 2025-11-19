@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call -- low importance file */
 const logger = jest.requireActual("@site/utils/logger").default;
 
 const expectedLogs = [
@@ -29,7 +30,7 @@ describe("logger", () => {
   it.each(expectedLogs)("prints $type messages", ({ type, args, expected }) => {
     const log = jest
       .spyOn(console, "log")
-      .mockImplementation((...params: any[]) => params);
+      .mockImplementation((...params: unknown[]) => params);
 
     let logFn;
 
@@ -46,11 +47,13 @@ describe("logger", () => {
         logFn = logger.error;
         break;
       }
-      default:
+      default: {
         logFn = logger.log;
+      }
     }
 
     logFn(args[0], ...args.slice(1));
     expect(log).toHaveBeenCalledWith(...expected);
   });
 });
+/* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call -- low importance file */

@@ -10,7 +10,6 @@ function NavbarLinksGroupMock({
   links,
 }: LinksGroupDropdown): JSX.Element;
 function NavbarLinksGroupMock({ label, url }: LinksGroupSingle): JSX.Element;
-
 function NavbarLinksGroupMock(props: LinksGroupProps) {
   const { label } = props;
 
@@ -28,7 +27,7 @@ function NavbarLinksGroupMock(props: LinksGroupProps) {
 
   return (
     <div className={`mock_navbar_links_group--${label}`}>
-      {links?.map(({ label, url }) => (
+      {links.map(({ label, url }) => (
         <a key={url} href={url} className={`mock_navbar_link--${label}`}>
           {label}
         </a>

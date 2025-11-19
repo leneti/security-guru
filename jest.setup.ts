@@ -1,15 +1,15 @@
 // If you delete this file, remove `setupFilesAfterEnv` from `jest.config.js`
 import "@testing-library/jest-dom";
 
-jest.mock("next/router", () => require("next-router-mock"));
+jest.mock("next/router", () => import("next-router-mock"));
 jest.mock("@site/utils/logger");
 
-const { getComputedStyle } = window;
-window.getComputedStyle = (elt) => getComputedStyle(elt);
+const { getComputedStyle } = globalThis;
+globalThis.getComputedStyle = (elt) => getComputedStyle(elt);
 
-Object.defineProperty(window, "matchMedia", {
+Object.defineProperty(globalThis, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation((query) => ({
+  value: jest.fn().mockImplementation((query: unknown) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -27,4 +27,4 @@ class ResizeObserver {
   disconnect() {}
 }
 
-window.ResizeObserver = ResizeObserver;
+globalThis.ResizeObserver = ResizeObserver;

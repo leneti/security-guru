@@ -1,2 +1,2 @@
 export { default as PageBackground } from "./PageBackground";
-export * from "./types";
+export type * from "./types";

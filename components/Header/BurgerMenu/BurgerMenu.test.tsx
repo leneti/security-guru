@@ -10,7 +10,7 @@ class ResizeObserver {
   unobserve() {}
   disconnect() {}
 }
-window.ResizeObserver = ResizeObserver;
+globalThis.ResizeObserver = ResizeObserver;
 
 describe("BurgerMenu", () => {
   it("renders burger menu button", () => {
@@ -31,7 +31,7 @@ describe("BurgerMenu", () => {
     const burgerMenuButton = screen.getByRole("button", { hidden: true });
 
     fireEvent.click(burgerMenuButton);
-    expect(toggleMock).toBeCalled();
+    expect(toggleMock).toHaveBeenCalled();
   });
 
   it("renders all menu links in drawer", () => {
@@ -51,7 +51,9 @@ describe("BurgerMenu", () => {
 
     const burgerMenuButtons = screen.getAllByRole("button", { hidden: true });
 
-    burgerMenuButtons.forEach(fireEvent.click);
+    for (const element of burgerMenuButtons) {
+      fireEvent.click(element);
+    }
 
     expect(closeMock).toHaveBeenCalledTimes(1);
     expect(toggleMock).toHaveBeenCalledTimes(1);

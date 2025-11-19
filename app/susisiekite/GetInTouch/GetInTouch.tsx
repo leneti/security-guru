@@ -1,5 +1,6 @@
 "use client";
 
+// eslint-disable-next-line depend/ban-dependencies -- TODO: replace with `ky`
 import axios from "axios";
 import {
   Button,
@@ -40,7 +41,7 @@ export default function GetInTouch() {
       number: (value) =>
         numberRegex.test(value) ? null : ErrorMessages.INCORRECT_NUMBER,
       name: (value) =>
-        /^[^\w\d]+$/.test(value) ? ErrorMessages.INCORRECT_NAME : null,
+        /^\W+$/.test(value) ? ErrorMessages.INCORRECT_NAME : null,
     },
   });
 
@@ -62,7 +63,7 @@ export default function GetInTouch() {
           withCloseButton: true,
           autoClose: 5000,
           title: "Valio!",
-          message,
+          message: message as string,
           color: "teal",
           icon: <IconCheck />,
           className: classes.notification,
@@ -71,11 +72,13 @@ export default function GetInTouch() {
 
         form.reset();
       })
-      .catch((err) => {
-        logger.error(err);
+      .catch((error) => {
+        logger.error(error);
         let title = "Kažkas nutiko...";
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- low importance line
         let message: string =
-          err?.response?.data?.message ?? "Bandykite dar kartą vėliau.";
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- low importance line
+          error?.response?.data?.message ?? "Bandykite dar kartą vėliau.";
 
         if (message.startsWith("[BAD_CONTACT_FORM]")) {
           message = message.replace("[BAD_CONTACT_FORM] ", "");

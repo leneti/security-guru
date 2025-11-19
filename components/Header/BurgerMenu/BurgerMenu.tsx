@@ -17,7 +17,7 @@ export default function BurgerMenu(props: BurgerMenuProps) {
   const [opened, { close, toggle }] = useDisclosure(false);
 
   const linksGroup = menuLinks.map((item) => (
-    <NavbarLinksGroup {...item} key={item.label} closeDrawer={close} />
+    <NavbarLinksGroup key={item.label} {...item} closeDrawer={close} />
   ));
 
   return (
