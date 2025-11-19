@@ -1,10 +1,12 @@
-const path = require("path");
-
-const buildEslintCommand = (filenames) =>
-  `next lint --fix --file ${filenames
-    .map((f) => path.relative(process.cwd(), f))
-    .join(" --file ")}`;
-
-module.exports = {
-  "*.{js,jsx,ts,tsx}": [buildEslintCommand, "prettier --write"],
+/**
+ * @type {import('lint-staged').Configuration}
+ */
+const config = {
+  "package-lock.json": ["npm dedupe"],
+  "!(Dockerfile|*.rs|*.tf|*.tfvars|*.hcl|package-lock.json|*.js|*.mjs|*.cjs|*.jsx|*.mjsx|*.cjsx|*.ts|*.mts|*.cts|*.tsx|*.mtsx|*.ctsx|*.json|*.toml|*.yml|*.yaml|*.graphql|*.graphqls)":
+    ["prettier --write --ignore-unknown"],
+  "*.{js,mjs,cjs,jsx,mjsx,cjsx,ts,mts,cts,tsx,mtsx,ctsx,json,toml,yml,yaml,graphql,graphqls}":
+    ["prettier --write", "eslint --fix --no-warn-ignored"],
 };
+
+module.exports = config;

@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 import type { JSX } from "react";
 import type {
   LinksGroupDropdown,
@@ -10,7 +11,6 @@ function NavbarLinksGroupMock({
   links,
 }: LinksGroupDropdown): JSX.Element;
 function NavbarLinksGroupMock({ label, url }: LinksGroupSingle): JSX.Element;
-
 function NavbarLinksGroupMock(props: LinksGroupProps) {
   const { label } = props;
 
@@ -36,5 +36,6 @@ function NavbarLinksGroupMock(props: LinksGroupProps) {
     </div>
   );
 }
+/* eslint-enable no-redeclare */
 
 export default NavbarLinksGroupMock;

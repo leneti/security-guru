@@ -31,7 +31,7 @@ describe("BurgerMenu", () => {
     const burgerMenuButton = screen.getByRole("button", { hidden: true });
 
     fireEvent.click(burgerMenuButton);
-    expect(toggleMock).toBeCalled();
+    expect(toggleMock).toHaveBeenCalled();
   });
 
   it("renders all menu links in drawer", () => {

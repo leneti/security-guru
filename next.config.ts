@@ -9,21 +9,12 @@ const withBundleAnalyzer = initBundleAnalyzer({
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.discordapp.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
+      { protocol: "https", hostname: "cdn.discordapp.com" },
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
   pageExtensions: ["ts", "tsx", "mdx"],
   productionBrowserSourceMaps: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
   },

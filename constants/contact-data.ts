@@ -10,7 +10,7 @@ export const contactData = [
   { title: "El. paštas", description: "info@securityguru.lt", icon: IconAt },
   {
     title: "Tel. Nr.",
-    description: `+37060334255, +37060283726`,
+    description: "+37060334255, +37060283726",
     icon: IconPhone,
   },
   {
