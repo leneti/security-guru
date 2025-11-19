@@ -44,9 +44,9 @@ describe("NavbarLinksGroup", () => {
 
     const renderedLinks = await screen.findAllByRole("link");
 
-    renderedLinks.forEach((link, index) => {
+    for (const [index, link] of renderedLinks.entries()) {
       expect(link).toHaveAttribute("href", mockLinks[index].url);
       expect(link).toHaveTextContent(mockLinks[index].label);
-    });
+    }
   });
 });

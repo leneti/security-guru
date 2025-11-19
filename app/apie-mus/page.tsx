@@ -20,7 +20,7 @@ export default function About() {
         className={classes.grid}
       >
         {ABOUT_US_FEATURES.map((feature) => (
-          <Feature {...feature} key={feature.title} />
+          <Feature key={feature.title} {...feature} />
         ))}
       </SimpleGrid>
     </PageBackground>

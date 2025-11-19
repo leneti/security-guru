@@ -3,7 +3,9 @@ import { render } from "@site/test-utils";
 
 jest.mock("@site/components/Logo");
 jest.mock("@mantine/core", () => {
-  const orgMantineCore = jest.requireActual("@mantine/core");
+  const orgMantineCore = jest.requireActual(
+    "@mantine/core",
+  ) as unknown as object;
   return {
     ...orgMantineCore,
     Group: jest.fn(() => <div>Mock Group</div>),

@@ -1,2 +1,2 @@
 export { default as ServiceCard } from "./ServiceCard";
-export * from "./types";
+export type * from "./types";

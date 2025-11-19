@@ -9,7 +9,7 @@ import { CookieSettings } from "./CookieSettings";
 
 export interface CookieDisclaimerProps {
   consentCookie?: string;
-  setCookieConsented(): Promise<void>;
+  setCookieConsented: () => Promise<void>;
 }
 
 export function CookieDisclaimer(props: CookieDisclaimerProps) {
@@ -35,7 +35,7 @@ export function CookieDisclaimer(props: CookieDisclaimerProps) {
             variant="filled"
             size="xs"
             onClick={() => {
-              setCookieConsented();
+              void setCookieConsented();
               close();
             }}
           >

@@ -1,167 +1,196 @@
+import eslintConfigPrettier from "eslint-config-prettier";
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
+import eslintPluginDepend from "eslint-plugin-depend";
+import { createNodeResolver, importX } from "eslint-plugin-import-x";
+import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
+import eslintpluginNode from "eslint-plugin-n";
+import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+import { configs as eslintPluginRegexpConfig } from "eslint-plugin-regexp";
+import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import tseslint from "typescript-eslint";
+// @ts-expect-error -- Missing types
+import eslintPluginCommentsConfig from "@eslint-community/eslint-plugin-eslint-comments/configs";
+import eslintPluginReact from "@eslint-react/eslint-plugin";
 import { includeIgnoreFile } from "@eslint/compat";
+// eslint-disable-next-line n/no-extraneous-import -- We don't want redundant dependencies
 import js from "@eslint/js";
+import eslintPluginNext from "@next/eslint-plugin-next";
+// eslint-disable-next-line n/no-extraneous-import -- We don't want redundant dependencies
+import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const gitignorePath = path.join(__dirname, ".gitignore");
 
-export default [
-  includeIgnoreFile(gitignorePath),
-  js.configs.recommended,
+const tsConfig = [
+  ...tseslint.configs.recommendedTypeChecked.map((config) => ({
+    ...config,
+    files: ["**/*.{js,mjs,cjs,jsx,mjsx,cjsx,ts,mts,cts,tsx,mtsx,ctsx}"],
+  })),
   {
-    ignores: [
-      "node_modules/",
-      ".next/",
-      "out/",
-      "dist/",
-      "build/",
-      "coverage/",
-      "*.config.js",
-      "*.config.ts",
-      "*.config.mjs",
-      "jest.setup.ts",
-      "playwright.config.ts",
-      "amplify.yml",
-      "next-sitemap.config.js",
-    ],
+    ...(eslintPluginCommentsConfig as { recommended: FlatConfig.Config })
+      .recommended,
+    rules: {
+      ...(eslintPluginCommentsConfig as { recommended: FlatConfig.Config })
+        .recommended.rules,
+      // We will require descriptions
+      "@eslint-community/eslint-comments/require-description": "error",
+    },
+  },
+  eslintpluginNode.configs["flat/recommended"],
+  {
+    ...importX.flatConfigs.recommended,
+    rules: {
+      ...importX.flatConfigs.recommended.rules,
+      "import-x/no-named-as-default-member": "off",
+    },
+  },
+  importX.flatConfigs.typescript,
+  eslintPluginUnicorn.configs.recommended,
+  {
+    ...eslintPluginRegexpConfig["flat/recommended"],
+    rules: {
+      ...eslintPluginRegexpConfig["flat/recommended"].rules,
+      "regexp/no-obscure-range": "off",
+    },
   },
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
-    languageOptions: {
-      parser: require("@typescript-eslint/parser"),
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: "latest",
-        sourceType: "module",
-        project: "./tsconfig.json",
-        tsconfigRootDir: __dirname,
-      },
-      globals: {
-        console: "readonly",
-        global: "readonly",
-        window: "readonly",
-        document: "readonly",
-        navigator: "readonly",
-        history: "readonly",
-        location: "readonly",
-        localStorage: "readonly",
-        sessionStorage: "readonly",
-        Intl: "readonly",
-        URL: "readonly",
-        URLSearchParams: "readonly",
-        requestAnimationFrame: "readonly",
-        cancelAnimationFrame: "readonly",
-        setTimeout: "readonly",
-        clearTimeout: "readonly",
-        setInterval: "readonly",
-        clearInterval: "readonly",
-        Promise: "readonly",
-        Map: "readonly",
-        Set: "readonly",
-        WeakMap: "readonly",
-        WeakSet: "readonly",
-        Array: "readonly",
-        Object: "readonly",
-        String: "readonly",
-        Number: "readonly",
-        Boolean: "readonly",
-        Date: "readonly",
-        RegExp: "readonly",
-        Error: "readonly",
-        TypeError: "readonly",
-        SyntaxError: "readonly",
-        ReferenceError: "readonly",
-        RangeError: "readonly",
-        EvalError: "readonly",
-        URIError: "readonly",
-        JSON: "readonly",
-        Math: "readonly",
-        fetch: "readonly",
-        Blob: "readonly",
-        File: "readonly",
-        FormData: "readonly",
-        Headers: "readonly",
-        Request: "readonly",
-        Response: "readonly",
-        addEventListener: "readonly",
-        removeEventListener: "readonly",
-        dispatchEvent: "readonly",
-        Event: "readonly",
-        CustomEvent: "readonly",
-        performance: "readonly",
-        indexedDB: "readonly",
-        caches: "readonly",
-        isSecureContext: "readonly",
-        onLine: "readonly",
-        process: "readonly",
-        React: "readonly",
-        module: "readonly",
-        require: "readonly",
-        __dirname: "readonly",
-        __filename: "readonly",
-        exports: "readonly",
-        jest: "readonly",
-      },
-    },
-    plugins: {
-      "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
-    },
+    ...(eslintPluginDepend.configs!["flat/recommended"] as FlatConfig.Config),
     rules: {
-      "no-unused-vars": "off",
+      ...(eslintPluginDepend.configs!["flat/recommended"] as FlatConfig.Config)
+        .rules,
+      "depend/ban-dependencies": [
+        "error",
+        {
+          presets: ["native", "microutilities", "preferred"],
+          allowed: ["eslint-plugin-next", "find-up", "lint-staged", "dotenv"],
+        },
+      ],
+    },
+  },
+  {
+    files: ["**/*.{js,mjs,cjs,jsx,mjsx,cjsx,ts,mts,cts,tsx,mtsx,ctsx}"],
+    rules: {
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
-          args: "all",
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
           argsIgnorePattern: "^_",
           caughtErrors: "all",
           caughtErrorsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
           ignoreRestSiblings: true,
         },
       ],
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksVoidReturn: {
+            attributes: false,
+          },
+        },
+      ],
+      "@typescript-eslint/no-unnecessary-condition": [
+        "error",
+        { allowConstantLoopConditions: true },
+      ],
+      "@typescript-eslint/consistent-type-exports": "error",
       "@typescript-eslint/consistent-type-imports": "error",
-      "prefer-const": "error",
-      "no-var": "error",
-      "object-shorthand": "error",
-      "prefer-template": "error",
-      "template-curly-spacing": "error",
-      "arrow-spacing": "error",
-      "comma-dangle": ["error", "always-multiline"],
-      "comma-spacing": ["error", { before: false, after: true }],
-      "key-spacing": ["error", { beforeColon: false, afterColon: true }],
-      "keyword-spacing": "error",
-      "no-trailing-spaces": "error",
-      "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0 }],
-      "eol-last": ["error", "always"],
-      "space-before-blocks": "error",
-      "space-in-parens": ["error", "never"],
-      "space-infix-ops": "error",
-      "spaced-comment": ["error", "always"],
-      quotes: ["error", "double", { avoidEscape: true }],
-      semi: ["error", "always"],
-      "semi-spacing": ["error", { before: false, after: true }],
     },
-  },
-  {
-    files: ["**/*.{test,spec}.{js,jsx,ts,tsx}"],
+    settings: {
+      "import-x/resolver-next": [
+        createTypeScriptImportResolver(),
+        createNodeResolver(),
+      ],
+    },
     languageOptions: {
-      globals: {
-        describe: "readonly",
-        it: "readonly",
-        test: "readonly",
-        expect: "readonly",
-        vi: "readonly",
-        beforeEach: "readonly",
-        afterEach: "readonly",
-        beforeAll: "readonly",
-        afterAll: "readonly",
-        jest: "readonly",
+      parserOptions: {
+        projectService: true,
       },
     },
   },
+  {
+    files: ["**/*.{cjs,cjsx,cts,ctsx}"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
+  {
+    files: ["**/*.js"],
+    rules: {
+      "unicorn/prefer-module": "off",
+    },
+  },
+  {
+    rules: {
+      "n/no-unsupported-features/node-builtins": [
+        "error",
+        { allowExperimental: true },
+      ],
+      "n/no-missing-import": "off",
+      "n/no-process-exit": "off",
+      "unicorn/no-null": "off",
+      "unicorn/no-array-reduce": "off",
+      "unicorn/prevent-abbreviations": "off",
+      "unicorn/filename-case": "off",
+      "unicorn/no-useless-undefined": "off",
+      "unicorn/no-array-sort": "off",
+      "unicorn/no-array-method-this-argument": "off",
+      "unicorn/prefer-top-level-await": "off",
+      "unicorn/throw-new-error": "off",
+      "unicorn/import-style": [
+        "error",
+        {
+          styles: {
+            chalk: {
+              default: false,
+            },
+          },
+          extendDefaultStyles: true,
+        },
+      ],
+    },
+  },
+];
+
+const nextConfig = [
+  { name: "Generated Next.js files", ignores: ["next-env.d.ts"] },
+  {
+    plugins: {
+      "@next/next": eslintPluginNext,
+    },
+    rules: {
+      ...eslintPluginNext.configs.recommended.rules,
+      ...eslintPluginNext.configs["core-web-vitals"].rules,
+    },
+  },
+];
+
+const reactConfig = [
+  eslintPluginJsxA11y.flatConfigs.recommended,
+  eslintPluginReact.configs["recommended-type-checked"],
+  {
+    plugins: {
+      "react-hooks": eslintPluginReactHooks,
+    },
+    rules: {
+      ...eslintPluginReactHooks.configs["recommended-latest"].rules,
+    },
+  },
+  {
+    settings: { react: { version: "detect" } },
+    rules: { "n/no-unsupported-features/node-builtins": "off" },
+  },
+];
+
+export default [
+  includeIgnoreFile(gitignorePath),
+  js.configs.recommended,
+  ...tsConfig,
+  ...nextConfig,
+  ...reactConfig,
+  eslintConfigPrettier,
 ];

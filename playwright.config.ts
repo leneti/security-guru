@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
-import path from "path";
+import path from "node:path";
 import { defineConfig, devices } from "@playwright/test";
 
+// eslint-disable-next-line unicorn/prefer-module -- Playwright config files still use CJS
 dotenv.config({ path: path.resolve(__dirname, ".env.example") });
 
 export default defineConfig({

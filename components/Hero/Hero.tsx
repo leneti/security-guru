@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import Image from "next/image";
 import { Button, Container, Overlay, Text, Title } from "@mantine/core";
 import houses from "@site/assets/unsplash-houses.webp";

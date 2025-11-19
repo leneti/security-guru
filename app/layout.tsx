@@ -42,6 +42,7 @@ export default async function RootLayout({
     const cookieStore = await cookies();
     cookieStore.set(Cookies.Consent, "1");
   }
+  const cookieStore = await cookies();
   return (
     <html lang="lt" {...mantineHtmlProps}>
       <head>
@@ -65,7 +66,7 @@ export default async function RootLayout({
           {children}
 
           <CookieDisclaimer
-            consentCookie={(await cookies()).get(Cookies.Consent)?.value}
+            consentCookie={cookieStore.get(Cookies.Consent)?.value}
             setCookieConsented={setCookieConsented}
           />
 
