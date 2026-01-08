@@ -1,26 +1,95 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Brand Colors */
+  --color-peach: #ffbc85;
+  --color-peach-light: #ffd4a8;
+  --color-peach-dark: #ffa665;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-midnight: #021614;
+  --color-midnight-light: #0a2a22;
+  --color-midnight-dark: #000f0c;
+
+  --color-sage: #c3c9b5;
+  --color-sage-light: #d4d9c8;
+  --color-sage-dark: #a8af98;
+
+  --color-mauve: #9b849a;
+  --color-mauve-light: #b5a0b3;
+  --color-mauve-dark: #7e6a7d;
+
+  /* Semantic Colors */
+  --color-primary: var(--color-peach);
+  --color-primary-hover: var(--color-peach-dark);
+  --color-background: #f9faf7;
+  --color-foreground: var(--color-midnight);
+  --color-accent: var(--color-mauve);
+  --color-border: var(--color-sage);
+
+  /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles */
+:root {
+  --background: #f9faf7;
+  --foreground: #021614;
 }
 
+/* Light mode is default - no dark mode override needed */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Utility classes for brand colors */
+.bg-brand-peach {
+  background-color: var(--color-peach);
+}
+
+.bg-brand-midnight {
+  background-color: var(--color-midnight);
+}
+
+.bg-brand-sage {
+  background-color: var(--color-sage);
+}
+
+.bg-brand-mauve {
+  background-color: var(--color-mauve);
+}
+
+.text-brand-peach {
+  color: var(--color-peach);
+}
+
+.text-brand-midnight {
+  color: var(--color-midnight);
+}
+
+.text-brand-sage {
+  color: var(--color-sage);
+}
+
+.text-brand-mauve {
+  color: var(--color-mauve);
+}
+
+.border-brand-peach {
+  border-color: var(--color-peach);
+}
+
+.border-brand-midnight {
+  border-color: var(--color-midnight);
+}
+
+.border-brand-sage {
+  border-color: var(--color-sage);
+}
+
+.border-brand-mauve {
+  border-color: var(--color-mauve);
 }

@@ -139,9 +139,10 @@ database), updated periodically with an external job.
 
 ### Colour palette
 
-**Peach Fuzz:** - #FFBC85 - Primary actions, highlights, sale tags **Midnight Green:** - #021614 -
-Headings, text, footer, strong contrast **Sage Mist:** - #C3C9B5 - Backgrounds, secondary buttons,
-borders **Dusty Mauve:** - #9B849A - Accents, icons, typography highlights
+**Peach Fuzz:** - #FFBC85 - Primary actions, highlights, sale tags  
+**Midnight Green:** - #021614 - Headings, text, footer, strong contrast  
+**Sage Mist:** - #C3C9B5 - Backgrounds, secondary buttons, borders  
+**Dusty Mauve:** - #9B849A - Accents, icons, typography highlights
 
 ### Asset files
 
@@ -153,3 +154,17 @@ the logo, colour palette (PDF).
 - Use `yarn` as the package manager to run scripts
   - Use `yarn dlx --quiet` to run external scripts without installing them to the project, if
     necessary
+- Run TS typechecking consistently, and ESLint occassionally, to check code implementation is
+  correct. Fix issues immediately if possible.
+
+## Code Quality & Linting
+
+**Prioritize Fixes:** Always attempt to resolve ESLint and TypeScript errors by refactoring code. Do
+not disable rules for convenience.
+
+**TypeScript Strictness:**The use of any is strictly prohibited. Use precise types or unknown.
+TypeScript errors should only be ignored as a last resort in extreme edge cases.
+
+**Justification Required:** If a rule must be disabled (via eslint-disable or @ts-ignore), you must
+include a concise comment on the same or preceding line explaining the specific technical necessity
+for the override.
