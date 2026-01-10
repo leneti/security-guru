@@ -44,7 +44,6 @@ export default async function LocaleLayout({ children }: { children: React.React
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="min-h-screen">{children}</main>
-
           <Footer />
         </NextIntlClientProvider>
       </body>

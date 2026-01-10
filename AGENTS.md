@@ -155,7 +155,7 @@ the logo, colour palette (PDF).
   - Use `yarn dlx --quiet` to run external scripts without installing them to the project, if
     necessary
 - Run TS typechecking consistently, and ESLint occassionally, to check code implementation is
-  correct. Fix issues immediately if possible.
+  correct. Only run `yarn build` if you suspect there might be compilation issues.
 
 ## Code Quality & Linting
 
