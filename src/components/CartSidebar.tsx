@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Product } from "@/types";
 
 interface CartSidebarProps {
@@ -47,9 +48,11 @@ export default function CartSidebar({ isOpen, onClose, cart, removeFromCart }: C
           ) : (
             cart.map((item, index) => (
               <div key={`${item.id}-${index}`} className="flex gap-4 p-4 bg-gray-50 rounded-lg">
-                <img
+                <Image
                   src={item.image}
                   alt={item.name}
+                  width={64}
+                  height={64}
                   className="w-16 h-16 object-cover rounded"
                 />
                 <div className="flex-1">

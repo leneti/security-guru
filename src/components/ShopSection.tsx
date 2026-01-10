@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { getProducts, getProductCategories } from "@/lib/inventory";
 import type { Product } from "@/types";
 import CartSidebar from "./CartSidebar";
@@ -150,9 +151,11 @@ export default function ShopSection() {
                 className="bg-white border border-gray-100 rounded-xl p-4 hover:shadow-xl transition-shadow duration-300 group"
               >
                 <div className="relative aspect-square mb-4 bg-gray-50 rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
+                    width={200}
+                    height={200}
                     className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                   />
                   <button

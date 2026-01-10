@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const services = [
   {
     id: "alarm",
@@ -63,9 +65,12 @@ export default function ServicesSection() {
             >
               <div className="h-48 overflow-hidden relative">
                 <div className="absolute inset-0 bg-dark/20 group-hover:bg-dark/0 transition-all z-10"></div>
-                <img
+                <Image
                   src={service.image}
                   alt={service.title}
+                  width={400}
+                  height={200}
+                  unoptimized={true}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 z-20 aspect-square flex items-center justify-center">

@@ -49,7 +49,7 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-6 text-primary">Rekvizitai</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li>MB "Security Guru"</li>
+              <li>MB &quot;Security Guru&quot;</li>
               <li>Įmonės kodas: 306109454</li>
               <li>Vilnius, Lietuva</li>
             </ul>
