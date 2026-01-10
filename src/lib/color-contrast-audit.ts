@@ -4,7 +4,7 @@
  * Based on WCAG 2.1 guidelines for color contrast ratios
  */
 
-import { checkColorContrast, brandColors } from "./color-contrast.test";
+import { checkColorContrast } from "./color-contrast.test";
 
 // Color combinations found in the website components
 const colorCombinations = [

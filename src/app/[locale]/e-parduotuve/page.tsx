@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { getProducts, formatPrice } from "@/lib/inventory";
 import type { Product } from "@/types";
+import Link from "next/link";
 
 export default async function EShopPage() {
   const t = await getTranslations("EShop");
@@ -49,12 +50,12 @@ export default async function EShopPage() {
                 Jei nerandate tinkamo produkto arba reikia specialaus sprendimo, susisiekite su
                 mumis. Mes parinksime geriausią variantą jūsų poreikiams.
               </p>
-              <a
+              <Link
                 href="/kontaktai"
                 className="inline-flex bg-peach text-midnight px-8 py-3 rounded-lg font-semibold hover:bg-peach-dark transition-colors"
               >
                 Susisiekti
-              </a>
+              </Link>
             </div>
           </div>
         </div>

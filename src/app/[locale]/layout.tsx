@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Header from "@/components/Header";
@@ -7,9 +7,10 @@ import Footer from "@/components/Footer";
 import PreFooterSection from "@/components/PreFooterSection";
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
 
 const geistMono = Geist_Mono({
@@ -32,8 +33,14 @@ export default async function LocaleLayout({ children }: { children: React.React
 
   return (
     <html lang="lt">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+          rel="stylesheet"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-midnight`}
+        className={`${manrope.variable} ${geistMono.variable} antialiased bg-white text-midnight font-sans`}
       >
         <NextIntlClientProvider messages={messages}>
           <Header />
