@@ -4,7 +4,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import PreFooterSection from "@/components/PreFooterSection";
 import "../globals.css";
 
 const manrope = Manrope({
@@ -45,9 +44,6 @@ export default async function LocaleLayout({ children }: { children: React.React
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="min-h-screen">{children}</main>
-
-          {/* Pre-footer Section */}
-          <PreFooterSection />
 
           <Footer />
         </NextIntlClientProvider>

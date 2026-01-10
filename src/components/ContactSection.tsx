@@ -18,20 +18,20 @@ export default function ContactSection() {
     city: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validatePhone = (phone: string) => {
     // Accept +3706XXXXXXXX or 86XXXXXXXX
     const re = /^(\+3706\d{7}|86\d{8})$/;
-    return re.test(phone.replace(/\s/g, ''));
+    return re.test(phone.replace(/\s/g, ""));
   };
 
   const validateEmail = (email: string) => {
@@ -65,7 +65,7 @@ export default function ContactSection() {
         city: "",
         email: "",
         phone: "",
-        message: ""
+        message: "",
       });
       setTimeout(() => setStatus("idle"), 5000);
     }, 1500);
@@ -152,7 +152,12 @@ export default function ContactSection() {
                         name="type"
                         value={type}
                         checked={formData.type === type}
-                        onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value as "Namams" | "Verslui" }))}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            type: e.target.value as "Namams" | "Verslui",
+                          }))
+                        }
                         className="hidden"
                       />
                       {type}
@@ -250,7 +255,7 @@ export default function ContactSection() {
                     ? "bg-gray-400 cursor-not-allowed"
                     : status === "success"
                     ? "bg-green-600 text-white"
-                    : "bg-dark text-white hover:bg-opacity-90"
+                    : "bg-midnight text-white hover:bg-opacity-90"
                 }`}
               >
                 {status === "loading"

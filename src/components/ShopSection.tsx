@@ -12,6 +12,8 @@ export default function ShopSection() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8); // Default to larger screens
 
   useEffect(() => {
     async function loadData() {
@@ -32,9 +34,59 @@ export default function ShopSection() {
     loadData();
   }, []);
 
+  // Responsive items per page
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      setItemsPerPage(window.innerWidth < 768 ? 6 : 8);
+    };
+
+    updateItemsPerPage(); // Set initial value
+    window.addEventListener('resize', updateItemsPerPage);
+
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
   const filteredProducts = filter === "Visos prekės"
     ? products
     : products.filter(product => product.category === filter);
+
+  // Reset to first page when filter or items per page changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filter, itemsPerPage]);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+  // Generate page numbers for pagination controls
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisiblePages = 5;
+
+    if (totalPages <= maxVisiblePages) {
+      // Show all pages if total is small
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Show pages with ellipsis logic
+      if (currentPage <= 3) {
+        // Near the start
+        pages.push(1, 2, 3, 4, '...', totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        // Near the end
+        pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        // In the middle
+        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+      }
+    }
+
+    return pages;
+  };
 
   const addToCart = (product: Product) => {
     setCart(prevCart => [...prevCart, product]);
@@ -92,7 +144,7 @@ export default function ShopSection() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
+            {paginatedProducts.map((product) => (
               <div
                 key={product.id}
                 className="bg-white border border-gray-100 rounded-xl p-4 hover:shadow-xl transition-shadow duration-300 group"
@@ -105,7 +157,7 @@ export default function ShopSection() {
                   />
                   <button
                     onClick={() => addToCart(product)}
-                    className="absolute bottom-2 right-2 bg-primary text-dark p-2 rounded-full shadow-lg transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white"
+                    className="absolute bottom-2 right-2 bg-primary text-dark p-2 rounded-full shadow-lg aspect-square flex items-center justify-center transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white"
                   >
                     <span className="material-symbols-outlined">add_shopping_cart</span>
                   </button>
@@ -127,6 +179,64 @@ export default function ShopSection() {
               </div>
             ))}
           </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center mt-12 space-x-2">
+              {/* Previous Button */}
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  currentPage === 1
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
+                }`}
+              >
+                <span className="material-symbols-outlined text-sm">chevron_left</span>
+              </button>
+
+              {/* Page Numbers */}
+              <div className="flex space-x-1">
+                {getPageNumbers().map((page, index) => (
+                  <button
+                    key={index}
+                    onClick={() => typeof page === 'number' && setCurrentPage(page)}
+                    disabled={page === '...'}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      page === currentPage
+                        ? "bg-dark text-white"
+                        : page === '...'
+                        ? "bg-transparent text-gray-400 cursor-default"
+                        : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+
+              {/* Next Button */}
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  currentPage === totalPages
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
+                }`}
+              >
+                <span className="material-symbols-outlined text-sm">chevron_right</span>
+              </button>
+            </div>
+          )}
+
+          {/* Results Info */}
+          {filteredProducts.length > 0 && (
+            <div className="text-center mt-6 text-sm text-gray-500">
+              Rodoma {startIndex + 1}-{Math.min(endIndex, filteredProducts.length)} iš {filteredProducts.length} prekių
+            </div>
+          )}
         </div>
       </section>
 

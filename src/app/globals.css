@@ -122,6 +122,12 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.glass-no-border {
+  background: rgba(var(--color-background-rgb), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 .glass-strong {
   background: rgba(var(--color-background-rgb), 0.85);
   backdrop-filter: blur(16px);
