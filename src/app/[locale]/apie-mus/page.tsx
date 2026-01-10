@@ -65,7 +65,7 @@ export default function AboutPage() {
       <section className="bg-midnight text-offWhite py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center">{t("title")}</h1>
-          <p className="text-xl text-peach text-center mt-4 font-medium">{t("subtitle")}</p>
+          <p className="text-xl text-offWhite text-center mt-4 font-medium">{t("subtitle")}</p>
         </div>
       </section>
 

@@ -31,22 +31,35 @@ export interface ApiResponse<T = unknown> {
 }
 
 // Product Types (for e-shop inventory)
-export interface Product {
-  id: string;
+export interface WarehouseData {
   name: string;
-  category: string;
-  description: string;
-  price: number;
-  image: string;
-  inStock: boolean;
-  sku?: string;
+  quantity: number;
+}
+
+export interface ProductItem {
+  name: string;
+  price: string; // Format: "11,99 €"
+  href: string; // Remote image URL
+  warehouseData: WarehouseData[];
 }
 
 export interface ProductCategory {
-  id: string;
+  categoryUrl: string; // Can be ignored for debugging
+  productItems: ProductItem[];
+  requestsInCategory: number;
+}
+
+export interface Product {
+  id: string; // Generated from href or name
   name: string;
-  description: string;
-  productCount: number;
+  category: string;
+  price: number; // Parsed from price string
+  image: string; // From href
+  inStock: boolean; // Calculated from total quantity > 0
+  totalQuantity: number; // Sum of all warehouse quantities
+  displayQuantity: string; // "10+" if >= 10, else actual number
+  sku?: string; // Not available in real format
+  description?: string; // Not available in real format
 }
 
 export interface InventoryMeta {
@@ -59,6 +72,9 @@ export interface InventoryData {
   categories: ProductCategory[];
   meta: InventoryMeta;
 }
+
+// Type for the raw inventory format from the supplier
+export type RawInventoryData = ProductCategory[];
 
 // Service Types
 export interface Service {

@@ -3,6 +3,8 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import logoIcon from "@/assets/logo/SVG/01_Ikona/Ikona_Oranzine.svg";
+import logoWordmark from "@/assets/logo/SVG/04_Wordmark/Wordmark_Tamsiai_Zalia.svg";
 
 export default function Footer() {
   const t = useTranslations("Footer");
@@ -10,49 +12,55 @@ export default function Footer() {
   const nav = useTranslations("Navigation");
 
   return (
-    <footer className="bg-midnight text-sage-light">
+    <footer className="bg-white text-midnight">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Image
-                src="/assets/logo/SVG/03_Horizontalus_Logotipas/HLogotipas_Oranzine.svg"
-                alt="SECURITY GURU"
-                width={140}
+                src={logoIcon}
+                alt="SECURITY GURU Icon"
+                width={24}
                 height={24}
               />
+              <Image
+                src={logoWordmark}
+                alt="SECURITY GURU"
+                width={116}
+                height={18}
+              />
             </div>
-            <p className="text-sm text-sage">{t("tagline")}</p>
-            <p className="text-xs text-sage-dark">{common("companyCode")}</p>
+            <p className="text-sm text-midnight/70">{t("tagline")}</p>
+            <p className="text-xs text-midnight/50">{common("companyCode")}</p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-peach font-semibold mb-4">{t("quickLinks")}</h3>
+            <h3 className="text-midnight font-semibold mb-4">{t("quickLinks")}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-sm hover:text-peach transition-colors">
+                <Link href="/" className="text-sm text-midnight/70 hover:text-midnight transition-colors">
                   {nav("home")}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm hover:text-peach transition-colors">
+                <Link href="/services" className="text-sm text-midnight/70 hover:text-midnight transition-colors">
                   {nav("services")}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sm hover:text-peach transition-colors">
+                <Link href="/about" className="text-sm text-midnight/70 hover:text-midnight transition-colors">
                   {nav("about")}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm hover:text-peach transition-colors">
+                <Link href="/contact" className="text-sm text-midnight/70 hover:text-midnight transition-colors">
                   {nav("contact")}
                 </Link>
               </li>
               <li>
-                <Link href="/eshop" className="text-sm hover:text-peach transition-colors">
+                <Link href="/eshop" className="text-sm text-midnight/70 hover:text-midnight transition-colors">
                   {nav("eshop")}
                 </Link>
               </li>
@@ -61,23 +69,23 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-peach font-semibold mb-4">{t("services")}</h3>
+            <h3 className="text-midnight font-semibold mb-4">{t("services")}</h3>
             <ul className="space-y-2">
-              <li className="text-sm">Apsaugos signalizacijos</li>
-              <li className="text-sm">Įeigos kontrolės</li>
-              <li className="text-sm">Priešgaisrinės signalizacijos</li>
-              <li className="text-sm">Vaizdo stebėjimo</li>
-              <li className="text-sm">Integruoti sprendimai</li>
+              <li className="text-sm text-midnight/70">Apsaugos signalizacijos</li>
+              <li className="text-sm text-midnight/70">Įeigos kontrolės</li>
+              <li className="text-sm text-midnight/70">Priešgaisrinės signalizacijos</li>
+              <li className="text-sm text-midnight/70">Vaizdo stebėjimo</li>
+              <li className="text-sm text-midnight/70">Integruoti sprendimai</li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-peach font-semibold mb-4">{t("contactInfo")}</h3>
+            <h3 className="text-midnight font-semibold mb-4">{t("contactInfo")}</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center space-x-2">
                 <svg
-                  className="w-4 h-4 text-peach"
+                  className="w-4 h-4 text-midnight/70"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -89,11 +97,11 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>{common("phone")}</span>
+                <span className="text-midnight/70">{common("phone")}</span>
               </li>
               <li className="flex items-center space-x-2">
                 <svg
-                  className="w-4 h-4 text-peach"
+                  className="w-4 h-4 text-midnight/70"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -105,7 +113,7 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>{common("phone2")}</span>
+                <span className="text-midnight/70">{common("phone2")}</span>
               </li>
               <li className="flex items-center space-x-2">
                 <svg
@@ -121,11 +129,11 @@ export default function Footer() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span>{common("email")}</span>
+                <span className="text-midnight/70">{common("email")}</span>
               </li>
               <li className="flex items-center space-x-2">
                 <svg
-                  className="w-4 h-4 text-peach"
+                  className="w-4 h-4 text-midnight/70"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -137,11 +145,11 @@ export default function Footer() {
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>{common("workingHours")}</span>
+                <span className="text-midnight/70">{common("workingHours")}</span>
               </li>
               <li className="flex items-center space-x-2">
                 <svg
-                  className="w-4 h-4 text-peach"
+                  className="w-4 h-4 text-midnight/70"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -159,7 +167,7 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>{common("serviceArea")}</span>
+                <span className="text-midnight/70">{common("serviceArea")}</span>
               </li>
             </ul>
 
@@ -169,7 +177,7 @@ export default function Footer() {
                 href="https://www.facebook.com/people/Security-guru/100088856047734/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sage-light hover:text-peach transition-colors"
+                className="text-midnight/70 hover:text-midnight transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -180,7 +188,7 @@ export default function Footer() {
                 href="https://www.instagram.com/mbsecurityguru/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sage-light hover:text-peach transition-colors"
+                className="text-midnight/70 hover:text-midnight transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -192,7 +200,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-sage-dark mt-8 pt-8 text-center text-sm text-sage-dark">
+        <div className="border-t border-sage/30 mt-8 pt-8 text-center text-sm text-midnight/50">
           <p>
             &copy; {new Date().getFullYear()} SECURITY GURU. {t("rights")}
           </p>

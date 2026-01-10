@@ -22,10 +22,11 @@
   /* Semantic Colors */
   --color-primary: var(--color-peach);
   --color-primary-hover: var(--color-peach-dark);
-  --color-background: #f9faf7;
+  --color-background: #ffffff;
   --color-foreground: var(--color-midnight);
   --color-accent: var(--color-mauve);
   --color-border: var(--color-sage);
+  --color-offWhite: #f9faf7;
 
   /* Typography */
   --font-sans: var(--font-geist-sans);
@@ -34,8 +35,10 @@
 
 /* Base styles */
 :root {
-  --background: #f9faf7;
+  --background: #ffffff;
   --foreground: #021614;
+  --color-background-rgb: 255, 255, 255;
+  --color-offWhite-rgb: 249, 250, 247;
 }
 
 /* Light mode is default - no dark mode override needed */
@@ -92,4 +95,27 @@ body {
 
 .border-brand-mauve {
   border-color: var(--color-mauve);
+}
+
+/* Glass-morphism utilities */
+.glass {
+  background: rgba(var(--color-background-rgb), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-strong {
+  background: rgba(var(--color-background-rgb), 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-card {
+  background: rgba(var(--color-offWhite-rgb), 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(2, 22, 20, 0.08);
 }

@@ -1,160 +1,78 @@
-{
-  "products": [
-    {
-      "id": "cam-001",
-      "name": "IP vaizdo stebėjimo kamera",
-      "category": "Vaizdo stebėjimas",
-      "description": "Aukštos kokybės IP kamera su 4K raiška, naktiniu matymu ir judėjimo aptikimu. Tinka vidaus ir išorės stebėjimui.",
-      "price": 189.99,
-      "image": "/assets/products/camera-ip.svg",
-      "inStock": true,
-      "sku": "CAM-IP-4K"
-    },
-    {
-      "id": "cam-002",
-      "name": "PTZ valdoma kamera",
-      "category": "Vaizdo stebėjimas",
-      "description": "Valdoma PTZ (Pan-Tilt-Zoom) kamera su 20x optiniu priartinimu. Idealūs stambiuobjektų stebėjimui.",
-      "price": 449.99,
-      "image": "/assets/products/camera-ptz.svg",
-      "inStock": true,
-      "sku": "CAM-PTZ-20X"
-    },
-    {
-      "id": "alarm-001",
-      "name": "Belaidis įsibrovimo signalizacijos rinkinys",
-      "category": "Apsaugos sistemos",
-      "description": "Pilnas belaidis signalizacijos rinkinys su judėjimo detektoriais, durų/magnetinių jutiklių ir valdymo pultu.",
-      "price": 299.99,
-      "image": "/assets/products/alarm-wireless.svg",
-      "inStock": true,
-      "sku": "ALARM-WL-KIT"
-    },
-    {
-      "id": "alarm-002",
-      "name": "Judėjimo detektorius su fotoaparatu",
-      "category": "Apsaugos sistemos",
-      "description": "Judėjimo detektorius su integruota kamera, leidžiančia patvirtinti aliarmo signalus nuotraukomis.",
-      "price": 129.99,
-      "image": "/assets/products/motion-detector.svg",
-      "inStock": true,
-      "sku": "MOTION-PIC"
-    },
-    {
-      "id": "access-001",
-      "name": "Prieigos kontrolės skaitytuvas",
-      "category": "Įeigos kontrolė",
-      "description": "Belaidis RFID/NFC skaitytuvas su biometriniu piršto atspaudų skaitytuvu. Palaiko iki 1000 vartotojų.",
-      "price": 179.99,
-      "image": "/assets/products/access-reader.svg",
-      "inStock": true,
-      "sku": "ACCESS-RFID-BIO"
-    },
-    {
-      "id": "access-002",
-      "name": "Išmanusis elektromagnetinės spynos valdiklis",
-      "category": "Įeigos kontrolė",
-      "description": "Išmanusis spgvaldiklis su WiFi ryšiu, valdomas per mobiliąją programėlę. palaiko laikinas ir nuolatinės prieigos raktus.",
-      "price": 89.99,
-      "image": "/assets/products/smart-lock.svg",
-      "inStock": true,
-      "sku": "SMART-LOCK-WF"
-    },
-    {
-      "id": "fire-001",
-      "name": "Priešgaisrinis dūmų detektorius",
-      "category": "Priešgaisrinės sistemos",
-      "description": "Optinis dūmų detektorius su įmontuota sirena ir temperatūros jutikliu. Lengvas montavimas ir priežiūra.",
-      "price": 34.99,
-      "image": "/assets/products/smoke-detector.svg",
-      "inStock": true,
-      "sku": "FIRE-SMOKE-OPT"
-    },
-    {
-      "id": "fire-002",
-      "name": "Priešgaisrinis šilumos detektorius",
-      "category": "Priešgaisrinės sistemos",
-      "description": "Greitas šilumos pokyčių aptikimas. Idealu vietose, kur dūmų detektoriai gali sukelti melagingus aliarmus.",
-      "price": 44.99,
-      "image": "/assets/products/heat-detector.svg",
-      "inStock": true,
-      "sku": "FIRE-HEAT-FIX"
-    },
-    {
-      "id": "acc-001",
-      "name": "HD vaizdo įrašymo registratūra",
-      "category": "Priedai",
-      "description": "8 kanalų DVR su 2TB HDD, palaikantis 1080p įrašymą. Veikia su bet kokia analogine kamera.",
-      "price": 249.99,
-      "image": "/assets/products/dvr-8ch.svg",
-      "inStock": true,
-      "sku": "DVR-8CH-2TB"
-    },
-    {
-      "id": "acc-002",
-      "name": "NVS (Network Video Recorder)",
-      "category": "Priedai",
-      "description": "16 kanalų NVS su 4TB talpykla, palaikantis 4K IP kameras. Su nuotolinio peržiūros funkcija.",
-      "price": 399.99,
-      "image": "/assets/products/nvr-16ch.svg",
-      "inStock": true,
-      "sku": "NVR-16CH-4TB"
-    },
-    {
-      "id": "acc-003",
-      "name": " Maitimo šaltinis",
-      "category": "Priedai",
-      "description": "Stabilizuotas 12V/5A maitinimo šaltinis su 4 išėjimais. Apsauga nuo trumpo jungimo ir perkrovos.",
-      "price": 24.99,
-      "image": "/assets/products/power-supply.svg",
-      "inStock": true,
-      "sku": "PSU-12V-5A"
-    },
-    {
-      "id": "acc-004",
-      "name": "Koaksialinis kabelis 100m",
-      "category": "Priedai",
-      "description": "Aukštos kokybės RG59 koaksialinis kabelis su varine šerdimi. Tinka vaizdo signalo perdavimui.",
-      "price": 49.99,
-      "image": "/assets/products/coaxial-cable.svg",
-      "inStock": true,
-      "sku": "CABLE-RG59-100M"
-    }
-  ],
-  "categories": [
-    {
-      "id": "cat-cameras",
-      "name": "Vaizdo stebėjimas",
-      "description": "IP ir analoginės stebėjimo kameros",
-      "productCount": 2
-    },
-    {
-      "id": "cat-alarm",
-      "name": "Apsaugos sistemos",
-      "description": "Signalizacijos jutikliai ir valdymo sistemos",
-      "productCount": 2
-    },
-    {
-      "id": "cat-access",
-      "name": "Įeigos kontrolė",
-      "description": "Prieigos skaitytuvai ir spgvaldikliai",
-      "productCount": 2
-    },
-    {
-      "id": "cat-fire",
-      "name": "Priešgaisrinės sistemos",
-      "description": "Dūmų ir šilumos detektoriai",
-      "productCount": 2
-    },
-    {
-      "id": "cat-accessories",
-      "name": "Priedai",
-      "description": "Kabeliai, maitinimo šaltiniai, įrašymo įrenginiai",
-      "productCount": 4
-    }
-  ],
-  "meta": {
-    "lastUpdated": "2025-01-08T00:00:00Z",
-    "version": "1.0.0"
+[
+  {
+    "categoryUrl": "https://bkgrupe.lt/lt/ip-vaizdo-apsauga.html",
+    "productItems": [
+      {
+        "name": "Atminties kortelė MicroSD 64GB EZVIZ CS-CMT-CARDT64G-D",
+        "price": "11,99 €",
+        "href": "https://bkgrupe.lt/lt/ip-vaizdo-apsauga/atminties-kortele-microsd-64gb-ezviz-cs-cmt-cardt64g-d.html",
+        "warehouseData": [
+          {
+            "name": "Centrinis sandėlys",
+            "quantity": 10
+          },
+          {
+            "name": "Kaunas",
+            "quantity": 10
+          },
+          {
+            "name": "Vilnius",
+            "quantity": 10
+          },
+          {
+            "name": "Vilnius (Vilkpėdė)",
+            "quantity": 0
+          },
+          {
+            "name": "Klaipėda",
+            "quantity": 10
+          },
+          {
+            "name": "Šiauliai",
+            "quantity": 6
+          },
+          {
+            "name": "Panevėžys (Baltic IQ)",
+            "quantity": 10
+          }
+        ]
+      },
+      {
+        "name": "Montavimo bazė Hikvision DS-1280ZJ-XS",
+        "price": "19,00 €",
+        "href": "https://bkgrupe.lt/lt/ip-vaizdo-apsauga/montavimo-baze-hikvision-ds-1280zj-xs.html",
+        "warehouseData": [
+          {
+            "name": "Centrinis sandėlys",
+            "quantity": 100
+          },
+          {
+            "name": "Kaunas",
+            "quantity": 10
+          },
+          {
+            "name": "Vilnius",
+            "quantity": 10
+          },
+          {
+            "name": "Vilnius (Vilkpėdė)",
+            "quantity": 100
+          },
+          {
+            "name": "Klaipėda",
+            "quantity": 10
+          },
+          {
+            "name": "Šiauliai",
+            "quantity": 10
+          },
+          {
+            "name": "Panevėžys (Baltic IQ)",
+            "quantity": 10
+          }
+        ]
+      }
+    ],
+    "requestsInCategory": 52
   }
-}
+]

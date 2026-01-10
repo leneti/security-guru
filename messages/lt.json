@@ -118,5 +118,10 @@
     "workingHours": "I-VII: 9:00 - 21:00",
     "serviceArea": "Vilnius ir Vilniaus apskritis",
     "companyCode": "Įmonės kodas: 306109454"
+  },
+  "PreFooter": {
+    "title": "Pasitikėkite savo saugumu mums",
+    "subtitle": "Su daugiau nei 10 metų patirtimi saugumo srityje, mes esame pasiruošę apsaugoti tai, kas jums svarbiausia",
+    "cta": "Susisiekti dabar"
   }
 }

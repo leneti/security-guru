@@ -68,21 +68,27 @@ function ProductCard({ product }: { product: Product }) {
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Product Image */}
       <div className="relative h-48 bg-sage-light flex items-center justify-center overflow-hidden">
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-        {!product.inStock && (
-          <div className="absolute top-2 right-2 bg-gray-500 text-white text-xs px-2 py-1 rounded">
-            Nėra sandėlyje
-          </div>
-        )}
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            // Fallback to a placeholder if image fails to load
+            const target = e.target as HTMLImageElement;
+            target.src = "/assets/products/camera-ip.svg"; // Default fallback image
+          }}
+        />
+        <div className="absolute top-2 right-2 bg-midnight text-sage-light text-xs px-2 py-1 rounded">
+          Sandėlyje: {product.displayQuantity}
+        </div>
       </div>
 
       {/* Product Info */}
       <div className="p-5">
-        <p className="text-xs text-peach font-medium mb-1 uppercase tracking-wide">
+        <p className="text-xs text-midnight-dark font-medium mb-1 uppercase tracking-wide">
           {product.category}
         </p>
         <h3 className="text-midnight font-semibold text-lg mb-2 line-clamp-2">{product.name}</h3>
-        <p className="text-gray-500 text-sm mb-4 line-clamp-2">{product.description}</p>
 
         {/* Price and Action */}
         <div className="flex items-center justify-between">
@@ -99,8 +105,10 @@ function ProductCard({ product }: { product: Product }) {
           </button>
         </div>
 
-        {/* SKU */}
-        {product.sku && <p className="text-xs text-gray-400 mt-2">SKU: {product.sku}</p>}
+        {/* Total Quantity Info */}
+        <p className="text-xs text-gray-500 mt-2">
+          Iš viso: {product.totalQuantity} vnt.
+        </p>
       </div>
     </div>
   );
