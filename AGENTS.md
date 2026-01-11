@@ -162,8 +162,8 @@ the logo, colour palette (PDF).
 
 ## Code Quality & Linting
 
-**Prioritize Fixes:** Always attempt to resolve ESLint and TypeScript errors (and warnings) by
-refactoring code. Do not disable rules for convenience.
+**Prioritize Fixes:** Always attempt to resolve ESLint, TypeScript errors (and warnings), and
+TailwindCSS warnings/suggestions by refactoring code. Do not disable rules for convenience.
 
 **TypeScript Strictness:**The use of any is strictly prohibited. Use precise types or unknown.
 TypeScript errors should only be ignored as a last resort in extreme edge cases.

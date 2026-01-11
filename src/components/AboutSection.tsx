@@ -24,7 +24,7 @@ export function AboutSection() {
 
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-primary border border-primary/20">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-primary border border-primary/20">
                   <span className="material-symbols-outlined">check</span>
                 </div>
                 <div>
@@ -36,7 +36,7 @@ export function AboutSection() {
               </div>
 
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-primary border border-primary/20">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-primary border border-primary/20">
                   <span className="material-symbols-outlined">check</span>
                 </div>
                 <div>
@@ -48,7 +48,7 @@ export function AboutSection() {
               </div>
 
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-primary border border-primary/20">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-primary border border-primary/20">
                   <span className="material-symbols-outlined">check</span>
                 </div>
                 <div>
