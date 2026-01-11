@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "material-symbols";
+@import "material-symbols/outlined";
 @plugin "@tailwindcss/typography";
 
 @theme {

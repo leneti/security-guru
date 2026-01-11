@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -47,7 +45,7 @@ export function HeroSection() {
           style={{ animationDelay: "0.3s" }}
         >
           <Link
-            href="/kontaktai"
+            href="#services"
             className="bg-primary text-dark font-bold px-8 py-4 rounded-lg hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,188,133,0.3)]"
           >
             Mūsų Paslaugos

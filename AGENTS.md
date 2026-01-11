@@ -159,6 +159,8 @@ the logo, colour palette (PDF).
 - Always use named functions/components instead of `default` exports, unless required by the
   framework (e.g. Next.js page.tsx file)
 - Use React 19 features like `useLayoutEffect` where possible/reasonable to improve performance etc.
+- If `yarn dev` is run to start a dev server, after the task is done, the dev server instance must
+  be stopped
 
 ## Code Quality & Linting
 

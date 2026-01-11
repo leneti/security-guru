@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import "../globals.css";
+import "./globals.css";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -26,20 +24,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
-  // Providing all messages to the client
-  const messages = await getMessages();
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="lt">
       <body
         className={`${manrope.variable} ${geistMono.variable} antialiased bg-white text-midnight font-sans`}
       >
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );
