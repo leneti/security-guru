@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   title: "Security Guru",
   description:
     "Profesionalūs apsaugos sprendimai jūsų namams ir verslui. Kokybė, profesionalumas ir inovatyvumas.",
-  icons: {
-    icon: "/logo_icon.svg",
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
