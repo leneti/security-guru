@@ -21,9 +21,36 @@ export const metadata: Metadata = {
     "Profesionalūs apsaugos sprendimai jūsų namams ir verslui. Kokybė, profesionalumas ir inovatyvumas.",
 };
 
+const MUI_SYMBOLS = [
+  "check",
+  "verified_user",
+  "close",
+  "mail",
+  "schedule",
+  "location_on",
+  "shield_lock",
+  "shopping_cart",
+  "menu",
+  "keyboard_arrow_down",
+  "sensors",
+  "fingerprint",
+  "local_fire_department",
+  "videocam",
+  "hub",
+  "chevron_left",
+  "chevron_right",
+].sort();
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="lt">
+      <head>
+        <link
+          href={`https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=${MUI_SYMBOLS.join(",")}&display=block`}
+          type="text/css"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${manrope.variable} ${geistMono.variable} antialiased bg-white text-midnight font-sans`}
       >

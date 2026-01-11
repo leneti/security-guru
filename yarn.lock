@@ -1005,13 +1005,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"material-symbols@npm:^0.40.2":
-  version: 0.40.2
-  resolution: "material-symbols@npm:0.40.2"
-  checksum: bedc91fe68d0d9418a7dabc5fecc51492157ac109150dec6bde177cde72b5e4e3fdf2fc484046e9b3974e4a7ed1530f540a4f7bddbd3f0701f9c131bf0b37b89
-  languageName: node
-  linkType: hard
-
 "nanoid@npm:^3.3.11, nanoid@npm:^3.3.6":
   version: 3.3.11
   resolution: "nanoid@npm:3.3.11"
@@ -1117,7 +1110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oxlint-tsgolint@npm:latest":
+"oxlint-tsgolint@npm:^0.11.0":
   version: 0.11.0
   resolution: "oxlint-tsgolint@npm:0.11.0"
   dependencies:
@@ -1293,11 +1286,10 @@ __metadata:
     "@types/react": ^19.2.8
     "@types/react-dom": ^19.2.3
     axe-core: ^4.11.1
-    material-symbols: ^0.40.2
     next: 16.1.1
     oxfmt: ^0.23.0
     oxlint: ^1.38.0
-    oxlint-tsgolint: latest
+    oxlint-tsgolint: ^0.11.0
     react: 19.2.3
     react-dom: 19.2.3
     resend: ^6.7.0

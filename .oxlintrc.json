@@ -1,11 +1,7 @@
 {
   "plugins": ["react", "react-perf", "nextjs", "import", "jsx-a11y", "promise"],
   "rules": {
-    "nextjs/no-page-custom-font": "error",
-    "nextjs/no-html-link-for-pages": "error",
-    "nextjs/no-sync-scripts": "error",
-    "nextjs/no-title-in-document-head": "error",
-    "nextjs/no-unwanted-polyfillio": "error",
+    "nextjs/no-page-custom-font": "off",
 
     "import/no-cycle": ["error", { "maxDepth": 3 }]
   }

@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "material-symbols": "^0.40.2",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -31,7 +30,7 @@
     "axe-core": "^4.11.1",
     "oxfmt": "^0.23.0",
     "oxlint": "^1.38.0",
-    "oxlint-tsgolint": "latest",
+    "oxlint-tsgolint": "^0.11.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   }
