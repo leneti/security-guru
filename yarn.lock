@@ -1612,6 +1612,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"material-symbols@npm:^0.40.2":
+  version: 0.40.2
+  resolution: "material-symbols@npm:0.40.2"
+  checksum: bedc91fe68d0d9418a7dabc5fecc51492157ac109150dec6bde177cde72b5e4e3fdf2fc484046e9b3974e4a7ed1530f540a4f7bddbd3f0701f9c131bf0b37b89
+  languageName: node
+  linkType: hard
+
 "micromatch@npm:^4.0.5":
   version: 4.0.8
   resolution: "micromatch@npm:4.0.8"
@@ -2110,6 +2117,7 @@ __metadata:
     "@types/react": ^19.2.7
     "@types/react-dom": ^19.2.3
     axe-core: ^4.11.1
+    material-symbols: ^0.40.2
     next: 16.1.1
     next-intl: ^4.7.0
     oxfmt: ^0.23.0

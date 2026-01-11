@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
 
 export default function HeroSection() {
   return (
@@ -16,7 +16,7 @@ export default function HeroSection() {
           unoptimized={true}
           className="w-full h-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-dark via-dark/80 to-transparent"></div>
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">

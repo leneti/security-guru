@@ -32,13 +32,6 @@ export default async function LocaleLayout({ children }: { children: React.React
 
   return (
     <html lang="lt">
-      <head>
-        {/* eslint-disable-next-line -- Material Symbols font cannot be imported via next/font/google, requires external link */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=optional"
-          rel="stylesheet"
-        />
-      </head>
       <body
         className={`${manrope.variable} ${geistMono.variable} antialiased bg-white text-midnight font-sans`}
       >

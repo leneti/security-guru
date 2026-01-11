@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "material-symbols";
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -62,13 +63,7 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* Utility classes for brand colors */
