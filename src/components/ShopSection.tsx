@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { getProducts, getProductCategories } from "@/lib/inventory";
 import type { Product } from "@/types";
-import CartSidebar from "./CartSidebar";
+import { CartSidebar } from "./CartSidebar";
 
-export default function ShopSection() {
+export function ShopSection() {
   const [filter, setFilter] = useState("Visos prekės");
   const [cart, setCart] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);

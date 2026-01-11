@@ -55,7 +55,7 @@ const services = [
   },
 ];
 
-export default function ServicesSection() {
+export function ServicesSection() {
   return (
     <section id="services" className="py-24 bg-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

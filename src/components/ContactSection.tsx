@@ -11,7 +11,7 @@ interface FormData {
   message: string;
 }
 
-export default function ContactSection() {
+export function ContactSection() {
   const [formData, setFormData] = useState<FormData>({
     type: "Namams",
     name: "",

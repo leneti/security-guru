@@ -10,7 +10,7 @@ interface CartSidebarProps {
   removeFromCart: (index: number) => void;
 }
 
-export default function CartSidebar({ isOpen, onClose, cart, removeFromCart }: CartSidebarProps) {
+export function CartSidebar({ isOpen, onClose, cart, removeFromCart }: CartSidebarProps) {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (

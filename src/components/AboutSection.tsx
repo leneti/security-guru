@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export default function AboutSection() {
+export function AboutSection() {
   return (
     <section id="about" className="py-24 bg-dark text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[#051F1C] skew-x-12 transform translate-x-20"></div>
