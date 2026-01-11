@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "oxlint src/ --react-plugin --nextjs-plugin --import-plugin --tsconfig=tsconfig.json",
-    "lint:fix": "oxlint src/ --react-plugin --nextjs-plugin --import-plugin --tsconfig=tsconfig.json --fix",
+    "lint": "oxlint src/ --tsconfig=tsconfig.json --type-aware",
+    "lint:fix": "oxlint src/ --tsconfig=tsconfig.json --type-aware --fix",
     "format": "oxfmt src/",
     "format:check": "oxfmt src/ --check",
     "typecheck": "tsc --noEmit"
@@ -26,11 +26,12 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@total-typescript/ts-reset": "^0.6.1",
     "@types/node": "^24.10.4",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "axe-core": "^4.11.1",
     "oxfmt": "^0.23.0",
     "oxlint": "^1.38.0",
+    "oxlint-tsgolint": "latest",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   }

@@ -558,6 +558,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oxlint-tsgolint/darwin-arm64@npm:0.11.0":
+  version: 0.11.0
+  resolution: "@oxlint-tsgolint/darwin-arm64@npm:0.11.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@oxlint-tsgolint/darwin-x64@npm:0.11.0":
+  version: 0.11.0
+  resolution: "@oxlint-tsgolint/darwin-x64@npm:0.11.0"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@oxlint-tsgolint/linux-arm64@npm:0.11.0":
+  version: 0.11.0
+  resolution: "@oxlint-tsgolint/linux-arm64@npm:0.11.0"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@oxlint-tsgolint/linux-x64@npm:0.11.0":
+  version: 0.11.0
+  resolution: "@oxlint-tsgolint/linux-x64@npm:0.11.0"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@oxlint-tsgolint/win32-arm64@npm:0.11.0":
+  version: 0.11.0
+  resolution: "@oxlint-tsgolint/win32-arm64@npm:0.11.0"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@oxlint-tsgolint/win32-x64@npm:0.11.0":
+  version: 0.11.0
+  resolution: "@oxlint-tsgolint/win32-x64@npm:0.11.0"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@oxlint/darwin-arm64@npm:1.38.0":
   version: 1.38.0
   resolution: "@oxlint/darwin-arm64@npm:1.38.0"
@@ -1122,12 +1164,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "@types/react@npm:19.2.7"
+"@types/react@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "@types/react@npm:19.2.8"
   dependencies:
     csstype: ^3.2.2
-  checksum: b1f4c9a45862ea392b9ead060a5b5730b4c41b21fde097db35e639a8a0978460468d8da87f47226230bd4681d6de48ffee695595540084a8a849dde027c66a46
+  checksum: 9cff78fd1e5856eaae867a432a7de5a8d2b6a672f7a3d39a716e3fcf1432bcf17e09886102095d48ddd1b3189b2120344bc0f6ca24b5cb74d8722edf4403dbd2
   languageName: node
   linkType: hard
 
@@ -1902,6 +1944,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"oxlint-tsgolint@npm:latest":
+  version: 0.11.0
+  resolution: "oxlint-tsgolint@npm:0.11.0"
+  dependencies:
+    "@oxlint-tsgolint/darwin-arm64": 0.11.0
+    "@oxlint-tsgolint/darwin-x64": 0.11.0
+    "@oxlint-tsgolint/linux-arm64": 0.11.0
+    "@oxlint-tsgolint/linux-x64": 0.11.0
+    "@oxlint-tsgolint/win32-arm64": 0.11.0
+    "@oxlint-tsgolint/win32-x64": 0.11.0
+  dependenciesMeta:
+    "@oxlint-tsgolint/darwin-arm64":
+      optional: true
+    "@oxlint-tsgolint/darwin-x64":
+      optional: true
+    "@oxlint-tsgolint/linux-arm64":
+      optional: true
+    "@oxlint-tsgolint/linux-x64":
+      optional: true
+    "@oxlint-tsgolint/win32-arm64":
+      optional: true
+    "@oxlint-tsgolint/win32-x64":
+      optional: true
+  bin:
+    tsgolint: bin/tsgolint.js
+  checksum: 6f7a10b193eba9fbfbc844d624e146bac18b485739af9b505fec66c2fd9a5cc8975f9626c80962d44f95267ed491c273fe51c6b63250541f23badda63507ade9
+  languageName: node
+  linkType: hard
+
 "oxlint@npm:^1.38.0":
   version: 1.38.0
   resolution: "oxlint@npm:1.38.0"
@@ -2114,7 +2185,7 @@ __metadata:
     "@tailwindcss/typography": ^0.5.19
     "@total-typescript/ts-reset": ^0.6.1
     "@types/node": ^24.10.4
-    "@types/react": ^19.2.7
+    "@types/react": ^19.2.8
     "@types/react-dom": ^19.2.3
     axe-core: ^4.11.1
     material-symbols: ^0.40.2
@@ -2122,6 +2193,7 @@ __metadata:
     next-intl: ^4.7.0
     oxfmt: ^0.23.0
     oxlint: ^1.38.0
+    oxlint-tsgolint: latest
     react: 19.2.3
     react-dom: 19.2.3
     resend: ^6.7.0

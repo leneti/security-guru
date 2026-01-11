@@ -1,0 +1,5 @@
+{
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "oxc.lint.run": "onSave",
+  "oxc.typeAware": true
+}
