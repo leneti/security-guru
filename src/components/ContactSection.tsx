@@ -135,8 +135,8 @@ export default function ContactSection() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Type Selection */}
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">Sprendimas</label>
+              <fieldset>
+                <legend className="block text-sm font-bold text-gray-700 mb-2">Sprendimas</legend>
                 <div className="flex gap-4">
                   {["Namams", "Verslui"].map((type) => (
                     <label
@@ -164,15 +164,16 @@ export default function ContactSection() {
                     </label>
                   ))}
                 </div>
-              </div>
+              </fieldset>
 
               {/* Name and City */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label htmlFor="name" className="block text-xs font-bold uppercase text-gray-500 mb-1">
                     Vardas / Įmonė *
                   </label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
                     value={formData.name}
@@ -183,10 +184,11 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label htmlFor="city" className="block text-xs font-bold uppercase text-gray-500 mb-1">
                     Miestas *
                   </label>
                   <input
+                    id="city"
                     type="text"
                     name="city"
                     value={formData.city}
@@ -201,10 +203,11 @@ export default function ContactSection() {
               {/* Email and Phone */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label htmlFor="email" className="block text-xs font-bold uppercase text-gray-500 mb-1">
                     El. paštas *
                   </label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -215,10 +218,11 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase text-gray-500 mb-1">
                     Tel. Nr. *
                   </label>
                   <input
+                    id="phone"
                     type="tel"
                     name="phone"
                     value={formData.phone}
@@ -232,10 +236,11 @@ export default function ContactSection() {
 
               {/* Message */}
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                <label htmlFor="message" className="block text-xs font-bold uppercase text-gray-500 mb-1">
                   Komentaras *
                 </label>
                 <textarea
+                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}

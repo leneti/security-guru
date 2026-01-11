@@ -16,7 +16,19 @@ export default function CartSidebar({ isOpen, onClose, cart, removeFromCart }: C
   return (
     <>
       {/* Backdrop */}
-      {isOpen && <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />}
+      {isOpen && (
+        <button
+          className="fixed inset-0 bg-black/50 z-40 border-0 p-0 cursor-pointer"
+          onClick={onClose}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onClose();
+            }
+          }}
+          aria-label="Uždaryti krepšelį"
+        />
+      )}
 
       {/* Sidebar */}
       <div

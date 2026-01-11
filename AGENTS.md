@@ -151,16 +151,19 @@ the logo, colour palette (PDF).
 
 ## Dev environment tips
 
-- Use `yarn` as the package manager to run scripts
+- Never use `npm`. Use `yarn` as the package manager to run scripts
   - Use `yarn dlx --quiet` to run external scripts without installing them to the project, if
     necessary
 - Run TS typechecking consistently, and ESLint occassionally, to check code implementation is
-  correct. Only run `yarn build` if you suspect there might be compilation issues.
+  correct. Only run `yarn build` if you suspect there might be compilation issues
+- Always use named functions/components instead of `default` exports, unless required by the
+  framework (e.g. Next.js page.tsx file)
+- Use React 19 features like `useLayoutEffect` where possible/reasonable to improve performance etc.
 
 ## Code Quality & Linting
 
-**Prioritize Fixes:** Always attempt to resolve ESLint and TypeScript errors by refactoring code. Do
-not disable rules for convenience.
+**Prioritize Fixes:** Always attempt to resolve ESLint and TypeScript errors (and warnings) by
+refactoring code. Do not disable rules for convenience.
 
 **TypeScript Strictness:**The use of any is strictly prohibited. Use precise types or unknown.
 TypeScript errors should only be ignored as a last resort in extreme edge cases.
