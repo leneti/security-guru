@@ -21,7 +21,7 @@ export default function ShopSection() {
       try {
         const [productsData, categoriesData] = await Promise.all([
           getProducts(),
-          getProductCategories()
+          getProductCategories(),
         ]);
         setProducts(productsData);
         setCategories(["Visos prekės", ...categoriesData]);
@@ -42,14 +42,15 @@ export default function ShopSection() {
     };
 
     updateItemsPerPage(); // Set initial value
-    window.addEventListener('resize', updateItemsPerPage);
+    window.addEventListener("resize", updateItemsPerPage);
 
-    return () => window.removeEventListener('resize', updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
-  const filteredProducts = filter === "Visos prekės"
-    ? products
-    : products.filter(product => product.category === filter);
+  const filteredProducts =
+    filter === "Visos prekės"
+      ? products
+      : products.filter((product) => product.category === filter);
 
   // Reset to first page when filter or items per page changes
   useEffect(() => {
@@ -76,13 +77,13 @@ export default function ShopSection() {
       // Show pages with ellipsis logic
       if (currentPage <= 3) {
         // Near the start
-        pages.push(1, 2, 3, 4, '...', totalPages);
+        pages.push(1, 2, 3, 4, "...", totalPages);
       } else if (currentPage >= totalPages - 2) {
         // Near the end
-        pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+        pages.push(1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
       } else {
         // In the middle
-        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+        pages.push(1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages);
       }
     }
 
@@ -90,20 +91,25 @@ export default function ShopSection() {
   };
 
   const addToCart = (product: Product) => {
-    setCart(prevCart => [...prevCart, product]);
+    setCart((prevCart) => [...prevCart, product]);
   };
 
   const removeFromCart = (index: number) => {
-    setCart(prevCart => prevCart.filter((_, i) => i !== index));
+    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
   };
 
   const getCategoryName = (category: string) => {
-    switch(category) {
-      case "Vaizdo stebėjimas": return "Kameros";
-      case "Apsaugos sistemos": return "Jutikliai";
-      case "Įeigos kontrolė": return "Kontrolė";
-      case "Priešgaisrinės sistemos": return "Jutikliai";
-      default: return "Priedai";
+    switch (category) {
+      case "Vaizdo stebėjimas":
+        return "Kameros";
+      case "Apsaugos sistemos":
+        return "Jutikliai";
+      case "Įeigos kontrolė":
+        return "Kontrolė";
+      case "Priešgaisrinės sistemos":
+        return "Jutikliai";
+      default:
+        return "Priedai";
     }
   };
 
@@ -188,7 +194,7 @@ export default function ShopSection() {
             <div className="flex justify-center items-center mt-12 space-x-2">
               {/* Previous Button */}
               <button
-                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   currentPage === 1
@@ -204,14 +210,14 @@ export default function ShopSection() {
                 {getPageNumbers().map((page, index) => (
                   <button
                     key={index}
-                    onClick={() => typeof page === 'number' && setCurrentPage(page)}
-                    disabled={page === '...'}
+                    onClick={() => typeof page === "number" && setCurrentPage(page)}
+                    disabled={page === "..."}
                     className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       page === currentPage
                         ? "bg-dark text-white"
-                        : page === '...'
-                        ? "bg-transparent text-gray-400 cursor-default"
-                        : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
+                        : page === "..."
+                          ? "bg-transparent text-gray-400 cursor-default"
+                          : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
                     }`}
                   >
                     {page}
@@ -221,7 +227,7 @@ export default function ShopSection() {
 
               {/* Next Button */}
               <button
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   currentPage === totalPages
@@ -237,7 +243,8 @@ export default function ShopSection() {
           {/* Results Info */}
           {filteredProducts.length > 0 && (
             <div className="text-center mt-6 text-sm text-gray-500">
-              Rodoma {startIndex + 1}-{Math.min(endIndex, filteredProducts.length)} iš {filteredProducts.length} prekių
+              Rodoma {startIndex + 1}-{Math.min(endIndex, filteredProducts.length)} iš{" "}
+              {filteredProducts.length} prekių
             </div>
           )}
         </div>

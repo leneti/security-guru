@@ -40,7 +40,7 @@ function getDisplayQuantity(totalQuantity: number): string {
 function generateProductId(
   productItem: ProductItem,
   categoryIndex: number,
-  productIndex: number
+  productIndex: number,
 ): string {
   // Use href as base for ID, or hash of name as fallback
   const base = productItem.href || productItem.name;
@@ -265,7 +265,7 @@ export async function getProductById(id: string): Promise<Product | null> {
 export async function getProductsByCategory(categoryName: string): Promise<Product[]> {
   const products = await getProducts();
   return products.filter(
-    (product) => product.category.toLowerCase() === categoryName.toLowerCase()
+    (product) => product.category.toLowerCase() === categoryName.toLowerCase(),
   );
 }
 
@@ -289,7 +289,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
     (product) =>
       product.name.toLowerCase().includes(lowerQuery) ||
       (product.description && product.description.toLowerCase().includes(lowerQuery)) ||
-      product.category.toLowerCase().includes(lowerQuery)
+      product.category.toLowerCase().includes(lowerQuery),
   );
 }
 

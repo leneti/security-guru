@@ -18,7 +18,8 @@ export default function AboutSection() {
               <span className="text-primary">Ekspertų Dėmesio</span>
             </h2>
             <p className="text-sage mb-8 text-lg leading-relaxed font-light">
-              SECURITY GURU teikia pirmenybę jūsų saugumo reikalavimams. Mūsų ekspertai skiria laiką suprasti jūsų rūpesčius ir pateikia asmeninius sprendimus.
+              SECURITY GURU teikia pirmenybę jūsų saugumo reikalavimams. Mūsų ekspertai skiria laiką
+              suprasti jūsų rūpesčius ir pateikia asmeninius sprendimus.
             </p>
 
             <div className="space-y-6">
@@ -28,9 +29,9 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-xl mb-1">Visapusiški sprendimai</h4>
-                        <p className="text-gray-400 text-sm">
-                          Nuo signalizacijos iki vaizdo stebėjimo - viskas iš vienų rankų.
-                        </p>
+                  <p className="text-gray-400 text-sm">
+                    Nuo signalizacijos iki vaizdo stebėjimo - viskas iš vienų rankų.
+                  </p>
                 </div>
               </div>
 
@@ -40,9 +41,9 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-xl mb-1">Orientacija į klientą</h4>
-                        <p className="text-gray-400 text-sm">
-                          Glaudžiai bendradarbiaujame užtikrindami jūsų ramybę.
-                        </p>
+                  <p className="text-gray-400 text-sm">
+                    Glaudžiai bendradarbiaujame užtikrindami jūsų ramybę.
+                  </p>
                 </div>
               </div>
 
@@ -52,9 +53,9 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-xl mb-1">Lankstumas</h4>
-                        <p className="text-gray-400 text-sm">
-                          Dirbame 7 dienas per savaitę, nuo 9 iki 21 val.
-                        </p>
+                  <p className="text-gray-400 text-sm">
+                    Dirbame 7 dienas per savaitę, nuo 9 iki 21 val.
+                  </p>
                 </div>
               </div>
             </div>
@@ -73,7 +74,9 @@ export default function AboutSection() {
 
             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-xl max-w-xs hidden md:block">
               <div className="flex items-center gap-3 mb-2">
-                <span className="material-symbols-outlined text-green-600 text-3xl">verified_user</span>
+                <span className="material-symbols-outlined text-green-600 text-3xl">
+                  verified_user
+                </span>
                 <span className="font-bold text-dark text-lg">Garantuota Kokybė</span>
               </div>
               <p className="text-gray-500 text-xs">

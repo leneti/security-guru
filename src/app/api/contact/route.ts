@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json(
         { success: false, error: "Email service not configured" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 

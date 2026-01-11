@@ -1,0 +1,10 @@
+{
+  "plugins": ["react", "nextjs", "import"],
+  "rules": {
+    "nextjs/no-page-custom-font": "warn",
+    "nextjs/no-html-link-for-pages": "error",
+    "nextjs/no-sync-scripts": "error",
+    "nextjs/no-title-in-document-head": "error",
+    "nextjs/no-unwanted-polyfillio": "error"
+  }
+}

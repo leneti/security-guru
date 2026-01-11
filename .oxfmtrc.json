@@ -1,0 +1,16 @@
+{
+  "indentWidth": 2,
+  "tabWidth": 2,
+  "useTabs": false,
+  "lineWidth": 100,
+  "printWidth": 100,
+  "quoteStyle": "single",
+  "semicolons": "always",
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "jsx": {
+    "quoteStyle": "double"
+  },
+  "ignorePatterns": ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts"]
+}

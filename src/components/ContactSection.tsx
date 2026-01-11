@@ -254,15 +254,15 @@ export default function ContactSection() {
                   status === "loading"
                     ? "bg-gray-400 cursor-not-allowed"
                     : status === "success"
-                    ? "bg-green-600 text-white"
-                    : "bg-midnight text-white hover:bg-opacity-90"
+                      ? "bg-green-600 text-white"
+                      : "bg-midnight text-white hover:bg-opacity-90"
                 }`}
               >
                 {status === "loading"
                   ? "Siunčiama..."
                   : status === "success"
-                  ? "✓ Išsiųsta sėkmingai!"
-                  : "Siųsti užklausą"}
+                    ? "✓ Išsiųsta sėkmingai!"
+                    : "Siųsti užklausą"}
               </button>
             </form>
           </div>

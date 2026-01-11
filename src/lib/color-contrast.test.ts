@@ -64,7 +64,7 @@ export function calculateContrastRatio(foreground: string, background: string): 
 export function checkColorContrast(
   foreground: string,
   background: string,
-  isLargeText = false
+  isLargeText = false,
 ): ColorContrastResult {
   const ratio = calculateContrastRatio(foreground, background);
   const aaRequired = isLargeText ? 3 : 4.5;

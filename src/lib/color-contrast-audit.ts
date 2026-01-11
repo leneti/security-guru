@@ -271,7 +271,11 @@ function analyzeCombinations() {
           combo.context.includes("hero") ||
           combo.context.includes("Large")
         ) {
-          warnings.push({ ...comboInfo, severity: "WARNING", note: "Passes for large text only" });
+          warnings.push({
+            ...comboInfo,
+            severity: "WARNING",
+            note: "Passes for large text only",
+          });
         } else {
           failed.push({ ...comboInfo, severity: "HIGH" });
         }

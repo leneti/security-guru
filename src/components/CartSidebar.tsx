@@ -16,17 +16,14 @@ export default function CartSidebar({ isOpen, onClose, cart, removeFromCart }: C
   return (
     <>
       {/* Backdrop */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40"
-          onClick={onClose}
-        />
-      )}
+      {isOpen && <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />}
 
       {/* Sidebar */}
-      <div className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 transform transition-transform duration-300 shadow-2xl ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      } flex flex-col`}>
+      <div
+        className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 transform transition-transform duration-300 shadow-2xl ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } flex flex-col`}
+      >
         {/* Header */}
         <div className="p-6 border-b flex justify-between items-center bg-gray-50">
           <h2 className="font-bold text-xl text-dark">Krepšelis ({cart.length})</h2>
@@ -42,7 +39,9 @@ export default function CartSidebar({ isOpen, onClose, cart, removeFromCart }: C
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {cart.length === 0 ? (
             <div className="text-center text-gray-500 mt-10">
-              <span className="material-symbols-outlined text-4xl mb-2">production_quantity_limits</span>
+              <span className="material-symbols-outlined text-4xl mb-2">
+                production_quantity_limits
+              </span>
               <p>Jūsų krepšelis tuščias</p>
             </div>
           ) : (
