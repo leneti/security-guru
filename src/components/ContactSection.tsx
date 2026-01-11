@@ -169,7 +169,10 @@ export function ContactSection() {
               {/* Name and City */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-xs font-bold uppercase text-gray-500 mb-1"
+                  >
                     Vardas / Įmonė *
                   </label>
                   <input
@@ -184,7 +187,10 @@ export function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="city" className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label
+                    htmlFor="city"
+                    className="block text-xs font-bold uppercase text-gray-500 mb-1"
+                  >
                     Miestas *
                   </label>
                   <input
@@ -203,7 +209,10 @@ export function ContactSection() {
               {/* Email and Phone */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="email" className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-xs font-bold uppercase text-gray-500 mb-1"
+                  >
                     El. paštas *
                   </label>
                   <input
@@ -218,7 +227,10 @@ export function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                  <label
+                    htmlFor="phone"
+                    className="block text-xs font-bold uppercase text-gray-500 mb-1"
+                  >
                     Tel. Nr. *
                   </label>
                   <input
@@ -236,7 +248,10 @@ export function ContactSection() {
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-xs font-bold uppercase text-gray-500 mb-1">
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-bold uppercase text-gray-500 mb-1"
+                >
                   Komentaras *
                 </label>
                 <textarea

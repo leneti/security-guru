@@ -747,6 +747,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/next@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@tsconfig/next@npm:2.0.5"
+  checksum: 88df0cb8f208a9c3f12554ed37c941362782b1b440e5caae7d4b56c77137ec8df9bf1cb50d22638576ef594e6321fac2403c678a2d2cb48013e9f7b43b2e9cab
+  languageName: node
+  linkType: hard
+
 "@tybys/wasm-util@npm:^0.10.1":
   version: 0.10.1
   resolution: "@tybys/wasm-util@npm:0.10.1"
@@ -1281,6 +1288,7 @@ __metadata:
     "@tailwindcss/postcss": ^4.1.18
     "@tailwindcss/typography": ^0.5.19
     "@total-typescript/ts-reset": ^0.6.1
+    "@tsconfig/next": ^2.0.5
     "@types/node": ^24.10.4
     "@types/react": ^19.2.8
     "@types/react-dom": ^19.2.3
