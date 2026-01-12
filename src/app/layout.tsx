@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 };
 
 const MUI_SYMBOLS = [
+  "call",
   "check",
   "verified_user",
   "close",
@@ -29,6 +30,7 @@ const MUI_SYMBOLS = [
   "schedule",
   "location_on",
   "shield_lock",
+  "add_shopping_cart",
   "shopping_cart",
   "menu",
   "keyboard_arrow_down",

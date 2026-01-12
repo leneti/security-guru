@@ -17,7 +17,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-linear-to-t from-dark via-dark/80 to-transparent"></div>
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto mt-16">
         <div className="inline-block px-3 py-1 mb-6 border border-primary/50 rounded-full bg-primary/10 backdrop-blur-sm animate-[fadeIn_1s_ease-out]">
           <span className="text-primary text-xs font-bold uppercase tracking-widest">
             Saugumas Pirmiausia

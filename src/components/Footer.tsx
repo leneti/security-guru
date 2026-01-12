@@ -1,15 +1,20 @@
+import Image from "next/image";
+import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
+
 export function Footer() {
   return (
     <footer className="bg-dark text-white pt-20 pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center mb-6">
-              <span className="material-symbols-outlined text-primary text-3xl mr-2">
-                shield_lock
-              </span>
-              <span className="font-bold text-2xl">SECURITY GURU</span>
-            </div>
+            <Image
+              src={logo}
+              alt="Security Guru logo"
+              unoptimized
+              height={40}
+              loading="eager"
+              className="mb-6"
+            />
             <p className="text-gray-400 text-sm max-w-sm mb-6">
               Kokybiški saugumo sprendimai jūsų namams ir verslui. Ilgametė patirtis ir
               profesionalumas garantuoja jūsų ramybę.
