@@ -5,21 +5,21 @@ export function Footer() {
   return (
     <footer className="bg-dark text-white pt-20 pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2 text-center sm:text-left">
             <Image
               src={logo}
               alt="Security Guru logo"
               unoptimized
               height={40}
               loading="eager"
-              className="mb-6"
+              className="mb-6 mx-auto sm:mx-0"
             />
-            <p className="text-gray-400 text-sm max-w-sm mb-6">
+            <p className="text-gray-400 text-sm max-w-sm mb-6 mx-auto sm:mx-0">
               Kokybiški saugumo sprendimai jūsų namams ir verslui. Ilgametė patirtis ir
               profesionalumas garantuoja jūsų ramybę.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex justify-center sm:justify-start space-x-4">
               <a
                 href="https://www.facebook.com/people/Security-guru/100088856047734/"
                 target="_blank"
@@ -38,7 +38,7 @@ export function Footer() {
               </a>
             </div>
           </div>
-          <div>
+          <div className="text-center sm:text-left">
             <h4 className="font-bold mb-6 text-primary">Navigacija</h4>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
@@ -63,7 +63,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="text-center sm:text-left">
             <h4 className="font-bold mb-6 text-primary">Rekvizitai</h4>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>MB &quot;Security Guru&quot;</li>
@@ -72,7 +72,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <div className="border-t border-white/10 pt-8 flex flex-col items-center text-center md:flex-row md:justify-between md:text-left text-xs text-gray-500">
           <p>© 2026 Security Guru. Visos teisės saugomos.</p>
           <p className="mt-2 md:mt-0">Sukurta saugumui.</p>
         </div>

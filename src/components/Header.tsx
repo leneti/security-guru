@@ -32,7 +32,14 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Image src={logo} alt="Security Guru logo" unoptimized height={40} loading="eager" />
+          <Image
+            src={logo}
+            alt="Security Guru logo"
+            unoptimized
+            height={40}
+            className="-ml-5 h-8 md:h-10"
+            loading="eager"
+          />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center">
