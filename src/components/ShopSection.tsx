@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+
+import { useCart } from "@/lib/cart-context";
 import { getProducts, getProductCategories } from "@/lib/inventory";
 import type { Product } from "@/types";
+
 import { CartSidebar } from "./CartSidebar";
-import { useCart } from "@/lib/cart-context";
 
 export function ShopSection() {
   const [filter, setFilter] = useState("Visos prekės");
@@ -107,8 +109,8 @@ export function ShopSection() {
 
   if (loading) {
     return (
-      <section id="shop" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="shop" className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">Kraunama...</div>
         </div>
       </section>
@@ -117,20 +119,20 @@ export function ShopSection() {
 
   return (
     <>
-      <section id="shop" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+      <section id="shop" className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 flex flex-col items-center justify-between md:flex-row">
             <div>
               <h2 className="text-3xl font-bold text-dark">E-Parduotuvė</h2>
-              <p className="text-gray-500 mt-2">Įsigykite saugumo įrangą internetu</p>
+              <p className="mt-2 text-gray-500">Įsigykite saugumo įrangą internetu</p>
             </div>
 
-            <div className="flex gap-2 mt-6 md:mt-0 overflow-x-auto no-scrollbar w-full md:w-auto pb-2">
+            <div className="no-scrollbar mt-6 flex w-full gap-2 overflow-x-auto pb-2 md:mt-0 md:w-auto">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setFilter(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors ${
+                  className={`rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-colors ${
                     filter === category
                       ? "bg-dark text-white"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -142,37 +144,37 @@ export function ShopSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
             {paginatedProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white border border-gray-100 rounded-xl p-4 hover:shadow-xl transition-shadow duration-300 group"
+                className="group rounded-xl border border-gray-100 bg-white p-4 transition-shadow duration-300 hover:shadow-xl"
               >
-                <div className="relative aspect-square mb-4 bg-gray-50 rounded-lg overflow-hidden">
+                <div className="relative mb-4 aspect-square overflow-hidden rounded-lg bg-gray-50">
                   <Image
                     src={product.image}
                     alt={product.name}
                     width={200}
                     height={200}
-                    className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                    className="h-full w-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
                   />
                   <button
                     onClick={() => addToCart(product)}
-                    className="absolute bottom-2 right-2 bg-primary text-dark p-2 rounded-full shadow-lg aspect-square flex items-center justify-center transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white"
+                    className="absolute right-2 bottom-2 flex aspect-square translate-y-10 transform items-center justify-center rounded-full bg-primary p-2 text-dark opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-white"
                   >
                     <span className="material-symbols-outlined">add_shopping_cart</span>
                   </button>
                 </div>
 
                 <div>
-                  <span className="text-[10px] text-mauve font-bold uppercase">
+                  <span className="text-[10px] font-bold text-mauve uppercase">
                     {getCategoryName(product.category)}
                   </span>
-                  <h3 className="font-bold text-dark text-sm mb-2 line-clamp-2 min-h-[40px]">
+                  <h3 className="mb-2 line-clamp-2 min-h-[40px] text-sm font-bold text-dark">
                     {product.name}
                   </h3>
-                  <div className="flex justify-between items-center">
-                    <span className="font-bold text-lg text-dark">
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-bold text-dark">
                       {product.price.toFixed(2)} €
                     </span>
                   </div>
@@ -183,15 +185,15 @@ export function ShopSection() {
 
           {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div className="flex justify-center items-center mt-12 space-x-2">
+            <div className="mt-12 flex items-center justify-center space-x-2">
               {/* Previous Button */}
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                   currentPage === 1
-                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                    : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
+                    ? "cursor-not-allowed bg-gray-100 text-gray-400"
+                    : "border border-gray-200 bg-white text-dark hover:bg-gray-50"
                 }`}
               >
                 <span className="material-symbols-outlined text-sm">chevron_left</span>
@@ -204,12 +206,12 @@ export function ShopSection() {
                     key={index}
                     onClick={() => typeof page === "number" && setCurrentPage(page)}
                     disabled={page === "..."}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                       page === currentPage
                         ? "bg-dark text-white"
                         : page === "..."
-                          ? "bg-transparent text-gray-400 cursor-default"
-                          : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
+                          ? "cursor-default bg-transparent text-gray-400"
+                          : "border border-gray-200 bg-white text-dark hover:bg-gray-50"
                     }`}
                   >
                     {page}
@@ -221,10 +223,10 @@ export function ShopSection() {
               <button
                 onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                   currentPage === totalPages
-                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                    : "bg-white text-dark hover:bg-gray-50 border border-gray-200"
+                    ? "cursor-not-allowed bg-gray-100 text-gray-400"
+                    : "border border-gray-200 bg-white text-dark hover:bg-gray-50"
                 }`}
               >
                 <span className="material-symbols-outlined text-sm">chevron_right</span>
@@ -234,7 +236,7 @@ export function ShopSection() {
 
           {/* Results Info */}
           {filteredProducts.length > 0 && (
-            <div className="text-center mt-6 text-sm text-gray-500">
+            <div className="mt-6 text-center text-sm text-gray-500">
               Rodoma {startIndex + 1}-{Math.min(endIndex, filteredProducts.length)} iš{" "}
               {filteredProducts.length} prekių
             </div>

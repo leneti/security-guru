@@ -1,9 +1,11 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
-import { Header } from "@/components/Header";
+
 import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { CartProvider } from "@/lib/cart-context";
-import "./globals.css";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -56,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body
-        className={`${manrope.variable} ${geistMono.variable} antialiased bg-white text-midnight font-sans`}
+        className={`${manrope.variable} ${geistMono.variable} bg-white font-sans text-midnight antialiased`}
       >
         <CartProvider>
           <Header />

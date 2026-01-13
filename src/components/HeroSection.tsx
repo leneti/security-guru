@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-dark">
+    <section className="relative flex h-screen min-h-[600px] items-center justify-center overflow-hidden bg-dark">
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -12,20 +12,20 @@ export function HeroSection() {
           width={1024}
           height={1024}
           unoptimized={true}
-          className="w-full h-full object-cover opacity-40"
+          className="h-full w-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-linear-to-t from-dark via-dark/80 to-transparent"></div>
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto mt-16">
-        <div className="inline-block px-3 py-1 mb-6 border border-primary/50 rounded-full bg-primary/10 backdrop-blur-sm animate-[fadeIn_1s_ease-out]">
-          <span className="text-primary text-xs font-bold uppercase tracking-widest">
+      <div className="relative z-10 mx-auto mt-16 max-w-3xl px-4 text-center">
+        <div className="mb-6 inline-block animate-[fadeIn_1s_ease-out] rounded-full border border-primary/50 bg-primary/10 px-3 py-1 backdrop-blur-sm">
+          <span className="text-xs font-bold tracking-widest text-primary uppercase">
             Saugumas Pirmiausia
           </span>
         </div>
 
         <h1
-          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight slide-up"
+          className="slide-up mb-6 text-5xl leading-tight font-bold text-white md:text-7xl"
           style={{ animationDelay: "0.1s" }}
         >
           <span className="text-primary">Kokybė</span>, Profesionalumas
@@ -33,7 +33,7 @@ export function HeroSection() {
         </h1>
 
         <p
-          className="text-sage text-lg md:text-xl mb-10 max-w-2xl mx-auto slide-up leading-relaxed font-light"
+          className="slide-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed font-light text-sage md:text-xl"
           style={{ animationDelay: "0.2s" }}
         >
           Apsaugokite tai, kas svarbiausia. Profesionalios saugumo sistemos namams ir verslui
@@ -41,18 +41,18 @@ export function HeroSection() {
         </p>
 
         <div
-          className="flex flex-col sm:flex-row gap-4 justify-center slide-up"
+          className="slide-up flex flex-col justify-center gap-4 sm:flex-row"
           style={{ animationDelay: "0.3s" }}
         >
           <Link
             href="#services"
-            className="bg-primary text-dark font-bold px-8 py-4 rounded-lg hover:bg-white transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,188,133,0.3)]"
+            className="transform rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white"
           >
             Mūsų Paslaugos
           </Link>
           <Link
             href="#contact"
-            className="border-2 border-sage text-sage font-bold px-8 py-4 rounded-lg hover:bg-sage hover:text-dark transition-all"
+            className="rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark"
           >
             Gauti Pasiūlymą
           </Link>
@@ -60,7 +60,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-sage/50">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 transform animate-bounce text-sage/50">
         <span className="material-symbols-outlined text-4xl">keyboard_arrow_down</span>
       </div>
     </section>

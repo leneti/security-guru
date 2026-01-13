@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Dialog, DialogPanel } from "@headlessui/react";
+import { useState, useEffect } from "react";
+
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
-import { useDisclosure } from "@/lib/use-disclosure";
 import { useCart } from "@/lib/cart-context";
+import { useDisclosure } from "@/lib/use-disclosure";
 
 const navLinks = [
   { href: "#services", label: "Paslaugos" },
@@ -30,12 +31,12 @@ export function Header() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-dark/90 backdrop-blur-sm shadow-sm py-2" : "bg-transparent py-4"
+      className={`fixed z-50 w-full transition-all duration-300 ${
+        isScrolled ? "bg-dark/90 py-2 shadow-sm backdrop-blur-sm" : "bg-transparent py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Image
             src={logo}
@@ -47,29 +48,29 @@ export function Header() {
           />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 items-center">
+          <div className="hidden items-center space-x-8 md:flex">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className="text-white hover:text-primary transition-colors font-medium text-sm uppercase tracking-wide"
+                className="text-sm font-medium tracking-wide text-white uppercase transition-colors hover:text-primary"
               >
                 {label}
               </Link>
             ))}
             <Link
               href="#contact"
-              className="bg-primary text-dark hover:bg-white hover:text-dark px-5 py-2 rounded font-bold transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/20"
+              className="transform rounded bg-primary px-5 py-2 font-bold text-dark shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-white hover:text-dark"
             >
               Susisiekti
             </Link>
             <button
               onClick={openCart}
-              className="relative p-2 text-white hover:text-primary transition-colors cursor-pointer"
+              className="relative cursor-pointer p-2 text-white transition-colors hover:text-primary"
             >
               <span className="material-symbols-outlined">shopping_cart</span>
               {getCartItemCount() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-dark text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-dark">
                   {getCartItemCount()}
                 </span>
               )}
@@ -77,21 +78,21 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="flex items-center gap-4 md:hidden">
             <button
               onClick={openCart}
-              className="relative p-2 text-white hover:text-primary transition-colors"
+              className="relative p-2 text-white transition-colors hover:text-primary"
             >
               <span className="material-symbols-outlined">shopping_cart</span>
               {getCartItemCount() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-dark text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-dark">
                   {getCartItemCount()}
                 </span>
               )}
             </button>
             <button
               onClick={open}
-              className="text-white p-2 hover:text-primary transition-colors"
+              className="p-2 text-white transition-colors hover:text-primary"
               aria-label="Toggle mobile menu"
             >
               <span className="material-symbols-outlined text-3xl!">menu</span>
@@ -102,10 +103,10 @@ export function Header() {
 
       {/* Mobile Menu Dialog */}
       <Dialog open={isMobileMenuOpen} onClose={close} className="md:hidden">
-        <div className="fixed inset-0 bg-dark/95 backdrop-blur-sm z-59" />
+        <div className="fixed inset-0 z-59 bg-dark/95 backdrop-blur-sm" />
 
         <DialogPanel className="fixed inset-0 z-60">
-          <div className="absolute top-0 left-0 w-full flex justify-between items-center h-16 max-w-7xl mx-auto px-4 sm:px-6 mt-4">
+          <div className="absolute top-0 left-0 mx-auto mt-4 flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6">
             {/* Logo */}
             <Image
               src={logo}
@@ -119,19 +120,19 @@ export function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={close}
-              className="text-white p-2 hover:text-primary transition-colors"
+              className="p-2 text-white transition-colors hover:text-primary"
               aria-label="Toggle mobile menu"
             >
               <span className="material-symbols-outlined text-3xl!">close</span>
             </button>
           </div>
 
-          <div className="flex flex-col items-center justify-center min-h-screen px-4 gap-8">
+          <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-4">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className="text-white hover:text-primary transition-colors font-medium text-xl uppercase tracking-wide"
+                className="text-xl font-medium tracking-wide text-white uppercase transition-colors hover:text-primary"
                 onClick={close}
               >
                 {label}
@@ -139,7 +140,7 @@ export function Header() {
             ))}
             <Link
               href="#contact"
-              className="bg-primary text-dark hover:bg-white hover:text-dark px-8 py-3 rounded font-bold transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/20"
+              className="transform rounded bg-primary px-8 py-3 font-bold text-dark shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-white hover:text-dark"
               onClick={close}
             >
               Susisiekti

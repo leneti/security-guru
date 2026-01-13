@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "oxlint src/ --tsconfig=tsconfig.json --type-aware",
-    "lint:fix": "oxlint src/ --tsconfig=tsconfig.json --type-aware --fix",
+    "dev": "next dev",
     "format": "oxfmt src/",
     "format:check": "oxfmt src/ --check",
-    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src/ --tsconfig=tsconfig.json --type-aware",
     "lint-staged": "lint-staged",
-    "prepare": "husky"
+    "lint:fix": "oxlint src/ --tsconfig=tsconfig.json --type-aware --fix",
+    "prepare": "husky",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

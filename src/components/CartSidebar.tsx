@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import type { Product } from "@/types";
 
 interface CartSidebarProps {
@@ -18,7 +19,7 @@ export function CartSidebar({ isOpen, onClose, cart, removeFromCart }: CartSideb
       {/* Backdrop */}
       {isOpen && (
         <button
-          className="fixed inset-0 bg-black/50 z-40 border-0 p-0 cursor-pointer"
+          className="fixed inset-0 z-40 cursor-pointer border-0 bg-black/50 p-0"
           onClick={onClose}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -32,47 +33,47 @@ export function CartSidebar({ isOpen, onClose, cart, removeFromCart }: CartSideb
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 transform transition-transform duration-300 shadow-2xl ${
+        className={`fixed top-0 right-0 z-50 h-full w-full transform bg-white shadow-2xl transition-transform duration-300 sm:w-96 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } flex flex-col`}
       >
         {/* Header */}
-        <div className="p-6 border-b flex justify-between items-center bg-gray-50">
-          <h2 className="font-bold text-xl text-dark">Krepšelis ({cart.length})</h2>
+        <div className="flex items-center justify-between border-b bg-gray-50 p-6">
+          <h2 className="text-xl font-bold text-dark">Krepšelis ({cart.length})</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-200 rounded-full aspect-square flex transition-colors cursor-pointer"
+            className="flex aspect-square cursor-pointer rounded-full p-2 transition-colors hover:bg-gray-200"
           >
             <span className="material-symbols-outlined">close</span>
           </button>
         </div>
 
         {/* Cart Items */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        <div className="flex-1 space-y-4 overflow-y-auto p-6">
           {cart.length === 0 ? (
-            <div className="text-center text-gray-500 mt-10">
-              <span className="material-symbols-outlined text-4xl mb-2">
+            <div className="mt-10 text-center text-gray-500">
+              <span className="material-symbols-outlined mb-2 text-4xl">
                 production_quantity_limits
               </span>
               <p>Jūsų krepšelis tuščias</p>
             </div>
           ) : (
             cart.map((item, index) => (
-              <div key={`${item.id}-${index}`} className="flex gap-4 p-4 bg-gray-50 rounded-lg">
+              <div key={`${item.id}-${index}`} className="flex gap-4 rounded-lg bg-gray-50 p-4">
                 <Image
                   src={item.image}
                   alt={item.name}
                   width={64}
                   height={64}
-                  className="w-16 h-16 object-cover rounded"
+                  className="h-16 w-16 rounded object-cover"
                 />
                 <div className="flex-1">
-                  <h3 className="font-semibold text-sm text-dark line-clamp-2">{item.name}</h3>
-                  <p className="text-primary font-bold mt-1">{item.price.toFixed(2)} €</p>
+                  <h3 className="line-clamp-2 text-sm font-semibold text-dark">{item.name}</h3>
+                  <p className="mt-1 font-bold text-primary">{item.price.toFixed(2)} €</p>
                 </div>
                 <button
                   onClick={() => removeFromCart(index)}
-                  className="text-red-500 hover:text-red-700 transition-colors"
+                  className="text-red-500 transition-colors hover:text-red-700"
                 >
                   <span className="material-symbols-outlined text-lg">delete</span>
                 </button>
@@ -82,14 +83,14 @@ export function CartSidebar({ isOpen, onClose, cart, removeFromCart }: CartSideb
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t bg-gray-50">
-          <div className="flex justify-between mb-4 text-dark font-bold text-lg">
+        <div className="border-t bg-gray-50 p-6">
+          <div className="mb-4 flex justify-between text-lg font-bold text-dark">
             <span>Viso:</span>
             <span>{total.toFixed(2)} €</span>
           </div>
           <button
             disabled={cart.length === 0}
-            className={`w-full bg-primary text-dark font-bold py-3 rounded-lg hover:brightness-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+            className={`w-full rounded-lg bg-primary py-3 font-bold text-dark transition-all hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50`}
           >
             Apmokėti
           </button>
