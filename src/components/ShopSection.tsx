@@ -5,16 +5,16 @@ import Image from "next/image";
 import { getProducts, getProductCategories } from "@/lib/inventory";
 import type { Product } from "@/types";
 import { CartSidebar } from "./CartSidebar";
+import { useCart } from "@/lib/cart-context";
 
 export function ShopSection() {
   const [filter, setFilter] = useState("Visos prekės");
-  const [cart, setCart] = useState<Product[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8); // Default to larger screens
+  const { cart, isCartOpen, closeCart, addToCart, removeFromCart } = useCart();
 
   useEffect(() => {
     async function loadData() {
@@ -88,14 +88,6 @@ export function ShopSection() {
     }
 
     return pages;
-  };
-
-  const addToCart = (product: Product) => {
-    setCart((prevCart) => [...prevCart, product]);
-  };
-
-  const removeFromCart = (index: number) => {
-    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
   };
 
   const getCategoryName = (category: string) => {
@@ -252,7 +244,7 @@ export function ShopSection() {
 
       <CartSidebar
         isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
+        onClose={closeCart}
         cart={cart}
         removeFromCart={removeFromCart}
       />

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
 import { useDisclosure } from "@/lib/use-disclosure";
+import { useCart } from "@/lib/cart-context";
 
 const navLinks = [
   { href: "#services", label: "Paslaugos" },
@@ -16,6 +17,7 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, { open, close }] = useDisclosure();
+  const { openCart, getCartItemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,15 +63,31 @@ export function Header() {
             >
               Susisiekti
             </Link>
-            <button className="relative p-2 text-white hover:text-primary transition-colors">
+            <button
+              onClick={openCart}
+              className="relative p-2 text-white hover:text-primary transition-colors cursor-pointer"
+            >
               <span className="material-symbols-outlined">shopping_cart</span>
+              {getCartItemCount() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-dark text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {getCartItemCount()}
+                </span>
+              )}
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-            <button className="p-2 text-white">
+            <button
+              onClick={openCart}
+              className="relative p-2 text-white hover:text-primary transition-colors"
+            >
               <span className="material-symbols-outlined">shopping_cart</span>
+              {getCartItemCount() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-dark text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {getCartItemCount()}
+                </span>
+              )}
             </button>
             <button
               onClick={open}

@@ -81,7 +81,7 @@ export function ServicesSection() {
                   unoptimized={true}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 z-20 aspect-square flex items-center justify-center">
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 z-20 aspect-square flex">
                   <span className={`material-symbols-outlined text-primary`}>{service.icon}</span>
                 </div>
               </div>

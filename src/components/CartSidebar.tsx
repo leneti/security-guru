@@ -41,7 +41,7 @@ export function CartSidebar({ isOpen, onClose, cart, removeFromCart }: CartSideb
           <h2 className="font-bold text-xl text-dark">Krepšelis ({cart.length})</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-200 rounded-full transition-colors"
+            className="p-2 hover:bg-gray-200 rounded-full aspect-square flex transition-colors cursor-pointer"
           >
             <span className="material-symbols-outlined">close</span>
           </button>

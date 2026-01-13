@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CartProvider } from "@/lib/cart-context";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -41,6 +42,7 @@ const MUI_SYMBOLS = [
   "hub",
   "chevron_left",
   "chevron_right",
+  "production_quantity_limits",
 ].sort();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -56,9 +58,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${manrope.variable} ${geistMono.variable} antialiased bg-white text-midnight font-sans`}
       >
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
