@@ -38,15 +38,5 @@
     "oxlint-tsgolint": "^0.11.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
-  },
-  "lint-staged": {
-    "yarn.lock": [
-      "yarn dedupe",
-      "git add yarn.lock"
-    ],
-    "*.{ts,tsx,js,jsx,json,md}": [
-      "yarn lint:fix",
-      "yarn format"
-    ]
   }
 }
