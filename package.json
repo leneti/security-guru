@@ -10,7 +10,9 @@
     "lint:fix": "oxlint src/ --tsconfig=tsconfig.json --type-aware --fix",
     "format": "oxfmt src/",
     "format:check": "oxfmt src/ --check",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint-staged": "lint-staged",
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
@@ -29,10 +31,22 @@
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "axe-core": "^4.11.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "oxfmt": "^0.24.0",
     "oxlint": "^1.39.0",
     "oxlint-tsgolint": "^0.11.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "yarn.lock": [
+      "yarn dedupe",
+      "git add yarn.lock"
+    ],
+    "*.{ts,tsx,js,jsx,json,md}": [
+      "yarn lint:fix",
+      "yarn format"
+    ]
   }
 }
