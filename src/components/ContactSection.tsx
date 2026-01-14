@@ -84,19 +84,23 @@ export function ContactSection() {
               </p>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4 rounded-xl border border-sage/20 bg-white p-6 shadow-sm">
+            <div className="space-y-2 md:space-y-6">
+              <div className="flex items-center gap-4 rounded-xl border border-sage/20 bg-white p-4 shadow-sm md:p-6">
                 <div className="rounded-lg bg-primary/20 p-3 text-dark">
                   <span className="material-symbols-outlined">call</span>
                 </div>
                 <div>
                   <h4 className="font-bold text-dark">Telefonai</h4>
-                  <p className="mt-1 font-mono text-sm text-gray-600">+370 603 34255</p>
-                  <p className="font-mono text-sm text-gray-600">+370 602 83726</p>
+                  <span className="mt-1 font-mono text-sm text-gray-600">+370 603 34255</span>
+                  <span role="separator" className="font-mono text-sm text-gray-600">
+                    {" "}
+                    |{" "}
+                  </span>
+                  <span className="font-mono text-sm text-gray-600">+370 602 83726</span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 rounded-xl border border-sage/20 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-4 rounded-xl border border-sage/20 bg-white p-4 shadow-sm md:p-6">
                 <div className="rounded-lg bg-primary/20 p-3 text-dark">
                   <span className="material-symbols-outlined">mail</span>
                 </div>
@@ -106,7 +110,7 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 rounded-xl border border-sage/20 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-4 rounded-xl border border-sage/20 bg-white p-4 shadow-sm md:p-6">
                 <div className="rounded-lg bg-primary/20 p-3 text-dark">
                   <span className="material-symbols-outlined">schedule</span>
                 </div>
@@ -117,7 +121,7 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 rounded-xl border border-sage/20 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-4 rounded-xl border border-sage/20 bg-white p-4 shadow-sm md:p-6">
                 <div className="rounded-lg bg-primary/20 p-3 text-dark">
                   <span className="material-symbols-outlined">location_on</span>
                 </div>

@@ -52,11 +52,11 @@ export function Footer() {
                   Apie mus
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#shop" className="transition-colors hover:text-white">
                   E-Parduotuvė
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="#contact" className="transition-colors hover:text-white">
                   Kontaktai

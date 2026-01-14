@@ -6,19 +6,19 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
-import { useCart } from "@/lib/cart-context";
+// import { useCart } from "@/lib/cart-context";
 import { useDisclosure } from "@/lib/use-disclosure";
 
 const navLinks = [
   { href: "#services", label: "Paslaugos" },
   { href: "#about", label: "Apie mus" },
-  { href: "#shop", label: "E-Parduotuvė" },
+  // { href: "#shop", label: "E-Parduotuvė" },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, { open, close }] = useDisclosure();
-  const { openCart, getCartItemCount } = useCart();
+  // const { openCart, getCartItemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +64,7 @@ export function Header() {
             >
               Susisiekti
             </Link>
-            <button
+            {/* <button
               onClick={openCart}
               className="relative cursor-pointer p-2 text-white transition-colors hover:text-primary"
             >
@@ -74,12 +74,12 @@ export function Header() {
                   {getCartItemCount()}
                 </span>
               )}
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4 md:hidden">
-            <button
+            {/* <button
               onClick={openCart}
               className="relative p-2 text-white transition-colors hover:text-primary"
             >
@@ -89,7 +89,7 @@ export function Header() {
                   {getCartItemCount()}
                 </span>
               )}
-            </button>
+            </button> */}
             <button
               onClick={open}
               className="p-2 text-white transition-colors hover:text-primary"

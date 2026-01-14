@@ -1,8 +1,5 @@
 {
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "oxc.lint.run": "onType",
-  "oxc.typeAware": true,
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "oxc.typeAware": true
 }
