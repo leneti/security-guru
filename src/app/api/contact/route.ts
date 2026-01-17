@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
 import type { ContactFormData } from "@/types";
-
-// Lithuanian phone number validation regex
-const lithuanianPhoneRegex = /^(\+370|8)\d{8}$/;
 
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -34,7 +32,7 @@ function validateFormData(data: unknown): data is ContactFormData {
       typeof formData.email === "string" &&
       emailRegex.test(formData.email) &&
       typeof formData.phone === "string" &&
-      lithuanianPhoneRegex.test(formData.phone.replace(/\s/g, "")) &&
+      isValidLithuanianMobileNumber(formData.phone) &&
       typeof formData.comment === "string" &&
       formData.comment.trim().length > 0
     );

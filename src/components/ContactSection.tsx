@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
+
 interface FormData {
   type: "Namams" | "Verslui";
   name: string;
@@ -28,12 +30,6 @@ export function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const validatePhone = (phone: string) => {
-    // Accept +3706XXXXXXXX or 86XXXXXXXX
-    const re = /^(\+3706\d{7}|86\d{8})$/;
-    return re.test(phone.replace(/\s/g, ""));
-  };
-
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -49,7 +45,7 @@ export function ContactSection() {
       return;
     }
 
-    if (!validatePhone(formData.phone)) {
+    if (!isValidLithuanianMobileNumber(formData.phone)) {
       alert("Prašome įvesti teisingą lietuviško telefono numerį (+3706XXXXXXX arba 86XXXXXXXX).");
       setStatus("idle");
       return;
