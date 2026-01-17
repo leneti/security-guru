@@ -7,6 +7,16 @@ import type { ContactFormData } from "@/types";
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// HTML escape function to prevent XSS
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 interface ContactRequestBody {
   data: ContactFormData;
 }
@@ -84,27 +94,27 @@ export async function POST(request: Request) {
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #ddd; font-weight: bold;">Vardas/Įmonė:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${data.name}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${escapeHtml(data.name)}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #ddd; font-weight: bold;">Miestas:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${data.city}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${escapeHtml(data.city)}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #ddd; font-weight: bold;">El. paštas:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${data.email}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${escapeHtml(data.email)}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #ddd; font-weight: bold;">Tel. Nr.:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${data.phone}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #ddd;">${escapeHtml(data.phone)}</td>
             </tr>
           </table>
           
           <div style="margin-top: 20px;">
             <strong>Komentaras:</strong>
-            <p style="background-color: #fff; padding: 15px; border-radius: 5px; border: 1px solid #ddd; margin-top: 10px;">${
-              data.comment
-            }</p>
+            <p style="background-color: #fff; padding: 15px; border-radius: 5px; border: 1px solid #ddd; margin-top: 10px;">${escapeHtml(
+              data.comment,
+            )}</p>
           </div>
         </div>
         
@@ -119,7 +129,7 @@ export async function POST(request: Request) {
     const { error } = await resend.emails.send({
       from: "Security Guru <noreply@securityguru.lt>",
       to: ["info@securityguru.lt"],
-      subject: `Nauja užklausa iš svetainės - ${data.name}`,
+      subject: `Nauja užklausa iš svetainės - ${escapeHtml(data.name)}`,
       html: emailHtml,
     });
 
