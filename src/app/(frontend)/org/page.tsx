@@ -2,7 +2,6 @@ import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
 import { HeroSection } from "@/components/HeroSection";
 import { ServicesSection } from "@/components/ServicesSection";
-// import { ShopSection } from "@/components/ShopSection";
 
 export default function HomePage() {
   return (
@@ -10,7 +9,6 @@ export default function HomePage() {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
-      {/* <ShopSection /> */}
       <ContactSection />
     </div>
   );

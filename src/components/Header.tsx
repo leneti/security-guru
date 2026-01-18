@@ -6,19 +6,16 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
-// import { useCart } from "@/lib/cart-context";
 import { useDisclosure } from "@/lib/use-disclosure";
 
 const navLinks = [
   { href: "#services", label: "Paslaugos" },
   { href: "#about", label: "Apie mus" },
-  // { href: "#shop", label: "E-Parduotuvė" },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, { open, close }] = useDisclosure();
-  // const { openCart, getCartItemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,32 +61,10 @@ export function Header() {
             >
               Susisiekti
             </Link>
-            {/* <button
-              onClick={openCart}
-              className="relative cursor-pointer p-2 text-white transition-colors hover:text-primary"
-            >
-              <span className="material-symbols-outlined">shopping_cart</span>
-              {getCartItemCount() > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-dark">
-                  {getCartItemCount()}
-                </span>
-              )}
-            </button> */}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4 md:hidden">
-            {/* <button
-              onClick={openCart}
-              className="relative p-2 text-white transition-colors hover:text-primary"
-            >
-              <span className="material-symbols-outlined">shopping_cart</span>
-              {getCartItemCount() > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-dark">
-                  {getCartItemCount()}
-                </span>
-              )}
-            </button> */}
             <button
               onClick={open}
               className="p-2 text-white transition-colors hover:text-primary"
