@@ -3,7 +3,7 @@ set -e
 
 # Security Guru Restart Script
 # This script manages Security Guru deployments in different modes:
-# - Local development (--local): runs yarn next dev with local DB
+# - Local development (--local): runs yarn next dev
 # - Development Docker (--dev): deploys to development/staging Docker environment (builds local images)
 # - Production Docker (--prod): deploys to production Docker environment (builds local images)
 # Note: Uses docker compose up's intelligent restart logic - containers are only recreated when necessary
@@ -299,25 +299,12 @@ show_access_info() {
         echo "Access URLs:"
         echo "  - Local Dev: http://192.168.1.130:${web_port}"
         echo "  - Admin/CMS: http://192.168.1.130:${web_port}/admin"
-        echo ""
-        echo "Database:"
-        echo "  - PostgreSQL: 192.168.1.130:5432 (same as DEV environment)"
     fi
     echo ""
 }
 
 # Main execution
 start_local_development() {
-    log_info "Starting local database..."
-    cd "$PROJECT_DIR"
-    local compose_cmd="docker compose --env-file \"$ENV_FILE\" -f \"$DOCKER_COMPOSE_FILE\""
-    if [ -n "$ENV_OVERRIDE_FILE" ]; then
-        compose_cmd="$compose_cmd --env-file \"$ENV_OVERRIDE_FILE\""
-    fi
-
-    eval "$compose_cmd up -d postgres"
-    log_success "Local database started"
-
     log_info "Starting local development server..."
     cd "$PROJECT_DIR"
     yarn next dev &

@@ -3,30 +3,6 @@ networks:
     external: true
 
 services:
-  # The Database - Temporarily commented out
-  # security-db:
-  #   image: postgres:18.1-alpine
-  #   container_name: security-guru-db
-  #   restart: unless-stopped
-  #   networks:
-  #     - mediastack
-  #   # This command optimizes Postgres for Docker resource usage
-  #   command: ["postgres", "-c", "shared_buffers=256MB", "-c", "max_connections=100"]
-  #   environment:
-  #     # These 3 variables are MANDATORY. Postgres uses them to create the initial DB.
-  #     POSTGRES_DB: ${DB_NAME:?err}
-  #     POSTGRES_USER: ${DB_USER:?err}
-  #     POSTGRES_PASSWORD: ${DB_PASS:?err}
-  #   volumes:
-  #     # This effectively "saves" the database to your hard drive.
-  #     # If you delete the container, the data remains here.
-  #     - ${PROJECT_DIR:?err}/db:/var/lib/postgresql/data
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "pg_isready -U ${DB_USER:?err} -d ${DB_NAME:?err}"]
-  #     interval: 5s
-  #     timeout: 5s
-  #     retries: 5
-
   # The Website + CMS (Payload)
   security-guru:
     image: security-guru:latest
