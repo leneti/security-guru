@@ -49,6 +49,6 @@ services:
       - ${PROJECT_DIR:?err}/media:/app/public/media
     labels:
       - traefik.enable=true
-      - traefik.http.routers.security-guru.rule=Host(`securityguru-dev.${CLOUDFLARE_DNS_ZONE_DEV:?err}`)
-      - traefik.http.routers.security-guru.entrypoints=web
-      - traefik.http.services.homepage.loadbalancer.server.scheme=http
+      - traefik.http.routers.security-guru-dev.rule=Host(`securityguru-dev.${CLOUDFLARE_DNS_ZONE_DEV:?err}`)
+      - traefik.http.routers.security-guru-dev.entrypoints=web
+      - traefik.http.services.security-guru-dev.loadbalancer.server.scheme=http
