@@ -3,16 +3,15 @@ set -e
 
 # Security Guru Restart Script
 # This script manages Security Guru deployments in different modes:
-# - Local development (--local): runs yarn next dev
-# - Development Docker (--dev): deploys to development/staging Docker environment (builds local images)
+# - Development Docker (--dev): deploys to development/staging Docker environment (builds local images) (default)
 # - Production Docker (--prod): deploys to production Docker environment (builds local images)
 # Note: Uses docker compose up's intelligent restart logic - containers are only recreated when necessary
 # On failure, automatically cleans up any partially deployed containers to avoid ghost containers
 
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Default to local mode
-MODE="local"
+# Default to dev mode
+MODE="dev"
 # Default to building images
 SKIP_BUILD=false
 # Default action
@@ -53,14 +52,10 @@ set_mode_config() {
         DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.yaml"
         ENV_OVERRIDE_FILE=""
         log_info "Using production configuration"
-    elif [ "$MODE" = "dev" ]; then
+    else # dev mode (default)
         DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.dev.yaml"
         ENV_OVERRIDE_FILE="${PROJECT_DIR}/.env.development"
         log_info "Using development Docker configuration"
-    else # local mode
-        DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.local.yaml"
-        ENV_OVERRIDE_FILE="${PROJECT_DIR}/.env.development"
-        log_info "Using local development configuration"
     fi
 }
 
@@ -280,7 +275,7 @@ show_access_info() {
         echo "Access URLs:"
         echo "  - Web App: https://${prod_domain}"
         echo "  - Admin/CMS: https://${prod_domain}/admin"
-    elif [ "$MODE" = "dev" ]; then
+    else # dev mode
         # Get the dev domain from env file
         local dev_domain
         dev_domain=$(grep "^CLOUDFLARE_DNS_ZONE_DEV=" "$ENV_FILE" | cut -d '=' -f2)
@@ -292,42 +287,16 @@ show_access_info() {
         echo "  - Web App: https://securityguru-dev.${dev_domain}"
         echo "  - Local Dev: http://192.168.1.130:${web_port}"
         echo "  - Admin/CMS: https://securityguru-dev.${dev_domain}/admin"
-    else # local mode
-        local web_port
-        web_port=$(grep "^WEB_PORT=" "$ENV_OVERRIDE_FILE" | cut -d '=' -f2)
-
-        echo "Access URLs:"
-        echo "  - Local Dev: http://192.168.1.130:${web_port}"
-        echo "  - Admin/CMS: http://192.168.1.130:${web_port}/admin"
     fi
     echo ""
 }
 
 # Main execution
-start_local_development() {
-    log_info "Starting local development server..."
-    cd "$PROJECT_DIR"
-    yarn next dev &
-    DEV_PID=$!
-
-    # Wait a moment for the server to start
-    sleep 3
-
-    if kill -0 $DEV_PID 2>/dev/null; then
-        log_success "Local development server started (PID: $DEV_PID)"
-        log_info "Press Ctrl+C to stop the development server"
-        wait $DEV_PID
-    else
-        log_error "Failed to start development server"
-        exit 1
-    fi
-}
-
 main() {
     echo ""
     if [ "${STOP_CONTAINERS:-false}" = "true" ]; then
         log_info "🛑 Stopping Security Guru $MODE Containers"
-    elif [ "${BUILD_IMAGE:-false}" = "true" ] && [ "$MODE" != "local" ]; then
+    elif [ "${BUILD_IMAGE:-false}" = "true" ]; then
         log_info "🔨 Building Security Guru $MODE Image"
     else
         log_info "🚀 Starting Security Guru $MODE Deployment"
@@ -345,50 +314,41 @@ main() {
 
     check_requirements
 
-    if [ "$MODE" = "local" ]; then
-        validate_compose_config
-        start_local_development
+    check_mediastack_network
+    validate_compose_config
+
+    if [ "${SKIP_BUILD:-false}" != "true" ]; then
+        build_image
     else
-        check_mediastack_network
-        validate_compose_config
+        log_info "Skipping image build (--skip-build flag used)"
+    fi
 
-        if [ "${SKIP_BUILD:-false}" != "true" ]; then
-            build_image
-        else
-            log_info "Skipping image build (--skip-build flag used)"
+    if [ "${BUILD_IMAGE:-false}" = "true" ]; then
+        # Build-only mode - exit after building
+        echo ""
+        log_success "✅ Image built successfully! Run without --build-only flag to deploy."
+        echo ""
+        exit 0
+    else
+        # Full deployment mode
+        pull_images
+        start_containers
+        check_containers
+
+        if [ "${SKIP_CLEANUP:-false}" != "true" ]; then
+            cleanup_images
         fi
+        show_access_info
 
-        if [ "${BUILD_IMAGE:-false}" = "true" ]; then
-            # Build-only mode - exit after building
-            echo ""
-            log_success "✅ Image built successfully! Run without --build-only flag to deploy."
-            echo ""
-            exit 0
-        else
-            # Full deployment mode
-            pull_images
-            start_containers
-            check_containers
-
-            if [ "${SKIP_CLEANUP:-false}" != "true" ]; then
-                cleanup_images
-            fi
-            show_access_info
-
-            echo ""
-            log_success "✅ Deployment completed successfully!"
-            echo ""
-        fi
+        echo ""
+        log_success "✅ Deployment completed successfully!"
+        echo ""
     fi
 }
 
 # Handle script arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --local)
-            MODE="local"
-            shift
-            ;;
         --dev)
             MODE="dev"
             shift
@@ -417,8 +377,7 @@ while [[ $# -gt 0 ]]; do
             echo "Usage: $0 [MODE] [OPTIONS]"
             echo ""
             echo "Modes:"
-            echo "  --local        Run local development server with yarn next dev (default)"
-            echo "  --dev          Deploy to development/staging Docker environment"
+            echo "  --dev          Deploy to development/staging Docker environment (default)"
             echo "  --prod         Deploy to production Docker environment"
             echo ""
             echo "Options:"
@@ -429,15 +388,13 @@ while [[ $# -gt 0 ]]; do
             echo "  -h, --help     Show this help message"
             echo ""
             echo "Examples:"
-            echo "  $0                          # Run local development server"
-            echo "  $0 --local                  # Run local development server (explicit)"
-            echo "  $0 --dev                    # Deploy to dev Docker environment (builds + deploys)"
+            echo "  $0                          # Deploy to dev Docker environment (builds + deploys)"
+            echo "  $0 --dev                    # Deploy to dev Docker environment (builds + deploys) (explicit)"
             echo "  $0 --dev --build-only       # Build image for dev environment only"
             echo "  $0 --dev --skip-build       # Deploy to dev without rebuilding image"
             echo "  $0 --prod --build-only      # Build image for production environment only"
             echo "  $0 --dev --stop             # Stop and remove all containers for dev mode"
             echo "  $0 --prod --stop            # Stop and remove all containers for prod mode"
-            echo "  $0 --local --stop           # Stop and remove all containers for local mode"
             echo ""
             exit 0
             ;;
