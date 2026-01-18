@@ -15,6 +15,8 @@ PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODE="local"
 # Default to building images
 SKIP_BUILD=false
+# Default action
+STOP_CONTAINERS=false
 DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.dev.yaml"
 ENV_FILE="${PROJECT_DIR}/.env"
 ENV_OVERRIDE_FILE="${PROJECT_DIR}/.env.development"
@@ -180,6 +182,24 @@ cleanup_containers() {
     log_info "Containers cleaned up"
 }
 
+# Stop and remove all containers for the current mode
+stop_and_remove_containers() {
+    log_info "Stopping and removing security-guru containers for $MODE mode..."
+
+    cd "$PROJECT_DIR"
+    local compose_cmd="docker compose --env-file \"$ENV_FILE\" -f \"$DOCKER_COMPOSE_FILE\""
+    if [ -n "$ENV_OVERRIDE_FILE" ]; then
+        compose_cmd="$compose_cmd --env-file \"$ENV_OVERRIDE_FILE\""
+    fi
+
+    if eval "$compose_cmd down --volumes --remove-orphans" 2>/dev/null; then
+        log_success "Containers stopped and removed successfully for $MODE mode"
+    else
+        log_error "Failed to stop and remove containers for $MODE mode"
+        exit 1
+    fi
+}
+
 # Deploy/restart containers intelligently
 start_containers() {
     log_info "Deploying security-guru containers (docker compose will restart only what's changed)..."
@@ -318,7 +338,9 @@ start_local_development() {
 
 main() {
     echo ""
-    if [ "${BUILD_IMAGE:-false}" = "true" ] && [ "$MODE" != "local" ]; then
+    if [ "${STOP_CONTAINERS:-false}" = "true" ]; then
+        log_info "🛑 Stopping Security Guru $MODE Containers"
+    elif [ "${BUILD_IMAGE:-false}" = "true" ] && [ "$MODE" != "local" ]; then
         log_info "🔨 Building Security Guru $MODE Image"
     else
         log_info "🚀 Starting Security Guru $MODE Deployment"
@@ -326,6 +348,14 @@ main() {
     echo ""
 
     set_mode_config
+
+    if [ "${STOP_CONTAINERS:-false}" = "true" ]; then
+        check_requirements
+        validate_compose_config
+        stop_and_remove_containers
+        exit 0
+    fi
+
     check_requirements
 
     if [ "$MODE" = "local" ]; then
@@ -380,6 +410,10 @@ while [[ $# -gt 0 ]]; do
             MODE="prod"
             shift
             ;;
+        --stop)
+            STOP_CONTAINERS=true
+            shift
+            ;;
         --build-only)
             export BUILD_IMAGE=true
             shift
@@ -401,18 +435,22 @@ while [[ $# -gt 0 ]]; do
             echo "  --prod         Deploy to production Docker environment"
             echo ""
             echo "Options:"
+            echo "  --stop         Stop and remove all containers for the specified mode"
             echo "  --build-only   Build Docker image locally and exit (no deployment)"
             echo "  --skip-build   Skip building Docker image during deployment"
             echo "  --no-cleanup   Skip Docker image cleanup"
             echo "  -h, --help     Show this help message"
             echo ""
             echo "Examples:"
-            echo "  $0                     # Run local development server"
-            echo "  $0 --local             # Run local development server (explicit)"
-            echo "  $0 --dev               # Deploy to dev Docker environment (builds + deploys)"
-            echo "  $0 --dev --build-only  # Build image for dev environment only"
-            echo "  $0 --dev --skip-build  # Deploy to dev without rebuilding image"
-            echo "  $0 --prod --build-only # Build image for production environment only"
+            echo "  $0                          # Run local development server"
+            echo "  $0 --local                  # Run local development server (explicit)"
+            echo "  $0 --dev                    # Deploy to dev Docker environment (builds + deploys)"
+            echo "  $0 --dev --build-only       # Build image for dev environment only"
+            echo "  $0 --dev --skip-build       # Deploy to dev without rebuilding image"
+            echo "  $0 --prod --build-only      # Build image for production environment only"
+            echo "  $0 --dev --stop             # Stop and remove all containers for dev mode"
+            echo "  $0 --prod --stop            # Stop and remove all containers for prod mode"
+            echo "  $0 --local --stop           # Stop and remove all containers for local mode"
             echo ""
             exit 0
             ;;
