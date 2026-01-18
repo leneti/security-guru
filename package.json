@@ -2,17 +2,16 @@
   "name": "sg-new",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@4.12.0",
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "./restart.sh --help",
     "format": "oxfmt src/",
     "format:check": "oxfmt src/ --check",
     "lint": "oxlint src/ --tsconfig=tsconfig.json --type-aware",
     "lint-staged": "lint-staged",
     "lint:fix": "oxlint src/ --tsconfig=tsconfig.json --type-aware --fix",
     "prepare": "husky",
-    "start": "next start",
+    "start": "./restart.sh --help",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -25,7 +24,6 @@
     "resend": "^6.7.0"
   },
   "devDependencies": {
-    "@axe-core/react": "^4.11.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@total-typescript/ts-reset": "^0.6.1",
     "@tsconfig/next": "^2.0.5",
@@ -40,5 +38,6 @@
     "oxlint-tsgolint": "^0.11.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
-  }
+  },
+  "packageManager": "yarn@4.12.0"
 }

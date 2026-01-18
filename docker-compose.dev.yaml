@@ -1,0 +1,54 @@
+networks:
+  mediastack:
+    external: true
+
+services:
+  # The Database - Temporarily commented out
+  # security-db-dev:
+  #   image: postgres:18.1-alpine
+  #   container_name: security-guru-db-dev
+  #   restart: unless-stopped
+  #   networks:
+  #     - mediastack
+  #   # This command optimizes Postgres for Docker resource usage
+  #   command: ["postgres", "-c", "shared_buffers=256MB", "-c", "max_connections=100"]
+  #   environment:
+  #     # These 3 variables are MANDATORY. Postgres uses them to create the initial DB.
+  #     POSTGRES_DB: ${DB_NAME:?err}
+  #     POSTGRES_USER: ${DB_USER:?err}
+  #     POSTGRES_PASSWORD: ${DB_PASS:?err}
+  #   volumes:
+  #     # This effectively "saves" the database to your hard drive.
+  #     # If you delete the container, the data remains here.
+  #     - ${PROJECT_DIR:?err}/db-dev:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${DB_USER:?err} -d ${DB_NAME:?err}"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
+
+  # The Website + CMS (Payload)
+  security-guru-dev:
+    image: security-guru:latest
+    container_name: security-guru-dev
+    restart: unless-stopped
+    env_file:
+      - .env
+      - .env.development
+    # environment:
+    # Override DATABASE_URI to use container name instead of localhost - Temporarily commented out
+    # DATABASE_URI: postgres://postgres:password@security-db-dev:5432/securityguru
+    # depends_on:
+    # - security-db-dev
+    networks:
+      - mediastack # Join existing network
+    ports:
+      - ${WEB_PORT:?err}:3333
+    volumes:
+      # Map the uploads folder so images persist across container rebuilds
+      - ${PROJECT_DIR:?err}/media:/app/public/media
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.security-guru.rule=Host(`securityguru-dev.${CLOUDFLARE_DNS_ZONE_DEV:?err}`)
+      - traefik.http.routers.security-guru.entrypoints=web
+      - traefik.http.services.homepage.loadbalancer.server.scheme=http

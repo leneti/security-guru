@@ -12,16 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@axe-core/react@npm:^4.11.0":
-  version: 4.11.0
-  resolution: "@axe-core/react@npm:4.11.0"
-  dependencies:
-    axe-core: "npm:~4.11.0"
-    requestidlecallback: "npm:^0.3.0"
-  checksum: 10/4428788f2ebfcb4f9be3bad413d1abc0eb0e188f648004550788affa75bf099302b1f47416e77446f158731a89ae8f7d6ea4ec9f08f8fad5ec5b58cc2cc7338d
-  languageName: node
-  linkType: hard
-
 "@emnapi/core@npm:^1.7.1":
   version: 1.8.1
   resolution: "@emnapi/core@npm:1.8.1"
@@ -998,7 +988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.11.1, axe-core@npm:~4.11.0":
+"axe-core@npm:^4.11.1":
   version: 4.11.1
   resolution: "axe-core@npm:4.11.1"
   checksum: 10/bbc8e8959258a229b92fbaa73437050825579815051cac7b0fdbb6752946fea226e403bfeeef3d60d712477bdd4c01afdc8455f27c3d85e4251df88b032b6250
@@ -1655,13 +1645,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"requestidlecallback@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "requestidlecallback@npm:0.3.0"
-  checksum: 10/a89c75f1eea347ccf30db1f1c48154df567ada16bc3b54c7ba969ae6cfb9a23d2c71121f8b05d9bc1303fcc3292aaaf7924f4fbd3cf33c8a4ed7c3095653e849
-  languageName: node
-  linkType: hard
-
 "resend@npm:^6.7.0":
   version: 6.7.0
   resolution: "resend@npm:6.7.0"
@@ -1713,7 +1696,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sg-new@workspace:."
   dependencies:
-    "@axe-core/react": "npm:^4.11.0"
     "@headlessui/react": "npm:^2.2.9"
     "@tailwindcss/postcss": "npm:^4.1.18"
     "@tailwindcss/typography": "npm:^0.5.19"
