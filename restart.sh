@@ -3,15 +3,16 @@ set -e
 
 # Security Guru Restart Script
 # This script manages Security Guru deployments in different modes:
-# - Development Docker (--dev): deploys to development/staging Docker environment (builds local images) (default)
+# - Local Development (--local): runs MongoDB locally and starts Next.js dev server (skips building images) (default)
+# - Development Docker (--dev): deploys to development/staging Docker environment (builds local images)
 # - Production Docker (--prod): deploys to production Docker environment (builds local images)
 # Note: Uses docker compose up's intelligent restart logic - containers are only recreated when necessary
 # On failure, automatically cleans up any partially deployed containers to avoid ghost containers
 
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Default to dev mode
-MODE="dev"
+# Default to local mode
+MODE="local"
 # Default to building images
 SKIP_BUILD=false
 # Default action
@@ -52,10 +53,14 @@ set_mode_config() {
         DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.yaml"
         ENV_OVERRIDE_FILE=""
         log_info "Using production configuration"
-    else # dev mode (default)
+    elif [ "$MODE" = "dev" ]; then
         DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.dev.yaml"
         ENV_OVERRIDE_FILE="${PROJECT_DIR}/.env.development"
         log_info "Using development Docker configuration"
+    else # local mode (default)
+        DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.local.yaml"
+        ENV_OVERRIDE_FILE="${PROJECT_DIR}/.env.development"
+        log_info "Using local development configuration"
     fi
 }
 
@@ -165,12 +170,18 @@ pull_images() {
 
 # Stop running containers (cleanup function)
 cleanup_containers() {
-    log_warning "Cleaning up security-guru containers due to failure..."
+    log_warning "Cleaning up security-guru containers..."
 
     cd "$PROJECT_DIR"
     local compose_cmd="docker compose --env-file \"$ENV_FILE\" -f \"$DOCKER_COMPOSE_FILE\""
     if [ -n "$ENV_OVERRIDE_FILE" ]; then
         compose_cmd="$compose_cmd --env-file \"$ENV_OVERRIDE_FILE\""
+    fi
+
+    local running_services
+    running_services=$(eval "$compose_cmd ps --services --filter status=running" 2>/dev/null || echo "")
+    if [ -n "$running_services" ]; then
+        log_info "Stopping containers: $running_services"
     fi
 
     eval "$compose_cmd down" 2>/dev/null || true
@@ -260,6 +271,14 @@ cleanup_images() {
     log_success "Cleanup completed"
 }
 
+# Run Next.js development server
+run_dev_server() {
+    log_info "Starting Next.js development server..."
+
+    cd "$PROJECT_DIR"
+    yarn next dev
+}
+
 # Display access information
 show_access_info() {
     cd "$PROJECT_DIR"
@@ -280,12 +299,8 @@ show_access_info() {
         local dev_domain
         dev_domain=$(grep "^CLOUDFLARE_DNS_ZONE_DEV=" "$ENV_FILE" | cut -d '=' -f2)
 
-        local web_port
-        web_port=$(grep "^WEB_PORT=" "$ENV_OVERRIDE_FILE" | cut -d '=' -f2)
-
         echo "Access URLs:"
         echo "  - Web App: https://securityguru-dev.${dev_domain}"
-        echo "  - Local Dev: http://192.168.1.130:${web_port}"
         echo "  - Admin/CMS: https://securityguru-dev.${dev_domain}/admin"
     fi
     echo ""
@@ -312,37 +327,44 @@ main() {
         exit 0
     fi
 
-    check_requirements
-
-    check_mediastack_network
-    validate_compose_config
-
-    if [ "${SKIP_BUILD:-false}" != "true" ]; then
-        build_image
-    else
-        log_info "Skipping image build (--skip-build flag used)"
-    fi
-
-    if [ "${BUILD_IMAGE:-false}" = "true" ]; then
-        # Build-only mode - exit after building
-        echo ""
-        log_success "✅ Image built successfully! Run without --build-only flag to deploy."
-        echo ""
-        exit 0
-    else
-        # Full deployment mode
-        pull_images
+    if [ "$MODE" = "local" ]; then
+        check_requirements
+        validate_compose_config
         start_containers
-        check_containers
+        trap 'cleanup_containers' INT TERM
+        run_dev_server
+    else
+        check_requirements
+        check_mediastack_network
+        validate_compose_config
 
-        if [ "${SKIP_CLEANUP:-false}" != "true" ]; then
-            cleanup_images
+        if [ "${SKIP_BUILD:-false}" != "true" ]; then
+            build_image
+        else
+            log_info "Skipping image build (--skip-build flag used)"
         fi
-        show_access_info
 
-        echo ""
-        log_success "✅ Deployment completed successfully!"
-        echo ""
+        if [ "${BUILD_IMAGE:-false}" = "true" ]; then
+            # Build-only mode - exit after building
+            echo ""
+            log_success "✅ Image built successfully! Run without --build-only flag to deploy."
+            echo ""
+            exit 0
+        else
+            # Full deployment mode
+            pull_images
+            start_containers
+            check_containers
+
+            if [ "${SKIP_CLEANUP:-false}" != "true" ]; then
+                cleanup_images
+            fi
+            show_access_info
+
+            echo ""
+            log_success "✅ Deployment completed successfully!"
+            echo ""
+        fi
     fi
 }
 
@@ -355,6 +377,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --prod)
             MODE="prod"
+            shift
+            ;;
+        --local)
+            MODE="local"
             shift
             ;;
         --stop)
@@ -377,7 +403,8 @@ while [[ $# -gt 0 ]]; do
             echo "Usage: $0 [MODE] [OPTIONS]"
             echo ""
             echo "Modes:"
-            echo "  --dev          Deploy to development/staging Docker environment (default)"
+            echo "  --local        Run local development with MongoDB and Next.js dev server (default)"
+            echo "  --dev          Deploy to development/staging Docker environment"
             echo "  --prod         Deploy to production Docker environment"
             echo ""
             echo "Options:"
@@ -388,13 +415,15 @@ while [[ $# -gt 0 ]]; do
             echo "  -h, --help     Show this help message"
             echo ""
             echo "Examples:"
-            echo "  $0                          # Deploy to dev Docker environment (builds + deploys)"
-            echo "  $0 --dev                    # Deploy to dev Docker environment (builds + deploys) (explicit)"
+            echo "  $0                          # Start local development with MongoDB and Next.js dev server"
+            echo "  $0 --local                  # Start local development with MongoDB and Next.js dev server (explicit)"
+            echo "  $0 --dev                    # Deploy to dev Docker environment (builds + deploys)"
             echo "  $0 --dev --build-only       # Build image for dev environment only"
             echo "  $0 --dev --skip-build       # Deploy to dev without rebuilding image"
             echo "  $0 --prod --build-only      # Build image for production environment only"
             echo "  $0 --dev --stop             # Stop and remove all containers for dev mode"
             echo "  $0 --prod --stop            # Stop and remove all containers for prod mode"
+            echo "  $0 --local --stop           # Stop and remove local MongoDB container"
             echo ""
             exit 0
             ;;

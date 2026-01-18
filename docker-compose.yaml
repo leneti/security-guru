@@ -1,23 +1,20 @@
+volumes:
+  db_prod:
+
 networks:
   mediastack:
     external: true
 
 services:
-  # The Website + CMS (Payload)
   security-guru:
     image: security-guru:latest
     container_name: security-guru
     restart: unless-stopped
     env_file: .env
-    # depends_on:
-    # - security-db
     networks:
-      - mediastack # Join existing network
+      - mediastack
     ports:
-      - ${WEB_PORT:?err}:3333
-    volumes:
-      # Map the uploads folder so images persist across container rebuilds
-      - ${PROJECT_DIR:?err}/media:/app/public/media
+      - ${WEB_PORT_PROD:?err}:3333
     labels:
       - traefik.enable=true
       - traefik.http.routers.security-guru.rule=Host(`${CLOUDFLARE_DNS_ZONE_PROD:?err}`)

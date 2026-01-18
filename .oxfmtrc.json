@@ -12,7 +12,14 @@
   "jsx": {
     "quoteStyle": "double"
   },
-  "ignorePatterns": ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts"],
+  "ignorePatterns": [
+    "node_modules/**",
+    ".next/**",
+    "out/**",
+    "build/**",
+    "src/app/(payload)/**",
+    "next-env.d.ts"
+  ],
   "experimentalSortImports": {
     "groups": [
       ["side-effect"],

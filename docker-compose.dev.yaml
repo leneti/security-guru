@@ -1,9 +1,11 @@
+volumes:
+  db_dev:
+
 networks:
   mediastack:
     external: true
 
 services:
-  # The Website + CMS (Payload)
   security-guru-dev:
     image: security-guru:latest
     container_name: security-guru-dev
@@ -11,18 +13,10 @@ services:
     env_file:
       - .env
       - .env.development
-    # environment:
-    # Override DATABASE_URI to use container name instead of localhost - Temporarily commented out
-    # DATABASE_URI: postgres://postgres:password@security-db-dev:5432/securityguru
-    # depends_on:
-    # - security-db-dev
     networks:
-      - mediastack # Join existing network
+      - mediastack
     ports:
-      - ${WEB_PORT:?err}:3333
-    volumes:
-      # Map the uploads folder so images persist across container rebuilds
-      - ${PROJECT_DIR:?err}/media:/app/public/media
+      - ${WEB_PORT_DEV:?err}:3333
     labels:
       - traefik.enable=true
       - traefik.http.routers.security-guru-dev.rule=Host(`securityguru-dev.${CLOUDFLARE_DNS_ZONE_DEV:?err}`)
