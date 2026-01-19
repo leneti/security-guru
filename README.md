@@ -1,3 +1,5 @@
+> Work in progress on the `v2` branch.
+
 <div align="center">
 <p>
 <img src="./assets/01_Logotipas/SVG/02_Logotipas/Logotipas_Oranzine.svg" alt="Security Guru logo" width="300" />
