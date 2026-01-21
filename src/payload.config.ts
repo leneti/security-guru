@@ -8,6 +8,7 @@ import sharp from "sharp";
 
 import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
+import { Services } from "./collections/Services";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -17,7 +18,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || "",
   }),
-  collections: [Users, Media],
+  collections: [Users, Media, Services],
   admin: {
     user: Users.slug,
     importMap: {
