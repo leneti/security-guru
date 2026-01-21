@@ -20,7 +20,6 @@ Security Guru komanda siūlo penkias pagrindines paslaugas (nors galima susitart
 reikalavimų susisiekus):
 
 - Apsaugos signalizacijos sistemos
-
   - Įsibrovimo ir pavojaus signalizacijos sistemos yra diegiamos nesankcionuoto patekimo į saugomą
     patalpą aptikimui ir prevencijai. Statistikos duomenimis, namai arba patalpos, kuriuose nėra
     įrengta apsaugos signalizacijos sistema, vagystės rizika išauga 300%\*. Dar vienas įdiegtos
@@ -34,7 +33,6 @@ reikalavimų susisiekus):
     \*https://engineeredalarm.com/pages/facts-figures-home-security
 
 - Įeigos kontrolės sistemos
-
   - Pagrindinė įeigos kontrolės sistemų paskirtis yra riboti pašalinių asmenų patekimą į saugomas
     patalpas arba teritorijas. Be to, šios sistemos gali atlikti laiko apskaitos funkcijas.
     Šiandieninėse realijose šios sistemos yra neatsiejamos bendros apsaugos sistemos dalis, kuriuos
@@ -45,7 +43,6 @@ reikalavimų susisiekus):
     Projekto kaina nuo 100 eurų.
 
 - Priešgaisrinės signalizacijos sistemos
-
   - Priešgaisrinės signalizacijos sistemos yra naudojamos automatiniam, gaisrui būdingiems
     požymiams, tokiems kaip dūmai, liepsna, didelė temperatūra, aptikimui. Šiuolaikinės
     priešgaisrinės sistemos gali ne tik nustatyti kurioje patalpoje kilo gaisras bet ir valdyti
@@ -60,7 +57,6 @@ reikalavimų susisiekus):
     Projekto kaina nuo 200 eurų.
 
 - Vaizdo stebėjimo sistemos
-
   - Vaizdo stebėjimo sistemos yra skirtos teritorijų, patalpų, kiemų bei specifinių daiktų
     stebėjimui ir apsaugai. Jos atlieka aptikimo, atpažinimo, identifikavimo, autentifikavimo bei
     specialias užduotis. Įdiegta vaizdo stebėjimo sistema ne tik leidžia stebėti nuotolinį ar
@@ -70,7 +66,6 @@ reikalavimų susisiekus):
     Projekto kaina nuo 200 eurų.
 
 - Integruoti apsaugos sprendimai
-
   - Apsaugos sistemos yra integruojamos, siekiant išgauti didesnio saugumo ir funkcionalumo.
     Pavyzdžiui, įeigos kontrolės sistemos yra integruojamos į gaisro aptikimo sistemas- esant gaisro
     požymiams visi pastato išėjimai yra automatiškai atrakinami. Išmanios vaizdo sistemos yra
@@ -159,8 +154,9 @@ the logo, colour palette (PDF).
 - Always use named functions/components instead of `default` exports, unless required by the
   framework (e.g. Next.js page.tsx file)
 - Use React 19 features like `useLayoutEffect` where possible/reasonable to improve performance etc.
-- If `yarn dev` is run to start a dev server, after the task is done, the dev server instance must
-  be stopped
+- **CRITICALLY:** If you need to run the dev server (via `yarn dev`, `yarn next dev`, etc.) - ONLY
+  do it with a `timeout` to force the command to automatically stop itself. Otherwise, you risk not
+  being able to continue the workflow
 
 ## Code Quality & Linting
 
