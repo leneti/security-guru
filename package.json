@@ -30,6 +30,7 @@
     "resend": "^6.7.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@total-typescript/ts-reset": "^0.6.1",
     "@tsconfig/next": "^2.0.5",
