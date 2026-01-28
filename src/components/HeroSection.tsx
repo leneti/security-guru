@@ -3,7 +3,10 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative flex h-screen min-h-150 items-center justify-center overflow-hidden bg-dark">
+    <section
+      id="hero"
+      className="relative flex h-screen min-h-150 items-center justify-center overflow-hidden bg-dark"
+    >
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 z-0">
         <Image

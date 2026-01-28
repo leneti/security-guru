@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "./restart.sh --local",
     "format": "oxfmt .",
     "format:check": "oxfmt . --check",
     "lint": "oxlint . --tsconfig=tsconfig.json --type-aware",

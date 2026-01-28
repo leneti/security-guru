@@ -3,7 +3,7 @@
 import { Dialog, DialogPanel } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
 import { useDisclosure } from "@/lib/use-disclosure";
@@ -17,11 +17,12 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, { open, close }] = useDisclosure();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

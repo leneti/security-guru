@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Security Guru",
+  title: `Security Guru${process.env.NODE_ENV === "production" ? "" : " (Dev)"}`,
   description:
     "Profesionalūs apsaugos sprendimai jūsų namams ir verslui. Kokybė, profesionalumas ir inovatyvumas.",
 };
