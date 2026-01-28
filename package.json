@@ -13,6 +13,8 @@
     "lint:fix": "oxlint . --tsconfig=tsconfig.json --type-aware --fix",
     "prepare": "husky",
     "start": "./restart.sh --help",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -1,18 +1,29 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test("homepage loads correctly", async ({ page }) => {
+  await page.goto("/");
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+  // Expect the page to have a title containing "Security Guru"
+  await expect(page).toHaveTitle(/Security Guru/i);
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test("navigation menu is visible", async ({ page }) => {
+  await page.goto("/");
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  // Check that the main navigation is present
+  await expect(page.locator("nav")).toBeVisible();
+});
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test("services section is displayed", async ({ page }) => {
+  await page.goto("/");
+
+  // Check that services section exists
+  await expect(page.getByText(/Apsaugos signalizacijos/i)).toBeVisible();
+});
+
+test("contact form is present", async ({ page }) => {
+  await page.goto("/");
+
+  // Check that contact form fields are present
+  await expect(page.getByLabel(/Vardas|Email|Telefonas/i)).toBeVisible();
 });
