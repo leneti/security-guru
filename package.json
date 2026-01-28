@@ -6,11 +6,11 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "oxfmt src/",
-    "format:check": "oxfmt src/ --check",
-    "lint": "oxlint src/ --tsconfig=tsconfig.json --type-aware",
+    "format": "oxfmt .",
+    "format:check": "oxfmt . --check",
+    "lint": "oxlint . --tsconfig=tsconfig.json --type-aware",
     "lint-staged": "lint-staged",
-    "lint:fix": "oxlint src/ --tsconfig=tsconfig.json --type-aware --fix",
+    "lint:fix": "oxlint . --tsconfig=tsconfig.json --type-aware --fix",
     "prepare": "husky",
     "start": "./restart.sh --help",
     "typecheck": "tsc --noEmit"

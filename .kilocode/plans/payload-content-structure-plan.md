@@ -84,101 +84,73 @@ To enable rich text editing with colors and button types in the admin panel:
 
 ## Implementation Plan
 
-### Phase 0: Automated Testing Setup
+### Phase 0: Custom Components Development
 
 **Subtasks for Orchestrator:**
 
-1. **Install Playwright**
-   - Add Playwright to project dependencies
-   - Configure for visual regression testing and functional tests
-   - Run linting and formatting checks
-
-2. **Create Visual Regression Tests**
-   - Set up baseline screenshots of all components
-   - Create tests to compare visual appearance after changes
-   - Include tests for different screen sizes (responsive design)
-   - Run linting and formatting checks
-
-3. **Create Functional Tests**
-   - Test button click actions and navigation
-   - Verify links work correctly
-   - Test form submissions (when contact form is implemented)
-   - Ensure Material Symbols icons load properly
-   - Run linting and formatting checks
-
-4. **Integrate Tests into CI/CD**
-   - Add test commands to package.json scripts
-   - Configure tests to run on code changes
-   - Set up visual diff reporting
-   - Run linting and formatting checks
-
-### Phase 1: Custom Components Development
-
-**Subtasks for Orchestrator:**
-
-1. **Create RichTextWithColors Component**
+0.1 **Create RichTextWithColors Component**
    - Extend Payload's rich text editor with custom color formatting feature
    - Support color palette: Peach Fuzz (#FFBC85), Midnight Green (#021614), Sage Mist (#C3C9B5),
      Dusty Mauve (#9B849A)
    - Include standard formatting (bold, italic) using Payload's built-in features
 
-2. **Create ButtonSelector Component**
+0.2 **Create ButtonSelector Component**
    - Build admin component with dropdown for button type (primary/secondary)
    - Include text input field for button label
    - Structure as group field with type and text properties
 
-3. **Test Custom Components**
+0.3 **Test Custom Components**
    - Verify rich text editor with color selection works in admin
    - Test button selector dropdown and text input
    - Ensure components integrate properly with Payload field system
    - Test standard formatting (bold, italic) alongside colors
 
-### Phase 2: Core Globals Setup
+### Phase 1: Core Globals Setup
 
 **Subtasks for Orchestrator:**
 
-1. **Create Hero Global**
+1.1 **Create Hero Global**
    - Fields: badge_text, heading (rich text with colors), description, services_button (button
      selector), contact_button (button selector), scroll_icon
    - All fields required
    - Update HeroSection component to fetch and use global data
 
-2. **Create About Global**
+1.2 **Create About Global**
    - Fields: subtitle, heading (rich text with colors), description
    - Group field for features (array of: title, description, icon)
    - Group for quality_overlay: title, description, icon
    - Update AboutSection component
 
-3. **Create Footer Global**
+1.3 **Create Footer Global**
    - Fields: description, navigation_links (array), company_details (group), copyright_text
    - Update Footer component
 
-4. **Create Navigation Global**
+1.4 **Create Navigation Global**
    - Fields: nav_links (array of: href, label), contact_button_text, menu_icon, close_icon
    - Update Header component
 
-5. **Create SiteMetadata Global**
+1.5 **Create SiteMetadata Global**
    - Fields: title, description
    - Update layout.tsx metadata
 
-### Phase 3: Icon Management Enhancement
+### Phase 2: Icon Management Enhancement
 
 **Subtasks for Orchestrator:**
 
-6. **Update Icon Loading System**
+2.1 **Update Icon Loading System**
    - Add icon fields to globals
    - Modify layout.tsx to collect icons from globals and services
    - Ensure dynamic font loading includes all used icons
 
-### Phase 4: Migration and Testing
+### Phase 3: Migration and Testing
 
 **Subtasks for Orchestrator:**
 
-7. **Create Migration Script**
+3.1 **Create Migration Script**
    - Populate globals with current hardcoded values, preserving colors and button types
    - Run migration to seed initial data
 
-8. **Update Components**
+3.2 **Update Components**
    - Modify all components to use Payload data instead of hardcoded content
    - Handle loading states and error cases
    - Ensure visual fidelity is maintained
@@ -360,43 +332,35 @@ To enable rich text editing with colors and button types in the admin panel:
 
 ### Phase Completion Checklist
 
-- [ ] Phase 0: Automated Testing Setup
-- [ ] Phase 1: Custom Components Development
-- [ ] Phase 2: Core Globals Setup
-- [ ] Phase 3: Icon Management Enhancement
-- [ ] Phase 4: Migration and Testing
+- [ ] Phase 0: Custom Components Development
+- [ ] Phase 1: Core Globals Setup
+- [ ] Phase 2: Icon Management Enhancement
+- [ ] Phase 3: Migration and Testing
 
 ### Subtask Completion Checklist
 
-#### Phase 0: Automated Testing Setup
+#### Phase 0: Custom Components Development
 
-- [ ] 0.1 Install Playwright
-- [ ] 0.2 Create Visual Regression Tests
-- [ ] 0.3 Create Functional Tests
-- [ ] 0.4 Integrate Tests into CI/CD
+- [ ] 0.1 Create RichTextWithColors Component
+- [ ] 0.2 Create ButtonSelector Component
+- [ ] 0.3 Test Custom Components
 
-#### Phase 1: Custom Components Development
+#### Phase 1: Core Globals Setup
 
-- [ ] 1.1 Create RichTextWithColors Component
-- [ ] 1.2 Create ButtonSelector Component
-- [ ] 1.3 Test Custom Components
+- [ ] 1.1 Create Hero Global
+- [ ] 1.2 Create About Global
+- [ ] 1.3 Create Footer Global
+- [ ] 1.4 Create Navigation Global
+- [ ] 1.5 Create SiteMetadata Global
 
-#### Phase 2: Core Globals Setup
+#### Phase 2: Icon Management Enhancement
 
-- [ ] 2.1 Create Hero Global
-- [ ] 2.2 Create About Global
-- [ ] 2.3 Create Footer Global
-- [ ] 2.4 Create Navigation Global
-- [ ] 2.5 Create SiteMetadata Global
+- [ ] 2.1 Update Icon Loading System
 
-#### Phase 3: Icon Management Enhancement
+#### Phase 3: Migration and Testing
 
-- [ ] 3.1 Update Icon Loading System
-
-#### Phase 4: Migration and Testing
-
-- [ ] 4.1 Create Migration Script
-- [ ] 4.2 Update Components
+- [ ] 3.1 Create Migration Script
+- [ ] 3.2 Update Components
 
 ### Issues Faced
 
