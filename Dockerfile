@@ -25,7 +25,7 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN \
-  if [ -f yarn.lock ]; then corepack enable && yarn next build; \
+  if [ -f yarn.lock ]; then corepack enable && yarn next build && yarn next-sitemap; \
   else echo "Lockfile not found." && exit 1; \
   fi
 

@@ -3,27 +3,20 @@
 import { useState } from "react";
 
 import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
-
-interface FormData {
-  type: "Namams" | "Verslui";
-  name: string;
-  city: string;
-  email: string;
-  phone: string;
-  message: string;
-}
+import type { ContactFormData } from "@/types";
 
 export function ContactSection() {
-  const [formData, setFormData] = useState<FormData>({
-    type: "Namams",
+  const [formData, setFormData] = useState<ContactFormData>({
+    solution: "namams",
     name: "",
     city: "",
     email: "",
     phone: "",
-    message: "",
+    comment: "",
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,6 +31,7 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     if (!validateEmail(formData.email)) {
       alert("Prašome įvesti teisingą el. pašto adresą.");
@@ -51,20 +45,35 @@ export function ContactSection() {
       return;
     }
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Form submitted to info@securityguru.lt:", formData);
-      setStatus("success");
-      setFormData({
-        type: "Namams",
-        name: "",
-        city: "",
-        email: "",
-        phone: "",
-        message: "",
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: formData }),
       });
-      setTimeout(() => setStatus("idle"), 5000);
-    }, 1500);
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          solution: "namams",
+          name: "",
+          city: "",
+          email: "",
+          phone: "",
+          comment: "",
+        });
+        setTimeout(() => {
+          setStatus("idle");
+        }, 5000);
+      } else {
+        const errorData = (await response.json()) as { message?: string };
+        setStatus("error");
+        setErrorMessage(errorData.message || "Klaida siunčiant žinutę");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMessage("Tinklo klaida. Bandykite dar kartą.");
+    }
   };
 
   return (
@@ -142,20 +151,20 @@ export function ContactSection() {
                     <label
                       key={type}
                       className={`flex-1 cursor-pointer rounded-lg border p-3 text-center transition-all ${
-                        formData.type === type
+                        formData.solution === type.toLowerCase()
                           ? "border-primary bg-primary/10 font-bold text-dark"
                           : "border-gray-200 text-gray-500 hover:border-gray-300"
                       }`}
                     >
                       <input
                         type="radio"
-                        name="type"
-                        value={type}
-                        checked={formData.type === type}
+                        name="solution"
+                        value={formData.solution}
+                        checked={formData.solution === type.toLowerCase()}
                         onChange={(e) =>
                           setFormData((prev) => ({
                             ...prev,
-                            type: e.target.value as "Namams" | "Verslui",
+                            solution: e.target.value as "namams" | "verslui",
                           }))
                         }
                         className="hidden"
@@ -249,15 +258,15 @@ export function ContactSection() {
               {/* Message */}
               <div>
                 <label
-                  htmlFor="message"
+                  htmlFor="comment"
                   className="mb-1 block text-xs font-bold text-gray-500 uppercase"
                 >
                   Komentaras *
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
+                  id="comment"
+                  name="comment"
+                  value={formData.comment}
                   onChange={handleChange}
                   required
                   rows={4}
@@ -265,6 +274,13 @@ export function ContactSection() {
                   placeholder="Aprašykite savo poreikius..."
                 />
               </div>
+
+              {/* Error Message */}
+              {status === "error" && (
+                <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
+                  {errorMessage}
+                </div>
+              )}
 
               {/* Submit Button */}
               <button

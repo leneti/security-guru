@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "yarn local-db:up && next build && cp -r .next/static .next/standalone/.next/static && yarn local-db:down",
+    "build": "yarn local-db:up && next build && next-sitemap && cp -r .next/static .next/standalone/.next/static && yarn local-db:down",
     "dev": "./restart.sh --local",
     "format": "oxfmt .",
     "format:check": "oxfmt . --check",
@@ -43,6 +43,7 @@
     "@types/react-dom": "^19.2.3",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "next-sitemap": "^4.2.3",
     "oxfmt": "^0.27.0",
     "oxlint": "^1.42.0",
     "oxlint-tsgolint": "^0.11.2",
