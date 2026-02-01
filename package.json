@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
+    "build": "yarn local-db:up && next build && cp -r .next/static .next/standalone/.next/static && yarn local-db:down",
     "dev": "./restart.sh --local",
     "format": "oxfmt .",
     "format:check": "oxfmt . --check",
@@ -12,9 +12,11 @@
     "lint-staged": "lint-staged",
     "lint:fix": "oxlint . --tsconfig=tsconfig.json --type-aware --fix",
     "prepare": "husky",
-    "start": "./restart.sh --help",
+    "local-db:up": "docker compose --env-file .env --env-file .env.development -f docker-compose.local.yaml up --remove-orphans -d",
+    "local-db:down": "docker compose --env-file .env --env-file .env.development -f docker-compose.local.yaml down",
+    "start": "yarn local-db:up && node .next/standalone/server.js && yarn local-db:down",
     "test": "playwright test",
-    "test:ui": "playwright test --ui",
+    "test:ui": "playwright test --ui-host localhost",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

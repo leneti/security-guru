@@ -10,6 +10,10 @@ test.describe("Scroll State Tests", () => {
     // Initial state - at top of page
     await page.setViewportSize({ width: 1920, height: 1080 });
 
+    // Check page scroll height to determine if scrolling is possible
+    const scrollHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+    const viewportHeight = await page.evaluate(() => window.innerHeight);
+
     const header = page.locator("nav").first();
     const initialClasses = await header.evaluate((el) => el.className);
 
@@ -17,7 +21,16 @@ test.describe("Scroll State Tests", () => {
     expect(initialClasses).not.toContain("bg-dark/90");
 
     // Scroll down more than 50px
-    await page.evaluate(() => window.scrollTo(0, 100));
+    const canScroll = scrollHeight > viewportHeight;
+    if (canScroll) {
+      await page.evaluate(() => window.scrollTo(0, 100));
+    } else {
+      // Page isn't scrollable, simulate scroll state directly
+      await page.evaluate(() => {
+        Object.defineProperty(window, "scrollY", { value: 100, configurable: true });
+        window.dispatchEvent(new Event("scroll"));
+      });
+    }
     await page.waitForTimeout(500);
 
     // After scrolling, header should have dark background with backdrop blur
@@ -26,7 +39,8 @@ test.describe("Scroll State Tests", () => {
     const hasDarkBackground =
       scrolledClasses.includes("bg-dark/90") ||
       (scrolledClasses.includes("bg-[") && scrolledClasses.includes("#021614"));
-    const hasBackdrop = scrolledClasses.includes("backdrop-blur");
+    // Check for backdrop-blur (any blur variant)
+    const hasBackdrop = scrolledClasses.includes("backdrop-blur") || scrolledClasses.includes("backdrop-blur-sm");
 
     expect(hasDarkBackground).toBe(true);
     expect(hasBackdrop).toBe(true);

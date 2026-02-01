@@ -10,9 +10,6 @@ const nextConfig: NextConfig = {
     "securityguru-dev.namutv.uk",
     "192.168.1.130",
   ],
-  images: {
-    remotePatterns: [new URL("https://example.com/**")],
-  },
 };
 
 export default withPayload(nextConfig);

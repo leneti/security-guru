@@ -8,7 +8,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: 1,
+  workers: process.env.CI ? 1 : "50%",
   /** Reporter to use. @see https://playwright.dev/docs/test-reporters */
   reporter: "list",
   /* Visual testing settings */
@@ -25,20 +25,25 @@ export default defineConfig({
   },
   projects: [
     {
+      name: "Desktop Firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
       name: "Desktop Chrome",
       use: { ...devices["Desktop Chrome"] },
     },
-    // {
-    //   name: "Mobile Chrome",
-    //   use: { ...devices["Pixel 7"] },
-    // },
-    // {
-    //   name: "Mobile Safari",
-    //   use: { ...devices["iPhone 15"] },
-    // },
+    {
+      name: "Mobile Chrome",
+      use: { ...devices["Pixel 7"] },
+    },
+    {
+      name: "Mobile Safari",
+      use: { ...devices["iPhone 15"] },
+    },
   ],
   webServer: {
-    command: "yarn dev",
+    command: "yarn start",
+    timeout: 180_000,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     gracefulShutdown: { signal: "SIGTERM", timeout: 30_000 },
