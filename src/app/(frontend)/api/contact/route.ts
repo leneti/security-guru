@@ -1,8 +1,8 @@
+import type { ContactFormData } from "@/types";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
-import type { ContactFormData } from "@/types";
 
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -15,10 +15,6 @@ function escapeHtml(text: string): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
-}
-
-interface ContactRequestBody {
-  data: ContactFormData;
 }
 
 function validateFormData(data: unknown): data is ContactFormData {
@@ -62,8 +58,7 @@ export async function POST(request: Request) {
     }
 
     const jsonData = await request.json();
-    const body = jsonData as ContactRequestBody;
-    const { data } = body;
+    const { data } = jsonData as { data: ContactFormData };
 
     if (!validateFormData(data)) {
       return NextResponse.json({ success: false, error: "Invalid form data" }, { status: 400 });

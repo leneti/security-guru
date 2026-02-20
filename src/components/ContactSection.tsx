@@ -1,9 +1,9 @@
 "use client";
 
+import type { ContactFormData } from "@/types";
 import { useState } from "react";
 
 import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
-import type { ContactFormData } from "@/types";
 
 export function ContactSection() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -277,9 +277,7 @@ export function ContactSection() {
 
               {/* Error Message */}
               {status === "error" && (
-                <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
-                  {errorMessage}
-                </div>
+                <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">{errorMessage}</div>
               )}
 
               {/* Submit Button */}

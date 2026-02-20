@@ -1,8 +1,77 @@
+import type { Footer } from "@/payload-types";
 import Image from "next/image";
 
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
+import { getPayloadClient } from "@/lib/payload-client";
 
-export function Footer() {
+/**
+ * Navigation link type extracted from Footer global
+ */
+type NavLink = Footer["navigation_links"][number];
+
+/**
+ * Company details type extracted from Footer global
+ */
+type CompanyDetails = Footer["company_details"];
+
+interface FooterData {
+  description: string;
+  navigation_links: NavLink[];
+  company_details: CompanyDetails;
+  copyright_text: string;
+}
+
+const DEFAULT_FOOTER_DATA: FooterData = {
+  description:
+    "Kokybiški saugumo sprendimai jūsų namams ir verslui. Ilgametė patirtis ir profesionalumas garantuoja jūsų ramybę.",
+  navigation_links: [
+    { id: "1", label: "Paslaugos", href: "#services" },
+    { id: "2", label: "Apie mus", href: "#about" },
+    { id: "3", label: "Kontaktai", href: "#contact" },
+  ],
+  company_details: {
+    company_name: 'MB "Security Guru"',
+    company_code: "306109454",
+    location: "Vilnius, Lietuva",
+  },
+  copyright_text: "2026 Security Guru. Visos teisės saugomos.",
+};
+
+async function getFooterData(): Promise<FooterData> {
+  try {
+    const payload = await getPayloadClient();
+    const result = await payload.findGlobal({ slug: "footer" });
+
+    // Handle the case where global might not exist
+    const footer = result as Footer | null;
+
+    if (!footer) {
+      return DEFAULT_FOOTER_DATA;
+    }
+
+    return {
+      description: footer.description || DEFAULT_FOOTER_DATA.description,
+      navigation_links:
+        footer.navigation_links?.map((link) => link) || DEFAULT_FOOTER_DATA.navigation_links,
+      company_details: {
+        company_name:
+          footer.company_details?.company_name || DEFAULT_FOOTER_DATA.company_details.company_name,
+        company_code:
+          footer.company_details?.company_code || DEFAULT_FOOTER_DATA.company_details.company_code,
+        location: footer.company_details?.location || DEFAULT_FOOTER_DATA.company_details.location,
+      },
+      copyright_text: footer.copyright_text || DEFAULT_FOOTER_DATA.copyright_text,
+    };
+  } catch {
+    // If PayloadCMS is not available, return default data
+    console.warn("Failed to fetch Footer global, using default data");
+    return DEFAULT_FOOTER_DATA;
+  }
+}
+
+export async function Footer() {
+  const data = await getFooterData();
+
   return (
     <footer className="border-t border-white/10 bg-dark pt-20 pb-10 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -17,13 +86,13 @@ export function Footer() {
               className="mx-auto mb-6 sm:mx-0"
             />
             <p className="mx-auto mb-6 max-w-sm text-sm text-gray-400 sm:mx-0">
-              Kokybiški saugumo sprendimai jūsų namams ir verslui. Ilgametė patirtis ir
-              profesionalumas garantuoja jūsų ramybę.
+              {data.description}
             </p>
             <div className="flex justify-center space-x-4 sm:justify-start">
               <a
                 href="https://www.facebook.com/people/Security-guru/100088856047734/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-primary hover:text-dark"
               >
                 <span className="font-bold">f</span>
@@ -31,6 +100,7 @@ export function Footer() {
               <a
                 href="https://www.instagram.com/mbsecurityguru/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-primary hover:text-dark"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -42,34 +112,26 @@ export function Footer() {
           <div className="text-center sm:text-left">
             <h4 className="mb-6 font-bold text-primary">Navigacija</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li>
-                <a href="#services" className="transition-colors hover:text-white">
-                  Paslaugos
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="transition-colors hover:text-white">
-                  Apie mus
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="transition-colors hover:text-white">
-                  Kontaktai
-                </a>
-              </li>
+              {data.navigation_links.map((link) => (
+                <li key={link.id}>
+                  <a href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="text-center sm:text-left">
             <h4 className="mb-6 font-bold text-primary">Rekvizitai</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li>MB &quot;Security Guru&quot;</li>
-              <li>Įmonės kodas: 306109454</li>
-              <li>Vilnius, Lietuva</li>
+              <li>{data.company_details.company_name}</li>
+              <li>Įmonės kodas: {data.company_details.company_code}</li>
+              <li>{data.company_details.location}</li>
             </ul>
           </div>
         </div>
         <div className="flex flex-col items-center border-t border-white/10 pt-8 text-center text-xs text-gray-500 md:flex-row md:justify-between md:text-left">
-          <p>© 2026 Security Guru. Visos teisės saugomos.</p>
+          <p>© {data.copyright_text}</p>
           <p className="mt-2 md:mt-0">Sukurta saugumui.</p>
         </div>
       </div>

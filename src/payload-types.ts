@@ -13,53 +13,53 @@
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-  | 'Pacific/Midway'
-  | 'Pacific/Niue'
-  | 'Pacific/Honolulu'
-  | 'Pacific/Rarotonga'
-  | 'America/Anchorage'
-  | 'Pacific/Gambier'
-  | 'America/Los_Angeles'
-  | 'America/Tijuana'
-  | 'America/Denver'
-  | 'America/Phoenix'
-  | 'America/Chicago'
-  | 'America/Guatemala'
-  | 'America/New_York'
-  | 'America/Bogota'
-  | 'America/Caracas'
-  | 'America/Santiago'
-  | 'America/Buenos_Aires'
-  | 'America/Sao_Paulo'
-  | 'Atlantic/South_Georgia'
-  | 'Atlantic/Azores'
-  | 'Atlantic/Cape_Verde'
-  | 'Europe/London'
-  | 'Europe/Berlin'
-  | 'Africa/Lagos'
-  | 'Europe/Athens'
-  | 'Africa/Cairo'
-  | 'Europe/Moscow'
-  | 'Asia/Riyadh'
-  | 'Asia/Dubai'
-  | 'Asia/Baku'
-  | 'Asia/Karachi'
-  | 'Asia/Tashkent'
-  | 'Asia/Calcutta'
-  | 'Asia/Dhaka'
-  | 'Asia/Almaty'
-  | 'Asia/Jakarta'
-  | 'Asia/Bangkok'
-  | 'Asia/Shanghai'
-  | 'Asia/Singapore'
-  | 'Asia/Tokyo'
-  | 'Asia/Seoul'
-  | 'Australia/Brisbane'
-  | 'Australia/Sydney'
-  | 'Pacific/Guam'
-  | 'Pacific/Noumea'
-  | 'Pacific/Auckland'
-  | 'Pacific/Fiji';
+  | "Pacific/Midway"
+  | "Pacific/Niue"
+  | "Pacific/Honolulu"
+  | "Pacific/Rarotonga"
+  | "America/Anchorage"
+  | "Pacific/Gambier"
+  | "America/Los_Angeles"
+  | "America/Tijuana"
+  | "America/Denver"
+  | "America/Phoenix"
+  | "America/Chicago"
+  | "America/Guatemala"
+  | "America/New_York"
+  | "America/Bogota"
+  | "America/Caracas"
+  | "America/Santiago"
+  | "America/Buenos_Aires"
+  | "America/Sao_Paulo"
+  | "Atlantic/South_Georgia"
+  | "Atlantic/Azores"
+  | "Atlantic/Cape_Verde"
+  | "Europe/London"
+  | "Europe/Berlin"
+  | "Africa/Lagos"
+  | "Europe/Athens"
+  | "Africa/Cairo"
+  | "Europe/Moscow"
+  | "Asia/Riyadh"
+  | "Asia/Dubai"
+  | "Asia/Baku"
+  | "Asia/Karachi"
+  | "Asia/Tashkent"
+  | "Asia/Calcutta"
+  | "Asia/Dhaka"
+  | "Asia/Almaty"
+  | "Asia/Jakarta"
+  | "Asia/Bangkok"
+  | "Asia/Shanghai"
+  | "Asia/Singapore"
+  | "Asia/Tokyo"
+  | "Asia/Seoul"
+  | "Australia/Brisbane"
+  | "Australia/Sydney"
+  | "Pacific/Guam"
+  | "Pacific/Noumea"
+  | "Pacific/Auckland"
+  | "Pacific/Fiji";
 
 export interface Config {
   auth: {
@@ -70,30 +70,44 @@ export interface Config {
     users: User;
     media: Media;
     services: Service;
-    'payload-kv': PayloadKv;
-    'payload-locked-documents': PayloadLockedDocument;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
+    "payload-kv": PayloadKv;
+    "payload-locked-documents": PayloadLockedDocument;
+    "payload-preferences": PayloadPreference;
+    "payload-migrations": PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
-    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+    "payload-kv": PayloadKvSelect<false> | PayloadKvSelect<true>;
+    "payload-locked-documents":
+      | PayloadLockedDocumentsSelect<false>
+      | PayloadLockedDocumentsSelect<true>;
+    "payload-preferences": PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    "payload-migrations": PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    hero: Hero;
+    about: About;
+    footer: Footer;
+    navigation: Navigation;
+    "site-metadata": SiteMetadata;
+  };
+  globalsSelect: {
+    hero: HeroSelect<false> | HeroSelect<true>;
+    about: AboutSelect<false> | AboutSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    navigation: NavigationSelect<false> | NavigationSelect<true>;
+    "site-metadata": SiteMetadataSelect<false> | SiteMetadataSelect<true>;
+  };
   locale: null;
   user: User & {
-    collection: 'users';
+    collection: "users";
   };
   jobs: {
     tasks: unknown;
@@ -200,20 +214,20 @@ export interface PayloadLockedDocument {
   id: string;
   document?:
     | ({
-        relationTo: 'users';
+        relationTo: "users";
         value: string | User;
       } | null)
     | ({
-        relationTo: 'media';
+        relationTo: "media";
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'services';
+        relationTo: "services";
         value: string | Service;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: 'users';
+    relationTo: "users";
     value: string | User;
   };
   updatedAt: string;
@@ -226,7 +240,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: 'users';
+    relationTo: "users";
     value: string | User;
   };
   key?: string | null;
@@ -252,6 +266,165 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero".
+ */
+export interface Hero {
+  id: string;
+  badge_text: string;
+  heading: {
+    [k: string]: unknown;
+  };
+  description: string;
+  services_button: {
+    type: "primary" | "secondary";
+    text: string;
+  };
+  contact_button: {
+    type: "primary" | "secondary";
+    text: string;
+  };
+  scroll_icon: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero_select".
+ */
+export interface HeroSelect<T extends boolean = true> {
+  badge_text?: T;
+  heading?: T;
+  description?: T;
+  services_button?: T;
+  contact_button?: T;
+  scroll_icon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  description: string;
+  navigation_links: {
+    id: string;
+    label: string;
+    href: string;
+  }[];
+  company_details: {
+    company_name: string;
+    company_code: string;
+    location: string;
+  };
+  copyright_text: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  description?: T;
+  navigation_links?: T;
+  company_details?: T;
+  copyright_text?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation".
+ */
+export interface Navigation {
+  id: string;
+  nav_links: {
+    id: string;
+    href: string;
+    label: string;
+  }[];
+  contact_button_text: string;
+  menu_icon: string;
+  close_icon: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation_select".
+ */
+export interface NavigationSelect<T extends boolean = true> {
+  nav_links?: T;
+  contact_button_text?: T;
+  menu_icon?: T;
+  close_icon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: string;
+  subtitle: string;
+  heading: {
+    [k: string]: unknown;
+  };
+  description: string;
+  features: {
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+  }[];
+  quality_overlay: {
+    title: string;
+    description: string;
+    icon: string;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about_select".
+ */
+export interface AboutSelect<T extends boolean = true> {
+  subtitle?: T;
+  heading?: T;
+  description?: T;
+  features?: T;
+  quality_overlay?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-metadata".
+ */
+export interface SiteMetadata {
+  id: string;
+  title: string;
+  description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-metadata_select".
+ */
+export interface SiteMetadataSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -354,7 +527,6 @@ export interface Auth {
   [k: string]: unknown;
 }
 
-
-declare module 'payload' {
+declare module "payload" {
   export interface GeneratedTypes extends Config {}
 }

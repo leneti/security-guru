@@ -169,3 +169,29 @@ TypeScript errors should only be ignored as a last resort in extreme edge cases.
 **Justification Required:** If a rule must be disabled (via eslint-disable or @ts-ignore), you must
 include a concise comment on the same or preceding line explaining the specific technical necessity
 for the override.
+
+### TailwindCSS Guidelines
+
+**Do NOT extract TailwindCSS classes to const objects:**
+
+```typescript
+// ❌ AVOID - TailwindCSS JIT compiler cannot detect these classes
+const buttonStyles = {
+  primary: "rounded-lg bg-primary px-8 py-4 font-bold",
+  secondary: "rounded-lg border-2 border-sage px-8 py-4 font-bold",
+};
+
+// When used with dynamic property access, JIT won't detect the classes:
+className={buttonStyles[data.button_type]}
+```
+
+**Always inline TailwindCSS classes directly in JSX:**
+
+```typescript
+// ✅ CORRECT - Classes are directly visible to TailwindCSS JIT compiler
+className = "rounded-lg bg-primary px-8 py-4 font-bold";
+```
+
+TailwindCSS's JIT compiler performs static analysis at build time to detect which classes are used.
+When classes are extracted to const objects and accessed dynamically, the compiler cannot trace the
+class names, leading to missing styles in production builds.

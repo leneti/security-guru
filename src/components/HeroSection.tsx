@@ -1,7 +1,86 @@
+import type { Hero } from "@/payload-types";
 import Image from "next/image";
 import Link from "next/link";
 
-export function HeroSection() {
+import { RichTextRenderer } from "@/components/payload/RichTextRenderer";
+import { getPayloadClient } from "@/lib/payload-client";
+
+interface HeroData {
+  badge_text: string;
+  heading: Hero["heading"];
+  description: string;
+  services_button: {
+    type: "primary" | "secondary";
+    text: string;
+  };
+  contact_button: {
+    type: "primary" | "secondary";
+    text: string;
+  };
+  scroll_icon: string;
+}
+
+const DEFAULT_HERO_DATA: HeroData = {
+  badge_text: "Saugumas Pirmiausia",
+  heading: [
+    {
+      type: "p",
+      children: [
+        { text: "", format: 0 },
+        {
+          text: "Kokybė",
+          format: 0,
+          styles: [{ color: "#FFBC85" }],
+        },
+        { text: ", Profesionalumas", format: 0 },
+        { text: "\n", format: 0 },
+        { text: "ir Inovatyvumas", format: 0 },
+      ],
+    },
+  ] as unknown as Hero["heading"],
+  description:
+    "Apsaugokite tai, kas svarbiausia. Profesionalios saugumo sistemos namams ir verslui Vilniuje ir Vilniaus apskrityje.",
+  services_button: {
+    type: "primary",
+    text: "Mūsų Paslaugos",
+  },
+  contact_button: {
+    type: "secondary",
+    text: "Gauti Pasiūlymą",
+  },
+  scroll_icon: "keyboard_arrow_down",
+};
+
+async function getHeroData(): Promise<HeroData> {
+  try {
+    const payload = await getPayloadClient();
+    const result = await payload.findGlobal({ slug: "hero" });
+
+    // Handle the case where global might not exist
+    const hero = result as Hero | null;
+
+    if (!hero) {
+      return DEFAULT_HERO_DATA;
+    }
+
+    return {
+      badge_text: hero.badge_text || DEFAULT_HERO_DATA.badge_text,
+      heading: hero.heading || DEFAULT_HERO_DATA.heading,
+      description: hero.description || DEFAULT_HERO_DATA.description,
+      services_button: hero.services_button || DEFAULT_HERO_DATA.services_button,
+      contact_button: hero.contact_button || DEFAULT_HERO_DATA.contact_button,
+      scroll_icon: hero.scroll_icon || DEFAULT_HERO_DATA.scroll_icon,
+    };
+  } catch {
+    // If PayloadCMS is not available, return default data
+    console.warn("Failed to fetch Hero global, using default data");
+    return DEFAULT_HERO_DATA;
+  }
+}
+
+export async function HeroSection() {
+  const data = await getHeroData();
+
   return (
     <section
       id="hero"
@@ -37,24 +116,22 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto mt-16 max-w-3xl px-4 text-center">
         <div className="mb-6 inline-block animate-[fadeIn_1s_ease-out] rounded-full border border-primary/50 bg-primary/10 px-3 py-1 backdrop-blur-sm">
           <span className="text-xs font-bold tracking-widest text-primary uppercase">
-            Saugumas Pirmiausia
+            {data.badge_text}
           </span>
         </div>
 
-        <h1
+        <div
           className="slide-up mb-6 text-5xl leading-tight font-bold text-white md:text-7xl text-balance"
           style={{ animationDelay: "0.1s" }}
         >
-          <span className="text-primary">Kokybė</span>, Profesionalumas
-          <br className="hidden md:block" /> ir Inovatyvumas
-        </h1>
+          <RichTextRenderer content={data.heading} />
+        </div>
 
         <p
           className="slide-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed font-light text-sage md:text-xl"
           style={{ animationDelay: "0.2s" }}
         >
-          Apsaugokite tai, kas svarbiausia. Profesionalios saugumo sistemos namams ir verslui
-          Vilniuje ir Vilniaus apskrityje.
+          {data.description}
         </p>
 
         <div
@@ -65,13 +142,13 @@ export function HeroSection() {
             href="#services"
             className="transform-gpu rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white"
           >
-            Mūsų Paslaugos
+            {data.services_button.text}
           </Link>
           <Link
             href="#contact"
             className="rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark transform-gpu"
           >
-            Gauti Pasiūlymą
+            {data.contact_button.text}
           </Link>
         </div>
       </div>
@@ -79,7 +156,7 @@ export function HeroSection() {
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 transform-gpu animate-bounce text-sage/50">
         <span className="material-symbols-outlined text-4xl" aria-hidden="true">
-          keyboard_arrow_down
+          {data.scroll_icon}
         </span>
       </div>
     </section>

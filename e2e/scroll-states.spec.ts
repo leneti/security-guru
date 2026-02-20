@@ -40,7 +40,8 @@ test.describe("Scroll State Tests", () => {
       scrolledClasses.includes("bg-dark/90") ||
       (scrolledClasses.includes("bg-[") && scrolledClasses.includes("#021614"));
     // Check for backdrop-blur (any blur variant)
-    const hasBackdrop = scrolledClasses.includes("backdrop-blur") || scrolledClasses.includes("backdrop-blur-sm");
+    const hasBackdrop =
+      scrolledClasses.includes("backdrop-blur") || scrolledClasses.includes("backdrop-blur-sm");
 
     expect(hasDarkBackground).toBe(true);
     expect(hasBackdrop).toBe(true);

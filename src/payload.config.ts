@@ -6,9 +6,15 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
+import { About } from "./collections/About";
+import { Footer } from "./collections/Footer";
+import { Hero } from "./collections/Hero";
 import { Media } from "./collections/Media";
-import { Users } from "./collections/Users";
+import { Navigation } from "./collections/Navigation";
 import { Services } from "./collections/Services";
+import { SiteMetadata } from "./collections/SiteMetadata";
+import { Users } from "./collections/Users";
+import { ColorFeature } from "./components/payload/ColorFeature";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -25,7 +31,10 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  editor: lexicalEditor(),
+  globals: [Hero, About, Footer, Navigation, SiteMetadata],
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [...defaultFeatures, ColorFeature],
+  }),
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },

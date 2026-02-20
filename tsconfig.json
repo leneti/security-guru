@@ -3,7 +3,8 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "@payload-config": ["./src/payload.config.ts"],
+      "@/payload-seed.config": ["./src/payload-seed.config.ts"]
     },
     "strictNullChecks": true,
     "strict": true,

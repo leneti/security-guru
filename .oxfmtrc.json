@@ -15,6 +15,10 @@
   "ignorePatterns": [
     "node_modules/**",
     ".next/**",
+    ".agents/**",
+    ".kilocode/**",
+    ".git/**",
+    ".yarn/**",
     "out/**",
     "build/**",
     "src/app/(payload)/**",

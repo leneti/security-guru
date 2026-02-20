@@ -2,6 +2,8 @@
  * TypeScript types for Security Guru website
  */
 
+import type { Service } from "@/payload-types";
+
 // Contact Form Types
 export type SolutionType = "namams" | "verslui";
 
@@ -23,21 +25,17 @@ export interface ContactFormErrors {
   comment?: string;
 }
 
-// API Response Types
-export interface ApiResponse<T = unknown> {
-  success: boolean;
-  data?: T;
-  error?: string;
-}
+// API Response Types - Re-export from payload types for consistency
+export type { Service } from "@/payload-types";
 
-// Service Types
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-  price: string;
-  icon: string;
-}
+/**
+ * Lightweight Service type for frontend use (without payload metadata)
+ * Use this when you don't need the full payload type with createdAt/updatedAt
+ */
+export type FrontendService = Pick<
+  Service,
+  "id" | "title" | "description" | "price" | "icon" | "image"
+>;
 
 // Validation result
 export interface ValidationResult {
