@@ -47,93 +47,10 @@ async function seedGlobals() {
   }
 }
 
-/**
- * Creates a Lexical-compatible richText structure from a simple array of text segments.
- * Each segment can have text content and optional formatting (bold, italic) and color.
- *
- * Supports two color formats:
- * - Hex color string (legacy): "#FFBC85" - stored in styles array
- * - Color key (TextStateFeature): "peach" - stored directly as `color` property
- */
-function createLexicalRichText(
-  segments: Array<{ text: string; bold?: boolean; italic?: boolean; color?: string }>,
-): {
-  root: {
-    children: Array<{
-      type: string;
-      children: Array<{
-        type: string;
-        text: string;
-        format?: number;
-        version: number;
-        color?: string;
-      }>;
-      version: number;
-    }>;
-    type: string;
-    version: number;
-  };
-} {
-  return {
-    root: {
-      children: [
-        {
-          type: "paragraph",
-          children: segments.map((segment) => {
-            const node: {
-              type: string;
-              text: string;
-              format?: number;
-              version: number;
-              color?: string;
-            } = {
-              type: "text",
-              text: segment.text,
-              format: (segment.bold ? 1 : 0) | (segment.italic ? 2 : 0),
-              version: 1,
-            };
-
-            // Map hex colors to TextStateFeature keys
-            if (segment.color) {
-              const colorKey = segment.color.startsWith("#")
-                ? hexToColorKey(segment.color)
-                : segment.color;
-              if (colorKey) {
-                node.color = colorKey;
-              }
-            }
-
-            return node;
-          }),
-          version: 1,
-        },
-      ],
-      type: "root",
-      version: 1,
-    },
-  };
-}
-
-/**
- * Map hex color values to TextStateFeature color keys.
- */
-function hexToColorKey(hex: string): string | null {
-  const colorMap: Record<string, string> = {
-    "#FFBC85": "peach",
-    "#021614": "midnight",
-    "#C3C9B5": "sage",
-    "#9B849A": "mauve",
-  };
-  return colorMap[hex.toUpperCase()] ?? null;
-}
-
 async function seedHero(payload: Payload) {
   const heroData = {
     badge_text: "Saugumas Pirmiausia",
-    heading: createLexicalRichText([
-      { text: "Kokybė", color: "#FFBC85" },
-      { text: ", Profesionalumas ir Inovatyvumas" },
-    ]),
+    heading: "Kokybė, Profesionalumas ir Inovatyvumas",
     description:
       "Apsaugokite tai, kas svarbiausia. Profesionalios saugumo sistemos namams ir verslui Vilniuje ir Vilniaus apskrityje.",
     services_button: {
@@ -154,10 +71,7 @@ async function seedHero(payload: Payload) {
 async function seedAbout(payload: Payload) {
   const aboutData = {
     subtitle: "Kodėl rinktis mus?",
-    heading: createLexicalRichText([
-      { text: "Saugumas reikalauja " },
-      { text: "Ekspertų Dėmesio", bold: true, color: "#FFBC85" },
-    ]),
+    heading: "Saugumas reikalauja Ekspertų Dėmesio",
     description:
       "SECURITY GURU teikia pirmenybę jūsų saugumo reikalavimams. Mūsų ekspertai skiria laiką suprasti jūsų rūpesčius ir pateikia asmeninius sprendimus.",
     features: [

@@ -14,7 +14,6 @@ import { Navigation } from "./collections/Navigation";
 import { Services } from "./collections/Services";
 import { SiteMetadata } from "./collections/SiteMetadata";
 import { Users } from "./collections/Users";
-import { ColorFeature } from "./components/payload/ColorFeature";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -32,9 +31,7 @@ export default buildConfig({
     },
   },
   globals: [Hero, About, Footer, Navigation, SiteMetadata],
-  editor: lexicalEditor({
-    features: ({ defaultFeatures }) => [...defaultFeatures, ColorFeature],
-  }),
+  editor: lexicalEditor(),
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },

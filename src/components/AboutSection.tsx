@@ -1,7 +1,7 @@
 import type { About } from "@/payload-types";
 import Image from "next/image";
 
-import { RichTextRenderer } from "@/components/payload/RichTextRenderer";
+import { ColoredHeading } from "@/components/payload/ColoredHeading";
 import { getPayloadClient } from "@/lib/payload-client";
 
 /**
@@ -16,7 +16,7 @@ type QualityOverlay = About["quality_overlay"];
 
 interface AboutData {
   subtitle: string;
-  heading: About["heading"];
+  heading: string;
   description: string;
   features: Feature[];
   quality_overlay: QualityOverlay;
@@ -24,19 +24,7 @@ interface AboutData {
 
 const DEFAULT_ABOUT_DATA: AboutData = {
   subtitle: "Kodėl rinktis mus?",
-  heading: [
-    {
-      type: "p",
-      children: [
-        { text: "Saugumas reikalauja ", format: 0 },
-        {
-          text: "Ekspertų Dėmesio",
-          format: 0,
-          styles: [{ color: "#FFBC85" }],
-        },
-      ],
-    },
-  ] as unknown as About["heading"],
+  heading: "Saugumas reikalauja Ekspertų Dėmesio",
   description:
     "SECURITY GURU teikia pirmenybę jūsų saugumo reikalavimams. Mūsų ekspertai skiria laiką suprasti jūsų rūpesčius ir pateikia asmeninius sprendimus.",
   features: [
@@ -80,7 +68,7 @@ async function getAboutData(): Promise<AboutData> {
 
     return {
       subtitle: about.subtitle || DEFAULT_ABOUT_DATA.subtitle,
-      heading: about.heading || DEFAULT_ABOUT_DATA.heading,
+      heading: (about.heading as unknown as string) || DEFAULT_ABOUT_DATA.heading,
       description: about.description || DEFAULT_ABOUT_DATA.description,
       features: about.features?.map((f) => f) || DEFAULT_ABOUT_DATA.features,
       quality_overlay: {
@@ -111,7 +99,7 @@ export async function AboutSection() {
               {data.subtitle}
             </span>
             <h2 className="mb-8 text-4xl leading-tight font-semibold md:text-5xl">
-              <RichTextRenderer content={data.heading} />
+              <ColoredHeading text={data.heading} variant="about" />
             </h2>
             <p className="mb-8 text-lg leading-relaxed font-light text-sage">{data.description}</p>
 

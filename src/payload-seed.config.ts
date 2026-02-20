@@ -5,8 +5,6 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig, type CollectionConfig, type GlobalConfig } from "payload";
 
-import { ColorFeature } from "./components/payload/ColorFeature";
-
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -62,7 +60,7 @@ const Hero: GlobalConfig = {
     },
     {
       name: "heading",
-      type: "richText",
+      type: "text",
       required: true,
     },
     {
@@ -125,7 +123,7 @@ const About: GlobalConfig = {
     },
     {
       name: "heading",
-      type: "richText",
+      type: "text",
       required: true,
     },
     {
@@ -303,9 +301,7 @@ export default buildConfig({
     user: Users.slug,
   },
   globals: [Hero, About, Footer, Navigation, SiteMetadata],
-  editor: lexicalEditor({
-    features: ({ defaultFeatures }) => [...defaultFeatures, ColorFeature],
-  }),
+  editor: lexicalEditor(),
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },

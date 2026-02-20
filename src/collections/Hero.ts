@@ -24,7 +24,7 @@ export const Hero: GlobalConfig = {
     },
     {
       name: "heading",
-      type: "richText",
+      type: "text",
       required: true,
     },
     {
@@ -35,12 +35,6 @@ export const Hero: GlobalConfig = {
     {
       name: "services_button",
       type: "group",
-      admin: {
-        components: {
-          Field: ButtonSelector as unknown as CustomComponent &
-            PayloadComponent<FieldClientComponent | FieldServerComponent>,
-        },
-      },
       fields: [
         {
           name: "type",
@@ -58,12 +52,6 @@ export const Hero: GlobalConfig = {
     {
       name: "contact_button",
       type: "group",
-      admin: {
-        components: {
-          Field: ButtonSelector as unknown as CustomComponent &
-            PayloadComponent<FieldClientComponent | FieldServerComponent>,
-        },
-      },
       fields: [
         {
           name: "type",

@@ -22,6 +22,7 @@
     "out/**",
     "build/**",
     "src/app/(payload)/**",
+    "payload-types.ts",
     "next-env.d.ts"
   ],
   "experimentalSortImports": {

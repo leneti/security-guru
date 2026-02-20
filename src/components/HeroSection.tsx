@@ -1,13 +1,14 @@
 import type { Hero } from "@/payload-types";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
-import { RichTextRenderer } from "@/components/payload/RichTextRenderer";
+import { ColoredHeading } from "@/components/payload/ColoredHeading";
 import { getPayloadClient } from "@/lib/payload-client";
 
 interface HeroData {
   badge_text: string;
-  heading: Hero["heading"];
+  heading: string;
   description: string;
   services_button: {
     type: "primary" | "secondary";
@@ -22,22 +23,7 @@ interface HeroData {
 
 const DEFAULT_HERO_DATA: HeroData = {
   badge_text: "Saugumas Pirmiausia",
-  heading: [
-    {
-      type: "p",
-      children: [
-        { text: "", format: 0 },
-        {
-          text: "Kokybė",
-          format: 0,
-          styles: [{ color: "#FFBC85" }],
-        },
-        { text: ", Profesionalumas", format: 0 },
-        { text: "\n", format: 0 },
-        { text: "ir Inovatyvumas", format: 0 },
-      ],
-    },
-  ] as unknown as Hero["heading"],
+  heading: "Kokybė, Profesionalumas ir Inovatyvumas",
   description:
     "Apsaugokite tai, kas svarbiausia. Profesionalios saugumo sistemos namams ir verslui Vilniuje ir Vilniaus apskrityje.",
   services_button: {
@@ -65,7 +51,7 @@ async function getHeroData(): Promise<HeroData> {
 
     return {
       badge_text: hero.badge_text || DEFAULT_HERO_DATA.badge_text,
-      heading: hero.heading || DEFAULT_HERO_DATA.heading,
+      heading: (hero.heading as unknown as string) || DEFAULT_HERO_DATA.heading,
       description: hero.description || DEFAULT_HERO_DATA.description,
       services_button: hero.services_button || DEFAULT_HERO_DATA.services_button,
       contact_button: hero.contact_button || DEFAULT_HERO_DATA.contact_button,
@@ -124,7 +110,7 @@ export async function HeroSection() {
           className="slide-up mb-6 text-5xl leading-tight font-bold text-white md:text-7xl text-balance"
           style={{ animationDelay: "0.1s" }}
         >
-          <RichTextRenderer content={data.heading} />
+          <ColoredHeading text={data.heading} variant="hero" />
         </div>
 
         <p
@@ -140,13 +126,23 @@ export async function HeroSection() {
         >
           <Link
             href="#services"
-            className="transform-gpu rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white"
+            className={clsx(
+              data.services_button.type === "primary" &&
+                "transform-gpu rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white",
+              data.services_button.type === "secondary" &&
+                "rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark transform-gpu",
+            )}
           >
             {data.services_button.text}
           </Link>
           <Link
             href="#contact"
-            className="rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark transform-gpu"
+            className={clsx(
+              data.contact_button.type === "primary" &&
+                "transform-gpu rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white",
+              data.contact_button.type === "secondary" &&
+                "rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark transform-gpu",
+            )}
           >
             {data.contact_button.text}
           </Link>

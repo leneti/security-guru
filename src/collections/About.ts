@@ -16,7 +16,7 @@ export const About: GlobalConfig = {
     },
     {
       name: "heading",
-      type: "richText",
+      type: "text",
       required: true,
     },
     {
