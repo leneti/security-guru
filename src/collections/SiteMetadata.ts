@@ -1,5 +1,7 @@
 import type { GlobalConfig } from "payload";
 
+import { revalidateFrontend } from "@/lib/revalidation";
+
 export const SiteMetadata: GlobalConfig = {
   slug: "site-metadata",
   access: {
@@ -20,4 +22,7 @@ export const SiteMetadata: GlobalConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [revalidateFrontend],
+  },
 };

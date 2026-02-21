@@ -16,9 +16,24 @@ services:
     networks:
       - mediastack
     ports:
-      - ${WEB_PORT_DEV:?err}:3333
+      - ${WEB_PORT:?err}:3333
     labels:
       - traefik.enable=true
       - traefik.http.routers.security-guru-dev.rule=Host(`securityguru-dev.${CLOUDFLARE_DNS_ZONE_DEV:?err}`)
       - traefik.http.routers.security-guru-dev.entrypoints=web
       - traefik.http.services.security-guru-dev.loadbalancer.server.scheme=http
+
+  mongo-dev:
+    image: mongo:latest
+    container_name: sg-mongo-dev
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - ${DB_PORT:?err}:27017
+    environment:
+      MONGO_INITDB_DATABASE: securityguru
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:?err}
+    volumes:
+      - db_dev:/data/db

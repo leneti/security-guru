@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "yarn local-db:up && next build && next-sitemap && cp -r .next/static .next/standalone/.next/static && yarn local-db:down",
+    "build": "next build && next-sitemap && cp -r .next/static .next/standalone/.next/static",
     "dev": "./restart.sh --local",
     "format": "oxfmt .",
     "format:check": "oxfmt . --check",

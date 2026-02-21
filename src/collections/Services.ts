@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateFrontend } from "@/lib/revalidation";
+
 export const Services: CollectionConfig = {
   slug: "services",
   access: {
@@ -15,4 +17,8 @@ export const Services: CollectionConfig = {
     { name: "icon", type: "text", required: true },
     { name: "price", type: "number", required: true },
   ],
+  hooks: {
+    afterChange: [revalidateFrontend],
+    afterDelete: [revalidateFrontend],
+  },
 };

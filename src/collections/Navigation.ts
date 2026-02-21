@@ -1,5 +1,7 @@
 import type { GlobalConfig } from "payload";
 
+import { revalidateFrontend } from "@/lib/revalidation";
+
 export const Navigation: GlobalConfig = {
   slug: "navigation",
   access: {
@@ -42,4 +44,7 @@ export const Navigation: GlobalConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [revalidateFrontend],
+  },
 };

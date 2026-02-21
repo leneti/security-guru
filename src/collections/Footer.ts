@@ -1,5 +1,7 @@
 import type { GlobalConfig } from "payload";
 
+import { revalidateFrontend } from "@/lib/revalidation";
+
 export const Footer: GlobalConfig = {
   slug: "footer",
   access: {
@@ -59,4 +61,11 @@ export const Footer: GlobalConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      async () => {
+        revalidateFrontend();
+      },
+    ],
+  },
 };

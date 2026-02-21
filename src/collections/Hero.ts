@@ -1,12 +1,6 @@
-import type {
-  CustomComponent,
-  FieldClientComponent,
-  FieldServerComponent,
-  GlobalConfig,
-  PayloadComponent,
-} from "payload";
+import type { GlobalConfig } from "payload";
 
-import { ButtonSelector } from "@/components/payload/ButtonSelector";
+import { revalidateFrontend } from "@/lib/revalidation";
 
 export const Hero: GlobalConfig = {
   slug: "hero",
@@ -72,4 +66,7 @@ export const Hero: GlobalConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [revalidateFrontend],
+  },
 };

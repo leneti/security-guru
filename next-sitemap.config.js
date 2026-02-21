@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 export default {
-  siteUrl: "https://securityguru.lt",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://securityguru.lt",
   generateRobotsTxt: true,
   changefreq: "weekly",
   priority: 0.7,
@@ -11,6 +11,8 @@ export default {
       { userAgent: "*", allow: "/" },
       { userAgent: "*", disallow: ["/admin/", "/api/"] },
     ],
-    additionalSitemaps: ["https://securityguru.lt/sitemap.xml"],
+    additionalSitemaps: [
+      `${process.env.NEXT_PUBLIC_SITE_URL || "https://securityguru.lt"}/sitemap.xml`,
+    ],
   },
 };

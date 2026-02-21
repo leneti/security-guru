@@ -1,5 +1,7 @@
 import type { GlobalConfig } from "payload";
 
+import { revalidateFrontend } from "@/lib/revalidation";
+
 export const About: GlobalConfig = {
   slug: "about",
   access: {
@@ -69,4 +71,7 @@ export const About: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [revalidateFrontend],
+  },
 };

@@ -1,12 +1,15 @@
 import "./globals.css";
 
-import type { SiteMetadata } from "@/payload-types";
+import type { SiteMetadatum } from "@/payload-types";
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/HeaderServer";
 import { getPayloadClient } from "@/lib/payload-client";
+
+// Revalidate every hour (ISR) - avoids requiring MongoDB at build time while maintaining performance
+export const revalidate = 3600;
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -38,7 +41,7 @@ const DEFAULT_MUI_SYMBOLS = [
 /**
  * Site metadata type using Omit to exclude payload metadata fields
  */
-type SiteMetadataData = Omit<SiteMetadata, "id" | "updatedAt" | "createdAt">;
+type SiteMetadataData = Omit<SiteMetadatum, "id" | "updatedAt" | "createdAt">;
 
 const DEFAULT_METADATA: SiteMetadataData = {
   title: "Security Guru - Apsaugos sistemos Vilniuje",
@@ -72,14 +75,14 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | Security Guru",
     },
     description: data.description,
-    metadataBase: new URL("https://securityguru.lt"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://securityguru.lt"),
     alternates: {
-      canonical: "https://securityguru.lt",
+      canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://securityguru.lt",
     },
     openGraph: {
       title: "Security Guru - Profesionalūs apsaugos sprendimai",
       description: data.description,
-      url: "https://securityguru.lt",
+      url: process.env.NEXT_PUBLIC_SITE_URL || "https://securityguru.lt",
       siteName: "Security Guru",
       locale: "lt_LT",
       type: "website",
@@ -150,41 +153,46 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getAllMuiSymbols(): Promise<string[]> {
-  const payload = await getPayloadClient();
+  try {
+    const payload = await getPayloadClient();
 
-  // Fetch globals for icons
-  const [serviceIcons, heroGlobal, aboutGlobal, navigationGlobal] = await Promise.all([
-    payload
-      .find({ collection: "services", limit: 0 })
-      .then(({ docs }) => docs.map(({ icon }) => icon)),
-    payload.findGlobal({ slug: "hero" }),
-    payload.findGlobal({ slug: "about" }),
-    payload.findGlobal({ slug: "navigation" }),
-  ]);
+    // Fetch globals for icons
+    const [serviceIcons, heroGlobal, aboutGlobal, navigationGlobal] = await Promise.all([
+      payload
+        .find({ collection: "services", limit: 0 })
+        .then(({ docs }) => docs.map(({ icon }) => icon)),
+      payload.findGlobal({ slug: "hero" }),
+      payload.findGlobal({ slug: "about" }),
+      payload.findGlobal({ slug: "navigation" }),
+    ]);
 
-  // Extract icons from globals
-  const heroIcons = heroGlobal?.scroll_icon ? [heroGlobal.scroll_icon] : [];
+    // Extract icons from globals
+    const heroIcons = heroGlobal?.scroll_icon ? [heroGlobal.scroll_icon] : [];
 
-  const aboutIcons = (aboutGlobal?.features || []).map((feature) => feature?.icon).filter(Boolean);
-  if (aboutGlobal?.quality_overlay?.icon) aboutIcons.push(aboutGlobal.quality_overlay.icon);
+    const aboutIcons = (aboutGlobal?.features || []).map((feature) => feature?.icon).filter(Boolean);
+    if (aboutGlobal?.quality_overlay?.icon) aboutIcons.push(aboutGlobal.quality_overlay.icon);
 
-  const navigationIcons: string[] = [];
-  if (navigationGlobal?.menu_icon) navigationIcons.push(navigationGlobal.menu_icon);
-  if (navigationGlobal?.close_icon) navigationIcons.push(navigationGlobal.close_icon);
+    const navigationIcons: string[] = [];
+    if (navigationGlobal?.menu_icon) navigationIcons.push(navigationGlobal.menu_icon);
+    if (navigationGlobal?.close_icon) navigationIcons.push(navigationGlobal.close_icon);
 
-  // Combine all icons and remove duplicates
-  const muiSymbolsToLoad = [
-    ...new Set([
-      ...DEFAULT_MUI_SYMBOLS,
-      ...serviceIcons,
-      ...heroIcons,
-      ...aboutIcons,
-      ...navigationIcons,
-    ]),
-    // The array must be sorted, as otherwise the HTTP request will fail
-  ].sort();
+    // Combine all icons and remove duplicates
+    const muiSymbolsToLoad = [
+      ...new Set([
+        ...DEFAULT_MUI_SYMBOLS,
+        ...serviceIcons,
+        ...heroIcons,
+        ...aboutIcons,
+        ...navigationIcons,
+      ]),
+      // The array must be sorted, as otherwise the HTTP request will fail
+    ].sort();
 
-  return muiSymbolsToLoad;
+    return muiSymbolsToLoad;
+  } catch {
+    console.warn("Failed to fetch MUI symbols from database, using defaults");
+    return DEFAULT_MUI_SYMBOLS.sort();
+  }
 }
 
 function ScriptLdJson() {
@@ -198,7 +206,7 @@ function ScriptLdJson() {
           name: "Security Guru",
           description:
             "Profesionalūs apsaugos sprendimai jūsų namams ir verslui. Apsaugos signalizacijos, įeigos kontrolės, priešgaisrinės signalizacijos, vaizdo stebėjimo sistemos.",
-          url: "https://securityguru.lt",
+          url: process.env.NEXT_PUBLIC_SITE_URL || "https://securityguru.lt",
           telephone: "+37060334255",
           email: "info@securityguru.lt",
           address: {

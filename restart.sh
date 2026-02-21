@@ -59,7 +59,7 @@ set_mode_config() {
         log_info "Using development Docker configuration"
     else # local mode (default)
         DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker-compose.local.yaml"
-        ENV_OVERRIDE_FILE="${PROJECT_DIR}/.env.development"
+        ENV_OVERRIDE_FILE="${PROJECT_DIR}/.env.local"
         log_info "Using local development configuration"
     fi
 }
@@ -74,7 +74,11 @@ check_requirements() {
     fi
 
     if [ "$MODE" != "prod" ] && [ ! -f "$ENV_OVERRIDE_FILE" ]; then
-        log_error ".env.development file not found at: $ENV_OVERRIDE_FILE"
+        local env_file_name=".env.development"
+        if [ "$MODE" = "local" ]; then
+            env_file_name=".env.local"
+        fi
+        log_error "${env_file_name} file not found at: $ENV_OVERRIDE_FILE"
         exit 1
     fi
 
@@ -127,10 +131,16 @@ build_image() {
     local should_build="${BUILD_IMAGE:-false}"
 
     if [ "$should_build" = "true" ] || [ -f "${PROJECT_DIR}/Dockerfile" ]; then
+        # Determine image tag based on mode: "stable" for prod, "latest" for dev
+        local image_tag="latest"
+        if [ "$MODE" = "prod" ]; then
+            image_tag="stable"
+        fi
+
         log_info "Building Docker image locally..."
         cd "$PROJECT_DIR"
-        docker build -t security-guru:latest .
-        log_success "Docker image built successfully (local: security-guru:latest)"
+        docker build -t "security-guru:${image_tag}" .
+        log_success "Docker image built successfully (local: security-guru:${image_tag})"
     fi
 }
 
@@ -285,24 +295,18 @@ show_access_info() {
 
     log_success "Security Guru is running!"
     echo ""
+    
+    local url
 
     if [ "$MODE" = "prod" ]; then
-        # Get the production domain from env file
-        local prod_domain
-        prod_domain=$(grep "^CLOUDFLARE_DNS_ZONE_PROD=" "$ENV_FILE" | cut -d '=' -f2)
-
-        echo "Access URLs:"
-        echo "  - Web App: https://${prod_domain}"
-        echo "  - Admin/CMS: https://${prod_domain}/admin"
+    url=$(grep "^NEXT_PUBLIC_SITE_URL=" "$ENV_FILE" | cut -d '=' -f2)
     else # dev mode
-        # Get the dev domain from env file
-        local dev_domain
-        dev_domain=$(grep "^CLOUDFLARE_DNS_ZONE_DEV=" "$ENV_FILE" | cut -d '=' -f2)
-
-        echo "Access URLs:"
-        echo "  - Web App: https://securityguru-dev.${dev_domain}"
-        echo "  - Admin/CMS: https://securityguru-dev.${dev_domain}/admin"
+    url=$(grep "^NEXT_PUBLIC_SITE_URL=" "$ENV_OVERRIDE_FILE" | cut -d '=' -f2)
     fi
+
+    echo "Access URLs:"
+    echo "  - Web App: https://${url}"
+    echo "  - Admin/CMS: https://${url}/admin"
     echo ""
 }
 

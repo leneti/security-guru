@@ -7,14 +7,14 @@ networks:
 
 services:
   security-guru:
-    image: security-guru:latest
+    image: security-guru:stable
     container_name: security-guru
     restart: unless-stopped
     env_file: .env
     networks:
       - mediastack
     ports:
-      - ${WEB_PORT_PROD:?err}:3333
+      - ${WEB_PORT:?err}:3333
     labels:
       - traefik.enable=true
       - traefik.http.routers.security-guru.rule=Host(`${CLOUDFLARE_DNS_ZONE_PROD:?err}`)
