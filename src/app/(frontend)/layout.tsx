@@ -68,6 +68,7 @@ async function getMetadataData(): Promise<SiteMetadataData> {
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getMetadataData();
+  const isProduction = process.env.NODE_ENV === "production";
 
   return {
     title: {
@@ -101,17 +102,23 @@ export async function generateMetadata(): Promise<Metadata> {
       description: data.description,
       images: ["/og-image.svg"],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
+    // In development/preview, prevent indexing with noindex, nofollow
+    robots: isProduction
+      ? {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        }
+      : {
+          index: false,
+          follow: false,
+        },
     category: "Security Services",
     keywords: [
       // Core security services

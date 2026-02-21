@@ -29,8 +29,6 @@ services:
     restart: unless-stopped
     networks:
       - mediastack
-    ports:
-      - ${DB_PORT:?err}:27017
     environment:
       MONGO_INITDB_DATABASE: securityguru
       MONGO_INITDB_ROOT_USERNAME: admin
