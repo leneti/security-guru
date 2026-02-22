@@ -3,6 +3,7 @@ import "./globals.css";
 import type { SiteMetadatum } from "@/payload-types";
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/HeaderServer";
@@ -272,8 +273,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body
         className={`${manrope.variable} ${geistMono.variable} bg-white font-sans text-midnight antialiased`}
       >
+        <Link
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:font-bold focus:text-dark focus:shadow-lg"
+        >
+          Peršokti į pagrindinį turinį
+        </Link>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

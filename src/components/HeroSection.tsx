@@ -106,12 +106,12 @@ export async function HeroSection() {
           </span>
         </div>
 
-        <div
+        <h1
           className="slide-up mb-6 text-5xl leading-tight font-bold text-white md:text-7xl text-balance"
           style={{ animationDelay: "0.1s" }}
         >
           <ColoredHeading text={data.heading} variant="hero" />
-        </div>
+        </h1>
 
         <p
           className="slide-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed font-light text-sage md:text-xl"

@@ -167,7 +167,7 @@ export function ContactSection() {
                             solution: e.target.value as "namams" | "verslui",
                           }))
                         }
-                        className="hidden"
+                        className="sr-only"
                       />
                       {type}
                     </label>
