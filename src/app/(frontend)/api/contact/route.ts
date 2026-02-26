@@ -4,6 +4,35 @@ import { Resend } from "resend";
 
 import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
 
+// Initialize Resend client once at module load
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+
+// Simple in-memory rate limiter: 5 requests per minute
+const rateLimitMap = new Map<string, number[]>();
+const WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS = 5;
+
+function isRateLimited(identifier: string): boolean {
+  const now = Date.now();
+
+  const timestamps = rateLimitMap.get(identifier) || [];
+  const validTimestamps = timestamps.filter((ts) => now - ts < WINDOW_MS);
+
+  if (validTimestamps.length >= MAX_REQUESTS) {
+    return true;
+  }
+
+  validTimestamps.push(now);
+  rateLimitMap.set(identifier, validTimestamps);
+  return false;
+}
+
+const noCacheHeaders = {
+  headers: {
+    "Cache-Control": "no-store, no-cache, must-revalidate",
+  },
+};
+
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -48,12 +77,20 @@ function validateFormData(data: unknown): data is ContactFormData {
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    // Rate limit check
+    const identifier = request.headers.get("x-forwarded-for") ?? "anonymous";
+    if (isRateLimited(identifier)) {
+      return NextResponse.json(
+        { success: false, error: "Per daug užklausų. Bandykite vėliau." },
+        { status: 429, ...noCacheHeaders },
+      );
+    }
 
-    if (!process.env.RESEND_API_KEY) {
+    // Check if email service is configured
+    if (!resend) {
       return NextResponse.json(
         { success: false, error: "Email service not configured" },
-        { status: 500 },
+        { status: 500, ...noCacheHeaders },
       );
     }
 
@@ -61,7 +98,10 @@ export async function POST(request: Request) {
     const { data } = jsonData as { data: ContactFormData };
 
     if (!validateFormData(data)) {
-      return NextResponse.json({ success: false, error: "Invalid form data" }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: "Invalid form data" },
+        { status: 400, ...noCacheHeaders },
+      );
     }
 
     const solutionText = data.solution === "namams" ? "Namams" : "Verslui";
@@ -130,12 +170,18 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Resend error:", error);
-      return NextResponse.json({ success: false, error: "Failed to send email" }, { status: 500 });
+      return NextResponse.json(
+        { success: false, error: "Failed to send email" },
+        { status: 500, ...noCacheHeaders },
+      );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { ...noCacheHeaders });
   } catch {
     console.error("Contact form error:");
-    return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Internal server error" },
+      { status: 500, ...noCacheHeaders },
+    );
   }
 }

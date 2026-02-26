@@ -1,13 +1,10 @@
 import "./globals.css";
 
-import type { SiteMetadatum } from "@/payload-types";
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/HeaderServer";
-import { getPayloadClient } from "@/lib/payload-client";
+import { getAllMuiSymbols, getMetadataData } from "@/lib/layout-data";
 
 // Revalidate every hour (ISR) - avoids requiring MongoDB at build time while maintaining performance
 export const revalidate = 3600;
@@ -22,50 +19,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-const DEFAULT_MUI_SYMBOLS = [
-  "call",
-  "check",
-  "verified_user",
-  "close",
-  "mail",
-  "schedule",
-  "location_on",
-  "shield_lock",
-  "menu",
-  "keyboard_arrow_down",
-  "chevron_left",
-  "chevron_right",
-  "production_quantity_limits",
-];
-
-/**
- * Site metadata type using Omit to exclude payload metadata fields
- */
-type SiteMetadataData = Omit<SiteMetadatum, "id" | "updatedAt" | "createdAt">;
-
-const DEFAULT_METADATA: SiteMetadataData = {
-  title: "Security Guru - Apsaugos sistemos Vilniuje",
-  description:
-    "Profesionalūs apsaugos sprendimai jūsų namams ir verslui. Apsaugos signalizacijos, įeigos kontrolės, priešgaisrinės signalizacijos, vaizdo stebėjimo sistemos Vilniuje ir Vilniaus apskrityje.",
-};
-
-async function getMetadataData(): Promise<SiteMetadataData> {
-  try {
-    const payload = await getPayloadClient();
-    const siteMetadata = await payload.findGlobal({ slug: "site-metadata" });
-
-    if (!siteMetadata) return DEFAULT_METADATA;
-
-    return {
-      title: siteMetadata.title || DEFAULT_METADATA.title,
-      description: siteMetadata.description || DEFAULT_METADATA.description,
-    };
-  } catch {
-    console.warn("Failed to fetch SiteMetadata global, using default data");
-    return DEFAULT_METADATA;
-  }
-}
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getMetadataData();
@@ -160,49 +113,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function getAllMuiSymbols(): Promise<string[]> {
-  try {
-    const payload = await getPayloadClient();
-
-    // Fetch globals for icons
-    const [serviceIcons, heroGlobal, aboutGlobal, navigationGlobal] = await Promise.all([
-      payload
-        .find({ collection: "services", limit: 0 })
-        .then(({ docs }) => docs.map(({ icon }) => icon)),
-      payload.findGlobal({ slug: "hero" }),
-      payload.findGlobal({ slug: "about" }),
-      payload.findGlobal({ slug: "navigation" }),
-    ]);
-
-    // Extract icons from globals
-    const heroIcons = heroGlobal?.scroll_icon ? [heroGlobal.scroll_icon] : [];
-
-    const aboutIcons = (aboutGlobal?.features || []).map((feature) => feature?.icon).filter(Boolean);
-    if (aboutGlobal?.quality_overlay?.icon) aboutIcons.push(aboutGlobal.quality_overlay.icon);
-
-    const navigationIcons: string[] = [];
-    if (navigationGlobal?.menu_icon) navigationIcons.push(navigationGlobal.menu_icon);
-    if (navigationGlobal?.close_icon) navigationIcons.push(navigationGlobal.close_icon);
-
-    // Combine all icons and remove duplicates
-    const muiSymbolsToLoad = [
-      ...new Set([
-        ...DEFAULT_MUI_SYMBOLS,
-        ...serviceIcons,
-        ...heroIcons,
-        ...aboutIcons,
-        ...navigationIcons,
-      ]),
-      // The array must be sorted, as otherwise the HTTP request will fail
-    ].sort();
-
-    return muiSymbolsToLoad;
-  } catch {
-    console.warn("Failed to fetch MUI symbols from database, using defaults");
-    return DEFAULT_MUI_SYMBOLS.sort();
-  }
-}
-
 function ScriptLdJson() {
   return (
     <script
@@ -257,12 +167,16 @@ function ScriptLdJson() {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // Combine all icons and remove duplicates
+  // Fetch all MUI symbols using the optimized parallel fetching
   const muiSymbolsToLoad = await getAllMuiSymbols();
 
   return (
     <html lang="lt">
       <head>
+        {/* Preconnect to Google Fonts for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
         <link
           href={`https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=${muiSymbolsToLoad.join(",")}&display=block`}
           type="text/css"
@@ -279,11 +193,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           Peršokti į pagrindinį turinį
         </Link>
-        <Header />
-        <main id="main-content" className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

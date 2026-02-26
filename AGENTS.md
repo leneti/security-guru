@@ -172,26 +172,43 @@ for the override.
 
 ### TailwindCSS Guidelines
 
-**Do NOT extract TailwindCSS classes to const objects:**
+**TailwindCSS JIT Compiler Behavior:** The JIT compiler scans source files as raw text and looks for strings that may resemble CSS class names. It CAN detect classes extracted into const objects using regular string literals (not template literals).
 
 ```typescript
-// ❌ AVOID - TailwindCSS JIT compiler cannot detect these classes
+// ✅ CORRECT - Static string classes in const objects
 const buttonStyles = {
   primary: "rounded-lg bg-primary px-8 py-4 font-bold",
   secondary: "rounded-lg border-2 border-sage px-8 py-4 font-bold",
 };
 
-// When used with dynamic property access, JIT won't detect the classes:
-className={buttonStyles[data.button_type]}
+// ✅ CORRECT - Inline classes for best readability
+className="rounded-lg bg-primary px-8 py-4 font-bold";
+
+// ✅ CORRECT - Full class names in ternary operator
+className={bgColor === "primary" ? "bg-primary" : "bg-secondary"}
 ```
 
-**Always inline TailwindCSS classes directly in JSX:**
+**Avoid Dynamic String Generation:** Do not use template literals or string concatenation to generate TailwindCSS classes, as they won't be detected by the JIT compiler:
 
 ```typescript
-// ✅ CORRECT - Classes are directly visible to TailwindCSS JIT compiler
-className = "rounded-lg bg-primary px-8 py-4 font-bold";
+// ❌ AVOID - Dynamic template literals cannot be detected
+const size = "lg";
+className={`rounded-lg bg-primary px-${size} py-${size}`};
+
+// ❌ AVOID - Variable interpolation
+const color = "primary";
+className={`bg-${color}`};
 ```
 
-TailwindCSS's JIT compiler performs static analysis at build time to detect which classes are used.
-When classes are extracted to const objects and accessed dynamically, the compiler cannot trace the
-class names, leading to missing styles in production builds.
+**Tip:** Prefer inline classes in JSX for maximum reliability and readability.
+
+### Code Organization
+
+**File Structure Ordering:** When organizing code in a module file, use the following order:
+
+1. **Imports** - External and internal module imports
+2. **Constants** - Default values, configuration constants
+3. **Internal Functions** - Private/helper functions not exported
+4. **Exported Functions** - Public API functions that are exported
+
+This ordering improves readability by making the module's public API immediately visible while keeping implementation details at the bottom.

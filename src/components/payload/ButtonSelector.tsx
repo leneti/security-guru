@@ -67,7 +67,7 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = (props) => {
   const selectedTypeInfo = BUTTON_TYPES.find((t) => t.value === currentType);
   const hasPermission = permissions ? Boolean(permissions.read) : true;
 
-  const handleTypeSelect = useCallback((type: ButtonType) => {
+  const handleTypeSelect = useCallback((_type: ButtonType) => {
     // The actual value update is handled by Payload's underlying field components
     // We just update local state for the UI preview
     setIsOpen(false);
@@ -108,7 +108,12 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = (props) => {
             {/* Dropdown menu */}
             {isOpen && !readOnly && (
               <>
-                <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setIsOpen(false)}
+                  onKeyDown={(e) => e.key === "Escape" && setIsOpen(false)}
+                  role="presentation"
+                />
                 <div className="absolute left-0 top-full z-20 mt-1 w-full overflow-hidden rounded-md border border-gray-200 bg-white shadow-lg">
                   {BUTTON_TYPES.map((typeOption) => (
                     <button

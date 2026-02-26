@@ -1,32 +1,27 @@
-import type { Service } from "@/payload-types";
-
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { getPayloadClient } from "@/lib/payload-client";
-
-// Revalidate every hour (ISR) - avoids requiring MongoDB at build time while maintaining performance
-export const revalidate = 3600;
+import { getPageData } from "@/lib/page-data";
 
 export default async function HomePage() {
-  let services: Service[] = [];
-
-  try {
-    const payload = await getPayloadClient();
-    services = await payload
-      .find({ collection: "services", limit: 0 })
-      .then(({ docs }) => docs);
-  } catch {
-    console.warn("Failed to fetch services from database, using empty array");
-  }
+  // Fetch all page data in parallel to avoid waterfalls
+  const { services, hero, about, navigation, footer } = await getPageData();
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <HeroSection />
-      <ServicesSection services={services} />
-      <AboutSection />
-      <ContactSection />
-    </div>
+    <>
+      <Header data={navigation} />
+
+      <main id="main-content" className="flex flex-col min-h-screen">
+        <HeroSection data={hero} />
+        <ServicesSection services={services} />
+        <AboutSection data={about} />
+        <ContactSection />
+      </main>
+
+      <Footer data={footer} />
+    </>
   );
 }

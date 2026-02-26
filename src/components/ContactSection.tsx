@@ -17,6 +17,7 @@ export function ContactSection() {
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -28,22 +29,31 @@ export function ContactSection() {
     return re.test(email);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-    setErrorMessage("");
+  const validateForm = (): boolean => {
+    const errors: Record<string, string> = {};
 
     if (!validateEmail(formData.email)) {
-      alert("Prašome įvesti teisingą el. pašto adresą.");
-      setStatus("idle");
-      return;
+      errors.email = "Prašome įvesti teisingą el. pašto adresą.";
     }
 
     if (!isValidLithuanianMobileNumber(formData.phone)) {
-      alert("Prašome įvesti teisingą lietuviško telefono numerį (+3706XXXXXXX arba 86XXXXXXXX).");
-      setStatus("idle");
-      return;
+      errors.phone =
+        "Prašome įvesti teisingą lietuvišką telefono numerį (+3706XXXXXXX arba 86XXXXXXXX).";
     }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage("");
+
+    if (!validateForm()) {
+      return; // Errors are displayed inline
+    }
+
+    setStatus("loading");
 
     try {
       const response = await fetch("/api/contact", {
@@ -62,6 +72,7 @@ export function ContactSection() {
           phone: "",
           comment: "",
         });
+        setFieldErrors({});
         setTimeout(() => {
           setStatus("idle");
         }, 5000);
@@ -97,7 +108,7 @@ export function ContactSection() {
                 <div>
                   <h4 className="font-bold text-dark">Telefonai</h4>
                   <span className="mt-1 font-mono text-sm text-gray-600">+370 603 34255</span>
-                  <span role="separator" className="font-mono text-sm text-gray-600">
+                  <span className="font-mono text-sm text-gray-600" aria-hidden="true">
                     {" "}
                     |{" "}
                   </span>
@@ -159,7 +170,7 @@ export function ContactSection() {
                       <input
                         type="radio"
                         name="solution"
-                        value={formData.solution}
+                        value={type.toLowerCase()}
                         checked={formData.solution === type.toLowerCase()}
                         onChange={(e) =>
                           setFormData((prev) => ({
@@ -191,6 +202,7 @@ export function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    aria-required="true"
                     className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:outline-none"
                     placeholder="Jūsų vardas"
                   />
@@ -209,6 +221,7 @@ export function ContactSection() {
                     value={formData.city}
                     onChange={handleChange}
                     required
+                    aria-required="true"
                     className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:outline-none"
                     placeholder="Vilnius"
                   />
@@ -231,9 +244,17 @@ export function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    aria-required="true"
+                    aria-invalid={!!fieldErrors.email}
+                    aria-describedby={fieldErrors.email ? "email-error" : undefined}
                     className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:outline-none"
                     placeholder="vardas@pastas.lt"
                   />
+                  {fieldErrors.email && (
+                    <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
+                      {fieldErrors.email}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -249,9 +270,17 @@ export function ContactSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
+                    aria-required="true"
+                    aria-invalid={!!fieldErrors.phone}
+                    aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
                     className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:outline-none"
                     placeholder="+370 600 00000"
                   />
+                  {fieldErrors.phone && (
+                    <p id="phone-error" className="mt-1 text-sm text-red-600" role="alert">
+                      {fieldErrors.phone}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -269,6 +298,7 @@ export function ContactSection() {
                   value={formData.comment}
                   onChange={handleChange}
                   required
+                  aria-required="true"
                   rows={4}
                   className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:outline-none"
                   placeholder="Aprašykite savo poreikius..."

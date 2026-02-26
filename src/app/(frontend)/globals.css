@@ -154,6 +154,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 .glass {
   background: rgba(2, 22, 20, 0.95);
   backdrop-filter: blur(10px);

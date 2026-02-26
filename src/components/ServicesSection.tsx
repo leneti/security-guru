@@ -31,6 +31,7 @@ export function ServicesSection(props: { services: Service[] }) {
                       alt={service.title}
                       width={400}
                       height={200}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="h-full w-full transform object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   )}

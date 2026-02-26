@@ -11,13 +11,9 @@ export type UseDisclosureReturnValue = [boolean, UseDisclosureHandlers];
 export function useDisclosure(initialState = false): UseDisclosureReturnValue {
   const [opened, setOpened] = useState(initialState);
 
-  const open = useCallback(() => {
-    setOpened((isOpened) => (!isOpened ? true : isOpened));
-  }, []);
+  const open = useCallback(() => setOpened(true), []);
 
-  const close = useCallback(() => {
-    setOpened((isOpened) => (isOpened ? false : isOpened));
-  }, []);
+  const close = useCallback(() => setOpened(false), []);
 
   const toggle = useCallback(() => (opened ? close() : open()), [close, open, opened]);
 
