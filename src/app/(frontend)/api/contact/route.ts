@@ -1,8 +1,8 @@
-import type { ContactFormData } from "@/types";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
+import type { ContactFormData } from "@/types";
 
 // Initialize Resend client once at module load
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;

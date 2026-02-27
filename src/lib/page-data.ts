@@ -1,7 +1,6 @@
-import type { AboutData, FooterData, HeroData, NavigationData, PageData } from "./page-data-types";
-
 import { About, Footer, Hero, Navigation } from "@/payload-types";
 
+import type { AboutData, FooterData, HeroData, NavigationData, PageData } from "./page-data-types";
 import { getPayloadClient } from "./payload-client";
 
 const DEFAULT_HERO_DATA: HeroData = {

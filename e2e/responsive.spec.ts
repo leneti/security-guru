@@ -12,7 +12,7 @@ test.describe("Responsive Layout Tests", () => {
       await page.setViewportSize({ width: 375, height: 667 });
       await page.waitForTimeout(300);
 
-      const mobileMenuButton = page.locator('button[aria-label="Toggle mobile menu"]');
+      const mobileMenuButton = page.locator('button[aria-label="Atidaryti meniu"]');
       const desktopNav = page.locator("nav .hidden.md\\:flex");
 
       await expect(mobileMenuButton).toBeVisible();

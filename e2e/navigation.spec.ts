@@ -39,7 +39,7 @@ test.describe("Navigation Tests", () => {
       await page.setViewportSize({ width: 375, height: 667 });
 
       // Use the first occurrence in the nav (not in the dialog)
-      const menuButton = page.locator('nav button[aria-label="Toggle mobile menu"]').first();
+      const menuButton = page.locator('nav button[aria-label="Atidaryti meniu"]').first();
       await expect(menuButton).toBeVisible();
 
       // Click to open menu
@@ -55,7 +55,7 @@ test.describe("Navigation Tests", () => {
       await page.setViewportSize({ width: 375, height: 667 });
 
       // Open menu first
-      const menuButton = page.locator('nav button[aria-label="Toggle mobile menu"]').first();
+      const menuButton = page.locator('nav button[aria-label="Atidaryti meniu"]').first();
       await menuButton.click();
       await page.waitForTimeout(500);
 
@@ -64,7 +64,7 @@ test.describe("Navigation Tests", () => {
       await expect(dialogLinks).toBeVisible();
 
       // Click the close button in the dialog
-      const closeButton = page.locator('[role="dialog"] button[aria-label="Toggle mobile menu"]');
+      const closeButton = page.locator('[role="dialog"] button[aria-label="Uždaryti meniu"]');
       await closeButton.click();
       await page.waitForTimeout(500);
 
@@ -74,7 +74,7 @@ test.describe("Navigation Tests", () => {
 
     test("mobile-link-scrolls", async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 667 });
-      await page.locator('nav button[aria-label="Toggle mobile menu"]').first().click();
+      await page.locator('nav button[aria-label="Atidaryti meniu"]').first().click();
       await page.waitForTimeout(500);
 
       const mobileLink = page.locator('[role="dialog"] a:has-text("Paslaugos")');

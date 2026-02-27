@@ -1,5 +1,6 @@
-import type { Service } from "@/payload-types";
 import Image from "next/image";
+
+import type { Service } from "@/payload-types";
 
 export function ServicesSection(props: { services: Service[] }) {
   const { services } = props;

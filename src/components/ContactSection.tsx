@@ -1,9 +1,9 @@
 "use client";
 
-import type { ContactFormData } from "@/types";
 import { useState } from "react";
 
 import { isValidLithuanianMobileNumber } from "@/lib/phone-validation";
+import type { ContactFormData } from "@/types";
 
 export function ContactSection() {
   const [formData, setFormData] = useState<ContactFormData>({

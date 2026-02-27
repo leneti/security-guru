@@ -1,8 +1,8 @@
-import type { FooterData } from "@/lib/page-data-types";
 import Image from "next/image";
 import Link from "next/link";
 
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
+import type { FooterData } from "@/lib/page-data-types";
 
 export function Footer({ data }: { data: FooterData }) {
   const { description, navigation_links, company_details, copyright_text } = data;

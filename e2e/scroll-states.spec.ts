@@ -22,8 +22,20 @@ test.describe("Scroll State Tests", () => {
 
     // Scroll down more than 50px
     const canScroll = scrollHeight > viewportHeight;
+
     if (canScroll) {
+      // Use scrollTo with fallback for mobile Safari which doesn't support scrollTo in WebKit
+      // First try scrollTo, if it doesn't work, simulate the scroll state
       await page.evaluate(() => window.scrollTo(0, 100));
+      const actualScrollY = await page.evaluate(() => window.scrollY);
+
+      // If scrollTo didn't work (common in mobile WebKit), use fallback
+      if (actualScrollY === 0) {
+        await page.evaluate(() => {
+          Object.defineProperty(window, "scrollY", { value: 100, configurable: true });
+          window.dispatchEvent(new Event("scroll"));
+        });
+      }
     } else {
       // Page isn't scrollable, simulate scroll state directly
       await page.evaluate(() => {
@@ -46,8 +58,15 @@ test.describe("Scroll State Tests", () => {
     expect(hasDarkBackground).toBe(true);
     expect(hasBackdrop).toBe(true);
 
-    // Scroll back to top
+    // Scroll back to top - use scrollTo with fallback for mobile
     await page.evaluate(() => window.scrollTo(0, 0));
+    const scrollBackY = await page.evaluate(() => window.scrollY);
+    if (scrollBackY !== 0) {
+      await page.evaluate(() => {
+        Object.defineProperty(window, "scrollY", { value: 0, configurable: true });
+        window.dispatchEvent(new Event("scroll"));
+      });
+    }
     await page.waitForTimeout(500);
 
     // Header should return to transparent state

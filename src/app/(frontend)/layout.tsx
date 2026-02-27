@@ -1,13 +1,9 @@
 import "./globals.css";
-
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 
 import { getAllMuiSymbols, getMetadataData } from "@/lib/layout-data";
-
-// Revalidate every hour (ISR) - avoids requiring MongoDB at build time while maintaining performance
-export const revalidate = 3600;
 
 const manrope = Manrope({
   variable: "--font-manrope",

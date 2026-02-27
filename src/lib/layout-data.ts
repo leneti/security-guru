@@ -1,7 +1,8 @@
-import type { FooterData, NavigationData } from "./page-data-types";
-import type { About, Hero, Navigation, Service, SiteMetadatum } from "@/payload-types";
 import { cache } from "react";
 
+import type { About, Hero, Navigation, Service, SiteMetadatum } from "@/payload-types";
+
+import type { FooterData, NavigationData } from "./page-data-types";
 import { getPayloadClient } from "./payload-client";
 
 /**

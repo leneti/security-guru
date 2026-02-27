@@ -212,3 +212,19 @@ className={`bg-${color}`};
 4. **Exported Functions** - Public API functions that are exported
 
 This ordering improves readability by making the module's public API immediately visible while keeping implementation details at the bottom.
+
+## Playwright Test Synchronization
+
+**Test-Aware Development:** Whenever making changes to the codebase (components, pages, styles, etc.), you must also check whether the Playwright E2E tests in the `e2e/` directory need to be updated. This includes but is not limited to:
+
+- Changes to aria-labels, text content, or button labels
+- DOM structure changes that affect element selectors
+- New features that require additional test coverage
+- Removal or renaming of UI elements
+
+Before completing any code change task, verify that existing tests still pass or update them accordingly to maintain test coverage.
+
+**Running Tests:**
+
+- Use `yarn test` when making changes to app code (components, pages, styles) - this builds the app before running tests
+- Use `yarn test:only` when only test files have changed and app code remains unchanged - this skips the build and runs tests directly

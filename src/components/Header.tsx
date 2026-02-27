@@ -1,12 +1,12 @@
 "use client";
 
-import type { NavigationData } from "@/lib/page-data-types";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import logo from "@/assets/logo/svg/horizontal_logo/h_logo_peach.svg";
+import type { NavigationData } from "@/lib/page-data-types";
 import { useDisclosure } from "@/lib/use-disclosure";
 
 const MobileMenu = dynamic(() => import("./MobileMenu").then((mod) => mod.MobileMenu), {
@@ -73,7 +73,7 @@ export function Header({ data }: { data: NavigationData }) {
             <button
               onClick={open}
               className="p-2 text-white transition-colors hover:text-primary"
-              aria-label="Uždaryti meniu"
+              aria-label={isMobileMenuOpen ? "Uždaryti meniu" : "Atidaryti meniu"}
             >
               <span className="material-symbols-outlined text-3xl!">{menu_icon}</span>
             </button>

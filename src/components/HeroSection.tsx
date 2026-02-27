@@ -1,9 +1,9 @@
-import type { HeroData } from "@/lib/page-data-types";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
 import { ColoredHeading } from "@/components/payload/ColoredHeading";
+import type { HeroData } from "@/lib/page-data-types";
 
 export function HeroSection({ data }: { data: HeroData }) {
   return (
