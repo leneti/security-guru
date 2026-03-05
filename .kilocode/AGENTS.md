@@ -157,6 +157,8 @@ the logo, colour palette (PDF).
 - **CRITICALLY:** If you need to run the dev server (via `yarn dev`, `yarn next dev`, etc.) - ONLY
   do it with a `timeout` to force the command to automatically stop itself. Otherwise, you risk not
   being able to continue the workflow
+- **importMap issues:** If you encounter any issues related to `importMap`, run `yarn fixImportMap` to
+  regenerate the importMap
 
 ## Code Quality & Linting
 

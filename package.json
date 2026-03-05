@@ -6,6 +6,7 @@
   "scripts": {
     "build": "next build && next-sitemap && cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public",
     "dev": "./restart.sh --local",
+    "fixImportMap": "payload generate:importmap",
     "format": "oxfmt .",
     "format:check": "oxfmt . --check",
     "lint": "oxlint . --tsconfig=tsconfig.json --type-aware",

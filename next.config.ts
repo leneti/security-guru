@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     "securityguru",
     "securityguru.namutv.uk",
     "securityguru-dev.namutv.uk",
-    "192.168.1.130",
+    "192.168.1.148",
   ],
 };
 

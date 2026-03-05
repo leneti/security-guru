@@ -27,6 +27,10 @@ export const Hero: GlobalConfig = {
       required: true,
     },
     {
+      name: "test_rich_text",
+      type: "richText",
+    },
+    {
       name: "services_button",
       type: "group",
       fields: [

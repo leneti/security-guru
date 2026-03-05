@@ -2,7 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { lexicalEditor, FixedToolbarFeature, TextStateFeature } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
@@ -31,7 +31,21 @@ export default buildConfig({
     },
   },
   globals: [Hero, About, Footer, Navigation, SiteMetadata],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      FixedToolbarFeature(),
+      TextStateFeature({
+        state: {
+          color: {
+            red: { label: "Red", css: { color: "red" } },
+            blue: { label: "Blue", css: { color: "blue" } },
+            green: { label: "Green", css: { color: "green" } },
+          },
+        },
+      }),
+    ],
+  }),
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },

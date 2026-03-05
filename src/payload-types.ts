@@ -366,6 +366,21 @@ export interface Hero {
   badge_text: string;
   heading: string;
   description: string;
+  test_rich_text?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   services_button: {
     type: 'primary' | 'secondary';
     text: string;
@@ -458,6 +473,7 @@ export interface HeroSelect<T extends boolean = true> {
   badge_text?: T;
   heading?: T;
   description?: T;
+  test_rich_text?: T;
   services_button?:
     | T
     | {
