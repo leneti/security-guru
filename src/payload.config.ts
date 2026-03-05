@@ -38,9 +38,10 @@ export default buildConfig({
       TextStateFeature({
         state: {
           color: {
-            red: { label: "Red", css: { color: "red" } },
-            blue: { label: "Blue", css: { color: "blue" } },
-            green: { label: "Green", css: { color: "green" } },
+            peach: { label: "Peach", css: { color: "#ffbc85" } },
+            midnight: { label: "Midnight", css: { color: "#021614" } },
+            sage: { label: "Sage", css: { color: "#c3c9b5" } },
+            mauve: { label: "Mauve", css: { color: "#9b849a" } },
           },
         },
       }),

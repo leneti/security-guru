@@ -28,21 +28,8 @@
   --color-border: var(--color-sage);
   --color-offWhite: #f9faf7;
 
-  /* Tailwind Color Extensions */
-  --color-midnight: #021614;
-  --color-sage: #c3c9b5;
-  --color-peach: #ffbc85;
-  --color-mauve: #9b849a;
-  --color-offWhite: #f9faf7;
-  --color-light: #f5f7f4;
-
   /* Color Extensions */
   --color-dark: #021614;
-  --color-midnight: #021614;
-  --color-sage: #c3c9b5;
-  --color-peach: #ffbc85;
-  --color-mauve: #9b849a;
-  --color-offWhite: #f9faf7;
   --color-light: #f5f7f4;
 
   /* Typography */

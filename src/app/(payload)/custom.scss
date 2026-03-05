@@ -1,0 +1,199 @@
+/* 1. Import Manrope */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+/* 2. Global Brand Variables */
+:root {
+  /* Core Brand Tokens */
+  --color-peach: #ffbc85;
+  --color-midnight: #021614;
+  --color-sage: #c3c9b5;
+  --color-mauve: #9b849a;
+
+  /* Unified Font Families */
+  --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-heading: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-serif: "Manrope", system-ui, -apple-system, sans-serif; /* Forces RTE to use Manrope */
+  --font-mono: monospace;
+
+  --style-radius-s: 6px;
+  --style-radius-m: 10px;
+  --style-radius-l: 14px;
+  --nav-width: 275px;
+}
+
+/* 3. Light Mode Overrides */
+[data-theme="light"] {
+  --theme-bg: #fcfafc;
+  --theme-elevation-0: #ffffff;
+  --theme-elevation-50: #f5f0f4;
+  --theme-elevation-100: #eae4e9;
+  --theme-elevation-150: #ddd5dc;
+  --theme-elevation-200: #d6ccd5;
+  --theme-elevation-800: #2d252c;
+
+  --theme-text-default: #2d252c;
+  --theme-text-muted: #7e6a7d;
+  --theme-overlay: rgba(45, 37, 44, 0.4);
+
+  --theme-brand-500: var(--color-peach);
+  --theme-success-400: #75967b;
+  --theme-warning-400: #d9a05b;
+  --theme-error-400: #c16e70;
+}
+
+/* 4. Dark Mode Overrides */
+[data-theme="dark"] {
+  --theme-bg: #181317;
+  --theme-elevation-0: #1f191e;
+  --theme-elevation-50: #261e25;
+  --theme-elevation-100: #30262e;
+  --theme-elevation-150: #3b2e38;
+  --theme-elevation-200: #473743;
+  --theme-elevation-800: #ebddeb;
+
+  --theme-text-default: #ebddeb;
+  --theme-text-muted: #b5a0b3;
+  --theme-overlay: rgba(10, 8, 10, 0.7);
+
+  --theme-brand-500: var(--color-peach);
+  --theme-success-400: #88b08f;
+  --theme-warning-400: #eebb77;
+  --theme-error-400: #d98284;
+}
+
+/* 5. Typography & Global Polish */
+body {
+  font-family: var(--font-body) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.dashboard__label,
+.card__title,
+.doc-header__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 600;
+}
+
+/* 6. Payload UI Component Overrides */
+
+/* Navigation */
+.nav {
+  background-color: var(--theme-elevation-50);
+}
+
+.hamburger__wrapper,
+.hamburger:before,
+.hamburger:after {
+  background-color: var(--theme-elevation-100);
+  border-color: var(--theme-elevation-200);
+}
+
+.nav-group__indicator svg .stroke {
+  stroke: var(--theme-text-default);
+}
+
+.nav-group__label {
+  color: var(--theme-text-default);
+}
+
+/* Cards & Layout */
+.card {
+  background-color: var(--theme-elevation-50);
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-m);
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: var(--theme-elevation-50);
+}
+
+/* Buttons */
+.btn--style-primary {
+  background-color: var(--theme-brand-500);
+  color: #2d252c; /* Dark text on peach button for contrast */
+  border-radius: var(--style-radius-s);
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Visibly disabled state */
+  &:disabled,
+  &[disabled] {
+    background-color: var(--theme-elevation-150);
+    color: var(--theme-text-muted);
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Inputs & Fields */
+.field-type.text:not(.has-many) input,
+.search-filter__input {
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: var(--style-radius-s);
+  background-color: var(--theme-elevation-0);
+
+  &:focus {
+    border-color: var(--theme-brand-500);
+    box-shadow: 0 0 0 2px rgba(255, 188, 133, 0.2);
+  }
+}
+
+/* Collapsibles */
+.collapsible {
+  border-radius: var(--style-radius-m);
+  overflow: hidden;
+}
+
+.collapsible__content {
+  background-color: var(--theme-elevation-0);
+}
+
+.collapsible--style-default {
+  border: 1px solid var(--theme-elevation-150);
+
+  > .collapsible__toggle-wrap .collapsible__toggle {
+    background-color: var(--theme-elevation-50);
+  }
+}
+
+/* Toasts / Notifications */
+.Toastify {
+  .Toastify__toast {
+    border-radius: var(--style-radius-m);
+    font-family: var(--font-body);
+  }
+
+  .Toastify__toast--success {
+    background-color: var(--theme-success-400);
+    color: var(--theme-elevation-0);
+  }
+
+  .Toastify__toast--error {
+    background-color: var(--theme-error-400);
+    color: var(--theme-elevation-0);
+  }
+}
+
+/* Rich Text Editor */
+.rich-text,
+.payload-rte,
+.lexical-editor {
+  font-family: var(--font-body) !important;
+  border-radius: var(--style-radius-m) !important;
+
+  .toolbar {
+    background: var(--theme-elevation-50);
+    border-bottom: 1px solid var(--theme-elevation-150);
+  }
+}
