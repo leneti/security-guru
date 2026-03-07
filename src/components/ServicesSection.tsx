@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import type { Service } from "@/payload-types";
+import type { ServiceData } from "@/lib/page-data-types";
 
-export function ServicesSection(props: { services: Service[] }) {
+export function ServicesSection(props: { services: ServiceData[] }) {
   const { services } = props;
 
   return (
@@ -21,7 +21,7 @@ export function ServicesSection(props: { services: Service[] }) {
             const imageSrc = typeof service.image === "string" ? service.image : service.image?.url;
             return (
               <div
-                key={service.id}
+                key={service.title}
                 className="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl"
               >
                 <div className="relative h-48 overflow-hidden bg-gray-200">

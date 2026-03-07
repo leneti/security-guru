@@ -1,4 +1,11 @@
-import type { About, Footer, Hero, Navigation, SiteMetadatum } from "@/payload-types";
+import type {
+  AboutData,
+  FooterData,
+  HeroData,
+  NavigationData,
+  ServiceData,
+  SiteMetadataData,
+} from "./page-data-types";
 
 /**
  * Default data for PayloadCMS globals.
@@ -10,7 +17,7 @@ import type { About, Footer, Hero, Navigation, SiteMetadatum } from "@/payload-t
  * the seeded data and the runtime defaults.
  */
 
-export const DEFAULT_HERO_DATA: Omit<Hero, "id" | "createdAt" | "updatedAt"> = {
+export const DEFAULT_HERO_DATA: HeroData = {
   badge_text: "Saugumas Pirmiausia",
   heading: {
     root: {
@@ -67,7 +74,45 @@ export const DEFAULT_HERO_DATA: Omit<Hero, "id" | "createdAt" | "updatedAt"> = {
   scroll_icon: "keyboard_arrow_down",
 };
 
-export const DEFAULT_ABOUT_DATA: Omit<About, "id" | "createdAt" | "updatedAt"> = {
+export const DEFAULT_SERVICES_DATA: ServiceData[] = [
+  {
+    title: "Apsaugos signalizacijos sistemos",
+    description:
+      "Montuojame ir įrengiame apsaugos signalizacijas namuose ir biuruose, kad užtikrinti jūsų patalpų saugumą.",
+    icon: "sensors",
+    price: 199,
+  },
+  {
+    title: "Įeigos kontrolės sistemos",
+    description:
+      "Diegiame ir įrengiame eismo valdymo sistemas biuruose ir viešosiose vietose eismo srautams valdyti ir saugumui užtikrinti.",
+    icon: "fingerprint",
+    price: 99,
+  },
+  {
+    title: "Priešgaisrinės signalizacijos sistemos",
+    description:
+      "Montuojame ir įrengiame priešgaisrinę signalizaciją namuose ir biuruose, kad aptiktume ir įspėti apie gaisrą.",
+    icon: "local_fire_department",
+    price: 199,
+  },
+  {
+    title: "Vaizdo stebėjimo sistemos",
+    description:
+      "Montuojame ir įrengiame stebėjimo sistemas namuose ir biuruose, kad stebėti veiklą ir aptikti bet kokį įtartiną elgesį.",
+    icon: "videocam",
+    price: 199,
+  },
+  {
+    title: "Integruoti apsaugos sprendimai",
+    description:
+      "Pagal užsakymą įrengiame integruotą apsaugos sistemą, kuri apima apsaugos signalizaciją, eismo kontrolę, priešgaisrinę signalizaciją ir stebėjimo sistemas.",
+    icon: "hub",
+    price: 199,
+  },
+];
+
+export const DEFAULT_ABOUT_DATA: AboutData = {
   subtitle: "Kodėl rinktis mus?",
   heading: "Saugumas reikalauja Ekspertų Dėmesio",
   description:
@@ -96,7 +141,7 @@ export const DEFAULT_ABOUT_DATA: Omit<About, "id" | "createdAt" | "updatedAt"> =
   },
 };
 
-export const DEFAULT_FOOTER_DATA: Omit<Footer, "id" | "createdAt" | "updatedAt"> = {
+export const DEFAULT_FOOTER_DATA: FooterData = {
   description:
     "Kokybiški saugumo sprendimai jūsų namams ir verslui. Ilgametė patirtis ir profesionalumas garantuoja jūsų ramybę.",
   navigation_links: [
@@ -112,7 +157,7 @@ export const DEFAULT_FOOTER_DATA: Omit<Footer, "id" | "createdAt" | "updatedAt">
   copyright_text: "© 2026 Security Guru. Visos teisės saugomos.",
 };
 
-export const DEFAULT_NAVIGATION_DATA: Omit<Navigation, "id" | "createdAt" | "updatedAt"> = {
+export const DEFAULT_NAVIGATION_DATA: NavigationData = {
   nav_links: [
     { href: "#services", label: "Paslaugos" },
     { href: "#about", label: "Apie mus" },
@@ -122,7 +167,7 @@ export const DEFAULT_NAVIGATION_DATA: Omit<Navigation, "id" | "createdAt" | "upd
   close_icon: "close",
 };
 
-export const DEFAULT_SITE_METADATA_DATA: Omit<SiteMetadatum, "id" | "createdAt" | "updatedAt"> = {
+export const DEFAULT_SITE_METADATA_DATA: SiteMetadataData = {
   title: "Security Guru - Apsaugos sistemos Vilniuje",
   description:
     "Profesionalūs apsaugos sprendimai jūsų namams ir verslui. Apsaugos signalizacijos, įeigos kontrolės, priešgaisrinės signalizacijos, vaizdo stebėjimo sistemos Vilniuje ir Vilniaus apskrityje.",

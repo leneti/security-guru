@@ -10,6 +10,7 @@ import {
   DEFAULT_FOOTER_DATA,
   DEFAULT_HERO_DATA,
   DEFAULT_NAVIGATION_DATA,
+  DEFAULT_SERVICES_DATA,
 } from "./default-global-data";
 import type { PageData } from "./page-data-types";
 import { getPayloadClient } from "./payload-client";
@@ -33,7 +34,7 @@ export async function getPageData(): Promise<PageData> {
       ]);
 
     return {
-      services: servicesResult.docs,
+      services: servicesResult.docs ?? DEFAULT_SERVICES_DATA,
       hero: heroGlobal ? merge(DEFAULT_HERO_DATA, heroGlobal) : DEFAULT_HERO_DATA,
       about: aboutGlobal ? merge(DEFAULT_ABOUT_DATA, aboutGlobal) : DEFAULT_ABOUT_DATA,
       footer: footerGlobal ? merge(DEFAULT_FOOTER_DATA, footerGlobal) : DEFAULT_FOOTER_DATA,

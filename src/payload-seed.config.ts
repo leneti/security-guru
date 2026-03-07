@@ -3,292 +3,25 @@ import { fileURLToPath } from "url";
 
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor, FixedToolbarFeature, TextStateFeature } from "@payloadcms/richtext-lexical";
-import { buildConfig, type CollectionConfig, type GlobalConfig } from "payload";
+import { buildConfig } from "payload";
+
+import { About } from "./collections/About";
+import { Footer } from "./collections/Footer";
+import { Hero } from "./collections/Hero";
+import { Media } from "./collections/Media";
+import { Navigation } from "./collections/Navigation";
+import { Services } from "./collections/Services";
+import { SiteMetadata } from "./collections/SiteMetadata";
+import { Users } from "./collections/Users";
+import { TEXT_STATE_COLORS, type TextStateConfig } from "./lib/richtext-text-state";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-// Minimal collection definitions for seeding (no admin UI components)
-const Users: CollectionConfig = {
-  slug: "users",
-  admin: {
-    useAsTitle: "email",
-  },
-  auth: true,
-  fields: [],
-};
-
-const Media: CollectionConfig = {
-  slug: "media",
-  access: {
-    read: () => true,
-  },
-  fields: [
-    {
-      name: "alt",
-      type: "text",
-      required: true,
-    },
-  ],
-  upload: true,
-};
-
-const Services: CollectionConfig = {
-  slug: "services",
-  access: {
-    read: () => true,
-  },
-  fields: [
-    {
-      name: "title",
-      type: "text",
-      required: true,
-    },
-  ],
-};
-
-const Hero: GlobalConfig = {
-  slug: "hero",
-  access: {
-    read: () => true,
-  },
-  fields: [
-    {
-      name: "badge_text",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "heading",
-      type: "richText",
-      required: true,
-    },
-    {
-      name: "description",
-      type: "textarea",
-      required: true,
-    },
-    {
-      name: "services_button",
-      type: "group",
-      fields: [
-        {
-          name: "type",
-          type: "select",
-          options: ["primary", "secondary"],
-          required: true,
-        },
-        {
-          name: "text",
-          type: "text",
-          required: true,
-        },
-      ],
-    },
-    {
-      name: "contact_button",
-      type: "group",
-      fields: [
-        {
-          name: "type",
-          type: "select",
-          options: ["primary", "secondary"],
-          required: true,
-        },
-        {
-          name: "text",
-          type: "text",
-          required: true,
-        },
-      ],
-    },
-    {
-      name: "scroll_icon",
-      type: "text",
-      required: true,
-    },
-  ],
-};
-
-const About: GlobalConfig = {
-  slug: "about",
-  access: {
-    read: () => true,
-  },
-  fields: [
-    {
-      name: "subtitle",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "heading",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "description",
-      type: "textarea",
-      required: true,
-    },
-    {
-      name: "features",
-      type: "array",
-      fields: [
-        {
-          name: "title",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "description",
-          type: "textarea",
-          required: true,
-        },
-        {
-          name: "icon",
-          type: "text",
-          required: true,
-        },
-      ],
-    },
-    {
-      name: "quality_overlay",
-      type: "group",
-      fields: [
-        {
-          name: "title",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "description",
-          type: "textarea",
-          required: true,
-        },
-        {
-          name: "icon",
-          type: "text",
-          required: true,
-        },
-      ],
-    },
-  ],
-};
-
-const Footer: GlobalConfig = {
-  slug: "footer",
-  access: {
-    read: () => true,
-  },
-  fields: [
-    {
-      name: "description",
-      type: "textarea",
-      required: true,
-    },
-    {
-      name: "navigation_links",
-      type: "array",
-      fields: [
-        {
-          name: "label",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "href",
-          type: "text",
-          required: true,
-        },
-      ],
-    },
-    {
-      name: "company_details",
-      type: "group",
-      fields: [
-        {
-          name: "company_name",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "company_code",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "location",
-          type: "text",
-          required: true,
-        },
-      ],
-    },
-    {
-      name: "copyright_text",
-      type: "text",
-      required: true,
-    },
-  ],
-};
-
-const Navigation: GlobalConfig = {
-  slug: "navigation",
-  access: {
-    read: () => true,
-  },
-  fields: [
-    {
-      name: "nav_links",
-      type: "array",
-      fields: [
-        {
-          name: "href",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "label",
-          type: "text",
-          required: true,
-        },
-      ],
-    },
-    {
-      name: "contact_button_text",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "menu_icon",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "close_icon",
-      type: "text",
-      required: true,
-    },
-  ],
-};
-
-const SiteMetadata: GlobalConfig = {
-  slug: "site-metadata",
-  access: {
-    read: () => true,
-  },
-  fields: [
-    {
-      name: "title",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "description",
-      type: "textarea",
-      required: true,
-    },
-  ],
+// Helper to remove hooks from collections/globals (seed script runs outside Next.js)
+const removeHooks = <T extends { hooks?: object }>(config: T): T => {
+  const { hooks: _hooks, ...rest } = config;
+  return rest as T;
 };
 
 export default buildConfig({
@@ -296,24 +29,19 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || "",
   }),
-  collections: [Users, Media, Services],
+  collections: [Users, Media, Services].map(removeHooks),
   admin: {
     user: Users.slug,
   },
-  globals: [Hero, About, Footer, Navigation, SiteMetadata],
+  globals: [Hero, About, Footer, Navigation, SiteMetadata].map(removeHooks),
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
       FixedToolbarFeature(),
       TextStateFeature({
         state: {
-          color: {
-            peach: { label: "Peach", css: { color: "#ffbc85" } },
-            midnight: { label: "Midnight", css: { color: "#021614" } },
-            sage: { label: "Sage", css: { color: "#c3c9b5" } },
-            mauve: { label: "Mauve", css: { color: "#9b849a" } },
-          },
-        },
+          color: TEXT_STATE_COLORS,
+        } satisfies TextStateConfig,
       }),
     ],
   }),

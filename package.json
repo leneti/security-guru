@@ -16,7 +16,7 @@
     "p:importmap": "payload generate:importmap",
     "p:types": "payload generate:types",
     "postinstall": "husky",
-    "seed:globals": "yarn local-db:up && bash -c 'set -a; source .env; source .env.local; yarn dlx --quiet tsx src/migrations/seed-globals.ts' && yarn local-db:down || yarn local-db:down",
+    "seed:data": "yarn local-db:up && bash -c 'set -a; source .env; source .env.local; yarn dlx --quiet tsx src/migrations/seed-data.ts' && yarn local-db:down || yarn local-db:down",
     "start": "yarn local-db:up && node .next/standalone/server.js && yarn local-db:down",
     "test": "yarn local-db:up && yarn build && yarn local-db:down && playwright test",
     "test:only": "playwright test",
