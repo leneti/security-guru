@@ -18,17 +18,13 @@ export const Hero: GlobalConfig = {
     },
     {
       name: "heading",
-      type: "text",
+      type: "richText",
       required: true,
     },
     {
       name: "description",
       type: "textarea",
       required: true,
-    },
-    {
-      name: "test_rich_text",
-      type: "richText",
     },
     {
       name: "services_button",

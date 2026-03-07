@@ -104,6 +104,9 @@ export interface Config {
     'site-metadata': SiteMetadataSelect<false> | SiteMetadataSelect<true>;
   };
   locale: null;
+  widgets: {
+    collections: CollectionsWidget;
+  };
   user: User;
   jobs: {
     tasks: unknown;
@@ -364,9 +367,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Hero {
   id: string;
   badge_text: string;
-  heading: string;
-  description: string;
-  test_rich_text?: {
+  heading: {
     root: {
       type: string;
       children: {
@@ -380,7 +381,8 @@ export interface Hero {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
+  };
+  description: string;
   services_button: {
     type: 'primary' | 'secondary';
     text: string;
@@ -473,7 +475,6 @@ export interface HeroSelect<T extends boolean = true> {
   badge_text?: T;
   heading?: T;
   description?: T;
-  test_rich_text?: T;
   services_button?:
     | T
     | {
@@ -572,6 +573,16 @@ export interface SiteMetadataSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collections_widget".
+ */
+export interface CollectionsWidget {
+  data?: {
+    [k: string]: unknown;
+  };
+  width: 'full';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

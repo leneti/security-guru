@@ -37,6 +37,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@utility animation-delay-* {
+  --tw-animation-delay: --value([*]);
+  --tw-animation-delay: --value(integer) ms;
+  animation-delay: var(--tw-animation-delay);
+}
+
 /* Base styles */
 :root {
   --background: #ffffff;

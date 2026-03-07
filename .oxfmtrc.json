@@ -36,7 +36,7 @@
     ]
   },
   "experimentalTailwindcss": {
-    "stylesheet": "./src/app/globals.css",
+    "stylesheet": "./src/app/(frontend)/globals.css",
     "attributes": ["class", "className"],
     "functions": ["clsx", "cn"],
     "preserveDuplicates": false,

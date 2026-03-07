@@ -14,6 +14,7 @@ import { Navigation } from "./collections/Navigation";
 import { Services } from "./collections/Services";
 import { SiteMetadata } from "./collections/SiteMetadata";
 import { Users } from "./collections/Users";
+import { TEXT_STATE_COLORS, type TextStateConfig } from "./lib/richtext-text-state";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -37,13 +38,8 @@ export default buildConfig({
       FixedToolbarFeature(),
       TextStateFeature({
         state: {
-          color: {
-            peach: { label: "Peach", css: { color: "#ffbc85" } },
-            midnight: { label: "Midnight", css: { color: "#021614" } },
-            sage: { label: "Sage", css: { color: "#c3c9b5" } },
-            mauve: { label: "Mauve", css: { color: "#9b849a" } },
-          },
-        },
+          color: TEXT_STATE_COLORS,
+        } satisfies TextStateConfig,
       }),
     ],
   }),

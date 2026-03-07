@@ -11,6 +11,11 @@ set -e
 
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# --- TMUX & MEMORY SAFETY CONFIGURATION ---
+TMUX_SESSION="sg-local"
+RAM_THRESHOLD=90 # Percentage of RAM to trigger kill switch
+# ------------------------------------------
+
 # Default to local mode
 MODE="local"
 # Default to building images
@@ -281,12 +286,56 @@ cleanup_images() {
     log_success "Cleanup completed"
 }
 
-# Run Next.js development server
+# Run Next.js development server with Inline RAM Safety Monitor in TMUX
 run_dev_server() {
-    log_info "Starting Next.js development server..."
-
+    log_info "Starting Next.js dev server & RAM monitor in tmux session '${TMUX_SESSION}'..."
     cd "$PROJECT_DIR"
-    yarn next dev
+
+    # Cleanup existing session if it was left hanging
+    tmux has-session -t "$TMUX_SESSION" 2>/dev/null && tmux kill-session -t "$TMUX_SESSION"
+
+    # 1. Start a new detached session with the Next.js dev server
+    tmux new-session -d -s "$TMUX_SESSION" "yarn next dev"
+
+    # 2. Split the window horizontally and run the INLINE monitor script
+    # We pass THRESHOLD and SESSION as env variables to avoid escaping hell inside the single quotes
+    tmux split-window -v -t "$TMUX_SESSION" env THRESHOLD="$RAM_THRESHOLD" SESSION="$TMUX_SESSION" bash -c '
+        echo -e "\033[0;34mRAM Monitor Started\033[0m"
+        while true; do
+            # Calculate RAM usage
+            USAGE=$(free | grep Mem | awk '\''{print $3/$2 * 100.0}'\'' | cut -d. -f1)
+            
+            # Print to console. \r returns to the start of the line, \033[K clears the rest of the line
+            printf "\r\033[K[%s] Current RAM usage: \033[1;33m%s%%\033[0m (Threshold: %s%%)" "$(date +%T)" "$USAGE" "$THRESHOLD"
+            
+            if [ "$USAGE" -gt "$THRESHOLD" ]; then
+                echo -e "\n\033[0;31mCRITICAL: Memory at ${USAGE}%. Killing tmux session...\033[0m"
+                sleep 2
+                tmux kill-session -t "$SESSION"
+                exit 1
+            fi
+            sleep 3 # Checking every 3 seconds for faster response
+        done
+    '
+    
+    # 3. Resize the monitor pane to be smaller (target flag must come before positional arguments)
+    tmux resize-pane -t "$TMUX_SESSION" -D 15
+
+    log_info "Attaching to tmux session. To detach and leave it running, press Ctrl+B, then D."
+    
+    # 4. Attach to the session safely
+    if [ -n "$TMUX" ]; then
+        env TMUX= tmux attach-session -t "$TMUX_SESSION"
+    else
+        tmux attach-session -t "$TMUX_SESSION"
+    fi
+
+    # If we reach this line, the user has either detached OR the session ended.
+    # We want to ensure the background session is dead so the containers follow suit.
+    log_info "Cleaning up tmux session..."
+    tmux kill-session -t "$TMUX_SESSION" 2>/dev/null || true
+
+    log_info "Tmux session ended."
 }
 
 # Display access information
@@ -335,7 +384,10 @@ main() {
         check_requirements
         validate_compose_config
         start_containers
-        trap 'cleanup_containers' INT TERM
+        
+        # Added EXIT to the trap. When tmux closes, cleanup_containers will run automatically!
+        trap 'cleanup_containers' INT TERM EXIT ERR
+        
         run_dev_server
     else
         check_requirements
@@ -419,15 +471,15 @@ while [[ $# -gt 0 ]]; do
             echo "  -h, --help     Show this help message"
             echo ""
             echo "Examples:"
-            echo "  $0                          # Start local development with MongoDB and Next.js dev server"
-            echo "  $0 --local                  # Start local development with MongoDB and Next.js dev server (explicit)"
-            echo "  $0 --dev                    # Deploy to dev Docker environment (builds + deploys)"
-            echo "  $0 --dev --build-only       # Build image for dev environment only"
-            echo "  $0 --dev --skip-build       # Deploy to dev without rebuilding image"
-            echo "  $0 --prod --build-only      # Build image for production environment only"
-            echo "  $0 --dev --stop             # Stop and remove all containers for dev mode"
-            echo "  $0 --prod --stop            # Stop and remove all containers for prod mode"
-            echo "  $0 --local --stop           # Stop and remove local MongoDB container"
+            echo "  $0                            # Start local development with MongoDB and Next.js dev server"
+            echo "  $0 --local                    # Start local development with MongoDB and Next.js dev server (explicit)"
+            echo "  $0 --dev                      # Deploy to dev Docker environment (builds + deploys)"
+            echo "  $0 --dev --build-only         # Build image for dev environment only"
+            echo "  $0 --dev --skip-build         # Deploy to dev without rebuilding image"
+            echo "  $0 --prod --build-only        # Build image for production environment only"
+            echo "  $0 --dev --stop               # Stop and remove all containers for dev mode"
+            echo "  $0 --prod --stop              # Stop and remove all containers for prod mode"
+            echo "  $0 --local --stop             # Stop and remove local MongoDB container"
             echo ""
             exit 0
             ;;

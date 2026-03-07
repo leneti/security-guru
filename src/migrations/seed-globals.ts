@@ -3,6 +3,13 @@
 import { getPayload } from "payload";
 import type { Payload } from "payload";
 
+import {
+  DEFAULT_ABOUT_DATA,
+  DEFAULT_FOOTER_DATA,
+  DEFAULT_HERO_DATA,
+  DEFAULT_NAVIGATION_DATA,
+  DEFAULT_SITE_METADATA_DATA,
+} from "@/lib/default-global-data";
 import config from "@/payload-seed.config";
 
 /**
@@ -48,104 +55,27 @@ async function seedGlobals() {
 }
 
 async function seedHero(payload: Payload) {
-  const heroData = {
-    badge_text: "Saugumas Pirmiausia",
-    heading: "Kokybė, Profesionalumas ir Inovatyvumas",
-    description:
-      "Apsaugokite tai, kas svarbiausia. Profesionalios saugumo sistemos namams ir verslui Vilniuje ir Vilniaus apskrityje.",
-    services_button: {
-      type: "primary" as const,
-      text: "Mūsų Paslaugos",
-    },
-    contact_button: {
-      type: "secondary" as const,
-      text: "Gauti Pasiūlymą",
-    },
-    scroll_icon: "keyboard_arrow_down",
-  };
-
-  await upsertGlobal(payload, HERO_SLUG, heroData);
+  await upsertGlobal(payload, HERO_SLUG, DEFAULT_HERO_DATA);
   console.log(`✅ Hero global ${HERO_SLUG} seeded`);
 }
 
 async function seedAbout(payload: Payload) {
-  const aboutData = {
-    subtitle: "Kodėl rinktis mus?",
-    heading: "Saugumas reikalauja Ekspertų Dėmesio",
-    description:
-      "SECURITY GURU teikia pirmenybę jūsų saugumo reikalavimams. Mūsų ekspertai skiria laiką suprasti jūsų rūpesčius ir pateikia asmeninius sprendimus.",
-    features: [
-      {
-        title: "Visapusiški sprendimai",
-        description: "Nuo signalizacijos iki vaizdo stebėjimo - viskas iš vienų rankų.",
-        icon: "check",
-      },
-      {
-        title: "Orientacija į klientą",
-        description: "Glaudžiai bendradarbiaujame užtikrindami jūsų ramybę.",
-        icon: "check",
-      },
-      {
-        title: "Lankstumas",
-        description: "Dirbame 7 dienas per savaitę, nuo 9 iki 21 val.",
-        icon: "check",
-      },
-    ],
-    quality_overlay: {
-      title: "Garantuota Kokybė",
-      description: "Naudojame tik sertifikuotą ir patikimą įrangą.",
-      icon: "verified_user",
-    },
-  };
-
-  await upsertGlobal(payload, ABOUT_SLUG, aboutData);
+  await upsertGlobal(payload, ABOUT_SLUG, DEFAULT_ABOUT_DATA);
   console.log(`✅ About global ${ABOUT_SLUG} seeded`);
 }
 
 async function seedFooter(payload: Payload) {
-  const footerData = {
-    description:
-      "Kokybiški saugumo sprendimai jūsų namams ir verslui. Ilgametė patirtis ir profesionalumas garantuoja jūsų ramybę.",
-    navigation_links: [
-      { label: "Paslaugos", href: "#services" },
-      { label: "Apie mus", href: "#about" },
-      { label: "Kontaktai", href: "#contact" },
-    ],
-    company_details: {
-      company_name: 'MB "Security Guru"',
-      company_code: "306109454",
-      location: "Vilnius, Lietuva",
-    },
-    copyright_text: "© 2026 Security Guru. Visos teisės saugomos.",
-  };
-
-  await upsertGlobal(payload, FOOTER_SLUG, footerData);
+  await upsertGlobal(payload, FOOTER_SLUG, DEFAULT_FOOTER_DATA);
   console.log(`✅ Footer global ${FOOTER_SLUG} seeded`);
 }
 
 async function seedNavigation(payload: Payload) {
-  const navigationData = {
-    nav_links: [
-      { href: "#services", label: "Paslaugos" },
-      { href: "#about", label: "Apie mus" },
-    ],
-    contact_button_text: "Susisiekti",
-    menu_icon: "menu",
-    close_icon: "close",
-  };
-
-  await upsertGlobal(payload, NAVIGATION_SLUG, navigationData);
+  await upsertGlobal(payload, NAVIGATION_SLUG, DEFAULT_NAVIGATION_DATA);
   console.log(`✅ Navigation global ${NAVIGATION_SLUG} seeded`);
 }
 
 async function seedSiteMetadata(payload: Payload) {
-  const siteMetadataData = {
-    title: "Security Guru - Apsaugos sistemos Vilniuje",
-    description:
-      "Profesionalūs apsaugos sprendimai jūsų namams ir verslui. Apsaugos signalizacijos, įeigos kontrolės, priešgaisrinės signalizacijos, vaizdo stebėjimo sistemos Vilniuje ir Vilniaus apskrityje.",
-  };
-
-  await upsertGlobal(payload, SITE_METADATA_SLUG, siteMetadataData);
+  await upsertGlobal(payload, SITE_METADATA_SLUG, DEFAULT_SITE_METADATA_DATA);
   console.log(`✅ SiteMetadata global ${SITE_METADATA_SLUG} seeded`);
 }
 

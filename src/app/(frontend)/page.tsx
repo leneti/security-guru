@@ -14,7 +14,7 @@ export default async function HomePage() {
     <>
       <Header data={navigation} />
 
-      <main id="main-content" className="flex flex-col min-h-screen">
+      <main id="main-content" className="flex min-h-screen flex-col">
         <HeroSection data={hero} />
         <ServicesSection services={services} />
         <AboutSection data={about} />

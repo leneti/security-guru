@@ -114,7 +114,7 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = (props) => {
                   onKeyDown={(e) => e.key === "Escape" && setIsOpen(false)}
                   role="presentation"
                 />
-                <div className="absolute left-0 top-full z-20 mt-1 w-full overflow-hidden rounded-md border border-gray-200 bg-white shadow-lg">
+                <div className="absolute top-full left-0 z-20 mt-1 w-full overflow-hidden rounded-md border border-gray-200 bg-white shadow-lg">
                   {BUTTON_TYPES.map((typeOption) => (
                     <button
                       key={typeOption.value}
@@ -152,7 +152,7 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = (props) => {
               value={currentText}
               placeholder="Enter button label..."
               disabled={readOnly || !hasPermission}
-              className={`w-full rounded-md border border-gray-300 px-3 py-2 text-sm transition-all placeholder:text-gray-400 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 ${
+              className={`focus:border-primary-500 focus:ring-primary-500 w-full rounded-md border border-gray-300 px-3 py-2 text-sm transition-all placeholder:text-gray-400 focus:ring-1 focus:outline-none ${
                 readOnly ? "cursor-not-allowed opacity-50" : ""
               }`}
               style={{
@@ -162,7 +162,7 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = (props) => {
                 // Handled by Payload's underlying text field
               }}
             />
-            <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
+            <span className="material-symbols-outlined absolute top-1/2 right-3 -translate-y-1/2 text-sm text-gray-400">
               text_fields
             </span>
           </div>

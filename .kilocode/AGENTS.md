@@ -149,32 +149,41 @@ the logo, colour palette (PDF).
 - Never use `npm`. Use `yarn` as the package manager to run scripts
   - Use `yarn dlx --quiet` to run external scripts without installing them to the project, if
     necessary
-- Run TS typechecking consistently, and ESLint occassionally, to check code implementation is
+  - When installing new dependencies, prefer fixed versions (no `^` or `~` prefixes) for production
+    dependencies to ensure consistent builds
+- Run TS typechecking consistently, and oxlint occasionally, to check code implementation is
   correct. Only run `yarn build` if you suspect there might be compilation issues
+- After every code change task, you MUST run BOTH `yarn typecheck` AND `yarn lint` to verify your
+  changes don't introduce any type errors or linting issues. Fix any errors before completing the
+  task
+- Use `yarn lint:fix` (which runs `oxlint --type-aware --fix`) to automatically apply safe fixes.
+  For suggestions that may require manual review, use `yarn lint --fix-suggestions`
 - Always use named functions/components instead of `default` exports, unless required by the
   framework (e.g. Next.js page.tsx file)
 - Use React 19 features like `useLayoutEffect` where possible/reasonable to improve performance etc.
 - **CRITICALLY:** If you need to run the dev server (via `yarn dev`, `yarn next dev`, etc.) - ONLY
   do it with a `timeout` to force the command to automatically stop itself. Otherwise, you risk not
   being able to continue the workflow
-- **importMap issues:** If you encounter any issues related to `importMap`, run `yarn fixImportMap` to
-  regenerate the importMap
+- **importMap issues:** If you encounter any issues related to `importMap`, run `yarn p:importmap`
+  to regenerate the importMap
 
 ## Code Quality & Linting
 
-**Prioritize Fixes:** Always attempt to resolve ESLint, TypeScript errors (and warnings), and
+**Prioritize Fixes:** Always attempt to resolve oxlint, TypeScript errors (and warnings), and
 TailwindCSS warnings/suggestions by refactoring code. Do not disable rules for convenience.
 
 **TypeScript Strictness:**The use of any is strictly prohibited. Use precise types or unknown.
 TypeScript errors should only be ignored as a last resort in extreme edge cases.
 
-**Justification Required:** If a rule must be disabled (via eslint-disable or @ts-ignore), you must
+**Justification Required:** If a rule must be disabled (via oxlint-disable or @ts-ignore), you must
 include a concise comment on the same or preceding line explaining the specific technical necessity
 for the override.
 
 ### TailwindCSS Guidelines
 
-**TailwindCSS JIT Compiler Behavior:** The JIT compiler scans source files as raw text and looks for strings that may resemble CSS class names. It CAN detect classes extracted into const objects using regular string literals (not template literals).
+**TailwindCSS JIT Compiler Behavior:** The JIT compiler scans source files as raw text and looks for
+strings that may resemble CSS class names. It CAN detect classes extracted into const objects using
+regular string literals (not template literals).
 
 ```typescript
 // ✅ CORRECT - Static string classes in const objects
@@ -190,7 +199,8 @@ className="rounded-lg bg-primary px-8 py-4 font-bold";
 className={bgColor === "primary" ? "bg-primary" : "bg-secondary"}
 ```
 
-**Avoid Dynamic String Generation:** Do not use template literals or string concatenation to generate TailwindCSS classes, as they won't be detected by the JIT compiler:
+**Avoid Dynamic String Generation:** Do not use template literals or string concatenation to
+generate TailwindCSS classes, as they won't be detected by the JIT compiler:
 
 ```typescript
 // ❌ AVOID - Dynamic template literals cannot be detected
@@ -213,20 +223,26 @@ className={`bg-${color}`};
 3. **Internal Functions** - Private/helper functions not exported
 4. **Exported Functions** - Public API functions that are exported
 
-This ordering improves readability by making the module's public API immediately visible while keeping implementation details at the bottom.
+This ordering improves readability by making the module's public API immediately visible while
+keeping implementation details at the bottom.
 
 ## Playwright Test Synchronization
 
-**Test-Aware Development:** Whenever making changes to the codebase (components, pages, styles, etc.), you must also check whether the Playwright E2E tests in the `e2e/` directory need to be updated. This includes but is not limited to:
+**Test-Aware Development:** Whenever making changes to the codebase (components, pages, styles,
+etc.), you must also check whether the Playwright E2E tests in the `e2e/` directory need to be
+updated. This includes but is not limited to:
 
 - Changes to aria-labels, text content, or button labels
 - DOM structure changes that affect element selectors
 - New features that require additional test coverage
 - Removal or renaming of UI elements
 
-Before completing any code change task, verify that existing tests still pass or update them accordingly to maintain test coverage.
+Before completing any code change task, verify that existing tests still pass or update them
+accordingly to maintain test coverage.
 
 **Running Tests:**
 
-- Use `yarn test` when making changes to app code (components, pages, styles) - this builds the app before running tests
-- Use `yarn test:only` when only test files have changed and app code remains unchanged - this skips the build and runs tests directly
+- Use `yarn test` when making changes to app code (components, pages, styles) - this builds the app
+  before running tests
+- Use `yarn test:only` when only test files have changed and app code remains unchanged - this skips
+  the build and runs tests directly

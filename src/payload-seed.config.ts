@@ -2,7 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { lexicalEditor, FixedToolbarFeature, TextStateFeature } from "@payloadcms/richtext-lexical";
 import { buildConfig, type CollectionConfig, type GlobalConfig } from "payload";
 
 const filename = fileURLToPath(import.meta.url);
@@ -60,7 +60,7 @@ const Hero: GlobalConfig = {
     },
     {
       name: "heading",
-      type: "text",
+      type: "richText",
       required: true,
     },
     {
@@ -301,7 +301,22 @@ export default buildConfig({
     user: Users.slug,
   },
   globals: [Hero, About, Footer, Navigation, SiteMetadata],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      FixedToolbarFeature(),
+      TextStateFeature({
+        state: {
+          color: {
+            peach: { label: "Peach", css: { color: "#ffbc85" } },
+            midnight: { label: "Midnight", css: { color: "#021614" } },
+            sage: { label: "Sage", css: { color: "#c3c9b5" } },
+            mauve: { label: "Mauve", css: { color: "#9b849a" } },
+          },
+        },
+      }),
+    ],
+  }),
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
