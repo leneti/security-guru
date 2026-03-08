@@ -95,15 +95,17 @@ export function HeroSection({ data }: { data: HeroData }) {
 
       <div className="relative z-10 mx-auto mt-16 max-w-3xl px-4 text-center">
         <div className="mb-6 inline-block animate-[fadeIn_1s_ease-out] rounded-full border border-primary/50 bg-primary/10 px-3 py-1 backdrop-blur-sm">
-          <span className="text-xs font-bold tracking-widest text-primary uppercase">
-            {data.badge_text}
-          </span>
+          <RichText
+            data={data.badge_text}
+            converters={converters}
+            className="text-xs tracking-widest"
+          />
         </div>
 
         <RichText
           data={data.heading}
           converters={converters}
-          className="slide-up mb-6 text-5xl leading-tight text-balance text-white animation-delay-100 md:text-7xl"
+          className="slide-up mb-6 text-5xl leading-tight text-balance animation-delay-100 md:text-7xl"
         />
 
         <p

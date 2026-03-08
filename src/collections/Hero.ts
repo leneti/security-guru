@@ -13,7 +13,7 @@ export const Hero: GlobalConfig = {
   fields: [
     {
       name: "badge_text",
-      type: "text",
+      type: "richText",
       required: true,
     },
     {

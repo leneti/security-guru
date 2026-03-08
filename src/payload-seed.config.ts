@@ -26,27 +26,17 @@ const removeHooks = <T extends { hooks?: object }>(config: T): T => {
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || "",
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URL || "",
-  }),
+  db: mongooseAdapter({ url: process.env.DATABASE_URL || "" }),
+  admin: { user: Users.slug },
   collections: [Users, Media, Services].map(removeHooks),
-  admin: {
-    user: Users.slug,
-  },
   globals: [Hero, About, Footer, Navigation, SiteMetadata].map(removeHooks),
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
       FixedToolbarFeature(),
-      TextStateFeature({
-        state: {
-          color: TEXT_STATE_COLORS,
-        } satisfies TextStateConfig,
-      }),
+      TextStateFeature({ state: { color: TEXT_STATE_COLORS } satisfies TextStateConfig }),
     ],
   }),
-  typescript: {
-    outputFile: path.resolve(dirname, "payload-types.ts"),
-  },
+  typescript: { outputFile: path.resolve(dirname, "payload-types.ts") },
   plugins: [],
 });

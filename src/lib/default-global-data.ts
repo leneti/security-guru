@@ -18,7 +18,39 @@ import type {
  */
 
 export const DEFAULT_HERO_DATA: HeroData = {
-  badge_text: "Saugumas Pirmiausia",
+  badge_text: {
+    root: {
+      children: [
+        {
+          children: [
+            {
+              detail: 0,
+              format: 1,
+              mode: "normal",
+              style: "",
+              text: "SAUGUMAS PIRMIAUSIA",
+              type: "text",
+              version: 1,
+              $: {
+                color: "peach",
+              },
+            },
+          ],
+          direction: null,
+          format: "",
+          indent: 0,
+          type: "heading",
+          version: 1,
+          tag: "text",
+        },
+      ],
+      direction: null,
+      format: "",
+      indent: 0,
+      type: "root",
+      version: 1,
+    },
+  },
   heading: {
     root: {
       children: [

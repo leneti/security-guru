@@ -366,7 +366,21 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Hero {
   id: string;
-  badge_text: string;
+  badge_text: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   heading: {
     root: {
       type: string;

@@ -21,31 +21,18 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || "",
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URL || "",
-  }),
+  db: mongooseAdapter({ url: process.env.DATABASE_URL || "" }),
+  admin: { user: Users.slug, importMap: { baseDir: path.resolve(dirname) } },
   collections: [Users, Media, Services],
-  admin: {
-    user: Users.slug,
-    importMap: {
-      baseDir: path.resolve(dirname),
-    },
-  },
   globals: [Hero, About, Footer, Navigation, SiteMetadata],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
       FixedToolbarFeature(),
-      TextStateFeature({
-        state: {
-          color: TEXT_STATE_COLORS,
-        } satisfies TextStateConfig,
-      }),
+      TextStateFeature({ state: { color: TEXT_STATE_COLORS } satisfies TextStateConfig }),
     ],
   }),
-  typescript: {
-    outputFile: path.resolve(dirname, "payload-types.ts"),
-  },
+  typescript: { outputFile: path.resolve(dirname, "payload-types.ts") },
   sharp,
   plugins: [],
 });

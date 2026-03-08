@@ -9,6 +9,8 @@ export const TEXT_STATE_COLORS = {
   midnight: { label: "Midnight", css: { color: "#021614" } },
   sage: { label: "Sage", css: { color: "#c3c9b5" } },
   mauve: { label: "Mauve", css: { color: "#9b849a" } },
+  white: { label: "White", css: { color: "#ffffff" } },
+  black: { label: "Black", css: { color: "#000000" } },
 } as const;
 
 /**

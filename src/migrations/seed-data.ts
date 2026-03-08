@@ -95,7 +95,6 @@ async function seedServices(payload: Payload) {
         collection: SERVICES_COLLECTION,
         id: doc.id,
       });
-      console.log(`  → Deleted service: ${doc.title}`);
     }
 
     // Create all services from DEFAULT_SERVICES_DATA
