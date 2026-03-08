@@ -41,7 +41,7 @@ export function Header({ data }: { data: NavigationData }) {
               alt="Security Guru logo"
               unoptimized
               height={40}
-              className="-ml-5 h-8 md:h-10"
+              className="h-8 md:h-10"
               loading="eager"
             />
           </Link>

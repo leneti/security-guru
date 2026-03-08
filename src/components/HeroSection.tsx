@@ -60,6 +60,11 @@ const converters: JSXConvertersFunction<DefaultNodeTypes> = ({ defaultConverters
   },
 });
 
+const primaryButtonClasses =
+  "transform-gpu rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white";
+const secondaryButtonClasses =
+  "transform-gpu rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark";
+
 export function HeroSection({ data }: { data: HeroData }) {
   return (
     <section
@@ -114,17 +119,12 @@ export function HeroSection({ data }: { data: HeroData }) {
           className="slide-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed font-light animation-delay-200 md:text-xl"
         />
 
-        <div
-          className="slide-up flex flex-col justify-center gap-4 sm:flex-row"
-          style={{ animationDelay: "0.3s" }}
-        >
+        <div className="slide-up flex flex-col justify-center gap-4 animation-delay-300 sm:flex-row">
           <Link
             href="#services"
             className={clsx(
-              data.services_button.type === "primary" &&
-                "transform-gpu rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white",
-              data.services_button.type === "secondary" &&
-                "transform-gpu rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark",
+              data.services_button.type === "primary" && primaryButtonClasses,
+              data.services_button.type === "secondary" && secondaryButtonClasses,
             )}
           >
             {data.services_button.text}
@@ -132,10 +132,8 @@ export function HeroSection({ data }: { data: HeroData }) {
           <Link
             href="#contact"
             className={clsx(
-              data.contact_button.type === "primary" &&
-                "transform-gpu rounded-lg bg-primary px-8 py-4 font-bold text-dark shadow-[0_0_20px_rgba(255,188,133,0.3)] transition-all hover:scale-105 hover:bg-white",
-              data.contact_button.type === "secondary" &&
-                "transform-gpu rounded-lg border-2 border-sage px-8 py-4 font-bold text-sage transition-all hover:bg-sage hover:text-dark",
+              data.contact_button.type === "primary" && primaryButtonClasses,
+              data.contact_button.type === "secondary" && secondaryButtonClasses,
             )}
           >
             {data.contact_button.text}
