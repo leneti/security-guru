@@ -108,12 +108,11 @@ export function HeroSection({ data }: { data: HeroData }) {
           className="slide-up mb-6 text-5xl leading-tight text-balance animation-delay-100 md:text-7xl"
         />
 
-        <p
-          className="slide-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed font-light text-sage md:text-xl"
-          style={{ animationDelay: "0.2s" }}
-        >
-          {data.description}
-        </p>
+        <RichText
+          data={data.description}
+          converters={converters}
+          className="slide-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed font-light animation-delay-200 md:text-xl"
+        />
 
         <div
           className="slide-up flex flex-col justify-center gap-4 sm:flex-row"

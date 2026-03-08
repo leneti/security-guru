@@ -39,8 +39,10 @@
 
 @utility animation-delay-* {
   --tw-animation-delay: --value([*]);
-  --tw-animation-delay: --value(integer) ms;
-  animation-delay: var(--tw-animation-delay);
+  /*  `ms` must follow the integer value without whitespace */
+  /* prettier-ignore */
+  --tw-animation-delay: --value(integer)ms;
+  animation-delay: var(--tw-animation-delay) !important;
 }
 
 /* Base styles */

@@ -23,7 +23,7 @@ export const Hero: GlobalConfig = {
     },
     {
       name: "description",
-      type: "textarea",
+      type: "richText",
       required: true,
     },
     {
