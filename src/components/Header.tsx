@@ -19,10 +19,7 @@ export function Header({ data }: { data: NavigationData }) {
   const [isMobileMenuOpen, { open, close }] = useDisclosure();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);

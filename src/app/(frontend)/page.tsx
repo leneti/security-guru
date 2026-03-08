@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
@@ -12,7 +14,9 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header data={navigation} />
+      <Suspense>
+        <Header data={navigation} />
+      </Suspense>
 
       <main id="main-content" className="flex min-h-screen flex-col">
         <HeroSection data={hero} />
