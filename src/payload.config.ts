@@ -22,7 +22,17 @@ const dirname = path.dirname(filename);
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || "",
   db: mongooseAdapter({ url: process.env.DATABASE_URL || "" }),
-  admin: { user: Users.slug, importMap: { baseDir: path.resolve(dirname) } },
+  admin: {
+    user: Users.slug,
+    importMap: { baseDir: path.resolve(dirname) },
+    autoLogin:
+      process.env.NODE_ENV === "development"
+        ? {
+            email: "admin@password.com",
+            password: "password",
+          }
+        : false,
+  },
   collections: [Users, Media, Services],
   globals: [Hero, About, Footer, Navigation, SiteMetadata],
   editor: lexicalEditor({
