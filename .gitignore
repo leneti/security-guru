@@ -42,3 +42,6 @@ next-env.d.ts
 /e2e/results/
 /blob-report/
 /playwright/.cache/
+
+# Impeccable downloads a platform-specific engine; keep the portable skill tracked.
+/.agents/skills/impeccable/scripts/bin/
