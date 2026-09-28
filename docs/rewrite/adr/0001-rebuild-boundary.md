@@ -15,6 +15,6 @@ The canonical brand colors in the palette PDF are dark green `#021614`, light gr
 
 ## Consequences
 
-- The current implementation does not constrain the new technology or layout.
+- The current component and library choices do not constrain the new layout or supporting tools; ADR 0005 records the chosen React, Next.js, and TypeScript foundation.
 - Existing stock/AI imagery and page templates are outside the reuse set.
 - The new site can keep existing service URLs where useful without reusing their implementation.

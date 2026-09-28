@@ -17,5 +17,6 @@ The existing app is a **content and brand reference**, not an implementation bas
 - [0002: Audience and site scope](adr/0002-audience-and-site-scope.md)
 - [0003: Visual direction](adr/0003-visual-direction.md)
 - [0004: Copy and price handling](adr/0004-copy-and-prices.md)
+- [0005: Technology foundation](adr/0005-technology-foundation.md)
 
 No production code has been rewritten yet. The page structure and implementation sequence in the plan are proposals to validate before build work.

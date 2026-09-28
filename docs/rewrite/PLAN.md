@@ -22,7 +22,9 @@ This plan is a sequence of reviewable deliverables, not a commitment to the old 
 
 ## 3. Build the new site foundation
 
-- Choose a suitable framework and hosting strategy based on the approved content and form requirements, rather than inheriting the existing stack by default.
+- Scaffold a fresh React, Next.js, and TypeScript application. Choose hosting and contact delivery against the approved requirements.
+- Set up Vitest and Playwright for meaningful tests. Evaluate OXC linting and formatting; settle package versions when implementation begins.
+- Select styling and component tools to serve the approved design. Tailwind CSS and shadcn/Radix are candidates; `es-toolkit` and `@mantine/hooks` are familiar optional utilities.
 - Implement the design tokens, semantic page shell, navigation, footer, and reusable content components from scratch.
 - Preserve useful URLs or add redirects. Set Lithuanian metadata and a clean sitemap.
 

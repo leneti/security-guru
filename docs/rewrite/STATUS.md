@@ -18,6 +18,7 @@ Stage: Discovery and planning. No rewrite implementation has started.
 - Calm, residential-feeling, photo-free starting direction. No old AI images.
 - Five services, About, and Contact; no shop or Projects page.
 - Keep starting prices, subject to confirmation before publishing.
+- Keep React, Next.js, and TypeScript. Prefer Vitest and Playwright tests; evaluate OXC tooling. Styling, component libraries, and optional utilities are open choices (ADR 0005).
 
 ## Pending decisions and verification
 
@@ -31,7 +32,7 @@ Stage: Discovery and planning. No rewrite implementation has started.
 ## Resume instructions
 
 1. Check `git status --short --branch` and `git log -1 --oneline` on `codex/rewrite-plan`.
-2. Read this file, `docs/rewrite/PLAN.md`, and the four ADRs.
+2. Read this file, `docs/rewrite/PLAN.md`, and the five ADRs.
 3. Treat the existing app as source material only; do not reuse its UI implementation or old images.
 4. Apply any new user answers to the ledger and ADRs before building.
 5. If using Impeccable in a new session, reload Codex so the project skill is discovered; follow the skill's own setup. The hook is optional until trusted through `/hooks`.
