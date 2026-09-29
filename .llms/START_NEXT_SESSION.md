@@ -1,0 +1,13 @@
+# Prompt for the next session
+
+Paste the text below into a new Codex session opened in this repository. The fresh session is authorized to begin the rewrite; this planning session must not start it.
+
+```text
+Continue the Security Guru website rewrite in /media/dominykas/fast/security-guru on branch codex/rewrite-plan. First check git status and read .llms/STATUS.md, .llms/PLAN.md, .llms/README.md, and every ADR in .llms/adr/. These files are the durable source of decisions; do not rely on previous chat context. Read the installed Impeccable skill before frontend design work.
+
+Execute the plan, not just another inventory. Use subagents for bounded independent tasks so the primary session stays lean: delegate the bilingual content and fact audit, a photo-free visual direction, and the technical/testing approach. Ask each agent for a concise result or a committed artifact under .llms/, then integrate their findings yourself. Continue through a reviewable working implementation and meaningful verification. Keep all new plans, status ledgers, content maps, design documents, and decision records in .llms/ and commit checkpoints. If Impeccable expects root-level PRODUCT.md or DESIGN.md, adapt that workflow so the canonical planning artifacts still live in .llms/; do not leave duplicate planning files elsewhere.
+
+Decisions: rebuild code and design from scratch while using only the old app's editable Lithuanian prose, name/logo, and design tokens as source material. Use React, Next.js, and TypeScript. Prefer Vitest and Playwright; evaluate OXC tools. Styling/components remain open. Design for homeowners and offices equally, with a calm, approachable, photo-free look. Do not reuse old AI images. Serve Vilnius and Vilnius County. Provide complete Lithuanian and English experiences and an easy-to-find language selector. Keep the five services and their starting prices, but mark exact amounts for client confirmation before publication. Exclude the dead shop and placeholder Projects page. Make tel: and mailto: links the primary enquiry actions, with readable contact details; do not rebuild the form or custom email API. Do not invent testimonials, certifications, project facts, or claims. The client may provide verifiable trust material later.
+
+Start with a bilingual content map and a clear design direction, then build the site on this branch. Make practical choices without waiting for nonblocking answers, keep unverified facts visible in .llms/STATUS.md, and do not deploy or publish. Give concise progress updates and finish with changed files, checks run, and remaining client confirmations.
+```

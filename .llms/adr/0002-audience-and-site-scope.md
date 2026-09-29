@@ -11,6 +11,8 @@ Security Guru serves homeowners and offices. The current external shop no longer
 
 Give home and office visitors equal prominence. Do not include the external shop or a Projects page in the new navigation or page plan. Keep the five service categories: intrusion alarms, access control, fire alarms, video surveillance, and integrated security solutions. Keep a clear route to contact the company.
 
+Vilnius and Vilnius County are the confirmed service area.
+
 ## Consequences
 
 - Proposed sitemap: Home; Services overview; five service detail pages; About; Contact.
