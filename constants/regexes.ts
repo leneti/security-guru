@@ -1,6 +1,0 @@
-// RegExps for validation contact form inputs
-
-export const emailRegex =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i;
-
-export const numberRegex = /^\+?[\d -()~]+$/;

@@ -1,47 +1,46 @@
 # Rewrite status ledger
 
 Updated: 2026-09-29
-Branch: `codex/rewrite-plan`
-Stage: Discovery and planning. No rewrite implementation has started.
+Branch: `codex/fresh-start`
+Stage: Clean starting state. Website implementation has **not** begun.
 
 ## Completed
 
-- Inspected the current routes, components, Lithuanian copy, design tokens, logo variants, palette PDF, and asset inventory.
-- Recorded accepted decisions in `.llms/adr/`. All rewrite plans, ledgers, and future planning artifacts belong under the committed `.llms/` folder.
-- Installed Impeccable's **project-scoped Codex skill** with `npx --yes impeccable install --providers=codex --scope=project -y` (npm package version 4.1.0). The skill is under `.agents/skills/impeccable/` and its hook manifest under `.codex/hooks.json`. Its platform-specific engine binary is locally installed but gitignored; the portable skill, upstream Apache 2.0 license, and hook manifest are tracked.
-- Confirmed that the public plugin directory did not list Impeccable. The upstream-supported Codex path is the project skill installer, not a marketplace plugin. Reload Codex for newly installed skills to appear. The optional project hook requires the user to approve it from Codex `/hooks` before it runs.
+- Inspected the former routes, components, Lithuanian copy, design tokens, logo variants, palette PDF, and assets.
+- Recorded scope and technology decisions in `.llms/adr/`.
+- Archived useful source prose, starting prices, contact details, and legacy URL clues in `.llms/source-copy.md`.
+- Moved the former `assets/` tree to `.llms/assets/`, omitting only `assets/unsplash-houses.webp` as requested. The remaining imagery is reference material only.
+- Removed the former app, package setup, AWS Amplify config, generated outputs, dependencies, and ignored legacy `.env`. Retained and simplified `.gitignore` for the new project.
+- Kept Impeccable's project skill and hook at the owner's explicit request.
+- Created only a minimal root `package.json` and lockfile pinned to Rust based `pnpm@12.8.1`. No app dependencies or new app files have been added.
+- Read-only inspected the existing `cloudflared` → Traefik → Docker setup and the separate `sg-temp` experiment. ADR 0009 records the initial hosting direction and alternatives.
 
-## Agreed scope
+## Agreed product scope
 
-- Fresh code and design; reuse only the current prose as editable source material, brand tokens, name, and logo.
-- Equal attention to home and office visitors.
-- Calm, residential-feeling, photo-free starting direction. No old AI images.
-- Five services, About, and Contact; no shop or Projects page.
-- Keep starting prices, subject to confirmation before publishing.
-- Keep React, Next.js, and TypeScript. Prefer Vitest and Playwright tests; evaluate OXC tooling. Styling, component libraries, and optional utilities are open choices (ADR 0005).
-- Provide Lithuanian and English on all public pages, with an accessible language selector (ADR 0006).
-- Serve Vilnius and Vilnius County. Make direct phone and email links the primary enquiry paths; no form or custom email service (ADR 0007).
+- Fresh React, Next.js, and TypeScript website; use pnpm v12. Prefer Vitest and Playwright; evaluate OXC. Supporting UI tools remain open.
+- Reuse only the Security Guru name/logo, canonical palette, and editable Lithuanian prose as sources. Design a calm, photo-free site for homeowners and offices equally.
+- Lithuanian and English public pages with an easy-to-find language selector; Vilnius and Vilnius County service area.
+- Five services and their starting prices, pending client verification. No old shop or Projects page.
+- Direct `tel:` and `mailto:` enquiry paths; no contact form or custom email service.
+- No invented testimonials, credentials, project facts, or unverified safety/legal claims.
 
-## Pending decisions and verification
+## Pending confirmations before publication
 
-1. Confirm current phone numbers, email address, hours, the five starting prices, and whether all five service descriptions reflect current work. Vilnius and Vilnius County coverage is confirmed.
-2. Obtain client review of Lithuanian edits and new English copy before publication.
-3. Confirm whether the current domain and service URL slugs should be preserved. Default proposal: preserve Lithuanian service URLs where feasible and redirect any changed routes.
-4. Settle the visual concept, typeface, layout system, and final page content during implementation.
-5. Ask the client for verifiable trust material: credentials, testimonials, warranties, or concrete project facts. None is available yet. Do not invent it or block drafts on its absence.
+1. Verify current phone numbers, email, hours, legal details, five starting prices, and whether all five service descriptions reflect current offerings.
+2. Obtain client review of edited Lithuanian and new English copy. Ask for verifiable trust material if available.
+3. Confirm domain and URL migration details, mail DNS records, deployment access, and rollback plan before changing live routing.
+4. Choose final site design, route scheme, UI tooling, and deployment packaging during implementation.
+
+## Tooling note
+
+`corepack pnpm` fails on this host because installed Corepack 0.34.0 expects pnpm's former `bin/pnpm.cjs` entry file. `npx --yes pnpm@12.8.1` works and created the lockfile. The host has Node 22.20.0. See ADR 0010.
 
 ## Resume instructions
 
-1. Check `git status --short --branch` and `git log -1 --oneline` on `codex/rewrite-plan`.
-2. Read this file, `.llms/PLAN.md`, and the seven ADRs. The paste-ready execution prompt is `.llms/START_NEXT_SESSION.md`.
-3. Treat the existing app as source material only; do not reuse its UI implementation or old images.
-4. Apply any new user answers to the ledger and ADRs before building. Keep all plans, status updates, and design artifacts inside `.llms/` and commit them.
-5. If using Impeccable in a new session, reload Codex so the project skill is discovered; follow the skill's own setup. The hook is optional until trusted through `/hooks`.
+1. Check `git status --short --branch` and the latest commit on `codex/fresh-start`.
+2. Read this ledger, `.llms/PLAN.md`, `.llms/source-copy.md`, and the ADRs. Assets are at `.llms/assets/`.
+3. Use the former app only through archived text/assets or Git history to verify a fact; write all new app code from scratch.
+4. Keep plans, status updates, content maps, and design artifacts committed under `.llms/`.
+5. Do not deploy or change live services/DNS until a reviewed production candidate and migration plan exist.
 
-## Current handoff
-
-The user wants to start plan execution in a **fresh session** with subagents, not in this one. Use `.llms/START_NEXT_SESSION.md` as the prompt. The first deliverables are a bilingual content map and photo-free design direction, followed by a working rewrite. Draft and build around unverified facts, mark them clearly, and do not publish until the client confirms them.
-
-## Verification note
-
-The initial planning Markdown passed Prettier with `--no-config`, the Codex hook manifest parses as JSON, and the installed engine binary is ignored by Git. The existing checkout's normal Prettier command cannot load its configured `@trivago/prettier-plugin-sort-imports`; `npm run typecheck` reported 253 errors across the unchanged app, including missing installed dependencies and stale `.next/types` paths. These are baseline checkout issues and were not addressed as part of planning. Re-run appropriate checks after setting up the fresh app.
+The owner explicitly stopped further website work at this starting state and asked for it to be committed and pushed. The next session should begin implementation only when instructed.

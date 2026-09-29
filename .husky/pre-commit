@@ -1,6 +1,0 @@
-set -e
-set -o pipefail
-set -u
-
-npm run typecheck
-npm run lint-staged

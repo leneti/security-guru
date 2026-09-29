@@ -1,6 +1,12 @@
 # Implementation plan
 
-This plan is a sequence of reviewable deliverables. Decisions already made are in `adr/`; unanswered facts are in `STATUS.md`. Execute it in a fresh session, using subagents for bounded research and implementation tasks while the primary agent integrates their work.
+This plan is a sequence of reviewable deliverables. Decisions already made are in `adr/`; unanswered facts are in `STATUS.md`. The owner has asked to stop at the clean starting state, commit it, and push it. Execute later implementation only after a new instruction, using subagents for bounded research and implementation tasks while the primary agent integrates their work.
+
+## 0. Clean starting state — complete
+
+- The old app and deployment files were removed; useful prose and business facts are in `.llms/source-copy.md`.
+- Former `assets/` is now `.llms/assets/`, except the excluded `unsplash-houses.webp`. Treat the remaining images as reference only.
+- The root contains a minimal pnpm v12 manifest and lockfile, a simplified `.gitignore`, and the retained Impeccable skill/hook. No new website implementation exists yet.
 
 ## 1. Confirm product and content brief
 
@@ -22,7 +28,7 @@ This plan is a sequence of reviewable deliverables. Decisions already made are i
 
 ## 3. Build the new site foundation
 
-- Scaffold a fresh React, Next.js, and TypeScript application. Choose hosting against the approved requirements; no custom email delivery service is required.
+- Scaffold a fresh React, Next.js, and TypeScript application using the pinned pnpm v12. Package-manager bootstrap is already present. Choose hosting against the approved requirements; no custom email delivery service is required.
 - Set up Vitest and Playwright for meaningful tests. Evaluate OXC linting and formatting; settle package versions when implementation begins.
 - Select styling and component tools to serve the approved design. Tailwind CSS and shadcn/Radix are candidates; `es-toolkit` and `@mantine/hooks` are familiar optional utilities.
 - Implement the design tokens, semantic page shell, navigation, footer, and reusable content components from scratch.
@@ -44,6 +50,7 @@ This plan is a sequence of reviewable deliverables. Decisions already made are i
 - Test keyboard access, language switching, responsive layouts, page speed, `tel:`/`mailto:` links, localized metadata, sitemap, and redirects.
 - Configure only necessary cookies and publish accurate business data. Remove dead shop/Projects references.
 - Compare the new route list with existing indexed URLs and prepare a deployment/rollback checklist.
+- Package the site for the existing Cloudflare Tunnel → Traefik → Docker path without changing live routing yet. If broader service management is pursued, compare Dokploy/Coolify/Portainer as a separate host migration.
 
 **Review gate:** company approval of content and a tested production candidate.
 

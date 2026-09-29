@@ -11,6 +11,8 @@ The rewrite should not inherit the current implementation by default, but the ow
 
 Build the new site with React, Next.js, and TypeScript. Plan for Vitest tests where unit or component tests are useful, and Playwright for meaningful browser journeys. Evaluate OXC tools for linting and formatting during scaffold setup. Choose styling, components, and utility libraries against the approved design and actual requirements; Tailwind CSS and shadcn/Radix are acceptable options, not commitments.
 
+Use the Rust based pnpm v12 package manager. ADR 0010 records the exact initial pin and a local Corepack compatibility issue.
+
 ## Consequences
 
 - Rewrite application code from scratch while retaining the preferred framework and language.
